@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: #ECE5E5;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="coilvic.FXMLIniciarSesionController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: #ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.FXMLIniciarSesionController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <Pane prefHeight="1000.0" prefWidth="778.0">
@@ -45,9 +45,9 @@
             <Font name="Berlin Sans FB" size="74.0" />
          </font>
       </Label>
-      <PasswordField layoutX="964.0" layoutY="586.0" prefHeight="66.0" prefWidth="327.0" style="-fx-background-radius: 15;" />
-      <TextField layoutX="964.0" layoutY="366.0" prefHeight="66.0" prefWidth="327.0" style="-fx-background-radius: 15;" />
-      <Button layoutX="1004.0" layoutY="757.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="247.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Iniciar sesión">
+      <PasswordField fx:id="pfContraseña" layoutX="964.0" layoutY="586.0" prefHeight="66.0" prefWidth="327.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="tfNombreUsuario" layoutX="964.0" layoutY="366.0" prefHeight="66.0" prefWidth="327.0" style="-fx-background-radius: 15;" />
+      <Button layoutX="1004.0" layoutY="757.0" mnemonicParsing="false" onAction="#clicBtnIniciarSesion" prefHeight="75.0" prefWidth="247.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Iniciar sesión">
          <font>
             <Font name="Berlin Sans FB" size="29.0" />
          </font>
