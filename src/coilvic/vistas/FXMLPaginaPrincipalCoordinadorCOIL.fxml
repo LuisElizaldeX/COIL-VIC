@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -17,12 +18,12 @@
                   <Font name="Berlin Sans FB" size="14.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgCerrarSesion" fitHeight="35.0" fitWidth="45.0" layoutX="246.0" layoutY="14.0" onMouseClicked="#irIniciarSesion" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgCerrarSesion" fitHeight="35.0" fitWidth="45.0" layoutX="246.0" layoutY="14.0" onMouseClicked="#clicImgCerrarSesion" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../recursos/logout-icon-512x476-rm92x2sp%201.png" />
                </image>
             </ImageView>
-            <Button layoutY="249.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="     Ofertas de colaboración COIL">
+            <Button layoutY="249.0" mnemonicParsing="false" onAction="#clicBtnIrOfertasColaboracionCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="     Ofertas de colaboración COIL">
                <font>
                   <Font size="14.0" />
                </font>
@@ -36,7 +37,7 @@
             </Button>
             <Separator layoutY="243.0" prefHeight="12.0" prefWidth="312.0" />
             <Separator layoutX="3.0" layoutY="151.0" prefHeight="4.0" prefWidth="312.0" />
-            <Button fx:id="btPrincipal" layoutY="154.0" mnemonicParsing="false" onAction="#irPaginaPrincipal" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="       Menú principal                     ">
+            <Button fx:id="btPrincipal" layoutY="154.0" mnemonicParsing="false" onAction="#clicBtnirPaginaPrincipal" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="       Menú principal                     ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -64,7 +65,7 @@
                   <Font name="Berlin Sans FB" size="15.0" />
                </font>
             </Label>
-            <Button layoutY="348.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="     Registrar oferta de colaboración">
+            <Button layoutY="348.0" mnemonicParsing="false" onAction="#clicBtnIrRegistrarOfertaColaboracion" prefHeight="78.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="Registrar oferta de colaboración">
                <font>
                   <Font size="14.0" />
                </font>
@@ -77,7 +78,7 @@
                </graphic>
             </Button>
             <Separator layoutX="3.0" layoutY="429.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="441.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="     Historial de colaboración     ">
+            <Button layoutY="441.0" mnemonicParsing="false" onAction="#clicBtnIrHistorialColaboracion" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="     Historial de colaboración     ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -90,7 +91,7 @@
                </graphic>
             </Button>
             <Separator layoutY="528.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="540.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="    Revisar colaboraciones COIL">
+            <Button layoutY="540.0" mnemonicParsing="false" onAction="#clicBtnRevisarColaboracionesCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="    Revisar colaboraciones COIL">
                <font>
                   <Font size="14.0" />
                </font>
@@ -103,7 +104,7 @@
                </graphic>
             </Button>
             <Separator layoutY="635.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="647.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="    Cancelar colaboración COIL">
+            <Button layoutY="647.0" mnemonicParsing="false" onAction="#clicBtnIrCancelarColaboracionCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="    Cancelar colaboración COIL">
                <font>
                   <Font size="14.0" />
                </font>
@@ -129,7 +130,7 @@
                </graphic>
             </Button>
             <Separator layoutX="3.0" layoutY="837.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="849.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="     Numeralia                       ">
+            <Button layoutY="849.0" mnemonicParsing="false" onAction="#clicBtnIrNumeralia" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="     Numeralia                       ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -143,5 +144,45 @@
             </Button>
          </children>
       </Pane>
+      <Pane layoutX="312.0" prefHeight="440.0" prefWidth="1136.0">
+         <children>
+            <ImageView fitHeight="440.0" fitWidth="1136.0" layoutY="2.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../recursos/portada%20COILVIC.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="246.0" fitWidth="275.0" layoutX="122.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/image%201.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="205.0" fitWidth="97.0" layoutX="1016.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/UV.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="586.0" layoutY="139.0" prefHeight="86.0" prefWidth="339.0" text="COIL-VIC">
+               <font>
+                  <Font name="Arial" size="75.0" />
+               </font>
+            </Label>
+            <Label layoutX="516.0" layoutY="266.0" prefHeight="71.0" prefWidth="479.0" text="Collaborative Online International Learnig - Virtual International Collaborations " textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="328.0" layoutY="465.0" prefHeight="71.0" prefWidth="642.0" text="Bienvenido coordinador">
+         <font>
+            <Font name="Arial Bold Italic" size="53.0" />
+         </font>
+      </Label>
+      <Label layoutX="372.0" layoutY="546.0" prefHeight="71.0" prefWidth="517.0" text="Adolfo Torres López">
+         <font>
+            <Font name="Arial" size="56.0" />
+         </font>
+      </Label>
+      <Label layoutX="372.0" layoutY="636.0" prefHeight="341.0" prefWidth="1042.0" text="COIL es una metodología de enseñanza-aprendizaje, la cual provee estrategias innovadoras y rentables de internacionalización del currículo. Esta metodología  fomenta la interacción de los profesores y los estudiantes con compañeros en el extranjero a través de entornos multiculturales en línea y de aprendizaje mixtos co-enseñados, haciendo hincapié en la colaboración vivencial de los estudiantes. El modelo COIL no se limita a promover cursos donde los estudiantes de diferentes naciones conviven en un aula en línea, más bien, se enfoca en la creación de entornos de aprendizaje iguales donde los instructores trabajan juntos para crear un programa compartido basado en un consistente trabajo académico que enfatiza el aprendizaje vivencial y colaborativo de los estudiantes. Las clases pueden ser totalmente en línea, u ofrecidas en formatos combinados con sesiones presenciales tradicionales que tienen lugar en ambas instituciones, mientras que el trabajo colaborativo de los estudiantes se lleva a cabo en línea." wrapText="true" />
    </children>
 </AnchorPane>
