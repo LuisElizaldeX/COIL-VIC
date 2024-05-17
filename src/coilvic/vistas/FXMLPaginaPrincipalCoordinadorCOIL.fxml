@@ -91,7 +91,7 @@
                </graphic>
             </Button>
             <Separator layoutY="528.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="540.0" mnemonicParsing="false" onAction="#clicBtnRevisarColaboracionesCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="    Revisar colaboraciones COIL">
+            <Button layoutY="540.0" mnemonicParsing="false" onAction="#clicBtnRevisarColaboracionesCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="    Revisar colaboraciones COIL">
                <font>
                   <Font size="14.0" />
                </font>
@@ -104,7 +104,7 @@
                </graphic>
             </Button>
             <Separator layoutY="635.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="647.0" mnemonicParsing="false" onAction="#clicBtnIrCancelarColaboracionCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="    Cancelar colaboración COIL">
+            <Button layoutY="647.0" mnemonicParsing="false" onAction="#clicBtnIrCancelarColaboracionCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="    Cancelar colaboración COIL">
                <font>
                   <Font size="14.0" />
                </font>
@@ -117,7 +117,7 @@
                </graphic>
             </Button>
             <Separator layoutY="733.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="745.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="  Revisar solicitudes de constancia">
+            <Button layoutY="745.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="  Revisar solicitudes de constancia">
                <font>
                   <Font size="14.0" />
                </font>
@@ -130,7 +130,7 @@
                </graphic>
             </Button>
             <Separator layoutX="3.0" layoutY="837.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="849.0" mnemonicParsing="false" onAction="#clicBtnIrNumeralia" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../../../../../../OneDrive/Escritorio/Escuela/Principios%20construcción/ControlNutricional/src/controlnutricional/css/estilos.css" text="     Numeralia                       ">
+            <Button layoutY="849.0" mnemonicParsing="false" onAction="#clicBtnIrNumeralia" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="     Numeralia                       ">
                <font>
                   <Font size="14.0" />
                </font>
