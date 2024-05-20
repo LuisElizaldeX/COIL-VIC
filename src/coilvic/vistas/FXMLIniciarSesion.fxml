@@ -53,7 +53,7 @@
          <font>
             <Font size="28.0" />
          </font></TextField>
-      <Button layoutX="1004.0" layoutY="757.0" mnemonicParsing="false" onAction="#clicBtnIniciarSesion" prefHeight="75.0" prefWidth="247.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Iniciar sesión">
+      <Button fx:id="btnIiciarSesion" layoutX="1004.0" layoutY="757.0" mnemonicParsing="false" onAction="#clicBtnIniciarSesion" prefHeight="75.0" prefWidth="247.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Iniciar sesión">
          <font>
             <Font name="Berlin Sans FB" size="29.0" />
          </font>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
+<?import javafx.scene.web.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -9,9 +9,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLPaginaPrincipalCoordinadorCOILController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLRevisarColaboracionesCOILController">
    <children>
-      <Pane prefHeight="1000.0" prefWidth="312.0" style="-fx-background-color: #404040;">
+      <Pane prefHeight="1002.0" prefWidth="312.0" style="-fx-background-color: #404040;">
          <children>
             <Label layoutX="228.0" layoutY="60.0" text="Cerrar sesión" textFill="WHITE">
                <font>
@@ -144,45 +144,22 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="312.0" prefHeight="440.0" prefWidth="1136.0">
-         <children>
-            <ImageView fitHeight="440.0" fitWidth="1136.0" layoutY="2.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../recursos/portada%20COILVIC.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="246.0" fitWidth="275.0" layoutX="122.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../recursos/image%201.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="205.0" fitWidth="97.0" layoutX="1016.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../recursos/UV.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="586.0" layoutY="139.0" prefHeight="86.0" prefWidth="339.0" text="COIL-VIC">
-               <font>
-                  <Font name="Arial" size="75.0" />
-               </font>
-            </Label>
-            <Label layoutX="516.0" layoutY="266.0" prefHeight="71.0" prefWidth="479.0" text="Collaborative Online International Learnig - Virtual International Collaborations " textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Label layoutX="328.0" layoutY="465.0" prefHeight="71.0" prefWidth="642.0" text="Bienvenido coordinador">
+      <Label layoutX="585.0" layoutY="36.0" prefHeight="68.0" prefWidth="619.0" text="Revisar colaboraciones">
          <font>
             <Font name="Arial Bold Italic" size="53.0" />
          </font>
       </Label>
-      <Label fx:id="lbNombreBienvenida" layoutX="339.0" layoutY="536.0" prefHeight="71.0" prefWidth="599.0">
+      <TableView fx:id="tvColaboraciones" layoutX="366.0" layoutY="218.0" prefHeight="542.0" prefWidth="1017.0" stylesheets="@../css/estilos.css">
+        <columns>
+          <TableColumn fx:id="colNombre" prefWidth="364.0" text="Nombre" />
+          <TableColumn fx:id="colExperienciaEducativa" prefWidth="428.0" text="Experiencia educativa" />
+            <TableColumn fx:id="colPeriodo" prefWidth="224.0" text="Período" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnRevisarColaboracion" layoutX="738.0" layoutY="834.0" mnemonicParsing="false" onAction="#clicBtnRevisarOfertaColaboracionUV" prefHeight="68.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Revisar colaboracion">
          <font>
-            <Font name="Arial" size="56.0" />
+            <Font name="Berlin Sans FB" size="24.0" />
          </font>
-      </Label>
-      <Label layoutX="372.0" layoutY="636.0" prefHeight="341.0" prefWidth="1042.0" text="COIL es una metodología de enseñanza-aprendizaje, la cual provee estrategias innovadoras y rentables de internacionalización del currículo. Esta metodología  fomenta la interacción de los profesores y los estudiantes con compañeros en el extranjero a través de entornos multiculturales en línea y de aprendizaje mixtos co-enseñados, haciendo hincapié en la colaboración vivencial de los estudiantes. El modelo COIL no se limita a promover cursos donde los estudiantes de diferentes naciones conviven en un aula en línea, más bien, se enfoca en la creación de entornos de aprendizaje iguales donde los instructores trabajan juntos para crear un programa compartido basado en un consistente trabajo académico que enfatiza el aprendizaje vivencial y colaborativo de los estudiantes. Las clases pueden ser totalmente en línea, u ofrecidas en formatos combinados con sesiones presenciales tradicionales que tienen lugar en ambas instituciones, mientras que el trabajo colaborativo de los estudiantes se lleva a cabo en línea." wrapText="true" />
+      </Button>
    </children>
 </AnchorPane>
