@@ -65,7 +65,7 @@
                   <Font name="Berlin Sans FB" size="15.0" />
                </font>
             </Label>
-            <Button layoutY="348.0" mnemonicParsing="false" onAction="#clicBtnIrRegistrarOfertaColaboracion" prefHeight="78.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Registrar oferta de colaboración">
+            <Button layoutY="342.0" mnemonicParsing="false" onAction="#clicBtnIrRegistrarOfertaColaboracion" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Registrar oferta de colaboración">
                <font>
                   <Font size="14.0" />
                </font>
@@ -178,7 +178,7 @@
             <Font name="Arial Bold Italic" size="53.0" />
          </font>
       </Label>
-      <Label layoutX="372.0" layoutY="546.0" prefHeight="71.0" prefWidth="517.0" text="Adolfo Torres López">
+      <Label fx:id="lbNombreBienvenida" layoutX="339.0" layoutY="536.0" prefHeight="71.0" prefWidth="599.0">
          <font>
             <Font name="Arial" size="56.0" />
          </font>

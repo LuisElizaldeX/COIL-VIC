@@ -9,6 +9,7 @@ package coilvic.modelo.pojo;
 public class Usuario {
     private int idUsuario;
     private int idTipoUsuario;
+    private String tipoUsuario;
     private String nombre;
     private String contrasena;
 
@@ -16,9 +17,11 @@ public class Usuario {
         
     }
 
-    public Usuario(int idUsuario, int idTipoUsuario, String nombre, String contrasena) {
+    public Usuario(int idUsuario, int idTipoUsuario, String tipoUsuario , String nombre, 
+            String contrasena) {
         this.idUsuario = idUsuario;
         this.idTipoUsuario = idTipoUsuario;
+        this.tipoUsuario=tipoUsuario;
         this.nombre = nombre;
         this.contrasena = contrasena;
     }
@@ -53,6 +56,14 @@ public class Usuario {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
     
 }

@@ -64,4 +64,8 @@ public class CoordinadorCOIL {
         this.apellidoMaterno = apellidoMaterno;
     }
     
+    @Override
+    public String toString(){
+        return nombre+" "+apellidoPaterno+" "+apellidoMaterno;
+    }
 }
