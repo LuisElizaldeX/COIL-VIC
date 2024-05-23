@@ -14,7 +14,7 @@ public class COILVIC extends Application {
         
         Scene scene = new Scene(root);
         
-        stage.setTitle("Iniciar sesión");
+        stage.setTitle("Inicio de sesión");
         stage.setScene(scene);
         stage.show();
     }
