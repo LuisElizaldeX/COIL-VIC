@@ -64,7 +64,7 @@
                   <Font name="Berlin Sans FB" size="15.0" />
                </font>
             </Label>
-            <Button layoutY="348.0" mnemonicParsing="false" onAction="#clicBtnIrRegistrarOfertaColaboracion" prefHeight="78.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Registrar oferta de colaboración">
+            <Button layoutY="447.0" mnemonicParsing="false" onAction="#clicBtnIrRegistrarOfertaColaboracion" prefHeight="78.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Registrar oferta de colaboración">
                <font>
                   <Font size="14.0" />
                </font>
@@ -77,7 +77,7 @@
                </graphic>
             </Button>
             <Separator layoutX="3.0" layoutY="429.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="441.0" mnemonicParsing="false" onAction="#clicBtnIrRegistrarColaboracionCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text=" Registrar colaboración COIL     ">
+            <Button layoutY="534.0" mnemonicParsing="false" onAction="#clicBtnIrRegistrarColaboracionCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text=" Registrar colaboración COIL     ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -89,6 +89,22 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Button layoutY="348.0" mnemonicParsing="false" onAction="#clicBtnIrOfertasColaboracionCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="     Ofertas de colaboración COIL">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/EXTERNA.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutY="528.0" prefHeight="12.0" prefWidth="312.0" />
+            <Separator layoutX="3.0" layoutY="435.0" prefHeight="12.0" prefWidth="312.0" />
+            <Label layoutX="107.0" layoutY="311.0" text="UV" textFill="#f2efef" />
+            <Label layoutX="107.0" layoutY="405.0" text="EXTERNA" textFill="#f2efef" />
          </children>
       </Pane>
       <Pane layoutX="312.0" prefHeight="440.0" prefWidth="1136.0">
@@ -125,7 +141,7 @@
             <Font name="Arial" size="56.0" />
          </font>
       </Label>
-      <Label layoutX="338.0" layoutY="475.0" prefHeight="71.0" prefWidth="642.0" text="Bienvenido profesor">
+      <Label layoutX="346.0" layoutY="493.0" prefHeight="71.0" prefWidth="642.0" text="Bienvenido profesor">
          <font>
             <Font name="Arial Bold Italic" size="53.0" />
          </font>

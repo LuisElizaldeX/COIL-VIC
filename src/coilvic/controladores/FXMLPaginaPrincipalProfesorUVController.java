@@ -64,7 +64,19 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
 
     @FXML
     protected void clicBtnirPaginaPrincipal(ActionEvent event) {
+           try{
+            Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLPaginaPrincipalProfesorUV.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            escenarioPrincipal.setScene(escenaPrincipal);
+            escenarioPrincipal.setTitle("Pagina principal ProfesorUV");
+            escenarioPrincipal.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
+    
 
     @FXML
     protected void clicBtnIrRegistrarOfertaColaboracion(ActionEvent event) {
@@ -72,6 +84,21 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
 
     @FXML
     protected void clicBtnIrRegistrarColaboracionCOIL(ActionEvent event) {
+       try{
+            Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLRegistrarColaboracionDirecta.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            escenarioPrincipal.setScene(escenaPrincipal);
+            escenarioPrincipal.setTitle("Registro colaboracion");
+            escenarioPrincipal.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+    
+    
     }
+    
+    
     
 }
