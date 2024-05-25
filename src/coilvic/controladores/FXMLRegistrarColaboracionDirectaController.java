@@ -4,9 +4,16 @@
  */
 package coilvic.controladores;
 
+import coilvic.modelo.dao.ColaboracionDAO;
+import coilvic.modelo.pojo.AreaAcademica;
+import coilvic.modelo.pojo.Colaboracion;
+import coilvic.modelo.pojo.ProgramaEducativo;
+import coilvic.utilidades.Constantes;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +34,12 @@ import javafx.stage.Stage;
  * @author zS21022065
  */
 public class FXMLRegistrarColaboracionDirectaController extends FXMLPaginaPrincipalProfesorUVController {
-
+    
+    private int idProfesorUV;
+    private ObservableList<ProgramaEducativo> programasEducativos;
+    private ObservableList<AreaAcademica> areasAcademicas;
+    
+    
     @FXML
     private ImageView imgCerrarSesion;
     @FXML
@@ -124,9 +136,6 @@ public class FXMLRegistrarColaboracionDirectaController extends FXMLPaginaPrinci
     }
     
 
-    @FXML
-    protected void clicBtnIrRegistrarColaboracionCOIL(ActionEvent event) {
-    }
 
     @FXML
     private void btnCancelarRegistroColaboracion(ActionEvent event) {
@@ -144,9 +153,13 @@ public class FXMLRegistrarColaboracionDirectaController extends FXMLPaginaPrinci
     }
     
     
+    
+    
 
     @FXML
     private void btnAceptarRegistroColaboracion(ActionEvent event) {
+    
+    
     }
     
      
