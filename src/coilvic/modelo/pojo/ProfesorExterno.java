@@ -10,28 +10,28 @@ public class ProfesorExterno {
     private int idProfesorExterno;
     private int idUniversidad;
     private String nombre;
-    private String apellidoPaterno;
-    private String apellidoMaterno;
+    private String apellidos;
     private String pais;
     private String carrera;
     private String correo;
     private String materia;
     private String telefono;
+    private String idioma;
 
     public ProfesorExterno() {
     }
 
-    public ProfesorExterno(int idProfesorExterno, int idUniversidad, String nombre, String apellidoPaterno, String apellidoMaterno, String pais, String carrera, String correo, String materia, String telefono) {
+    public ProfesorExterno(int idProfesorExterno, int idUniversidad, String nombre, String apellidos, String pais, String carrera, String correo, String materia, String telefono, String idioma) {
         this.idProfesorExterno = idProfesorExterno;
         this.idUniversidad = idUniversidad;
         this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
+        this.apellidos = apellidos;
         this.pais = pais;
         this.carrera = carrera;
         this.correo = correo;
         this.materia = materia;
         this.telefono = telefono;
+        this.idioma = idioma;
     }
 
     public int getIdProfesorExterno() {
@@ -58,20 +58,12 @@ public class ProfesorExterno {
         this.nombre = nombre;
     }
 
-    public String getApellidoPaterno() {
-        return apellidoPaterno;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
-    }
-
-    public String getApellidoMaterno() {
-        return apellidoMaterno;
-    }
-
-    public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getPais() {
@@ -112,6 +104,14 @@ public class ProfesorExterno {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+    
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
     }
     
 }

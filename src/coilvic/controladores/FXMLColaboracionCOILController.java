@@ -29,7 +29,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinadorCOILController {
-
     @FXML
     private ImageView imgCerrarSesion;
     @FXML
@@ -100,7 +99,8 @@ public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinad
                     respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
         }
     }
-
+    
+    
     @FXML
     private void clicBtnRechazarColaboracion(ActionEvent event) {
         HashMap<String, Object> respuesta = OfertaColaboracionUVDAO.rechazarColaboracion
@@ -112,7 +112,8 @@ public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinad
         }else{
             Utilidades.mostrarAlertaSimple("Error al rechazar", "" + 
                     respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
+
         }
     }
-    
 }
+

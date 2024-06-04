@@ -60,6 +60,17 @@ public class FXMLPaginaPrincipalCoordinadorCOILController implements Initializab
 
     @FXML
     protected void clicBtnIrOfertasColaboracionCOIL(ActionEvent event) {
+        try{
+            Stage escenarioOfertasColaboracion = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLConsultarOfertas.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            escenarioOfertasColaboracion.setScene(escenaPrincipal);
+            escenarioOfertasColaboracion.setTitle("Ofertas de colaboración");
+            escenarioOfertasColaboracion.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }   
     }
 
     @FXML
@@ -79,6 +90,17 @@ public class FXMLPaginaPrincipalCoordinadorCOILController implements Initializab
 
     @FXML
     protected void clicBtnIrRegistrarOfertaColaboracion(ActionEvent event) {
+         try{
+            Stage registrarOfertaExterna = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLRegistrarOfertaColaboracionExterna.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            registrarOfertaExterna.setScene(escenaPrincipal);
+            registrarOfertaExterna.setTitle("Registrar oferta de colaboracion externa");
+            registrarOfertaExterna.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 
     @FXML

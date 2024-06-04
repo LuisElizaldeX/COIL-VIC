@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLConsultarOfertaColaboracionExterna_ProfesorController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#959595" height="93.0" layoutX="312.0" layoutY="-1.0" stroke="#959595" strokeType="INSIDE" width="1139.0" />
+      <Pane prefHeight="1005.0" prefWidth="312.0" style="-fx-background-color: #404040;">
+         <children>
+            <Label layoutX="228.0" layoutY="60.0" text="Cerrar sesión" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgCerrarSesion" fitHeight="35.0" fitWidth="45.0" layoutX="246.0" layoutY="14.0" onMouseClicked="#clicImgCerrarSesion" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/logout-icon-512x476-rm92x2sp%201.png" />
+               </image>
+            </ImageView>
+            <Button layoutY="247.0" mnemonicParsing="false" onAction="#clicBtnIrOfertasColaboracionUv" prefHeight="99.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="         Ofertas de colaboración UV">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Separator layoutY="243.0" prefHeight="12.0" prefWidth="312.0" />
+            <Separator layoutX="3.0" layoutY="151.0" prefHeight="4.0" prefWidth="312.0" />
+            <Button fx:id="btnPrincipal" layoutY="154.0" mnemonicParsing="false" onAction="#clicBtnIrPaginaPrincipal" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="       Menú principal                     ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/home-page.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutX="4.0" layoutY="430.0" prefHeight="12.0" prefWidth="312.0" />
+            <ImageView fitHeight="101.0" fitWidth="87.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png%201.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="99.0" layoutY="86.0" text="Sesión iniciada como:" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbNombreSesion" layoutX="99.0" layoutY="109.0" prefHeight="35.0" prefWidth="166.0" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+            </Label>
+            <Button layoutY="442.0" mnemonicParsing="false" onAction="#clicBtnIrRegistrarOfertaColaboracion" prefHeight="85.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Registrar oferta de colaboración">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/batch-assign.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutY="520.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="346.0" mnemonicParsing="false" onAction="#clicBtnIrOfertasColaboracionExternas" prefHeight="85.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="  Ofertas de colaboración externas" textAlignment="RIGHT">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/ofertaExternaIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutY="340.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutX="-1.0" layoutY="527.0" mnemonicParsing="false" onAction="#clicBtnIrRegistrarColaboracion" prefHeight="85.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text=" Registrar colaboración COIL     ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/plus-math.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ImageView fitHeight="53.0" fitWidth="50.0" layoutX="28.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/🦆%20icon%20_briefcase_.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Text fx:id="txtNombreOfertaExterna" layoutX="366.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Universidad del Alba COIL: Pruebas de penetración" wrappingWidth="674.982421875">
+         <font>
+            <Font name="Arial Bold" size="29.0" />
+         </font>
+      </Text>
+      <Button layoutX="1261.0" layoutY="145.0" mnemonicParsing="false" onAction="#btnClicRegresar" prefHeight="40.0" prefWidth="131.0" style="-fx-background-color: #EA5959;" text="Regresar" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Text layoutX="372.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Periodo:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="372.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="312.0" layoutX="371.0" layoutY="527.0" stroke="BLACK" strokeType="INSIDE" width="1021.0" />
+      <Line endX="880.0" layoutX="500.0" layoutY="900.0" startX="-120.0" startY="-1.0" />
+      <ImageView fitHeight="194.0" fitWidth="192.0" layoutX="430.0" layoutY="594.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/profile.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="467.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profesor externo">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="683.0" layoutY="589.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="683.0" layoutY="634.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="683.0" layoutY="671.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pais:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="681.0" layoutY="706.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Universidad:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="686.0" layoutY="742.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carrera:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="1004.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="1006.0" layoutY="633.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Idioma:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="1004.0" layoutY="670.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="1002.0" layoutY="706.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="lbPeriodo" layoutX="439.0" layoutY="267.0" text="Label" />
+      <Label fx:id="lbDescripcion" alignment="TOP_LEFT" layoutX="370.0" layoutY="341.0" prefHeight="135.0" prefWidth="468.0" text="Label" wrapText="true" />
+      <Label fx:id="lbNombre" layoutX="755.0" layoutY="577.0" text="Label" />
+      <Label fx:id="lbApellidos" layoutX="755.0" layoutY="619.0" text="Label" />
+      <Label fx:id="lbPais" layoutX="718.0" layoutY="656.0" text="Label" />
+      <Label fx:id="lbUniversidad" layoutX="777.0" layoutY="692.0" text="Label" />
+      <Label fx:id="lbCarrera" layoutX="746.0" layoutY="728.0" text="Label" />
+      <Label fx:id="lbMateria" layoutX="1064.0" layoutY="577.0" text="Label" />
+      <Label fx:id="lbIdioma" layoutX="1064.0" layoutY="619.0" text="Label" />
+      <Label fx:id="lbCorreo" layoutX="1064.0" layoutY="656.0" text="Label" />
+      <Label fx:id="lbTelefono" layoutX="1075.0" layoutY="692.0" text="Label" />
+      <Button layoutX="1192.0" layoutY="921.0" mnemonicParsing="false" onAction="#btnClicRegistrar" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #3FBD13;" text="Registrar colaboracion" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
