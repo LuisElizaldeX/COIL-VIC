@@ -24,7 +24,7 @@ public class ProfesorUVDAO {
         if(conexionBD != null){
             try{
                 String consulta = "SELECT idProfesoruv, nombre, correo, numeroPersonal, telefono, "
-                        + "apellidoPaterno, apellidoMaterno, idUsuario "
+                        + "apellidos, idUsuario "
                         + "FROM profesoruv "
                         + "WHERE idUsuario = ?";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
@@ -37,8 +37,7 @@ public class ProfesorUVDAO {
                     profesor.setCorreo(resultado.getString("correo"));
                     profesor.setNumeroPersonal(resultado.getInt("numeroPersonal"));
                     profesor.setTelefono(resultado.getString("telefono"));
-                    profesor.setApellidoPaterno(resultado.getString("apellidoPaterno"));
-                    profesor.setApellidoMaterno(resultado.getString("apellidoMaterno"));
+                    profesor.setApellidos(resultado.getString("apellidos"));
                     profesor.setIdUsuario(resultado.getInt("idUsuario"));
                     respuesta.setProfesoruv(profesor);
                 }else{

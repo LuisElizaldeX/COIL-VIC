@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLRegistrarOfertaColaboracionUvController">
+   <children>
+      <Pane prefHeight="1005.0" prefWidth="312.0" style="-fx-background-color: #404040;">
+         <children>
+            <Label layoutX="228.0" layoutY="60.0" text="Cerrar sesión" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgCerrarSesion" fitHeight="35.0" fitWidth="45.0" layoutX="246.0" layoutY="14.0" onMouseClicked="#clicImgCerrarSesion" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/logout-icon-512x476-rm92x2sp%201.png" />
+               </image>
+            </ImageView>
+            <Button layoutY="247.0" mnemonicParsing="false" onAction="#clicBtnIrOfertasColaboracionUv" prefHeight="99.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="         Ofertas de colaboración UV">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Separator layoutY="243.0" prefHeight="12.0" prefWidth="312.0" />
+            <Separator layoutX="3.0" layoutY="151.0" prefHeight="4.0" prefWidth="312.0" />
+            <Button fx:id="btnPrincipal" layoutY="154.0" mnemonicParsing="false" onAction="#clicBtnIrPaginaPrincipal" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="       Menú principal                     ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/home-page.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutX="4.0" layoutY="430.0" prefHeight="12.0" prefWidth="312.0" />
+            <ImageView fitHeight="101.0" fitWidth="87.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png%201.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="99.0" layoutY="86.0" text="Sesión iniciada como:" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbNombreSesion" layoutX="99.0" layoutY="109.0" prefHeight="35.0" prefWidth="166.0" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+            </Label>
+            <Button layoutY="442.0" mnemonicParsing="false" onAction="#clicBtnIrRegistrarOfertaColaboracion" prefHeight="85.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Registrar oferta de colaboración">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/batch-assign.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutY="520.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="346.0" mnemonicParsing="false" onAction="#clicBtnIrOfertasColaboracionExternas" prefHeight="85.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="  Ofertas de colaboración externas" textAlignment="RIGHT">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/ofertaExternaIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutY="340.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutX="-1.0" layoutY="527.0" mnemonicParsing="false" onAction="#clicBtnIrRegistrarColaboracion" prefHeight="85.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text=" Registrar colaboración COIL     ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/plus-math.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ImageView fitHeight="53.0" fitWidth="50.0" layoutX="28.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/🦆%20icon%20_briefcase_.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label layoutX="598.0" layoutY="121.0" prefHeight="68.0" prefWidth="548.0" text="Registrar oferta de colaboracion Uv">
+         <font>
+            <Font name="Arial Bold" size="32.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#959595" height="93.0" layoutX="312.0" stroke="#959595" strokeType="INSIDE" width="1139.0" />
+      <Text layoutX="403.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informacion de profesor UV" wrappingWidth="319.982421875">
+         <font>
+            <Font name="Arial Italic" size="25.0" />
+         </font>
+      </Text>
+      <Text layoutX="493.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:">
+         <font>
+            <Font name="Calibri Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="493.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos:">
+         <font>
+            <Font name="Calibri Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="819.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero personal:">
+         <font>
+            <Font name="Calibri Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="819.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo:">
+         <font>
+            <Font name="Calibri Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="1171.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono:">
+         <font>
+            <Font name="Calibri Bold" size="17.0" />
+         </font>
+      </Text>
+      <Label fx:id="lbNombre" layoutX="559.0" layoutY="285.0">
+         <font>
+            <Font name="System Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbApellidos" layoutX="567.0" layoutY="326.0">
+         <font>
+            <Font name="System Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbNumeroPersonal" layoutX="946.0" layoutY="285.0">
+         <font>
+            <Font name="System Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbCorreo" layoutX="874.0" layoutY="326.0">
+         <font>
+            <Font name="System Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbTelefono" layoutX="1241.0" layoutY="285.0">
+         <font>
+            <Font name="System Italic" size="16.0" />
+         </font>
+      </Label>
+      <Line endX="920.0" layoutX="470.0" layoutY="394.0" startX="-100.0" />
+      <Text layoutX="438.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informacion de la oferta" wrappingWidth="226.982421875">
+         <font>
+            <Font name="Arial Italic" size="21.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfNombre" layoutX="528.0" layoutY="473.0" prefHeight="30.0" prefWidth="293.0" promptText="Nombre" style="-fx-background-radius: 20;" />
+      <Text layoutX="467.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="cbCampus" layoutX="528.0" layoutY="640.0" prefHeight="30.0" prefWidth="203.0" promptText="Campus" />
+      <TextField fx:id="tfPeriodo" layoutX="528.0" layoutY="510.0" prefHeight="30.0" prefWidth="293.0" promptText="Periodo" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfNombreDependencia" layoutX="528.0" layoutY="561.0" prefHeight="30.0" prefWidth="203.0" promptText="Nombre de dependencia" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfMunicipio" layoutX="528.0" layoutY="599.0" prefHeight="30.0" prefWidth="203.0" promptText="Municipio" style="-fx-background-radius: 20;" />
+      <ComboBox fx:id="cbAreaAcademica" layoutX="528.0" layoutY="682.0" prefHeight="30.0" prefWidth="203.0" promptText="Area academica" />
+      <ComboBox fx:id="cbProgramaEducativo" layoutX="528.0" layoutY="725.0" prefHeight="30.0" prefWidth="203.0" promptText="Programa educativo" />
+      <TextArea fx:id="tfDescripcion" layoutX="528.0" layoutY="772.0" prefHeight="146.0" prefWidth="293.0" promptText="Descripcion" />
+      <Text layoutX="467.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Periodo">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="361.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de dependencia">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="389.0" layoutY="745.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Programa educativo">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="415.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Area academica">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="457.0" layoutY="660.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Campus">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="451.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Municipio">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="438.0" layoutY="792.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descricpion">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="1097.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Experiencia educativa" wrappingWidth="188.982421875">
+         <font>
+            <Font name="Arial Italic" size="19.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfExperienciaEducativa" layoutX="1054.0" layoutY="473.0" prefHeight="30.0" prefWidth="293.0" promptText="Nombre" style="-fx-background-radius: 20;" />
+      <Text layoutX="993.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfCreditos" layoutX="1058.0" layoutY="509.0" prefHeight="30.0" prefWidth="293.0" promptText="Creditos" style="-fx-background-radius: 20;" />
+      <Text layoutX="993.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creditos">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="tfDescripcionEe" layoutX="1058.0" layoutY="550.0" prefHeight="182.0" prefWidth="293.0" promptText="Descripcion" />
+      <Text layoutX="954.0" layoutY="566.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descricpion EE">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Text>
+      <Button layoutX="1187.0" layoutY="931.0" mnemonicParsing="false" onAction="#btnClicRegistrar" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #3FBD13;" text="Registrar" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="1308.0" layoutY="931.0" mnemonicParsing="false" onAction="#btnClicCancelar" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #EA5959;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,6 +1,7 @@
 package coilvic.utilidades;
 
 import java.util.Optional;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
@@ -25,6 +26,10 @@ public class Utilidades {
         Optional<ButtonType> botonClic = alertaConfirmacion.showAndWait(); 
         
         return (botonClic.get() == ButtonType.OK);
+    }
+    
+    public static FXMLLoader obtenerLoader(String ruta){
+        return  new FXMLLoader(coilvic.COILVIC.class.getResource(ruta));
     }
     
 }

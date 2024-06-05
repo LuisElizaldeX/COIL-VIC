@@ -71,6 +71,7 @@ public class FXMLRevisarColaboracionesCOILController extends FXMLPaginaPrincipal
         ofertasColaboracionUV = FXCollections.observableArrayList();
         HashMap<String, Object> respuesta =
                 OfertaColaboracionUVDAO.obtenerOfertasColaboracionUV();
+        
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
         if(!isError){
             ArrayList<OfertaColaboracionUV> ofertasColaboracionUVBD = (ArrayList<OfertaColaboracionUV>) respuesta.get("OfertasColaboracionUV");

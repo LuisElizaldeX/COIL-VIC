@@ -11,22 +11,20 @@ public class ProfesorUV {
     private int idUsuario;
     private int numeroPersonal;
     private String nombre;
-    private String apellidoPaterno;
-    private String apellidoMaterno;
+    private String apellidos;
     private String correo;
     private String telefono;
 
     public ProfesorUV() {
     }
 
-    public ProfesorUV(int idProfesorUV, int idUsuario, String telefono, int numeroPersonal, String nombre, String apellidoPaterno, String apellidoMaterno, String correo) {
+    public ProfesorUV(int idProfesorUV, int idUsuario, String telefono, int numeroPersonal, String nombre, String apellidos, String correo) {
         this.idProfesorUV = idProfesorUV;
         this.idUsuario = idUsuario;
         this.telefono = telefono;
         this.numeroPersonal = numeroPersonal;
         this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
+        this.apellidos = apellidos;
         this.correo = correo;
     }
 
@@ -70,20 +68,13 @@ public class ProfesorUV {
         this.nombre = nombre;
     }
 
-    public String getApellidoPaterno() {
-        return apellidoPaterno;
+
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
-    }
-
-    public String getApellidoMaterno() {
-        return apellidoMaterno;
-    }
-
-    public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getCorreo() {
@@ -96,7 +87,7 @@ public class ProfesorUV {
 
     @Override
     public String toString() {
-        return  nombre + " " + apellidoPaterno + " " + apellidoMaterno;
+        return  nombre + " " + apellidos;
     }
     
 }
