@@ -7,10 +7,8 @@
 package coilvic.controladores;
 
 import coilvic.modelo.dao.OfertaColaboracionUVDAO;
-import coilvic.modelo.pojo.CoordinadorCOIL;
 import coilvic.modelo.pojo.OfertaColaboracionUV;
 import coilvic.utilidades.Constantes;
-import coilvic.utilidades.SingletonCoordinadorCOIL;
 import coilvic.utilidades.Utilidades;
 import java.io.IOException;
 import java.net.URL;
@@ -42,8 +40,6 @@ public class FXMLRevisarColaboracionesCOILController extends FXMLPaginaPrincipal
     private Button btPrincipal;
     @FXML
     private Label lbNombreSesion;
-
-    CoordinadorCOIL coordinador = SingletonCoordinadorCOIL.getInstancia().getCoordinadorCOIL();
     
     private ObservableList<OfertaColaboracionUV> ofertasColaboracionUV;
     

@@ -50,8 +50,6 @@ public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinad
     private TextArea taEstado;
     
     OfertaColaboracionUV ofertaColaboracion;
-
-    CoordinadorCOIL coordinador = SingletonCoordinadorCOIL.getInstancia().getCoordinadorCOIL();
     
     @FXML
     private Button btnAprobarColaboracion;

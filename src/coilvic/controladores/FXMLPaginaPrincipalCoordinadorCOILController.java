@@ -83,6 +83,17 @@ public class FXMLPaginaPrincipalCoordinadorCOILController implements Initializab
 
     @FXML
     protected void clicBtnIrHistorialColaboracion(ActionEvent event) {
+         try{
+            Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLHistorialDeColaboraciones.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            escenarioPrincipal.setScene(escenaPrincipal);
+            escenarioPrincipal.setTitle("Historial de colaboraciones");
+            escenarioPrincipal.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 
     @FXML
@@ -106,6 +117,32 @@ public class FXMLPaginaPrincipalCoordinadorCOILController implements Initializab
 
     @FXML
     protected void clicBtnIrNumeralia(ActionEvent event) {
+        try{
+            Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLConsultarNumeralia.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            escenarioPrincipal.setScene(escenaPrincipal);
+            escenarioPrincipal.setTitle("Consultar numeralia");
+            escenarioPrincipal.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
+
+    @FXML
+    protected void clicBtnIrRevisarSolicitudesDeConstancia(ActionEvent event) {
+        try{
+            Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLSolicitudesDeConstancia.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            escenarioPrincipal.setScene(escenaPrincipal);
+            escenarioPrincipal.setTitle("Revisar solicitudes de constancia");
+            escenarioPrincipal.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
     
 }

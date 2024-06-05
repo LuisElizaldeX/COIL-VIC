@@ -8,78 +8,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLColaboracionCOILController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLHistorialDeColaboracionesController">
    <children>
-      <Label layoutX="645.0" layoutY="32.0" prefHeight="68.0" prefWidth="492.0" text="Colaboración COIL">
+      <Label layoutX="560.0" layoutY="55.0" prefHeight="68.0" prefWidth="715.0" text="Historial de colaboraciones">
          <font>
             <Font name="Arial Bold Italic" size="53.0" />
          </font>
       </Label>
-      <Label layoutX="392.0" layoutY="164.0" prefHeight="56.0" prefWidth="174.0" text="Nombre:">
+      <TableView fx:id="tvColaboraciones" layoutX="507.0" layoutY="252.0" prefHeight="503.0" prefWidth="822.0" stylesheets="@../css/estilos.css">
+        <columns>
+          <TableColumn fx:id="colNombre" prefWidth="414.0" text="Nombre" />
+          <TableColumn fx:id="colExperienciaEducativa" prefWidth="407.0" text="Experiencia educativa" />
+        </columns>
+      </TableView>
+      <Button layoutX="798.0" layoutY="832.0" mnemonicParsing="false" onAction="#clicBtnVerHistorial" prefHeight="61.0" prefWidth="240.0" style="-fx-background-radius: 40;" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Ver historial">
          <font>
-            <Font name="Berlin Sans FB" size="42.0" />
-         </font>
-      </Label>
-      <Label layoutX="392.0" layoutY="256.0" prefHeight="56.0" prefWidth="222.0" text="Descripción: ">
-         <font>
-            <Font name="Berlin Sans FB" size="42.0" />
-         </font>
-      </Label>
-      <Label layoutX="384.0" layoutY="503.0" prefHeight="56.0" prefWidth="222.0" text="Profesor UV:">
-         <font>
-            <Font name="Berlin Sans FB" size="42.0" />
-         </font>
-      </Label>
-      <Label layoutX="384.0" layoutY="600.0" prefHeight="56.0" prefWidth="422.0" text="Experiencia educativa:">
-         <font>
-            <Font name="Berlin Sans FB" size="42.0" />
-         </font>
-      </Label>
-      <Label layoutX="384.0" layoutY="689.0" prefHeight="56.0" prefWidth="166.0" text="Período:">
-         <font>
-            <Font name="Berlin Sans FB" size="42.0" />
-         </font>
-      </Label>
-      <Label layoutX="384.0" layoutY="775.0" prefHeight="56.0" prefWidth="166.0" text="Estado:">
-         <font>
-            <Font name="Berlin Sans FB" size="42.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnAprobarColaboracion" layoutX="858.0" layoutY="897.0" mnemonicParsing="false" onAction="#clicBtnAprobarColaboracion" prefHeight="56.0" prefWidth="222.0" style="-fx-background-radius: 40;" styleClass="buttonRegistrar" stylesheets="@../css/estilos.css" text="Aprobar colaboración">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnRechazarColaboracion" layoutX="1123.0" layoutY="897.0" mnemonicParsing="false" onAction="#clicBtnRechazarColaboracion" prefHeight="56.0" prefWidth="239.0" style="-fx-background-radius: 40;" styleClass="buttonCancelar" stylesheets="@../css/estilos.css" text="Rechazar colaboración">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <TextArea fx:id="taNombre" editable="false" layoutX="577.0" layoutY="164.0" prefHeight="68.0" prefWidth="732.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="24.0" />
-         </font></TextArea>
-      <TextArea fx:id="taDescripcion" editable="false" layoutX="606.0" layoutY="259.0" prefHeight="200.0" prefWidth="705.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="24.0" />
-         </font></TextArea>
-      <TextArea fx:id="taProfesorUV" editable="false" layoutX="614.0" layoutY="491.0" prefHeight="68.0" prefWidth="705.0">
-         <font>
-            <Font size="24.0" />
-         </font></TextArea>
-      <TextArea fx:id="taExperienciaEducativa" editable="false" layoutX="785.0" layoutY="594.0" prefHeight="68.0" prefWidth="538.0">
-         <font>
-            <Font size="24.0" />
-         </font></TextArea>
-      <TextArea fx:id="taPeriodo" editable="false" layoutX="550.0" layoutY="689.0" prefHeight="68.0" prefWidth="312.0">
-         <font>
-            <Font size="24.0" />
-         </font></TextArea>
-      <TextArea fx:id="taEstado" editable="false" layoutX="550.0" layoutY="775.0" prefHeight="68.0" prefWidth="312.0">
-         <font>
-            <Font size="24.0" />
-         </font></TextArea>
-      <Pane prefHeight="1000.0" prefWidth="312.0" style="-fx-background-color: #404040;">
+            <Font name="Berlin Sans FB" size="27.0" />
+         </font></Button>
+      <Pane layoutY="2.0" prefHeight="1000.0" prefWidth="312.0" style="-fx-background-color: #404040;">
          <children>
             <Label layoutX="228.0" layoutY="60.0" text="Cerrar sesión" textFill="WHITE">
                <font>
