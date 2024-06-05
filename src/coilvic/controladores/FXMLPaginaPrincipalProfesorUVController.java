@@ -23,7 +23,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import coilvic.utilidades.SingletonProfesorUV;
 
+
 public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
+    ProfesorUV profesor = SingletonProfesorUV.getInstancia().getProfesorUV();
 
     @FXML
     private ImageView imgCerrarSesion;
@@ -31,9 +33,6 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
     private Button btnPrincipal;
     @FXML
     private Label lbNombreSesion;
-    
-    ProfesorUV profesor = SingletonProfesorUV.getInstancia().getProfesorUV();
-    
     @FXML
     private Label lbNombreBienvenida;
 
@@ -59,19 +58,79 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
     }
 
     @FXML
-    protected void clicBtnIrOfertasColaboracionCOIL(ActionEvent event) {
+    protected void clicBtnIrPaginaPrincipal(ActionEvent event) {
+        try{
+           Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                   getResource("vistas/FXMLPaginaPrincipalProfesorUV.fxml"));
+           Scene escenaPrincipal = new Scene(root);
+           escenarioPrincipal.setScene(escenaPrincipal);
+           escenarioPrincipal.setTitle("Pagina principal ProfesorUv");
+           escenarioPrincipal.show();
+            
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+        
     }
-
+    
     @FXML
-    protected void clicBtnirPaginaPrincipal(ActionEvent event) {
+    protected void clicBtnIrOfertasColaboracionUv(ActionEvent event) {
+        try{
+           Stage ofertasUv = (Stage) imgCerrarSesion.getScene().getWindow();
+           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                   getResource("vistas/FXMLOfertasColaboracionUv.fxml"));
+           Scene escenaOfertasUv = new Scene(root);
+           ofertasUv.setScene(escenaOfertasUv);
+           ofertasUv.setTitle("Ofertas colaboracion UV");
+           ofertasUv.show();
+            
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
+    
+    
+    @FXML
+    protected void clicBtnIrOfertasColaboracionExternas(ActionEvent event) {
+        try{
+           Stage ofertasExternas = (Stage) imgCerrarSesion.getScene().getWindow();
+           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                   getResource("vistas/FXMLOfertasColaboracionExternas.fxml"));
+           Scene escenaOfertasExternas = new Scene(root);
+           ofertasExternas.setScene(escenaOfertasExternas);
+           ofertasExternas.setTitle("Ofertas colaboracion externas");
+           ofertasExternas.show();
+            
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 
     @FXML
     protected void clicBtnIrRegistrarOfertaColaboracion(ActionEvent event) {
+       try{
+           Stage registrarOfertaUv = (Stage) imgCerrarSesion.getScene().getWindow();
+           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                   getResource("vistas/FXMLRegistrarOfertaColaboracionUv.fxml"));
+           Scene escenaRegistrarOfertaUv = new Scene(root);
+           registrarOfertaUv.setScene(escenaRegistrarOfertaUv);
+           registrarOfertaUv.setTitle("Registrar oferta de colaboracion UV");
+           registrarOfertaUv.show();
+            
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 
     @FXML
-    protected void clicBtnIrRegistrarColaboracionCOIL(ActionEvent event) {
+    protected void clicBtnIrRegistrarColaboracion(ActionEvent event) {
     }
     
+   
+
+
+
+ 
+   
 }

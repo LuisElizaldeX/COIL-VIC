@@ -53,5 +53,9 @@ public class ProgramaEducativo {
     public void setFechaInicioOperacion(String fechaInicioOperacion) {
         this.fechaInicioOperacion = fechaInicioOperacion;
     }
-    
+
+    @Override
+    public String toString() {
+        return nombre;
+    }  
 }

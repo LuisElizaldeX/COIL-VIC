@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="coilvic.controladores.FXMLModificarOfertaColaboracionExternaController">
+   <children>
+      <Pane prefHeight="1002.0" prefWidth="312.0" style="-fx-background-color: #404040;">
+         <children>
+            <Label layoutX="228.0" layoutY="60.0" text="Cerrar sesión" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgCerrarSesion" fitHeight="35.0" fitWidth="45.0" layoutX="246.0" layoutY="14.0" onMouseClicked="#clicImgCerrarSesion" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/logout-icon-512x476-rm92x2sp%201.png" />
+               </image>
+            </ImageView>
+            <Button layoutY="249.0" mnemonicParsing="false" onAction="#clicBtnIrOfertasColaboracionCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="     Ofertas de colaboración COIL">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/🦆%20icon%20_briefcase_.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutY="243.0" prefHeight="12.0" prefWidth="312.0" />
+            <Separator layoutX="3.0" layoutY="151.0" prefHeight="4.0" prefWidth="312.0" />
+            <Button fx:id="btPrincipal" layoutY="154.0" mnemonicParsing="false" onAction="#clicBtnirPaginaPrincipal" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="       Menú principal                     ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/home-page.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutY="336.0" prefHeight="12.0" prefWidth="312.0" />
+            <ImageView fitHeight="101.0" fitWidth="87.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png%201.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="99.0" layoutY="86.0" text="Sesión iniciada como:" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbNombreSesion" layoutX="99.0" layoutY="109.0" prefHeight="35.0" prefWidth="166.0" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+            </Label>
+            <Button layoutY="342.0" mnemonicParsing="false" onAction="#clicBtnIrRegistrarOfertaColaboracion" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Registrar oferta de colaboración">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/batch-assign.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutX="3.0" layoutY="429.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="441.0" mnemonicParsing="false" onAction="#clicBtnIrHistorialColaboracion" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="     Historial de colaboración     ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/group.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutY="528.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="540.0" mnemonicParsing="false" onAction="#clicBtnRevisarColaboracionesCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="    Revisar colaboraciones COIL">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/thumb-up.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutY="635.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="647.0" mnemonicParsing="false" onAction="#clicBtnIrCancelarColaboracionCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="    Cancelar colaboración COIL">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/PngItem_5438676%201.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutY="733.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="745.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="  Revisar solicitudes de constancia">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/image%203.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutX="3.0" layoutY="837.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="849.0" mnemonicParsing="false" onAction="#clicBtnIrNumeralia" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="     Numeralia                       ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../recursos/list.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#959595" height="93.0" layoutX="312.0" stroke="#959595" strokeType="INSIDE" width="1139.0" />
+      <Label layoutX="525.0" layoutY="130.0" prefHeight="68.0" prefWidth="714.0" text="Modificar oferta de colaboracion externa">
+         <font>
+            <Font name="Arial Bold" size="37.0" />
+         </font>
+      </Label>
+      <Text layoutX="751.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informacion de la oferta" wrappingWidth="262.982421875">
+         <font>
+            <Font name="Arial Italic" size="25.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfNombreOfertaExterna" layoutX="745.0" layoutY="356.0" prefHeight="55.0" prefWidth="273.0" promptText="Nombre" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfPeriodo" layoutX="746.0" layoutY="427.0" prefHeight="55.0" prefWidth="273.0" promptText="Periodo" style="-fx-background-radius: 20;" />
+      <TextArea fx:id="tfDescripcion" layoutX="750.0" layoutY="520.0" prefHeight="217.0" prefWidth="263.0" promptText="Descripcion" />
+      <Text layoutX="671.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="672.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Periodo">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="645.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Button layoutX="1173.0" layoutY="925.0" mnemonicParsing="false" onAction="#btnClicAceptar" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #3FBD13;" text="Aceptar" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="1287.0" layoutY="925.0" mnemonicParsing="false" onAction="#btnClicCancelar" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #EA5959;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

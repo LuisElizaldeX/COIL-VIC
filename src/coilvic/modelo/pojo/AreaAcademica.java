@@ -34,4 +34,8 @@ public class AreaAcademica {
         this.nombre = nombre;
     }
     
+    public String toString(){
+        return nombre;
+    }
+    
 }

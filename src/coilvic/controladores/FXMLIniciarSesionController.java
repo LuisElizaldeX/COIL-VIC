@@ -76,7 +76,7 @@ public class FXMLIniciarSesionController implements Initializable {
                     Utilidades.mostrarAlertaSimple("Bienvenido(a)", 
                     "Bienvenido(a) "+ profesor.getProfesoruv().toString() +" al sistema...",   
                 Alert.AlertType.INFORMATION);
-                    irPantallaPrincipalProfesorUV();
+                    irPantallaPrincipalProfesorUV(); 
                 }
             }else{
                  Utilidades.mostrarAlertaSimple("Credenciales incorrectas", 
