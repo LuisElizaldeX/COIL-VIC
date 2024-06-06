@@ -1,7 +1,9 @@
 package coilvic.controladores;
 
+import coilvic.modelo.pojo.CoordinadorCOIL;
 import coilvic.modelo.pojo.OfertaColaboracionUV;
 import coilvic.modelo.pojo.ProfesorUV;
+import coilvic.utilidades.SingletonCoordinadorCOIL;
 import coilvic.utilidades.SingletonProfesorUV;
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +23,7 @@ import javafx.stage.Stage;
 
 
 public class FXMLConsultarOfertaColaboracionUv_CoordinadorController extends FXMLPaginaPrincipalCoordinadorCOILController {
-    ProfesorUV profesorUv = SingletonProfesorUV.getInstancia().getProfesorUV();
+    CoordinadorCOIL coordinador = SingletonCoordinadorCOIL.getInstancia().getCoordinadorCOIL();
 
     @FXML
     private Text txtNombreOfertaUv;
@@ -65,7 +67,7 @@ public class FXMLConsultarOfertaColaboracionUv_CoordinadorController extends FXM
  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        lbNombreSesion.setText(profesorUv.toString()); 
+        lbNombreSesion.setText(coordinador.toString()); 
     }   
     
     public void inicializarValores(OfertaColaboracionUV ofertaColaboracionUV){
