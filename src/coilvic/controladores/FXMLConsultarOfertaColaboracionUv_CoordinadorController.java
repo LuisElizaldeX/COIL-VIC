@@ -65,7 +65,7 @@ public class FXMLConsultarOfertaColaboracionUv_CoordinadorController extends FXM
  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        lbNombreSesion.setText(profesorUv.toString()); 
+        lbNombreSesion.setText(coordinador.toString()); 
     }   
     
     public void inicializarValores(OfertaColaboracionUV ofertaColaboracionUV){
