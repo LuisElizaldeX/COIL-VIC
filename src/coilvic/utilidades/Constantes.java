@@ -16,7 +16,8 @@ public class Constantes {
     public static final String PASSWORD = "COIL-VIC17@";
     
     
-    public static final String MSJ_ERROR_CONEXION = "Por el momento no hay conexión con la base de datos.";
+    public static final String MSJ_ERROR_CONEXION = "Por el momento no hay conexión "
+            + "con la base de datos.";
     
     public static final String KEY_ERROR = "error";
     public static final String KEY_MENSAJE = "mensaje";

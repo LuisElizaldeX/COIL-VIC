@@ -10,24 +10,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLConsultarNumeraliaController">
    <children>
-      <Label layoutX="784.0" layoutY="48.0" prefHeight="68.0" prefWidth="271.0" text="Numeralia">
-         <font>
-            <Font name="Arial Bold Italic" size="53.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tvNumeralia" layoutX="497.0" layoutY="259.0" prefHeight="489.0" prefWidth="788.0" stylesheets="@../css/estilos.css">
-        <columns>
-          <TableColumn fx:id="colRegion" prefWidth="262.0" text="Región" />
-          <TableColumn fx:id="colAlumnos" prefWidth="238.0" text="Alumnos" />
-            <TableColumn fx:id="colProfesores" prefWidth="287.0" text="Profesores" />
-        </columns>
-      </TableView>
-      <ComboBox fx:id="cbFiltroBusqueda" layoutX="963.0" layoutY="149.0" prefHeight="43.0" prefWidth="228.0" />
-      <Label layoutX="656.0" layoutY="149.0" prefHeight="43.0" prefWidth="277.0" text="Filtro de búsqueda">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="29.0" />
-         </font>
-      </Label>
       <Pane prefHeight="1000.0" prefWidth="312.0" style="-fx-background-color: #404040;">
          <children>
             <Label layoutX="228.0" layoutY="60.0" text="Cerrar sesión" textFill="WHITE">
@@ -161,5 +143,31 @@
             </Button>
          </children>
       </Pane>
+      <Label layoutX="784.0" layoutY="48.0" prefHeight="68.0" prefWidth="271.0" text="Numeralia">
+         <font>
+            <Font name="Arial Bold Italic" size="53.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvNumeralia" layoutX="497.0" layoutY="259.0" prefHeight="489.0" prefWidth="788.0" stylesheets="@../css/estilos.css">
+        <columns>
+          <TableColumn fx:id="colRegion" prefWidth="262.0" text="Región" />
+          <TableColumn fx:id="colAlumnos" prefWidth="238.0" text="Alumnos" />
+            <TableColumn fx:id="colProfesores" prefWidth="287.0" text="Profesores" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="cbFiltroBusqueda" layoutX="963.0" layoutY="149.0" prefHeight="43.0" prefWidth="228.0" />
+      <Label layoutX="656.0" layoutY="149.0" prefHeight="43.0" prefWidth="277.0" text="Filtro de búsqueda">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="29.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvNumeraliaAA" layoutX="497.0" layoutY="259.0" prefHeight="489.0" prefWidth="788.0" stylesheets="@../css/estilos.css" visible="false">
+         <columns>
+            <TableColumn fx:id="colAreaAcademica" prefWidth="262.0" text="Área académica" />
+            <TableColumn fx:id="colAlumnosAA" prefWidth="238.0" text="Alumnos" />
+            <TableColumn fx:id="colProfesoresAA" prefWidth="287.0" text="Profesores" />
+         </columns>
+      </TableView>
+      <Button layoutX="1174.0" layoutY="891.0" mnemonicParsing="false" onAction="#clicBtnGenerarReporte" prefHeight="56.0" prefWidth="198.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Generar reporte" />
    </children>
 </AnchorPane>
