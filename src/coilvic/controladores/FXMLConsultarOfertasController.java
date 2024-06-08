@@ -51,19 +51,19 @@ public class FXMLConsultarOfertasController extends FXMLPaginaPrincipalCoordinad
     @FXML
     private TableColumn colDependencia;
     @FXML
-    private TableColumn colExperienciaEducativa;
-    @FXML
     private TableColumn colPeriodo;
     @FXML
     private TableColumn colEstado;
-    @FXML
-    private TableColumn colPeriodoUv;
     @FXML
     private TableColumn colEstadoUv;
     @FXML
     private TableColumn colNombreExterno;
     @FXML
     private TableColumn colProgramaEducativo;
+    @FXML
+    private TableColumn colFechaInicio;
+    @FXML
+    private TableColumn colFechaFin;
 
 
     @Override
@@ -83,8 +83,8 @@ public class FXMLConsultarOfertasController extends FXMLPaginaPrincipalCoordinad
         colNombreUv.setCellValueFactory(new PropertyValueFactory("nombre"));
         colDependencia.setCellValueFactory(new PropertyValueFactory("nombreDependencia"));
         colProgramaEducativo.setCellValueFactory(new PropertyValueFactory("nombreProgramaEducativo"));
-        colExperienciaEducativa.setCellValueFactory(new PropertyValueFactory("experienciaEducativa"));
-        colPeriodoUv.setCellValueFactory(new PropertyValueFactory("periodo"));
+        colFechaInicio.setCellValueFactory(new PropertyValueFactory("fechaInicio"));
+        colFechaFin.setCellValueFactory(new PropertyValueFactory("fechaFin"));
         colEstadoUv.setCellValueFactory(new PropertyValueFactory("estado"));
     }
     
@@ -152,6 +152,7 @@ public class FXMLConsultarOfertasController extends FXMLPaginaPrincipalCoordinad
             
             FXMLConsultarOfertaColaboracionExterna_CoordinadorController controlador = loader.getController();
             controlador.inicializarValores(ofertaExternaSeleccionada);
+            controlador.setOfertaColaboracionExterna(ofertaExternaSeleccionada);
            
            Scene escenaOfertaExterna = new Scene(root);
            ofertaExterna.setScene(escenaOfertaExterna);
@@ -181,9 +182,5 @@ public class FXMLConsultarOfertasController extends FXMLPaginaPrincipalCoordinad
         }catch(IOException e){
             System.out.println("Error: "+e.getMessage());
         }
-    }
-
-
-    
-
+    }   
 }

@@ -25,7 +25,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 
@@ -41,10 +40,6 @@ public class FXMLOfertasColaboracionUvController extends FXMLPaginaPrincipalProf
     @FXML
     private TableColumn colProgramaEducativo;
     @FXML
-    private TableColumn colExperienciaEducativa;
-    @FXML
-    private TableColumn colPeriodo;
-    @FXML
     private TableColumn colEstado;
     @FXML
     private ImageView imgCerrarSesion;
@@ -52,6 +47,10 @@ public class FXMLOfertasColaboracionUvController extends FXMLPaginaPrincipalProf
     private Button btnPrincipal;
     @FXML
     private TableView<OfertaColaboracionUV> tvOfertasColaboracionUv;
+    @FXML
+    private TableColumn colFechaInicio;
+    @FXML
+    private TableColumn colFechaFin;
 
     
     @Override
@@ -65,8 +64,8 @@ public class FXMLOfertasColaboracionUvController extends FXMLPaginaPrincipalProf
         colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
         colDependencia.setCellValueFactory(new PropertyValueFactory("nombreDependencia"));
         colProgramaEducativo.setCellValueFactory(new PropertyValueFactory("nombreProgramaEducativo"));
-        colExperienciaEducativa.setCellValueFactory(new PropertyValueFactory("experienciaEducativa"));
-        colPeriodo.setCellValueFactory(new PropertyValueFactory("periodo"));
+        colFechaInicio.setCellValueFactory(new PropertyValueFactory("fechaInicio"));
+        colFechaFin.setCellValueFactory(new PropertyValueFactory("fechaFin"));
         colEstado.setCellValueFactory(new PropertyValueFactory("estado"));
     } 
     
@@ -103,24 +102,24 @@ public class FXMLOfertasColaboracionUvController extends FXMLPaginaPrincipalProf
     
     private void irOfertaUv(OfertaColaboracionUV ofertaUvSeleccionada){
         try{
-           Stage ofertaExterna = (Stage) imgCerrarSesion.getScene().getWindow();
+           Stage ofertaUV = (Stage) imgCerrarSesion.getScene().getWindow();
            
            FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLConsultarOfertaColaboracionUv_Profesor.fxml");
            Parent root = loader.load();
             
             FXMLConsultarOfertaColaboracionUv_ProfesorController controlador = loader.getController();
             controlador.inicializarValores(ofertaUvSeleccionada);
+            controlador.setOfertaColaboracionUV(ofertaUvSeleccionada);
            
-           Scene escenaOfertaExterna = new Scene(root);
-           ofertaExterna.setScene(escenaOfertaExterna);
-           ofertaExterna.setTitle("Oferta de colaboración externa");
-           ofertaExterna.show();
+           Scene escenaOfertaUV = new Scene(root);
+           ofertaUV.setScene(escenaOfertaUV);
+           ofertaUV.setTitle("Oferta de colaboración UV");
+           ofertaUV.show();
             
         }catch(IOException e){
             System.out.println("Error: "+e.getMessage());
         }
 
-    }
-    
+    } 
     
 }

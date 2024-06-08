@@ -27,7 +27,7 @@ public class OfertaColaboracionExternaDAO {
         if(conexionBD != null){
             try{
                 String consulta = "SELECT o.nombre AS nombreOferta, o.periodo, o.descripcion, e.estado, p.nombre AS nombreProfesorExterno, " +
-                        "p.apellidos, p.correo, p.pais, p.telefono, p.materia, p.carrera, p.idioma, u.nombre AS nombreUniversidad " +
+                        "p.apellidos, p.correo, p.pais, p.telefono, p.materia, p.carrera, u.nombre AS nombreUniversidad " +
                         "FROM ofertacolaboracionexterna o " +
                         "JOIN estadoofertacolaboracionexterna e ON o.idEstadoOferta = e.idEstadoOferta " +
                         "JOIN profesorexterno p ON o.idProfesorExterno = p.idProfesorExterno " +
@@ -51,7 +51,6 @@ public class OfertaColaboracionExternaDAO {
                     ofertaExterna.setTelefono(resultado.getString("telefono"));
                     ofertaExterna.setMateria(resultado.getString("materia"));
                     ofertaExterna.setCarrera(resultado.getString("carrera"));
-                    ofertaExterna.setIdioma(resultado.getString("idioma"));
                     ofertaExterna.setNombreUniversidad(resultado.getString("nombreUniversidad"));
                 
                     ofertasExternas.add(ofertaExterna);
@@ -115,8 +114,8 @@ public class OfertaColaboracionExternaDAO {
        
         if (conexionBD != null) {
             try {
-                String consulta = "insert into profesorexterno (nombre, apellidos, correo, pais, telefono, materia, carrera, idioma, idUniversidad)" +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, (SELECT idUniversidad FROM Universidad ORDER BY idUniversidad DESC LIMIT 1))";
+                String consulta = "insert into profesorexterno (nombre, apellidos, correo, pais, telefono, materia, carrera, idUniversidad)" +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, (SELECT idUniversidad FROM Universidad ORDER BY idUniversidad DESC LIMIT 1))";
                 
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
                 prepararSentencia.setString(1, profesorExterno.getNombre());
@@ -126,7 +125,7 @@ public class OfertaColaboracionExternaDAO {
                 prepararSentencia.setString(5, profesorExterno.getTelefono());
                 prepararSentencia.setString(6, profesorExterno.getMateria());
                 prepararSentencia.setString(7, profesorExterno.getCarrera());
-                prepararSentencia.setString(8, profesorExterno.getIdioma());
+     
 
 
                 int filasAfectadas = prepararSentencia.executeUpdate();

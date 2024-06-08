@@ -47,8 +47,6 @@ public class FXMLRegistrarOfertaColaboracionExternaController extends FXMLPagina
     @FXML
     private TextField tfMateria;
     @FXML
-    private TextField tfIdioma;
-    @FXML
     private TextField tfCorreo;
     @FXML
     private TextField tfTelefono;
@@ -77,7 +75,7 @@ public class FXMLRegistrarOfertaColaboracionExternaController extends FXMLPagina
             clicBtnirPaginaPrincipal(event);
             
         }else{
-            Utilidades.mostrarAlertaSimple("Error", "Campos vacios, por favor, completa todos los campos", 
+            Utilidades.mostrarAlertaSimple("Error", "Los datos son invalidos", 
                     Alert.AlertType.ERROR);
             
         }
@@ -133,7 +131,6 @@ public class FXMLRegistrarOfertaColaboracionExternaController extends FXMLPagina
         profesorExterno.setPais(tfPais.getText());
         profesorExterno.setCarrera(tfCarrera.getText());
         profesorExterno.setMateria(tfMateria.getText());
-        profesorExterno.setIdioma(tfIdioma.getText());
         profesorExterno.setCorreo(tfCorreo.getText());
         profesorExterno.setTelefono(tfTelefono.getText());
         
@@ -155,8 +152,9 @@ public class FXMLRegistrarOfertaColaboracionExternaController extends FXMLPagina
     private boolean validarCampos(){    
         if(tfNombre.getText().trim().isEmpty() || tfApellidos.getText().trim().isEmpty() || tfPais.getText().trim().isEmpty() 
                 || tfUniversidad.getText().trim().isEmpty() || tfCarrera.getText().trim().isEmpty() || tfMateria.getText().trim().isEmpty() 
-                || tfIdioma.getText().trim().isEmpty() || tfCorreo.getText().trim().isEmpty() || tfTelefono.getText().trim().isEmpty() 
-                || tfNombreOfertaExterna.getText().trim().isEmpty() || tfPeriodo.getText().trim().isEmpty() || tfDescripcion.getText().trim().isEmpty()){
+                || tfCorreo.getText().trim().isEmpty() || tfTelefono.getText().trim().isEmpty() 
+                || tfNombreOfertaExterna.getText().trim().isEmpty() || tfPeriodo.getText().trim().isEmpty() 
+                || tfDescripcion.getText().trim().isEmpty()){
             
             return false;
             

@@ -18,10 +18,13 @@ public class OfertaColaboracionUV {
     private String descripcion;
     private String nombre;
     private String estado;
-    private String periodo;
+    
     private String experienciaEducativa;
     private String creditos;
     private String descripcionEe;
+    private String fechaInicio;
+    private String fechaFin;
+
     private String nombreDependencia;
     private String municipio;
     private String nombreProgramaEducativo;
@@ -41,9 +44,9 @@ public class OfertaColaboracionUV {
 
     public OfertaColaboracionUV(int idAreaAcademica, int idCampus, int idProgramaEducativo, int idDependencia, int idOfertaColaboracionUV, 
             int idExperienciaEducativa, int idProfesorUV, int idEstadoOfertaColaboracionUV, String descripcion, String nombre, String estado, 
-            String periodo, String experienciaEducativa, String creditos, String descripcionEe, String nombreDependencia, String municipio, 
-            String nombreProgramaEducativo, String nombreAreaAcademica, String profesorUV, String campus, String nombreProfesorUv, String apellidos, 
-            int numeroPersonal, String correo, int telefono) {
+            String fechaInicio, String fechaFin, String experienciaEducativa, String creditos, String descripcionEe, String nombreDependencia, 
+            String municipio, String nombreProgramaEducativo, String nombreAreaAcademica, String profesorUV, String campus, String nombreProfesorUv, 
+            String apellidos, int numeroPersonal, String correo, int telefono) {
         this.idAreaAcademica = idAreaAcademica;
         this.idCampus = idCampus;
         this.idProgramaEducativo = idProgramaEducativo;
@@ -55,7 +58,8 @@ public class OfertaColaboracionUV {
         this.descripcion = descripcion;
         this.nombre = nombre;
         this.estado = estado;
-        this.periodo = periodo;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
         this.experienciaEducativa = experienciaEducativa;
         this.creditos = creditos;
         this.descripcionEe = descripcionEe;
@@ -160,12 +164,20 @@ public class OfertaColaboracionUV {
         this.estado = estado;
     }
 
-    public String getPeriodo() {
-        return periodo;
+    public String getFechaInicio() {
+        return fechaInicio;
     }
 
-    public void setPeriodo(String periodo) {
-        this.periodo = periodo;
+    public void setFechaInicio(String fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public String getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(String fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     public String getExperienciaEducativa() {
@@ -278,12 +290,5 @@ public class OfertaColaboracionUV {
 
     public void setTelefono(int telefono) {
         this.telefono = telefono;
-    }
-    
-    
-
-
-    
-    
-    
+    } 
 }
