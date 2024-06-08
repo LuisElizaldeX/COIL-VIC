@@ -28,8 +28,6 @@ public class FXMLConsultarOfertaColaboracionUv_CoordinadorController extends FXM
     @FXML
     private Text txtNombreOfertaUv;
     @FXML
-    private Label lbPeriodo;
-    @FXML
     private Label lbMunicipio;
     @FXML
     private Label lbCampus;
@@ -63,6 +61,10 @@ public class FXMLConsultarOfertaColaboracionUv_CoordinadorController extends FXM
     private Button btPrincipal;
     @FXML
     private Label lbNombreSesion;
+    @FXML
+    private Label lbFechaInicio;
+    @FXML
+    private Label lbFechaFin;
 
  
     @Override
@@ -72,15 +74,17 @@ public class FXMLConsultarOfertaColaboracionUv_CoordinadorController extends FXM
     
     public void inicializarValores(OfertaColaboracionUV ofertaColaboracionUV){
         txtNombreOfertaUv.setText(ofertaColaboracionUV.getNombre());
-        lbPeriodo.setText(ofertaColaboracionUV.getPeriodo());
         lbMunicipio.setText(ofertaColaboracionUV.getMunicipio());
         lbCampus.setText(ofertaColaboracionUV.getCampus());
         lbDependencia.setText(ofertaColaboracionUV.getNombreDependencia());
         lbAreaAcademica.setText(ofertaColaboracionUV.getNombreAreaAcademica());
         lbProgramaEducativo.setText(ofertaColaboracionUV.getNombreProgramaEducativo());
         lbDescripcion.setText(ofertaColaboracionUV.getDescripcion());
+        
         lbNombreEe.setText(ofertaColaboracionUV.getExperienciaEducativa());
         lbCreditos.setText(ofertaColaboracionUV.getCreditos());
+        lbFechaInicio.setText(ofertaColaboracionUV.getFechaInicio());
+        lbFechaFin.setText(ofertaColaboracionUV.getFechaFin());
         lbDescripcionEe.setText(ofertaColaboracionUV.getDescripcionEe());
         
         lbNombre.setText(ofertaColaboracionUV.getNombreProfesorUv());
@@ -104,6 +108,5 @@ public class FXMLConsultarOfertaColaboracionUv_CoordinadorController extends FXM
             System.out.println("Error: "+e.getMessage());
         }
     }
-
     
 }

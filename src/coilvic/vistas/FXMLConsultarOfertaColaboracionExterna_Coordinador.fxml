@@ -204,17 +204,12 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text layoutX="994.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Idioma:">
+      <Text layoutX="997.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text layoutX="994.0" layoutY="660.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo:">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Text>
-      <Text layoutX="994.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono:">
+      <Text layoutX="983.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -225,9 +220,8 @@
       <Label fx:id="lbUniversidad" layoutX="772.0" layoutY="682.0" text="Label" />
       <Label fx:id="lbCarrera" layoutX="737.0" layoutY="716.0" text="Label" />
       <Label fx:id="lbMateria" layoutX="1064.0" layoutY="566.0" text="Label" />
-      <Label fx:id="lbIdioma" layoutX="1053.0" layoutY="606.0" text="Label" />
-      <Label fx:id="lbCorreo" layoutX="1053.0" layoutY="644.0" text="Label" />
-      <Label fx:id="lbTelefono" layoutX="1064.0" layoutY="682.0" text="Label" />
+      <Label fx:id="lbCorreo" layoutX="1064.0" layoutY="606.0" text="Label" />
+      <Label fx:id="lbTelefono" layoutX="1064.0" layoutY="644.0" text="Label" />
       <Text layoutX="457.0" layoutY="553.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profesor externo">
          <font>
             <Font name="System Bold" size="15.0" />

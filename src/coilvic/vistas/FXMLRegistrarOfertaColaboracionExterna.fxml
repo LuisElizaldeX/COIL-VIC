@@ -167,9 +167,8 @@
       <TextField fx:id="tfUniversidad" layoutX="476.0" layoutY="443.0" prefHeight="41.0" prefWidth="273.0" promptText="Universidad" style="-fx-background-radius: 20;" />
       <TextField fx:id="tfCarrera" layoutX="476.0" layoutY="493.0" prefHeight="41.0" prefWidth="273.0" promptText="Carrera" style="-fx-background-radius: 20;" />
       <TextField fx:id="tfMateria" layoutX="476.0" layoutY="544.0" prefHeight="41.0" prefWidth="273.0" promptText="Materia" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfIdioma" layoutX="476.0" layoutY="594.0" prefHeight="41.0" prefWidth="273.0" promptText="Idioma" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfCorreo" layoutX="476.0" layoutY="645.0" prefHeight="41.0" prefWidth="273.0" promptText="Correo" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfTelefono" layoutX="476.0" layoutY="695.0" prefHeight="41.0" prefWidth="273.0" promptText="Telefono" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfCorreo" layoutX="476.0" layoutY="595.0" prefHeight="41.0" prefWidth="273.0" promptText="Correo" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfTelefono" layoutX="476.0" layoutY="647.0" prefHeight="41.0" prefWidth="273.0" promptText="Telefono" style="-fx-background-radius: 20;" />
       <TextField fx:id="tfNombreOfertaExterna" layoutX="1082.0" layoutY="317.0" prefHeight="55.0" prefWidth="273.0" promptText="Nombre" style="-fx-background-radius: 20;" />
       <TextField fx:id="tfPeriodo" layoutX="1082.0" layoutY="393.0" prefHeight="55.0" prefWidth="273.0" promptText="Periodo" style="-fx-background-radius: 20;" />
       <TextArea fx:id="tfDescripcion" layoutX="1087.0" layoutY="494.0" prefHeight="217.0" prefWidth="263.0" promptText="Descripcion" />
@@ -203,17 +202,12 @@
             <Font name="Calibri Bold" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="406.0" layoutY="621.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Idioma">
+      <Text layoutX="406.0" layoutY="620.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo">
          <font>
             <Font name="Calibri Bold" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="406.0" layoutY="672.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo">
-         <font>
-            <Font name="Calibri Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="394.0" layoutY="722.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono">
+      <Text layoutX="396.0" layoutY="672.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono">
          <font>
             <Font name="Calibri Bold" size="18.0" />
          </font>

@@ -22,7 +22,6 @@ public class OfertaColaboracionExterna {
     private String telefono;
     private String materia;
     private String carrera;
-    private String idioma;
     private String nombreUniversidad;          
 
     
@@ -31,7 +30,7 @@ public class OfertaColaboracionExterna {
 
     public OfertaColaboracionExterna(ProfesorExterno profesorExterno, int idOfertaColaboracionExterna, int idProfesorExterno, 
             int idEstadoOfertaColaboracionExterna, String nombre, String periodo, String descripcion, String estado, String nombreProfesorExterno, 
-            String apellidos, String correo, String pais, String telefono, String materia, String carrera, String idioma, String nombreUniversidad) {
+            String apellidos, String correo, String pais, String telefono, String materia, String carrera, String nombreUniversidad) {
         this.profesorExterno = profesorExterno;
         this.idOfertaColaboracionExterna = idOfertaColaboracionExterna;
         this.idProfesorExterno = idProfesorExterno;
@@ -47,7 +46,6 @@ public class OfertaColaboracionExterna {
         this.telefono = telefono;
         this.materia = materia;
         this.carrera = carrera;
-        this.idioma = idioma;
         this.nombreUniversidad = nombreUniversidad;
     }
 
@@ -169,14 +167,6 @@ public class OfertaColaboracionExterna {
 
     public void setCarrera(String carrera) {
         this.carrera = carrera;
-    }
-
-    public String getIdioma() {
-        return idioma;
-    }
-
-    public void setIdioma(String idioma) {
-        this.idioma = idioma;
     }
 
     public String getNombreUniversidad() {

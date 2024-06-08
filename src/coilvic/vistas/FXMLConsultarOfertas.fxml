@@ -160,8 +160,8 @@
           <TableColumn fx:id="colNombreUv" prefWidth="75.0" text="Nombre" />
           <TableColumn fx:id="colDependencia" prefWidth="100.0" text="Dependencia" />
             <TableColumn fx:id="colProgramaEducativo" prefWidth="95.0" text="P. Educativo" />
-            <TableColumn fx:id="colExperienciaEducativa" prefWidth="97.0" text="E. Educativa" />
-            <TableColumn fx:id="colPeriodoUv" prefWidth="77.0" text="Periodo" />
+            <TableColumn fx:id="colFechaInicio" prefWidth="90.0" text="Fecha de inicio" />
+            <TableColumn fx:id="colFechaFin" prefWidth="84.0" text="Fecha de fin" />
             <TableColumn fx:id="colEstadoUv" prefWidth="63.0" text="Estado" />
         </columns>
       </TableView>
