@@ -7,10 +7,8 @@
 package coilvic.controladores;
 
 import coilvic.modelo.dao.OfertaColaboracionUVDAO;
-import coilvic.modelo.pojo.CoordinadorCOIL;
 import coilvic.modelo.pojo.OfertaColaboracionUV;
 import coilvic.utilidades.Constantes;
-import coilvic.utilidades.SingletonCoordinadorCOIL;
 import coilvic.utilidades.Utilidades;
 import java.io.IOException;
 import java.net.URL;

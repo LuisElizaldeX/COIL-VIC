@@ -11,23 +11,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLRevisarColaboracionesCOILController">
    <children>
-      <Label layoutX="585.0" layoutY="36.0" prefHeight="68.0" prefWidth="619.0" text="Revisar colaboraciones">
-         <font>
-            <Font name="Arial Bold Italic" size="53.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tvColaboraciones" layoutX="366.0" layoutY="218.0" prefHeight="542.0" prefWidth="1017.0" stylesheets="@../css/estilos.css">
-        <columns>
-          <TableColumn fx:id="colNombre" prefWidth="364.0" text="Nombre" />
-          <TableColumn fx:id="colExperienciaEducativa" prefWidth="428.0" text="Experiencia educativa" />
-            <TableColumn fx:id="colPeriodo" prefWidth="224.0" text="Período" />
-        </columns>
-      </TableView>
-      <Button fx:id="btnRevisarColaboracion" layoutX="738.0" layoutY="834.0" mnemonicParsing="false" onAction="#clicBtnRevisarOfertaColaboracionUV" prefHeight="68.0" prefWidth="312.0" style="-fx-background-radius: 40;" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Revisar colaboracion">
-         <font>
-            <Font name="Berlin Sans FB" size="24.0" />
-         </font>
-      </Button>
       <Pane layoutY="2.0" prefHeight="1000.0" prefWidth="312.0" style="-fx-background-color: #404040;">
          <children>
             <Label layoutX="228.0" layoutY="60.0" text="Cerrar sesión" textFill="WHITE">
@@ -161,5 +144,22 @@
             </Button>
          </children>
       </Pane>
+      <Label layoutX="585.0" layoutY="36.0" prefHeight="68.0" prefWidth="619.0" text="Revisar colaboraciones">
+         <font>
+            <Font name="Arial Bold Italic" size="53.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvColaboraciones" layoutX="366.0" layoutY="218.0" prefHeight="542.0" prefWidth="1017.0" stylesheets="@../css/estilos.css">
+        <columns>
+          <TableColumn fx:id="colNombre" prefWidth="364.0" text="Nombre" />
+          <TableColumn fx:id="colExperienciaEducativa" prefWidth="428.0" text="Experiencia educativa" />
+            <TableColumn fx:id="colPeriodo" prefWidth="224.0" text="Período" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnRevisarColaboracion" layoutX="738.0" layoutY="834.0" mnemonicParsing="false" onAction="#clicBtnRevisarOfertaColaboracionUV" prefHeight="68.0" prefWidth="312.0" style="-fx-background-radius: 40;" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Revisar colaboracion">
+         <font>
+            <Font name="Berlin Sans FB" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
