@@ -64,7 +64,7 @@ public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinad
         taDescripcion.setText(ofertaColaboracion.getDescripcion());
         taExperienciaEducativa.setText(ofertaColaboracion.getExperienciaEducativa());
         taProfesorUV.setText(ofertaColaboracion.getProfesorUV());
-        taPeriodo.setText(ofertaColaboracion.getPeriodo());
+        //taPeriodo.setText(ofertaColaboracion.getPeriodo());
         taEstado.setText(ofertaColaboracion.getEstado());
     }
     
