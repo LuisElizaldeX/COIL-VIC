@@ -48,8 +48,6 @@ public class FXMLConsultarOfertaColaboracionExterna_ProfesorController extends F
     @FXML
     private Label lbMateria;
     @FXML
-    private Label lbIdioma;
-    @FXML
     private Label lbCorreo;
     @FXML
     private Label lbTelefono;
@@ -70,7 +68,6 @@ public class FXMLConsultarOfertaColaboracionExterna_ProfesorController extends F
         lbUniversidad.setText(ofertaColaboracionExterna.getNombreUniversidad());
         lbCarrera.setText(ofertaColaboracionExterna.getCarrera());
         lbMateria.setText(ofertaColaboracionExterna.getMateria());
-        lbIdioma.setText(ofertaColaboracionExterna.getIdioma());
         lbCorreo.setText(ofertaColaboracionExterna.getCorreo());
         lbTelefono.setText(ofertaColaboracionExterna.getTelefono());
     } 
@@ -94,4 +91,5 @@ public class FXMLConsultarOfertaColaboracionExterna_ProfesorController extends F
     @FXML
     private void btnClicRegistrar(ActionEvent event) {
     }
+
 }

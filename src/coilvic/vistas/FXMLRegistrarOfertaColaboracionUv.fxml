@@ -178,18 +178,12 @@
          </font>
       </Text>
       <ComboBox fx:id="cbCampus" layoutX="528.0" layoutY="640.0" prefHeight="30.0" prefWidth="203.0" promptText="Campus" />
-      <TextField fx:id="tfPeriodo" layoutX="528.0" layoutY="510.0" prefHeight="30.0" prefWidth="293.0" promptText="Periodo" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfNombreDependencia" layoutX="528.0" layoutY="561.0" prefHeight="30.0" prefWidth="203.0" promptText="Nombre de dependencia" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfMunicipio" layoutX="528.0" layoutY="599.0" prefHeight="30.0" prefWidth="203.0" promptText="Municipio" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfNombreDependencia" layoutX="528.0" layoutY="540.0" prefHeight="30.0" prefWidth="203.0" promptText="Nombre de dependencia" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfMunicipio" layoutX="528.0" layoutY="578.0" prefHeight="30.0" prefWidth="203.0" promptText="Municipio" style="-fx-background-radius: 20;" />
       <ComboBox fx:id="cbAreaAcademica" layoutX="528.0" layoutY="682.0" prefHeight="30.0" prefWidth="203.0" promptText="Area academica" />
       <ComboBox fx:id="cbProgramaEducativo" layoutX="528.0" layoutY="725.0" prefHeight="30.0" prefWidth="203.0" promptText="Programa educativo" />
       <TextArea fx:id="tfDescripcion" layoutX="528.0" layoutY="772.0" prefHeight="146.0" prefWidth="293.0" promptText="Descripcion" />
-      <Text layoutX="467.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Periodo">
-         <font>
-            <Font name="Calibri Bold" size="15.0" />
-         </font>
-      </Text>
-      <Text layoutX="361.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de dependencia">
+      <Text layoutX="361.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de dependencia">
          <font>
             <Font name="Calibri Bold" size="15.0" />
          </font>
@@ -209,7 +203,7 @@
             <Font name="Calibri Bold" size="15.0" />
          </font>
       </Text>
-      <Text layoutX="451.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Municipio">
+      <Text layoutX="450.0" layoutY="596.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Municipio">
          <font>
             <Font name="Calibri Bold" size="15.0" />
          </font>
@@ -236,8 +230,8 @@
             <Font name="Calibri Bold" size="15.0" />
          </font>
       </Text>
-      <TextArea fx:id="tfDescripcionEe" layoutX="1058.0" layoutY="550.0" prefHeight="182.0" prefWidth="293.0" promptText="Descripcion" />
-      <Text layoutX="954.0" layoutY="566.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descricpion EE">
+      <TextArea fx:id="tfDescripcionEe" layoutX="1058.0" layoutY="634.0" prefHeight="182.0" prefWidth="293.0" promptText="Descripcion" />
+      <Text layoutX="954.0" layoutY="652.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descricpion EE">
          <font>
             <Font name="Calibri Bold" size="15.0" />
          </font>
@@ -252,5 +246,17 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <DatePicker fx:id="dpFechaInicio" layoutX="1059.0" layoutY="549.0" prefHeight="25.0" prefWidth="293.0" promptText="Fecha de inicio" />
+      <DatePicker fx:id="dpFechaFin" layoutX="1059.0" layoutY="587.0" prefHeight="25.0" prefWidth="293.0" promptText="Fecha de fin" />
+      <Text layoutX="953.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de inicio">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="969.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de fin">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

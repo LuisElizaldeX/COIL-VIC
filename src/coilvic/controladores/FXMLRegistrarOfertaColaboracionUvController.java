@@ -8,6 +8,7 @@ import coilvic.modelo.pojo.Campus;
 import coilvic.modelo.pojo.Dependencia;
 import coilvic.modelo.pojo.ExperienciaEducativa;
 import coilvic.modelo.pojo.OfertaColaboracionUV;
+import coilvic.modelo.pojo.Periodo;
 import coilvic.modelo.pojo.ProfesorUV;
 import coilvic.modelo.pojo.ProgramaEducativo;
 import coilvic.utilidades.Constantes;
@@ -32,6 +33,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -65,8 +67,6 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
     @FXML
     private TextField tfNombre;
     @FXML
-    private TextField tfPeriodo;
-    @FXML
     private ComboBox<AreaAcademica> cbAreaAcademica;
     @FXML
     private ComboBox<ProgramaEducativo> cbProgramaEducativo;
@@ -84,6 +84,10 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
     private TextField tfNombreDependencia;
     @FXML
     private TextField tfMunicipio;
+    @FXML
+    private DatePicker dpFechaInicio;
+    @FXML
+    private DatePicker dpFechaFin;
 
 
     @Override
@@ -108,19 +112,18 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
     @FXML
     private void btnClicRegistrar(ActionEvent event) {
         if(validarCampos()){
+            Periodo periodo = obtenerInformacionPeriodo();
             Dependencia dependencia = obtenerInformacionDependencia();
             ExperienciaEducativa experienciaEducativa = obtenerInformacionExperienciaEducativa();
             OfertaColaboracionUV ofertaColaboracionUV = obtenerInformacionOfertaColaboracionUV();
             
-            guardarOfertaColaboracionUV(dependencia, experienciaEducativa, ofertaColaboracionUV);
+            guardarOfertaColaboracionUV(dependencia, periodo, experienciaEducativa, ofertaColaboracionUV);
             clicBtnIrPaginaPrincipal(event);
             
         }else{
-            Utilidades.mostrarAlertaSimple("Error", "Campos vacios, por favor, completa todos los campos", 
-                    Alert.AlertType.ERROR);
-            
+            Utilidades.mostrarAlertaSimple("Error", "Los datos son invalidos", 
+                    Alert.AlertType.ERROR); 
         }
-
     }
 
     @FXML
@@ -168,8 +171,7 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
     }
     
     
-    private void configurarSeleccionAreasAcademicas(int idCampus){
-                    
+    private void configurarSeleccionAreasAcademicas(int idCampus){                   
         cbAreaAcademica.valueProperty().addListener(new ChangeListener<AreaAcademica>(){
             @Override
             public void changed(ObservableValue<? extends AreaAcademica> observable, AreaAcademica oldValue, AreaAcademica newValue){
@@ -183,25 +185,17 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
     
     private void cargarProgramasEducativos(int idAreaAcademica, int idCampus){
         programasEducativos = FXCollections.observableArrayList();
-        programasEducativos.addAll((ArrayList<ProgramaEducativo>)ObtenerOfertaColaboracionUVDAO.obtenerProgramasEducativos(idAreaAcademica, idCampus).get("programasEducativos"));
+        programasEducativos.addAll((ArrayList<ProgramaEducativo>)ObtenerOfertaColaboracionUVDAO.obtenerProgramasEducativos
+        (idAreaAcademica, idCampus).get("programasEducativos"));
         cbProgramaEducativo.setItems(programasEducativos);
         
     }
     
     
-    private AreaAcademica_Campus obtenerInformacionAreaAcademica_Campus(){
-        AreaAcademica_Campus areaAcademicaCampus = new AreaAcademica_Campus();
-        areaAcademicaCampus.setNombreAreaAcademica(cbAreaAcademica.getSelectionModel().getSelectedItem().getNombre());
-        areaAcademicaCampus.setIdAreaAcademica(cbAreaAcademica.getSelectionModel().getSelectedItem().getIdAreaAcademica());
-        areaAcademicaCampus.setNombreCampus(cbCampus.getSelectionModel().getSelectedItem().getNombre());
-        areaAcademicaCampus.setIdCampus(cbCampus.getSelectionModel().getSelectedItem().getIdCampus());
-
-        return areaAcademicaCampus;
-    }
-    
-    
-    private void guardarOfertaColaboracionUV(Dependencia dependencia, ExperienciaEducativa experienciaEducativa, OfertaColaboracionUV ofertaColaboracionUV){
+    private void guardarOfertaColaboracionUV(Dependencia dependencia, Periodo periodo, ExperienciaEducativa experienciaEducativa, 
+            OfertaColaboracionUV ofertaColaboracionUV){
         HashMap<String, Object> respuestaDependencia = OfertaColaboracionUVDAO.guardarDependencia(dependencia);
+        HashMap<String, Object> respuestaPeriodo = OfertaColaboracionUVDAO.guardarPeriodo(periodo);
         HashMap<String, Object> respuestaExperienciaEducativa = OfertaColaboracionUVDAO.guardarExperienciaEducativa(experienciaEducativa);
         HashMap<String, Object> respuestaOfertaColaboracionUV = OfertaColaboracionUVDAO.guardarOfertaColaboracionUv(ofertaColaboracionUV);
 
@@ -219,7 +213,6 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
     private OfertaColaboracionUV obtenerInformacionOfertaColaboracionUV (){
         OfertaColaboracionUV ofertaColaboracionUV = new OfertaColaboracionUV();
         ofertaColaboracionUV.setNombre(tfNombre.getText());
-        ofertaColaboracionUV.setPeriodo(tfPeriodo.getText());
         ofertaColaboracionUV.setDescripcion(tfDescripcion.getText());
         ofertaColaboracionUV.setIdProfesorUV(profesor.getIdProfesorUV());
 
@@ -248,11 +241,21 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
     }
     
     
+    private Periodo obtenerInformacionPeriodo(){
+        Periodo periodo = new Periodo();
+        periodo.setFechaInicio(dpFechaInicio.getValue().toString());
+        periodo.setFechaFin(dpFechaFin.getValue().toString());
+
+        return periodo;
+    }
+    
+    
     private boolean validarCampos(){    
-        if(tfNombre.getText().trim().isEmpty() || tfPeriodo.getText().trim().isEmpty() || tfNombreDependencia.getText().trim().isEmpty() 
-                || tfMunicipio.getText().trim().isEmpty() || cbCampus.getValue() == null || cbAreaAcademica.getValue() == null
-                || cbProgramaEducativo.getValue() == null || tfDescripcion.getText().trim().isEmpty() || tfExperienciaEducativa.getText().trim().isEmpty() 
-                || tfCreditos.getText().trim().isEmpty() || tfCreditos.getText().trim().isEmpty() || tfDescripcionEe.getText().trim().isEmpty()){
+        if(tfNombre.getText().trim().isEmpty() || tfNombreDependencia.getText().trim().isEmpty() || dpFechaInicio.getValue() == null 
+                || dpFechaFin.getValue() == null || tfMunicipio.getText().trim().isEmpty() || cbCampus.getValue() == null 
+                || cbAreaAcademica.getValue() == null || cbProgramaEducativo.getValue() == null || tfDescripcion.getText().trim().isEmpty() 
+                || tfExperienciaEducativa.getText().trim().isEmpty() || tfCreditos.getText().trim().isEmpty() || tfCreditos.getText().trim().isEmpty() 
+                || validarCreditos()==false || tfDescripcionEe.getText().trim().isEmpty()){
             
             return false;
             
@@ -260,5 +263,17 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
             return true; 
         }       
     }
-  
+    
+    
+    private boolean validarCreditos() {
+        String input = tfCreditos.getText();
+        try {
+            Integer.parseInt(input);
+            return true;
+            
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 }

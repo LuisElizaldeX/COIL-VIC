@@ -7,10 +7,8 @@
 package coilvic.controladores;
 
 import coilvic.modelo.dao.OfertaColaboracionUVDAO;
-import coilvic.modelo.pojo.CoordinadorCOIL;
 import coilvic.modelo.pojo.OfertaColaboracionUV;
 import coilvic.utilidades.Constantes;
-import coilvic.utilidades.SingletonCoordinadorCOIL;
 import coilvic.utilidades.Utilidades;
 import java.io.IOException;
 import java.net.URL;
@@ -66,7 +64,7 @@ public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinad
         taDescripcion.setText(ofertaColaboracion.getDescripcion());
         taExperienciaEducativa.setText(ofertaColaboracion.getExperienciaEducativa());
         taProfesorUV.setText(ofertaColaboracion.getProfesorUV());
-        taPeriodo.setText(ofertaColaboracion.getPeriodo());
+        //taPeriodo.setText(ofertaColaboracion.getPeriodo());
         taEstado.setText(ofertaColaboracion.getEstado());
     }
     

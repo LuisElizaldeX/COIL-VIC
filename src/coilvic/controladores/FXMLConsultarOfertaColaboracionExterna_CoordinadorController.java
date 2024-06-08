@@ -1,6 +1,7 @@
 package coilvic.controladores;
 
 import coilvic.modelo.pojo.OfertaColaboracionExterna;
+import coilvic.utilidades.Utilidades;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +19,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class FXMLConsultarOfertaColaboracionExterna_CoordinadorController extends FXMLPaginaPrincipalCoordinadorCOILController {
+    private OfertaColaboracionExterna ofertaColaboracionExterna;
 
     @FXML
     private Text txtNombreOfertaExterna;
@@ -42,8 +44,6 @@ public class FXMLConsultarOfertaColaboracionExterna_CoordinadorController extend
     @FXML
     private Label lbMateria;
     @FXML
-    private Label lbIdioma;
-    @FXML
     private Label lbCorreo;
     @FXML
     private Label lbTelefono;
@@ -67,9 +67,13 @@ public class FXMLConsultarOfertaColaboracionExterna_CoordinadorController extend
         lbUniversidad.setText(ofertaColaboracionExterna.getNombreUniversidad());
         lbCarrera.setText(ofertaColaboracionExterna.getCarrera());
         lbMateria.setText(ofertaColaboracionExterna.getMateria());
-        lbIdioma.setText(ofertaColaboracionExterna.getIdioma());
         lbCorreo.setText(ofertaColaboracionExterna.getCorreo());
         lbTelefono.setText(ofertaColaboracionExterna.getTelefono());
+    }
+    
+    
+    public void setOfertaColaboracionExterna(OfertaColaboracionExterna ofertaColaboracionExterna){
+        this.ofertaColaboracionExterna = ofertaColaboracionExterna;
     }
     
 
@@ -91,5 +95,29 @@ public class FXMLConsultarOfertaColaboracionExterna_CoordinadorController extend
 
     @FXML
     private void btnClicModificar(ActionEvent event) {
+        irModificarOfertaExterna(ofertaColaboracionExterna);
+ 
+    }
+    
+    
+    private void irModificarOfertaExterna(OfertaColaboracionExterna ofertaColaboracionExterna) {
+        try{
+           Stage escenarioModificarOfertaExterna = (Stage) imgCerrarSesion.getScene().getWindow();
+           
+           FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLModificarOfertaColaboracionExterna.fxml");
+           Parent root = loader.load();
+            
+            FXMLModificarOfertaColaboracionExternaController controlador = loader.getController();
+            controlador.cargarInformacionOferta(ofertaColaboracionExterna);
+            controlador.setOfertaColaboracionExterna(ofertaColaboracionExterna);
+           
+           Scene escenaOfertaExterna = new Scene(root);
+           escenarioModificarOfertaExterna.setScene(escenaOfertaExterna);
+           escenarioModificarOfertaExterna.setTitle("Modificar oferta de colaboración externa");
+           escenarioModificarOfertaExterna.show();
+            
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 }

@@ -1,7 +1,9 @@
 package coilvic.controladores;
 
+import coilvic.modelo.pojo.CoordinadorCOIL;
 import coilvic.modelo.pojo.OfertaColaboracionUV;
 import coilvic.modelo.pojo.ProfesorUV;
+import coilvic.utilidades.SingletonCoordinadorCOIL;
 import coilvic.utilidades.SingletonProfesorUV;
 import java.io.IOException;
 import java.net.URL;
@@ -21,12 +23,10 @@ import javafx.stage.Stage;
 
 
 public class FXMLConsultarOfertaColaboracionUv_CoordinadorController extends FXMLPaginaPrincipalCoordinadorCOILController {
-    ProfesorUV profesorUv = SingletonProfesorUV.getInstancia().getProfesorUV();
+    CoordinadorCOIL coordinador = SingletonCoordinadorCOIL.getInstancia().getCoordinadorCOIL();
 
     @FXML
     private Text txtNombreOfertaUv;
-    @FXML
-    private Label lbPeriodo;
     @FXML
     private Label lbMunicipio;
     @FXML
@@ -61,24 +61,30 @@ public class FXMLConsultarOfertaColaboracionUv_CoordinadorController extends FXM
     private Button btPrincipal;
     @FXML
     private Label lbNombreSesion;
+    @FXML
+    private Label lbFechaInicio;
+    @FXML
+    private Label lbFechaFin;
 
  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        lbNombreSesion.setText(profesorUv.toString()); 
+        lbNombreSesion.setText(coordinador.toString()); 
     }   
     
     public void inicializarValores(OfertaColaboracionUV ofertaColaboracionUV){
         txtNombreOfertaUv.setText(ofertaColaboracionUV.getNombre());
-        lbPeriodo.setText(ofertaColaboracionUV.getPeriodo());
         lbMunicipio.setText(ofertaColaboracionUV.getMunicipio());
         lbCampus.setText(ofertaColaboracionUV.getCampus());
         lbDependencia.setText(ofertaColaboracionUV.getNombreDependencia());
         lbAreaAcademica.setText(ofertaColaboracionUV.getNombreAreaAcademica());
         lbProgramaEducativo.setText(ofertaColaboracionUV.getNombreProgramaEducativo());
         lbDescripcion.setText(ofertaColaboracionUV.getDescripcion());
+        
         lbNombreEe.setText(ofertaColaboracionUV.getExperienciaEducativa());
         lbCreditos.setText(ofertaColaboracionUV.getCreditos());
+        lbFechaInicio.setText(ofertaColaboracionUV.getFechaInicio());
+        lbFechaFin.setText(ofertaColaboracionUV.getFechaFin());
         lbDescripcionEe.setText(ofertaColaboracionUV.getDescripcionEe());
         
         lbNombre.setText(ofertaColaboracionUV.getNombreProfesorUv());
@@ -102,6 +108,5 @@ public class FXMLConsultarOfertaColaboracionUv_CoordinadorController extends FXM
             System.out.println("Error: "+e.getMessage());
         }
     }
-
     
 }

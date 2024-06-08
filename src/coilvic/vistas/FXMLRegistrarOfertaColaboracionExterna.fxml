@@ -11,7 +11,100 @@
 
 <AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLRegistrarOfertaColaboracionExternaController">
    <children>
-      <Pane prefHeight="1002.0" prefWidth="312.0" style="-fx-background-color: #404040;">
+      <Label layoutX="571.0" layoutY="121.0" prefHeight="68.0" prefWidth="621.0" text="Registrar oferta de colaboracion externa">
+         <font>
+            <Font name="Arial Bold" size="32.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#959595" height="93.0" layoutX="312.0" stroke="#959595" strokeType="INSIDE" width="1139.0" />
+      <Text layoutX="410.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informacion de profesor externo" wrappingWidth="356.982421875">
+         <font>
+            <Font name="Arial Italic" size="25.0" />
+         </font>
+      </Text>
+      <Text layoutX="1087.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informacion de la oferta" wrappingWidth="262.982421875">
+         <font>
+            <Font name="Arial Italic" size="25.0" />
+         </font>
+      </Text>
+      <Line endY="630.0" layoutX="929.0" layoutY="229.0" />
+      <TextField fx:id="tfNombre" layoutX="476.0" layoutY="293.0" prefHeight="41.0" prefWidth="273.0" promptText="Nombre" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfApellidos" layoutX="476.0" layoutY="344.0" prefHeight="41.0" prefWidth="273.0" promptText="Apellidos" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfPais" layoutX="476.0" layoutY="393.0" prefHeight="41.0" prefWidth="273.0" promptText="Pais" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfUniversidad" layoutX="476.0" layoutY="443.0" prefHeight="41.0" prefWidth="273.0" promptText="Universidad" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfCarrera" layoutX="476.0" layoutY="493.0" prefHeight="41.0" prefWidth="273.0" promptText="Carrera" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfMateria" layoutX="476.0" layoutY="544.0" prefHeight="41.0" prefWidth="273.0" promptText="Materia" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfCorreo" layoutX="476.0" layoutY="595.0" prefHeight="41.0" prefWidth="273.0" promptText="Correo" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfTelefono" layoutX="476.0" layoutY="647.0" prefHeight="41.0" prefWidth="273.0" promptText="Telefono" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfNombreOfertaExterna" layoutX="1082.0" layoutY="317.0" prefHeight="55.0" prefWidth="273.0" promptText="Nombre" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfPeriodo" layoutX="1082.0" layoutY="393.0" prefHeight="55.0" prefWidth="273.0" promptText="Periodo" style="-fx-background-radius: 20;" />
+      <TextArea fx:id="tfDescripcion" layoutX="1087.0" layoutY="494.0" prefHeight="217.0" prefWidth="263.0" promptText="Descripcion" />
+      <Text layoutX="401.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="392.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="429.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pais">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="371.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Universidad">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="404.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carrera">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="402.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Materia">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="406.0" layoutY="620.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="396.0" layoutY="672.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="1006.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="1006.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Periodo">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="977.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Text>
+      <Button layoutX="1189.0" layoutY="941.0" mnemonicParsing="false" onAction="#btnClicRegistrar" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #3FBD13;" text="Registrar" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="1306.0" layoutY="941.0" mnemonicParsing="false" onAction="#btnClicCancelar" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #EA5959;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Pane prefHeight="1000.0" prefWidth="312.0" style="-fx-background-color: #404040;">
          <children>
             <Label layoutX="228.0" layoutY="60.0" text="Cerrar sesión" textFill="WHITE">
                <font>
@@ -78,7 +171,7 @@
                </graphic>
             </Button>
             <Separator layoutX="3.0" layoutY="429.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="441.0" mnemonicParsing="false" onAction="#clicBtnIrHistorialColaboracion" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="     Historial de colaboración     ">
+            <Button layoutY="435.0" mnemonicParsing="false" onAction="#clicBtnIrHistorialColaboracion" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="     Historial de colaboración     ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -90,8 +183,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Separator layoutY="528.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="540.0" mnemonicParsing="false" onAction="#clicBtnRevisarColaboracionesCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="    Revisar colaboraciones COIL">
+            <Separator layoutX="3.0" layoutY="522.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="528.0" mnemonicParsing="false" onAction="#clicBtnRevisarColaboracionesCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="    Revisar colaboraciones COIL">
                <font>
                   <Font size="14.0" />
                </font>
@@ -103,8 +196,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Separator layoutY="635.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="647.0" mnemonicParsing="false" onAction="#clicBtnIrCancelarColaboracionCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="    Cancelar colaboración COIL">
+            <Separator layoutY="615.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="621.0" mnemonicParsing="false" onAction="#clicBtnIrCancelarColaboracionCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="    Cancelar colaboración COIL">
                <font>
                   <Font size="14.0" />
                </font>
@@ -116,8 +209,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Separator layoutY="733.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="745.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="  Revisar solicitudes de constancia">
+            <Separator layoutY="708.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="714.0" mnemonicParsing="false" onAction="#clicBtnIrRevisarSolicitudesDeConstancia" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="  Revisar solicitudes de constancia">
                <font>
                   <Font size="14.0" />
                </font>
@@ -129,8 +222,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Separator layoutX="3.0" layoutY="837.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="849.0" mnemonicParsing="false" onAction="#clicBtnIrNumeralia" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="     Numeralia                       ">
+            <Separator layoutY="801.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="807.0" mnemonicParsing="false" onAction="#clicBtnIrNumeralia" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="     Numeralia                       ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -144,104 +237,5 @@
             </Button>
          </children>
       </Pane>
-      <Label layoutX="571.0" layoutY="121.0" prefHeight="68.0" prefWidth="621.0" text="Registrar oferta de colaboracion externa">
-         <font>
-            <Font name="Arial Bold" size="32.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#959595" height="93.0" layoutX="312.0" stroke="#959595" strokeType="INSIDE" width="1139.0" />
-      <Text layoutX="410.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informacion de profesor externo" wrappingWidth="356.982421875">
-         <font>
-            <Font name="Arial Italic" size="25.0" />
-         </font>
-      </Text>
-      <Text layoutX="1087.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informacion de la oferta" wrappingWidth="262.982421875">
-         <font>
-            <Font name="Arial Italic" size="25.0" />
-         </font>
-      </Text>
-      <Line endY="630.0" layoutX="929.0" layoutY="229.0" />
-      <TextField fx:id="tfNombre" layoutX="476.0" layoutY="293.0" prefHeight="41.0" prefWidth="273.0" promptText="Nombre" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfApellidos" layoutX="476.0" layoutY="344.0" prefHeight="41.0" prefWidth="273.0" promptText="Apellidos" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfPais" layoutX="476.0" layoutY="393.0" prefHeight="41.0" prefWidth="273.0" promptText="Pais" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfUniversidad" layoutX="476.0" layoutY="443.0" prefHeight="41.0" prefWidth="273.0" promptText="Universidad" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfCarrera" layoutX="476.0" layoutY="493.0" prefHeight="41.0" prefWidth="273.0" promptText="Carrera" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfMateria" layoutX="476.0" layoutY="544.0" prefHeight="41.0" prefWidth="273.0" promptText="Materia" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfIdioma" layoutX="476.0" layoutY="594.0" prefHeight="41.0" prefWidth="273.0" promptText="Idioma" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfCorreo" layoutX="476.0" layoutY="645.0" prefHeight="41.0" prefWidth="273.0" promptText="Correo" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfTelefono" layoutX="476.0" layoutY="695.0" prefHeight="41.0" prefWidth="273.0" promptText="Telefono" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfNombreOfertaExterna" layoutX="1082.0" layoutY="317.0" prefHeight="55.0" prefWidth="273.0" promptText="Nombre" style="-fx-background-radius: 20;" />
-      <TextField fx:id="tfPeriodo" layoutX="1082.0" layoutY="393.0" prefHeight="55.0" prefWidth="273.0" promptText="Periodo" style="-fx-background-radius: 20;" />
-      <TextArea fx:id="tfDescripcion" layoutX="1087.0" layoutY="494.0" prefHeight="217.0" prefWidth="263.0" promptText="Descripcion" />
-      <Text layoutX="401.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
-         <font>
-            <Font name="Calibri Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="392.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos">
-         <font>
-            <Font name="Calibri Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="429.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pais">
-         <font>
-            <Font name="Calibri Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="371.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Universidad">
-         <font>
-            <Font name="Calibri Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="404.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carrera">
-         <font>
-            <Font name="Calibri Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="402.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Materia">
-         <font>
-            <Font name="Calibri Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="406.0" layoutY="621.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Idioma">
-         <font>
-            <Font name="Calibri Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="406.0" layoutY="672.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo">
-         <font>
-            <Font name="Calibri Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="394.0" layoutY="722.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono">
-         <font>
-            <Font name="Calibri Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="1006.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
-         <font>
-            <Font name="Calibri Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="1006.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Periodo">
-         <font>
-            <Font name="Calibri Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="977.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion">
-         <font>
-            <Font name="Calibri Bold" size="18.0" />
-         </font>
-      </Text>
-      <Button layoutX="1189.0" layoutY="941.0" mnemonicParsing="false" onAction="#btnClicRegistrar" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #3FBD13;" text="Registrar" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="1306.0" layoutY="941.0" mnemonicParsing="false" onAction="#btnClicCancelar" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #EA5959;" text="Cancelar" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

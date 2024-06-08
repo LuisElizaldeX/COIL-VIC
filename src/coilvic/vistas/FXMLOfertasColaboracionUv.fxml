@@ -21,8 +21,8 @@
             <TableColumn fx:id="colNombre" prefWidth="177.0" text="Nombre" />
             <TableColumn fx:id="colDependencia" prefWidth="151.0" text="Dependencia" />
             <TableColumn fx:id="colProgramaEducativo" prefWidth="213.0" text="Programa educativo" />
-            <TableColumn fx:id="colExperienciaEducativa" prefWidth="224.0" text="Experiencia educativa" />
-            <TableColumn fx:id="colPeriodo" prefWidth="146.0" text="Periodo" />
+            <TableColumn fx:id="colFechaInicio" prefWidth="190.0" text="Fecha de inicio" />
+            <TableColumn fx:id="colFechaFin" prefWidth="180.0" text="Fecha de fin" />
             <TableColumn fx:id="colEstado" prefWidth="105.0" text="Estado" />
          </columns>
       </TableView>
