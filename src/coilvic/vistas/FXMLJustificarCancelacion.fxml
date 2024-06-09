@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFF1F1;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="coilvic.controladores.FXMLJustificarCancelacionController">
+   <children>
+      <Pane prefHeight="75.0" prefWidth="600.0" style="-fx-background-color: #706363;">
+         <children>
+            <Label layoutX="51.0" layoutY="11.0" text="Añadir justificación">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TextArea fx:id="taJustificacion" layoutX="62.0" layoutY="120.0" prefHeight="209.0" prefWidth="476.0" wrapText="true" />
+      <Button layoutX="427.0" layoutY="348.0" mnemonicParsing="false" onAction="#btnClicCancelar" prefHeight="31.0" prefWidth="111.0" style="-fx-background-color: #EA5959;" text="Cancelar" textFill="WHITE" />
+      <Button layoutX="300.0" layoutY="348.0" mnemonicParsing="false" onAction="#btnClicAceptar" prefHeight="31.0" prefWidth="111.0" style="-fx-background-color: #3FBD13;" text="Aceptar" textFill="WHITE" />
+      <Label fx:id="lbError" layoutX="62.0" layoutY="90.0" textFill="#d02727" />
+   </children>
+</AnchorPane>
