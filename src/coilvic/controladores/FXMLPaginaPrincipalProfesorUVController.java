@@ -6,7 +6,10 @@
 
 package coilvic.controladores;
 
+import coilvic.modelo.dao.ColaboracionDAO;
+import coilvic.modelo.pojo.Colaboracion;
 import coilvic.modelo.pojo.ProfesorUV;
+import coilvic.utilidades.Constantes;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,26 +25,70 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import coilvic.utilidades.SingletonProfesorUV;
+import coilvic.utilidades.Utilidades;
+import java.util.ArrayList;
+import java.util.HashMap;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+
 
 public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
-
+    ProfesorUV profesor = SingletonProfesorUV.getInstancia().getProfesorUV();
+    private ObservableList<Colaboracion> colaboraciones;
+    
     @FXML
     private ImageView imgCerrarSesion;
     @FXML
     private Button btnPrincipal;
     @FXML
     private Label lbNombreSesion;
-    
-    ProfesorUV profesor = SingletonProfesorUV.getInstancia().getProfesorUV();
-    
     @FXML
     private Label lbNombreBienvenida;
+    @FXML
+    private TableView<Colaboracion> tvColaboraciones;
+    @FXML
+    private TableColumn colNombre;
+    @FXML
+    private TableColumn colMateria;
+    @FXML
+    private TableColumn colPeriodo;
+    @FXML
+    private TableColumn colEstado;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lbNombreSesion.setText(profesor.toString());
         lbNombreBienvenida.setText(profesor.toString());
+        configurarTabla();
+        cargarDatosColaboracion();
     }    
+    
+    private void configurarTabla(){
+        colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
+        colMateria.setCellValueFactory(new PropertyValueFactory("experienciaEducativa"));
+        colPeriodo.setCellValueFactory(new PropertyValueFactory("fechaInicio"));
+        colEstado.setCellValueFactory(new PropertyValueFactory("estadoColaboracion"));
+    }
+    
+    private void cargarDatosColaboracion(){
+        colaboraciones = FXCollections.observableArrayList();
+        HashMap<String, Object> respuesta = ColaboracionDAO.obtenerColaboracionesProfesorUV(profesor.getIdProfesorUV());
+        boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
+        if(!isError){
+            ArrayList<Colaboracion> colaboracionesBD = (ArrayList<Colaboracion>) respuesta.get("colaboraciones");
+            colaboraciones.addAll(colaboracionesBD);
+            tvColaboraciones.setItems(colaboraciones);
+        } else {
+            Utilidades.mostrarAlertaSimple("Error", "" + respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.WARNING);
+        }
+    }
+    
+    
 
     @FXML
     protected void clicImgCerrarSesion(MouseEvent event) {
@@ -59,19 +106,50 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
     }
 
     @FXML
-    protected void clicBtnIrOfertasColaboracionCOIL(ActionEvent event) {
+    protected void clicBtnIrPaginaPrincipal(ActionEvent event) {
+        try{
+           Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                   getResource("vistas/FXMLPaginaPrincipalProfesorUV.fxml"));
+           Scene escenaPrincipal = new Scene(root);
+           escenarioPrincipal.setScene(escenaPrincipal);
+           escenarioPrincipal.setTitle("Pagina principal ProfesorUv");
+           escenarioPrincipal.show();
+            
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+        
     }
-
+    
     @FXML
-    protected void clicBtnirPaginaPrincipal(ActionEvent event) {
-           try{
-            Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
-            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
-                    getResource("vistas/FXMLPaginaPrincipalProfesorUV.fxml"));
-            Scene escenaPrincipal = new Scene(root);
-            escenarioPrincipal.setScene(escenaPrincipal);
-            escenarioPrincipal.setTitle("Pagina principal ProfesorUV");
-            escenarioPrincipal.show();
+    protected void clicBtnIrOfertasColaboracionUv(ActionEvent event) {
+        try{
+           Stage ofertasUv = (Stage) imgCerrarSesion.getScene().getWindow();
+           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                   getResource("vistas/FXMLOfertasColaboracionUv.fxml"));
+           Scene escenaOfertasUv = new Scene(root);
+           ofertasUv.setScene(escenaOfertasUv);
+           ofertasUv.setTitle("Ofertas colaboracion UV");
+           ofertasUv.show();
+            
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
+    
+    
+    @FXML
+    protected void clicBtnIrOfertasColaboracionExternas(ActionEvent event) {
+        try{
+           Stage ofertasExternas = (Stage) imgCerrarSesion.getScene().getWindow();
+           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                   getResource("vistas/FXMLOfertasColaboracionExternas.fxml"));
+           Scene escenaOfertasExternas = new Scene(root);
+           ofertasExternas.setScene(escenaOfertasExternas);
+           ofertasExternas.setTitle("Ofertas colaboracion externas");
+           ofertasExternas.show();
+            
         }catch(IOException e){
             System.out.println("Error: "+e.getMessage());
         }
@@ -80,25 +158,26 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
 
     @FXML
     protected void clicBtnIrRegistrarOfertaColaboracion(ActionEvent event) {
+       try{
+           Stage registrarOfertaUv = (Stage) imgCerrarSesion.getScene().getWindow();
+           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                   getResource("vistas/FXMLRegistrarOfertaColaboracionUv.fxml"));
+           Scene escenaRegistrarOfertaUv = new Scene(root);
+           registrarOfertaUv.setScene(escenaRegistrarOfertaUv);
+           registrarOfertaUv.setTitle("Registrar oferta de colaboracion UV");
+           registrarOfertaUv.show();
+            
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
+
+    @FXML
+    protected void clicBtnIrRegistrarColaboracion(ActionEvent event) {
     }
 
     @FXML
     protected void clicBtnIrRegistrarColaboracionCOIL(ActionEvent event) {
-       try{
-            Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
-            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
-                    getResource("vistas/FXMLRegistrarColaboracionDirecta.fxml"));
-            Scene escenaPrincipal = new Scene(root);
-            escenarioPrincipal.setScene(escenaPrincipal);
-            escenarioPrincipal.setTitle("Registro colaboracion");
-            escenarioPrincipal.show();
-        }catch(IOException e){
-            System.out.println("Error: "+e.getMessage());
-        }
-    
-    
     }
-    
-    
     
 }

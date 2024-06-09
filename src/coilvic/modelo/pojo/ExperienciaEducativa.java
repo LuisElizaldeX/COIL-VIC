@@ -6,19 +6,19 @@
 
 package coilvic.modelo.pojo;
 
-public class ExperienciaEducatica {
+public class ExperienciaEducativa {
     private int idExperienciaEducativa;
-    private int idProgramaEducativo;
-    private int creditos;
+    private int idDependencia;
     private String nombre;
     private String descripcion;
+    private int creditos;
 
-    public ExperienciaEducatica() {
+    public ExperienciaEducativa() {
     }
 
-    public ExperienciaEducatica(int idExperienciaEducativa, int idProgramaEducativo ,int creditos, String nombre, String descripcion) {
+    public ExperienciaEducativa(int idExperienciaEducativa, int idDependencia, int creditos, String nombre, String descripcion) {
         this.idExperienciaEducativa = idExperienciaEducativa;
-        this.idProgramaEducativo = idProgramaEducativo;
+        this.idDependencia = idDependencia;
         this.creditos = creditos;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -30,6 +30,14 @@ public class ExperienciaEducatica {
 
     public void setIdExperienciaEducativa(int idExperienciaEducativa) {
         this.idExperienciaEducativa = idExperienciaEducativa;
+    }
+    
+    public int getIdDependencia() {
+        return idDependencia;
+    }
+
+    public void setIdDependencia(int idDependencia) {
+        this.idDependencia = idDependencia;
     }
 
     public int getCreditos() {
@@ -56,12 +64,5 @@ public class ExperienciaEducatica {
         this.descripcion = descripcion;
     }
 
-    public int getIdProgramaEducativo() {
-        return idProgramaEducativo;
-    }
-
-    public void setIdProgramaEducativo(int idProgramaEducativo) {
-        this.idProgramaEducativo = idProgramaEducativo;
-    }
 
 }

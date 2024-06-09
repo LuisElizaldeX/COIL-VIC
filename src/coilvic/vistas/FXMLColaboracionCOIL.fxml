@@ -10,7 +10,76 @@
 
 <AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLColaboracionCOILController">
    <children>
-      <Pane prefHeight="1005.0" prefWidth="312.0" style="-fx-background-color: #404040;">
+      <Label layoutX="645.0" layoutY="32.0" prefHeight="68.0" prefWidth="492.0" text="Colaboración COIL">
+         <font>
+            <Font name="Arial Bold Italic" size="53.0" />
+         </font>
+      </Label>
+      <Label layoutX="392.0" layoutY="164.0" prefHeight="56.0" prefWidth="174.0" text="Nombre:">
+         <font>
+            <Font name="Berlin Sans FB" size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="392.0" layoutY="256.0" prefHeight="56.0" prefWidth="222.0" text="Descripción: ">
+         <font>
+            <Font name="Berlin Sans FB" size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="384.0" layoutY="503.0" prefHeight="56.0" prefWidth="222.0" text="Profesor UV:">
+         <font>
+            <Font name="Berlin Sans FB" size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="384.0" layoutY="600.0" prefHeight="56.0" prefWidth="422.0" text="Experiencia educativa:">
+         <font>
+            <Font name="Berlin Sans FB" size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="384.0" layoutY="689.0" prefHeight="56.0" prefWidth="166.0" text="Período:">
+         <font>
+            <Font name="Berlin Sans FB" size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="384.0" layoutY="775.0" prefHeight="56.0" prefWidth="166.0" text="Estado:">
+         <font>
+            <Font name="Berlin Sans FB" size="42.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnAprobarColaboracion" layoutX="858.0" layoutY="897.0" mnemonicParsing="false" onAction="#clicBtnAprobarColaboracion" prefHeight="56.0" prefWidth="222.0" style="-fx-background-radius: 40;" styleClass="buttonRegistrar" stylesheets="@../css/estilos.css" text="Aprobar colaboración">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnRechazarColaboracion" layoutX="1123.0" layoutY="897.0" mnemonicParsing="false" onAction="#clicBtnRechazarColaboracion" prefHeight="56.0" prefWidth="239.0" style="-fx-background-radius: 40;" styleClass="buttonCancelar" stylesheets="@../css/estilos.css" text="Rechazar colaboración">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="taNombre" editable="false" layoutX="577.0" layoutY="164.0" prefHeight="68.0" prefWidth="732.0">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="24.0" />
+         </font></TextArea>
+      <TextArea fx:id="taDescripcion" editable="false" layoutX="606.0" layoutY="259.0" prefHeight="200.0" prefWidth="705.0">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="24.0" />
+         </font></TextArea>
+      <TextArea fx:id="taProfesorUV" editable="false" layoutX="614.0" layoutY="491.0" prefHeight="68.0" prefWidth="705.0">
+         <font>
+            <Font size="24.0" />
+         </font></TextArea>
+      <TextArea fx:id="taExperienciaEducativa" editable="false" layoutX="785.0" layoutY="594.0" prefHeight="68.0" prefWidth="538.0">
+         <font>
+            <Font size="24.0" />
+         </font></TextArea>
+      <TextArea fx:id="taPeriodo" editable="false" layoutX="550.0" layoutY="689.0" prefHeight="68.0" prefWidth="312.0">
+         <font>
+            <Font size="24.0" />
+         </font></TextArea>
+      <TextArea fx:id="taEstado" editable="false" layoutX="550.0" layoutY="775.0" prefHeight="68.0" prefWidth="312.0">
+         <font>
+            <Font size="24.0" />
+         </font></TextArea>
+      <Pane prefHeight="1000.0" prefWidth="312.0" style="-fx-background-color: #404040;">
          <children>
             <Label layoutX="228.0" layoutY="60.0" text="Cerrar sesión" textFill="WHITE">
                <font>
@@ -77,7 +146,7 @@
                </graphic>
             </Button>
             <Separator layoutX="3.0" layoutY="429.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="441.0" mnemonicParsing="false" onAction="#clicBtnIrHistorialColaboracion" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="     Historial de colaboración     ">
+            <Button layoutY="435.0" mnemonicParsing="false" onAction="#clicBtnIrHistorialColaboracion" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="     Historial de colaboración     ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -89,8 +158,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Separator layoutY="528.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="540.0" mnemonicParsing="false" onAction="#clicBtnRevisarColaboracionesCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="    Revisar colaboraciones COIL">
+            <Separator layoutX="3.0" layoutY="522.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="528.0" mnemonicParsing="false" onAction="#clicBtnRevisarColaboracionesCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="    Revisar colaboraciones COIL">
                <font>
                   <Font size="14.0" />
                </font>
@@ -102,8 +171,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Separator layoutY="635.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="647.0" mnemonicParsing="false" onAction="#clicBtnIrCancelarColaboracionCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="    Cancelar colaboración COIL">
+            <Separator layoutY="615.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="621.0" mnemonicParsing="false" onAction="#clicBtnIrCancelarColaboracionCOIL" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="    Cancelar colaboración COIL">
                <font>
                   <Font size="14.0" />
                </font>
@@ -115,8 +184,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Separator layoutY="733.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="745.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="  Revisar solicitudes de constancia">
+            <Separator layoutY="708.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="714.0" mnemonicParsing="false" onAction="#clicBtnIrRevisarSolicitudesDeConstancia" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="  Revisar solicitudes de constancia">
                <font>
                   <Font size="14.0" />
                </font>
@@ -128,8 +197,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Separator layoutX="3.0" layoutY="837.0" prefHeight="12.0" prefWidth="312.0" />
-            <Button layoutY="849.0" mnemonicParsing="false" onAction="#clicBtnIrNumeralia" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="     Numeralia                       ">
+            <Separator layoutY="801.0" prefHeight="12.0" prefWidth="312.0" />
+            <Button layoutY="807.0" mnemonicParsing="false" onAction="#clicBtnIrNumeralia" prefHeight="93.0" prefWidth="312.0" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="     Numeralia                       ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -143,74 +212,5 @@
             </Button>
          </children>
       </Pane>
-      <Label layoutX="645.0" layoutY="32.0" prefHeight="68.0" prefWidth="492.0" text="Colaboración COIL">
-         <font>
-            <Font name="Arial Bold Italic" size="53.0" />
-         </font>
-      </Label>
-      <Label layoutX="392.0" layoutY="164.0" prefHeight="56.0" prefWidth="174.0" text="Nombre:">
-         <font>
-            <Font name="Berlin Sans FB" size="42.0" />
-         </font>
-      </Label>
-      <Label layoutX="392.0" layoutY="256.0" prefHeight="56.0" prefWidth="222.0" text="Descripción: ">
-         <font>
-            <Font name="Berlin Sans FB" size="42.0" />
-         </font>
-      </Label>
-      <Label layoutX="384.0" layoutY="503.0" prefHeight="56.0" prefWidth="222.0" text="Profesor UV:">
-         <font>
-            <Font name="Berlin Sans FB" size="42.0" />
-         </font>
-      </Label>
-      <Label layoutX="384.0" layoutY="600.0" prefHeight="56.0" prefWidth="422.0" text="Experiencia educativa:">
-         <font>
-            <Font name="Berlin Sans FB" size="42.0" />
-         </font>
-      </Label>
-      <Label layoutX="384.0" layoutY="689.0" prefHeight="56.0" prefWidth="166.0" text="Período:">
-         <font>
-            <Font name="Berlin Sans FB" size="42.0" />
-         </font>
-      </Label>
-      <Label layoutX="384.0" layoutY="775.0" prefHeight="56.0" prefWidth="166.0" text="Estado:">
-         <font>
-            <Font name="Berlin Sans FB" size="42.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnAprobarColaboracion" layoutX="858.0" layoutY="897.0" mnemonicParsing="false" onAction="#clicBtnAprobarColaboracion" prefHeight="56.0" prefWidth="222.0" styleClass="buttonRegistrar" stylesheets="@../css/estilos.css" text="Aprobar colaboración">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnRechazarColaboracion" layoutX="1123.0" layoutY="897.0" mnemonicParsing="false" onAction="#clicBtnRechazarColaboracion" prefHeight="56.0" prefWidth="239.0" styleClass="buttonCancelar" stylesheets="@../css/estilos.css" text="Rechazar colaboración">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <TextArea fx:id="taNombre" editable="false" layoutX="577.0" layoutY="164.0" prefHeight="68.0" prefWidth="732.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="24.0" />
-         </font></TextArea>
-      <TextArea fx:id="taDescripcion" editable="false" layoutX="606.0" layoutY="259.0" prefHeight="200.0" prefWidth="705.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="24.0" />
-         </font></TextArea>
-      <TextArea fx:id="taProfesorUV" editable="false" layoutX="614.0" layoutY="491.0" prefHeight="68.0" prefWidth="705.0">
-         <font>
-            <Font size="24.0" />
-         </font></TextArea>
-      <TextArea fx:id="taExperienciaEducativa" editable="false" layoutX="785.0" layoutY="594.0" prefHeight="68.0" prefWidth="538.0">
-         <font>
-            <Font size="24.0" />
-         </font></TextArea>
-      <TextArea fx:id="taPeriodo" editable="false" layoutX="550.0" layoutY="689.0" prefHeight="68.0" prefWidth="312.0">
-         <font>
-            <Font size="24.0" />
-         </font></TextArea>
-      <TextArea fx:id="taEstado" editable="false" layoutX="550.0" layoutY="775.0" prefHeight="68.0" prefWidth="312.0">
-         <font>
-            <Font size="24.0" />
-         </font></TextArea>
    </children>
 </AnchorPane>

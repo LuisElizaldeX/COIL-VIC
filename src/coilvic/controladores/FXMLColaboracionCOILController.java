@@ -7,10 +7,8 @@
 package coilvic.controladores;
 
 import coilvic.modelo.dao.OfertaColaboracionUVDAO;
-import coilvic.modelo.pojo.CoordinadorCOIL;
 import coilvic.modelo.pojo.OfertaColaboracionUV;
 import coilvic.utilidades.Constantes;
-import coilvic.utilidades.SingletonCoordinadorCOIL;
 import coilvic.utilidades.Utilidades;
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +27,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinadorCOILController {
-
     @FXML
     private ImageView imgCerrarSesion;
     @FXML
@@ -50,8 +47,6 @@ public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinad
     private TextArea taEstado;
     
     OfertaColaboracionUV ofertaColaboracion;
-
-    CoordinadorCOIL coordinador = SingletonCoordinadorCOIL.getInstancia().getCoordinadorCOIL();
     
     @FXML
     private Button btnAprobarColaboracion;
@@ -69,7 +64,7 @@ public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinad
         taDescripcion.setText(ofertaColaboracion.getDescripcion());
         taExperienciaEducativa.setText(ofertaColaboracion.getExperienciaEducativa());
         taProfesorUV.setText(ofertaColaboracion.getProfesorUV());
-        taPeriodo.setText(ofertaColaboracion.getPeriodo());
+        //taPeriodo.setText(ofertaColaboracion.getPeriodo());
         taEstado.setText(ofertaColaboracion.getEstado());
     }
     
@@ -100,7 +95,8 @@ public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinad
                     respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
         }
     }
-
+    
+    
     @FXML
     private void clicBtnRechazarColaboracion(ActionEvent event) {
         HashMap<String, Object> respuesta = OfertaColaboracionUVDAO.rechazarColaboracion
@@ -112,7 +108,8 @@ public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinad
         }else{
             Utilidades.mostrarAlertaSimple("Error al rechazar", "" + 
                     respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
+
         }
     }
-    
 }
+

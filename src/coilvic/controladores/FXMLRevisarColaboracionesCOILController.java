@@ -7,10 +7,8 @@
 package coilvic.controladores;
 
 import coilvic.modelo.dao.OfertaColaboracionUVDAO;
-import coilvic.modelo.pojo.CoordinadorCOIL;
 import coilvic.modelo.pojo.OfertaColaboracionUV;
 import coilvic.utilidades.Constantes;
-import coilvic.utilidades.SingletonCoordinadorCOIL;
 import coilvic.utilidades.Utilidades;
 import java.io.IOException;
 import java.net.URL;
@@ -31,10 +29,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class FXMLRevisarColaboracionesCOILController extends FXMLPaginaPrincipalCoordinadorCOILController {
+public class FXMLRevisarColaboracionesCOILController 
+        extends FXMLPaginaPrincipalCoordinadorCOILController {
 
     @FXML
     private ImageView imgCerrarSesion;
@@ -42,8 +40,6 @@ public class FXMLRevisarColaboracionesCOILController extends FXMLPaginaPrincipal
     private Button btPrincipal;
     @FXML
     private Label lbNombreSesion;
-
-    CoordinadorCOIL coordinador = SingletonCoordinadorCOIL.getInstancia().getCoordinadorCOIL();
     
     private ObservableList<OfertaColaboracionUV> ofertasColaboracionUV;
     
@@ -62,22 +58,25 @@ public class FXMLRevisarColaboracionesCOILController extends FXMLPaginaPrincipal
     public void initialize(URL url, ResourceBundle rb) {
         lbNombreSesion.setText(coordinador.toString());
         configurarTabla();
-        cargarDatosPaciente();
+        cargarDatosColaboracion();
     }    
     
     private void configurarTabla(){
         colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
-        colExperienciaEducativa.setCellValueFactory(new PropertyValueFactory("experienciaEducativa"));
+        colExperienciaEducativa.setCellValueFactory
+            (new PropertyValueFactory("experienciaEducativa"));
         colPeriodo.setCellValueFactory(new PropertyValueFactory("periodo"));
     }
     
-    private void cargarDatosPaciente(){
+    private void cargarDatosColaboracion(){
         ofertasColaboracionUV = FXCollections.observableArrayList();
         HashMap<String, Object> respuesta =
                 OfertaColaboracionUVDAO.obtenerOfertasColaboracionUV();
+        
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
         if(!isError){
-            ArrayList<OfertaColaboracionUV> ofertasColaboracionUVBD = (ArrayList<OfertaColaboracionUV>) respuesta.get("OfertasColaboracionUV");
+            ArrayList<OfertaColaboracionUV> ofertasColaboracionUVBD = 
+                    (ArrayList<OfertaColaboracionUV>) respuesta.get("OfertasColaboracionUV");
             ofertasColaboracionUV.addAll(ofertasColaboracionUVBD);
             tvColaboraciones.setItems(ofertasColaboracionUV);
         }else{
@@ -89,7 +88,8 @@ public class FXMLRevisarColaboracionesCOILController extends FXMLPaginaPrincipal
 
     @FXML
     private void clicBtnRevisarOfertaColaboracionUV(ActionEvent event) {
-        OfertaColaboracionUV ofertaSeleccionada = tvColaboraciones.getSelectionModel().getSelectedItem();
+        OfertaColaboracionUV ofertaSeleccionada = 
+                tvColaboraciones.getSelectionModel().getSelectedItem();
         if(ofertaSeleccionada != null){
             try { 
                 FXMLLoader accesoControlador = new FXMLLoader(coilvic.COILVIC.class.getResource(

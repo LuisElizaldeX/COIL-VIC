@@ -60,6 +60,17 @@ public class FXMLPaginaPrincipalCoordinadorCOILController implements Initializab
 
     @FXML
     protected void clicBtnIrOfertasColaboracionCOIL(ActionEvent event) {
+        try{
+            Stage escenarioOfertasColaboracion = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLConsultarOfertas.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            escenarioOfertasColaboracion.setScene(escenaPrincipal);
+            escenarioOfertasColaboracion.setTitle("Ofertas de colaboración");
+            escenarioOfertasColaboracion.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }   
     }
 
     @FXML
@@ -79,10 +90,32 @@ public class FXMLPaginaPrincipalCoordinadorCOILController implements Initializab
 
     @FXML
     protected void clicBtnIrRegistrarOfertaColaboracion(ActionEvent event) {
+         try{
+            Stage registrarOfertaExterna = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLRegistrarOfertaColaboracionExterna.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            registrarOfertaExterna.setScene(escenaPrincipal);
+            registrarOfertaExterna.setTitle("Registrar oferta de colaboracion externa");
+            registrarOfertaExterna.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 
     @FXML
     protected void clicBtnIrHistorialColaboracion(ActionEvent event) {
+         try{
+            Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLHistorialDeColaboraciones.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            escenarioPrincipal.setScene(escenaPrincipal);
+            escenarioPrincipal.setTitle("Historial de colaboraciones");
+            escenarioPrincipal.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 
     @FXML
@@ -102,10 +135,47 @@ public class FXMLPaginaPrincipalCoordinadorCOILController implements Initializab
 
     @FXML
     protected void clicBtnIrCancelarColaboracionCOIL(ActionEvent event) {
+        try{
+            Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLCancelarColaboracionCoordinador.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            escenarioPrincipal.setScene(escenaPrincipal);
+            escenarioPrincipal.setTitle("Cancelar colaboración");
+            escenarioPrincipal.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 
     @FXML
     protected void clicBtnIrNumeralia(ActionEvent event) {
+        try{
+            Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLConsultarNumeralia.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            escenarioPrincipal.setScene(escenaPrincipal);
+            escenarioPrincipal.setTitle("Consultar numeralia");
+            escenarioPrincipal.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
+
+    @FXML
+    protected void clicBtnIrRevisarSolicitudesDeConstancia(ActionEvent event) {
+        try{
+            Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLSolicitudesDeConstancia.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            escenarioPrincipal.setScene(escenaPrincipal);
+            escenarioPrincipal.setTitle("Revisar solicitudes de constancia");
+            escenarioPrincipal.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
     
 }
