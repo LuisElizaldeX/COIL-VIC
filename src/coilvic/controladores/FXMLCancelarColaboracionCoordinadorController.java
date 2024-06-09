@@ -3,6 +3,7 @@ package coilvic.controladores;
 
 import coilvic.modelo.dao.ColaboracionDAO;
 import coilvic.modelo.pojo.Colaboracion;
+import coilvic.observador.ObservadorColaboraciones;
 import coilvic.utilidades.Constantes;
 import coilvic.utilidades.Utilidades;
 import java.io.IOException;
@@ -26,9 +27,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class FXMLCancelarColaboracionCoordinadorController extends FXMLPaginaPrincipalCoordinadorCOILController{
+public class FXMLCancelarColaboracionCoordinadorController extends FXMLPaginaPrincipalCoordinadorCOILController implements ObservadorColaboraciones{
     
     private ObservableList<Colaboracion> colaboraciones;
     
@@ -91,18 +93,25 @@ public class FXMLCancelarColaboracionCoordinadorController extends FXMLPaginaPri
     private void irJustificarCancelacion(int idColaboracion){
         try{
             Stage escenarioSecundario = new Stage();
-            FXMLLoader loader = Utilidades.obtenerLoader("vista/FXMLJustificarCancelacion.fxml");
+            FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLJustificarCancelacion.fxml");
             Parent root = loader.load();
             FXMLJustificarCancelacionController controlador = loader.getController();
-            
+            controlador.inicializarValores(idColaboracion, this);
             
             Scene escenaPrincipal = new Scene(root);
             escenarioSecundario.setScene(escenaPrincipal);
             escenarioSecundario.setTitle("Justificar cancelación");
+            escenarioSecundario.initModality(Modality.APPLICATION_MODAL);
             escenarioSecundario.showAndWait();
         }catch(IOException e){
             System.out.println("Error: "+e.getMessage());
         }
+    }
+
+    @Override
+    public void operacionExitosa(String tipoOperacion) {
+        System.out.println("Operacion: " + tipoOperacion);
+        cargarDatosColaboracion();
     }
     
 }
