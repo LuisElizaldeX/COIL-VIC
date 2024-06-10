@@ -1,18 +1,29 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+* Autor: Jose Antonio Zarate De Leo
+* Fecha de creación: 29/05/2024
+* Descripción: Controlador para el registro de una colaboracion directa  
+*/
 package coilvic.controladores;
 
 import coilvic.modelo.dao.ColaboracionDAO;
+import coilvic.modelo.dao.ObtenerOfertaColaboracionUVDAO;
 import coilvic.modelo.pojo.AreaAcademica;
+import coilvic.modelo.pojo.Campus;
 import coilvic.modelo.pojo.Colaboracion;
+import coilvic.modelo.pojo.ProfesorUV;
 import coilvic.modelo.pojo.ProgramaEducativo;
 import coilvic.utilidades.Constantes;
+import coilvic.utilidades.SingletonProfesorUV;
+import coilvic.utilidades.Utilidades;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,8 +31,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -38,7 +51,7 @@ public class FXMLRegistrarColaboracionDirectaController extends FXMLPaginaPrinci
     private int idProfesorUV;
     private ObservableList<ProgramaEducativo> programasEducativos;
     private ObservableList<AreaAcademica> areasAcademicas;
-    
+    private ObservableList<Campus> campus;
     
     @FXML
     private ImageView imgCerrarSesion;
@@ -46,10 +59,9 @@ public class FXMLRegistrarColaboracionDirectaController extends FXMLPaginaPrinci
     private Button btnPrincipal;
     @FXML
     private Label lbNombreSesion;
+    ProfesorUV profesorUv = SingletonProfesorUV.getInstancia().getProfesorUV();
     @FXML
     private Label lbNombreProfesorUv;
-    @FXML
-    private Label lbApellidosProfesorUV;
     @FXML
     private Label lbNumeroDePersonal;
     @FXML
@@ -61,21 +73,15 @@ public class FXMLRegistrarColaboracionDirectaController extends FXMLPaginaPrinci
     @FXML
     private TextField tfNombreColaboracion;
     @FXML
-    private TextField tfFechaDeInicio;
-    @FXML
-    private TextField tfFechaDeCierre;
-    @FXML
     private TextField tfNombreDependencia;
     @FXML
-    private ComboBox<?> cbCampus;
+    private ComboBox<Campus> cbCampus;
     @FXML
     private TextField tfMunicipio;
     @FXML
-    private ComboBox<?> cbAreaAcademica;
+    private ComboBox<AreaAcademica> cbAreaAcademica;
     @FXML
-    private ComboBox<?> cbProgramaEducativo;
-    @FXML
-    private TextField tfAnioDeInicioDeOperacion;
+    private ComboBox<ProgramaEducativo> cbProgramaEducativo;
     @FXML
     private TextField tfExperienciaEducativa;
     @FXML
@@ -93,11 +99,15 @@ public class FXMLRegistrarColaboracionDirectaController extends FXMLPaginaPrinci
     @FXML
     private TextField tfPais;
     @FXML
-    private TextField tfCorrep;
+    private TextField tfCorreo;
     @FXML
     private TextField tfIdioma;
     @FXML
     private TextField tfNumeroDeEstudiantes;
+    @FXML
+    private DatePicker dpFechaDeInicio;
+    @FXML
+    private DatePicker dpFechaDeCierre;
 
     /**
      * Initializes the controller class.
@@ -105,36 +115,20 @@ public class FXMLRegistrarColaboracionDirectaController extends FXMLPaginaPrinci
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lbNombreSesion.setText(profesor.toString());
+        inicializarValoresProfesorUv();
+         cargarCampus();
+        configurarSeleccionCampus(); 
     }    
-
-    @FXML
-    protected void clicImgCerrarSesion(MouseEvent event) {
-    }
-
-    @FXML
-    protected void clicBtnIrOfertasColaboracionCOIL(ActionEvent event) {
-    }
-
-    @FXML
-    protected void clicBtnirPaginaPrincipal(ActionEvent event) {
-        try {
-            Stage escenarioPrincipal = (Stage) btnPrincipal.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/coilvic/vistas/FXMLPaginaPrincipalProfesorUV.fxml"));
-            Scene escenaPrincipal = new Scene(root);
-            escenarioPrincipal.setScene(escenaPrincipal);
-            escenarioPrincipal.setTitle("Página Principal Profesor UV");
-            escenarioPrincipal.show();
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
         
+    private void inicializarValoresProfesorUv(){
+        ProfesorUV profesor = SingletonProfesorUV.getInstancia().getProfesorUV();
+        lbNombreProfesorUv.setText(profesor.getNombre());
+        lbApellidosProfesorUv.setText(profesor.getApellidos());
+        lbNumeroDePersonal.setText(Integer.toString(profesor.getNumeroPersonal()));
+        lbCorreo.setText(profesor.getCorreo());
+        lbTelefono.setText(profesor.getTelefono()); 
     }
-
-    @FXML
-    protected void clicBtnIrRegistrarOfertaColaboracion(ActionEvent event) {
-        
-    }
-    
+  
 
 
     @FXML
@@ -152,23 +146,179 @@ public class FXMLRegistrarColaboracionDirectaController extends FXMLPaginaPrinci
         
     }
     
+   private boolean validarCampos() {
+    // Verificar que los TextField no estén vacíos
+    if (esTextoVacio(tfNombreColaboracion) ||
+        esTextoVacio(tfNombreDependencia) ||
+        esTextoVacio(tfMunicipio) ||
+        esTextoVacio(tfExperienciaEducativa) ||
+        esTextoVacio(TfMateriaE) ||
+        esTextoVacio(tfNombreProfesorExterno) ||
+        esTextoVacio(tfTelefono) ||
+        esTextoVacio(tfCarrera) ||
+        esTextoVacio(tfApellidosProfesorExterno) ||
+        esTextoVacio(tfUniversidad) ||
+        esTextoVacio(tfPais) ||
+        esTextoVacio(tfCorreo) ||
+        esTextoVacio(tfIdioma) ||
+        esTextoVacio(tfNumeroDeEstudiantes)) {
+        return false;
+    }
     
+    // Verificar que los ComboBox tengan una selección
+    if (cbCampus.getValue() == null ||
+        cbAreaAcademica.getValue() == null ||
+        cbProgramaEducativo.getValue() == null) {
+        return false;
+    }
+    
+    // Verificar que los DatePicker tengan una fecha seleccionada
+    if (dpFechaDeInicio.getValue() == null ||
+        dpFechaDeCierre.getValue() == null) {
+        return false;
+    }
+    
+    // Todos los campos están válidos
+    return true;
+}
+
+private boolean esTextoVacio(TextField textField) {
+    return textField.getText().trim().isEmpty();
+}
+
+
+
+
+
     
     
 
-    @FXML
-    private void btnAceptarRegistroColaboracion(ActionEvent event) {
-    
-    
-    }
 
     @FXML
-    private void clicBtnIrRegistrarColaboracionCOIL(ActionEvent event) {
-        
-        
-        
+private void btnAceptarRegistroColaboracion(ActionEvent event) throws SQLException {
+   if (validarCampos()) {
+        try {
+            // Obtener los valores de los campos
+            String nombreColaboracion = tfNombreColaboracion.getText();
+            String nombreDependencia = tfNombreDependencia.getText();
+            Campus campusSeleccionado = cbCampus.getValue();
+            String municipio = tfMunicipio.getText();
+            AreaAcademica areaAcademicaSeleccionada = cbAreaAcademica.getValue();
+            ProgramaEducativo programaEducativoSeleccionado = cbProgramaEducativo.getValue();
+            String experienciaEducativa = tfExperienciaEducativa.getText();
+            String materiaE = TfMateriaE.getText();
+            String nombreProfesorExterno = tfNombreProfesorExterno.getText();
+            String telefonoProfesorExterno = tfTelefono.getText();
+            String carreraProfesorExterno = tfCarrera.getText();
+            String apellidosProfesorExterno = tfApellidosProfesorExterno.getText();
+            String universidadProfesorExterno = tfUniversidad.getText();
+            String paisProfesorExterno = tfPais.getText();
+            String correoProfesorExterno = tfCorreo.getText();
+            String idioma = tfIdioma.getText();
+            int numeroEstudiantes = Integer.parseInt(tfNumeroDeEstudiantes.getText());
+            String fechaInicio = dpFechaDeInicio.getValue().toString();
+            String fechaFin = dpFechaDeCierre.getValue().toString();
+            
+            // Guardar la colaboración utilizando el método guardarColaboracion de ColaboracionDAO
+            HashMap<String, Object> resultado = ColaboracionDAO.guardarColaboracion(
+                profesorUv.getIdProfesorUV(),
+                nombreColaboracion,
+                nombreDependencia,
+                campusSeleccionado.getIdCampus(),
+                municipio,
+                areaAcademicaSeleccionada.getIdAreaAcademica(),
+                programaEducativoSeleccionado.getIdProgramaEducativo(),
+                experienciaEducativa,
+                materiaE,
+                nombreProfesorExterno,
+                telefonoProfesorExterno,
+                carreraProfesorExterno,
+                apellidosProfesorExterno,
+                universidadProfesorExterno,
+                paisProfesorExterno,
+                correoProfesorExterno,
+                idioma,
+                numeroEstudiantes,
+                fechaInicio,
+                fechaFin
+            );
+            
+            // Verificar si se guardó la colaboración correctamente
+            boolean error = (boolean) resultado.get(Constantes.KEY_ERROR);
+            if (!error) {
+                Utilidades.mostrarAlertaSimple("Éxito", "La colaboración se ha guardado exitosamente", Alert.AlertType.INFORMATION);
+                limpiarFormulario();
+            } else {
+                String mensajeError = (String) resultado.get(Constantes.KEY_MENSAJE);
+                Utilidades.mostrarAlertaSimple("Error", "Hubo un error al guardar la colaboración: " + mensajeError, Alert.AlertType.ERROR);
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // Manejar la excepción adecuadamente
+            Utilidades.mostrarAlertaSimple("Error", "Hubo un error al guardar la colaboración: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
+    } else {
+        Utilidades.mostrarAlertaSimple("Error", "Los datos son inválidos o están incompletos.", Alert.AlertType.ERROR);
     }
     
-     
+}
+private void limpiarFormulario() {
+    tfNombreColaboracion.clear();
+    // Limpiar otros campos...
+}
+
     
+    
+    private void cargarCampus(){
+        campus = FXCollections.observableArrayList();
+        campus.addAll((ArrayList<Campus>)
+                ObtenerOfertaColaboracionUVDAO.obtenerCampus().get("campus"));
+        cbCampus.setItems(campus); 
+    }
+    
+    
+    private void configurarSeleccionCampus(){
+        cbCampus.valueProperty().addListener(new ChangeListener<Campus>(){
+            
+            @Override
+            public void changed(ObservableValue<? 
+                    extends Campus> observable, Campus oldValue, Campus newValue){
+                if(newValue != null ){
+                    cargarAreasAcademicas(newValue.getIdCampus());
+                    cbProgramaEducativo.getItems().clear();
+                }
+            }
+        });
+    }
+    
+    
+    private void cargarAreasAcademicas(int idCampus){
+        areasAcademicas = FXCollections.observableArrayList();
+        areasAcademicas.addAll((ArrayList<AreaAcademica>)ObtenerOfertaColaboracionUVDAO.
+                obtenerAreasAcademicas(idCampus).get("areasAcademicas"));
+        cbAreaAcademica.setItems(areasAcademicas);
+        configurarSeleccionAreasAcademicas(idCampus);
+    }
+    
+    
+    private void configurarSeleccionAreasAcademicas(int idCampus){                   
+        cbAreaAcademica.valueProperty().addListener(new ChangeListener<AreaAcademica>(){
+            @Override
+            public void changed(ObservableValue<? extends AreaAcademica> observable, 
+                    AreaAcademica oldValue, AreaAcademica newValue){
+                if(newValue != null ){
+                    cargarProgramasEducativos(newValue.getIdAreaAcademica(), idCampus);
+                }
+            }
+        });
+    }
+    
+     private void cargarProgramasEducativos(int idAreaAcademica, int idCampus){
+        programasEducativos = FXCollections.observableArrayList();
+        programasEducativos.addAll((ArrayList<ProgramaEducativo>)
+                ObtenerOfertaColaboracionUVDAO.obtenerProgramasEducativos
+        (idAreaAcademica, idCampus).get("programasEducativos"));
+        cbProgramaEducativo.setItems(programasEducativos);
+        
+    }  
+
 }

@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -160,4 +161,53 @@ public class ColaboracionDAO {
         return respuesta;
     }
 
+    
+ public static HashMap<String, Object> guardarColaboracion(int idProfesorUV, String nombreColaboracion, String nombreDependencia, int idCampus, String municipio, int idAreaAcademica, int idProgramaEducativo, String experienciaEducativa, String materiaE, String nombreProfesorExterno, String telefonoProfesorExterno, String carreraProfesorExterno, String apellidosProfesorExterno, String universidadProfesorExterno, String paisProfesorExterno, String correoProfesorExterno, String idioma, int numeroEstudiantes, String fechaInicio, String fechaFin) {
+    HashMap<String, Object> respuesta = new LinkedHashMap<>();
+    respuesta.put(Constantes.KEY_ERROR, true);
+    Connection conexionBD = ConexionBD.obtenerConexion();
+    
+    if (conexionBD != null) {
+        try {
+            String consulta = "INSERT INTO colaboracion (idProfesorUV, nombre, municipio, experienciaEducativa, materiaE, nombreProfesorExterno, telefonoProfesorExterno, carreraProfesorExterno, apellidosProfesorExterno, universidadProfesorExterno, paisProfesorExterno, correoProfesorExterno, idioma, numeroEstudiantes, fechaInicio, fechaFin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
+            prepararSentencia.setInt(1, idProfesorUV);
+            prepararSentencia.setString(2, nombreColaboracion);
+            prepararSentencia.setString(3, nombreDependencia);
+            prepararSentencia.setInt(4, idCampus);
+            prepararSentencia.setString(5, municipio);
+            prepararSentencia.setInt(6, idAreaAcademica);
+            prepararSentencia.setInt(7, idProgramaEducativo);
+            prepararSentencia.setString(8, experienciaEducativa);
+            prepararSentencia.setString(9, materiaE);
+            prepararSentencia.setString(10, nombreProfesorExterno);
+            prepararSentencia.setString(11, telefonoProfesorExterno);
+            prepararSentencia.setString(12, carreraProfesorExterno);
+            prepararSentencia.setString(13, apellidosProfesorExterno);
+            prepararSentencia.setString(14, universidadProfesorExterno);
+            prepararSentencia.setString(15, paisProfesorExterno);
+            prepararSentencia.setString(16, correoProfesorExterno);
+            prepararSentencia.setString(17, idioma);
+            prepararSentencia.setInt(18, numeroEstudiantes);
+            prepararSentencia.setString(19, fechaInicio);
+            prepararSentencia.setString(20, fechaFin);
+            
+            int filasInsertadas = prepararSentencia.executeUpdate();
+            if (filasInsertadas > 0) {
+                respuesta.put(Constantes.KEY_ERROR, false);
+                respuesta.put(Constantes.KEY_MENSAJE, "La colaboración se ha guardado exitosamente");
+            } else {
+                respuesta.put(Constantes.KEY_MENSAJE, "No se pudo insertar la colaboración.");
+            }
+            conexionBD.close();
+        } catch (SQLException e) {
+            respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+        }
+    } else {
+        respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
+    }
+    return respuesta;
+}
+
+   
 }
