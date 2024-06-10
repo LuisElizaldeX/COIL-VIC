@@ -156,16 +156,19 @@
       </Pane>
       <TableView fx:id="tvColaboraciones" layoutX="407.0" layoutY="308.0" prefHeight="483.0" prefWidth="951.0">
         <columns>
-          <TableColumn fx:id="colNombre" prefWidth="353.0" text="Nombre" />
-            <TableColumn fx:id="colMateria" prefWidth="312.0" text="Materia" />
-            <TableColumn fx:id="colFechaInicio" prefWidth="140.0" text="Fecha de inicio" />
-            <TableColumn fx:id="colFechaCierre" prefWidth="145.0" text="Fecha de cierre" />
+          <TableColumn fx:id="colNombre" prefWidth="353.0" style="-fx-alignment: center;" text="Nombre" />
+            <TableColumn fx:id="colMateria" prefWidth="312.0" style="-fx-alignment: center;" text="Materia" />
+            <TableColumn fx:id="colFechaInicio" prefWidth="140.0" style="-fx-alignment: center;" text="Fecha de inicio" />
+            <TableColumn fx:id="colFechaCierre" prefWidth="145.0" style="-fx-alignment: center;" text="Fecha de cierre" />
         </columns>
       </TableView>
       <Button layoutX="1118.0" layoutY="888.0" mnemonicParsing="false" onAction="#btnClicCancelarColaboracion" prefHeight="53.0" prefWidth="240.0" style="-fx-background-color: #706363; -fx-background-radius: 30;" text="Cancelar colaboración" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </children>
 </AnchorPane>

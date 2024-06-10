@@ -135,6 +135,17 @@ public class FXMLPaginaPrincipalCoordinadorCOILController implements Initializab
 
     @FXML
     protected void clicBtnIrCancelarColaboracionCOIL(ActionEvent event) {
+        try{
+            Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                    getResource("vistas/FXMLCancelarColaboracionCoordinador.fxml"));
+            Scene escenaPrincipal = new Scene(root);
+            escenarioPrincipal.setScene(escenaPrincipal);
+            escenarioPrincipal.setTitle("Cancelar colaboración");
+            escenarioPrincipal.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 
     @FXML
