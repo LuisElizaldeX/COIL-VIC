@@ -16,7 +16,8 @@ public class CoordinadorCOIL {
     public CoordinadorCOIL() {
     }
 
-    public CoordinadorCOIL(int idCoordinadorCOIL, int idUsuario, String nombre, String apellidoPaterno, String apellidoMaterno) {
+    public CoordinadorCOIL(int idCoordinadorCOIL, int idUsuario, String nombre, 
+            String apellidoPaterno, String apellidoMaterno) {
         this.idCoordinadorCOIL = idCoordinadorCOIL;
         this.idUsuario = idUsuario;
         this.nombre = nombre;

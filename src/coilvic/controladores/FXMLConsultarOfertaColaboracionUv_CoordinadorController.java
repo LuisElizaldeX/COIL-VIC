@@ -1,3 +1,9 @@
+/*
+* Autor: Erick Utrera Cornejo
+* Fecha de creación: 29/05/2024
+* Descripción: Controlador para consulta de oferta de colaboración UV por el coordinador
+*/
+
 package coilvic.controladores;
 
 import coilvic.modelo.pojo.CoordinadorCOIL;
@@ -22,7 +28,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-public class FXMLConsultarOfertaColaboracionUv_CoordinadorController extends FXMLPaginaPrincipalCoordinadorCOILController {
+public class FXMLConsultarOfertaColaboracionUv_CoordinadorController 
+        extends FXMLPaginaPrincipalCoordinadorCOILController {
     CoordinadorCOIL coordinador = SingletonCoordinadorCOIL.getInstancia().getCoordinadorCOIL();
 
     @FXML

@@ -32,10 +32,13 @@ public class CoordinadorCOILDAO {
                 ResultSet resultado = prepararSentencia.executeQuery();
                 if(resultado.next()){
                     CoordinadorCOIL coordinador = new CoordinadorCOIL();
-                    coordinador.setIdCoordinadorCOIL(resultado.getInt("idCoordinadorCOIL"));
+                    coordinador.setIdCoordinadorCOIL
+        (resultado.getInt("idCoordinadorCOIL"));
                     coordinador.setNombre(resultado.getString("nombre"));
-                    coordinador.setApellidoPaterno(resultado.getString("apellidoPaterno"));
-                    coordinador.setApellidoMaterno(resultado.getString("apellidoMaterno"));
+                    coordinador.setApellidoPaterno
+        (resultado.getString("apellidoPaterno"));
+                    coordinador.setApellidoMaterno
+        (resultado.getString("apellidoMaterno"));
                     coordinador.setIdUsuario(resultado.getInt("idUsuario"));
                     respuesta.setCoordinador(coordinador);
                 }else{

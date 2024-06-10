@@ -100,6 +100,7 @@ public class OfertaColaboracionUVDAO {
         if (conexionBD != null) {
             try {
                 String consulta = "SELECT " +
+                                "    oc.idOfertaColaboracionUV, " +
                                 "    oc.descripcion AS ofertaDescripcion, " +
                                 "    oc.nombre AS ofertaNombre, " +
                                 "    ee.nombre AS experienciaNombre, " +
@@ -124,12 +125,16 @@ public class OfertaColaboracionUVDAO {
                                      
                                 "FROM " +
                                 "    ofertacolaboracionuv oc " +
-                                "    JOIN experienciaeducativa ee ON oc.idExperienciaEducativa = ee.idExperienciaEducativa " +
+                                "    JOIN experienciaeducativa ee ON oc.idExperienciaEducativa = "
+                        + "ee.idExperienciaEducativa " +
                                 "    JOIN dependencia d ON ee.idDependencia = d.idDependencia " +
                                 "    JOIN campus c ON d.idCampus = c.idCampus " +
-                                "    JOIN programaeducativo pe ON d.idProgramaEducativo = pe.idProgramaEducativo " +
-                                "    JOIN areaacademica aa ON pe.idAreaAcademica = aa.idAreaAcademica " +
-                                "    JOIN estadoofertacolaboracionuv e ON oc.idEstadoOfertaColaboracionUV = e.idEstadoOfertaColaboracionUV" +
+                                "    JOIN programaeducativo pe ON d.idProgramaEducativo = "
+                        + "pe.idProgramaEducativo " +
+                                "    JOIN areaacademica aa ON pe.idAreaAcademica = "
+                        + "aa.idAreaAcademica " +
+                                "    JOIN estadoofertacolaboracionuv e "
+                        + "ON oc.idEstadoOfertaColaboracionUV = e.idEstadoOfertaColaboracionUV" +
                                 "    JOIN profesoruv p ON oc.idProfesoruv = p.idProfesoruv " +
                                 "    JOIN periodo per ON ee.idPeriodo = per.idPeriodo" +
                                 "    WHERE oc.idEstadoOfertaColaboracionUV = 3";
@@ -139,17 +144,26 @@ public class OfertaColaboracionUVDAO {
                 List<OfertaColaboracionUV> ofertaColaboracionUV = new ArrayList();
                 while (resultado.next()) {
                     OfertaColaboracionUV oferta = new OfertaColaboracionUV();
+                    oferta.setIdOfertaColaboracionUV
+        (resultado.getInt("idOfertaColaboracionUV"));
                     oferta.setNombre(resultado.getString("ofertaNombre"));
                     oferta.setMunicipio(resultado.getString("municipio"));
                     oferta.setCampus(resultado.getString("campusNombre"));
-                    oferta.setNombreDependencia(resultado.getString("dependenciaNombre"));
-                    oferta.setNombreAreaAcademica(resultado.getString("areaNombre"));
-                    oferta.setNombreProgramaEducativo(resultado.getString("programaNombre"));
-                    oferta.setDescripcion(resultado.getString("ofertaDescripcion"));
-                    oferta.setExperienciaEducativa(resultado.getString("experienciaNombre"));
+                    oferta.setNombreDependencia
+        (resultado.getString("dependenciaNombre"));
+                    oferta.setNombreAreaAcademica
+        (resultado.getString("areaNombre"));
+                    oferta.setNombreProgramaEducativo
+        (resultado.getString("programaNombre"));
+                    oferta.setDescripcion
+        (resultado.getString("ofertaDescripcion"));
+                    oferta.setExperienciaEducativa
+        (resultado.getString("experienciaNombre"));
                     oferta.setCreditos(resultado.getString("creditos"));
-                    oferta.setDescripcionEe(resultado.getString("experienciaDescripcion"));
-                    oferta.setNombreProfesorUv(resultado.getString("profesorUvNombre"));
+                    oferta.setDescripcionEe
+        (resultado.getString("experienciaDescripcion"));
+                    oferta.setNombreProfesorUv
+        (resultado.getString("profesorUvNombre"));
                     oferta.setApellidos(resultado.getString("apellidos"));
                     oferta.setNumeroPersonal(resultado.getInt("numeroPersonal"));
                     oferta.setCorreo(resultado.getString("correo"));
@@ -159,7 +173,8 @@ public class OfertaColaboracionUVDAO {
                     oferta.setFechaFin(resultado.getString("fechaFin"));
                     oferta.setIdCampus(resultado.getInt("idCampus"));
                     oferta.setIdAreaAcademica(resultado.getInt("idAreaAcademica"));
-                    oferta.setIdProgramaEducativo(resultado.getInt("idProgramaEducativo"));
+                    oferta.setIdProgramaEducativo
+        (resultado.getInt("idProgramaEducativo"));
                     
                     ofertaColaboracionUV.add(oferta);
                 }
@@ -177,50 +192,72 @@ public class OfertaColaboracionUVDAO {
     }
     
     
-    /*public static HashMap<String, Object> actualizarOfertaColaboracionUV(Paciente paciente){
+    public static HashMap<String, Object> 
+        actualizarOfertaColaboracionUV(OfertaColaboracionUV ofertaUv){
         HashMap<String, Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
         Connection conexionBD = ConexionBD.obtenerConexion();
         
         if(conexionBD != null){
             try{
-                String consulta = "UPDATE paciente SET nombre=?, apellidoPaterno=?, apellidoMaterno=?, correo=?, estatura=?, "
-                        + "fechaNacimiento=?, idMunicipio=?, foto=? WHERE idPaciente=?";
+                String consulta = "UPDATE ofertacolaboracionuv oc " +
+                                    "JOIN experienciaeducativa ee "
+                        + "ON oc.idExperienciaEducativa = ee.idExperienciaEducativa " +
+                                    "JOIN dependencia d ON ee.idDependencia = d.idDependencia " +
+                                    "JOIN campus c ON d.idCampus = c.idCampus " +
+                                    "JOIN programaeducativo pe "
+                        + "ON d.idProgramaEducativo = pe.idProgramaEducativo " +
+                                    "JOIN areaacademica aa ON pe.idAreaAcademica = "
+                        + "aa.idAreaAcademica " +
+                                    "JOIN estadoofertacolaboracionuv e "
+                        + "ON oc.idEstadoOfertaColaboracionUV = e.idEstadoOfertaColaboracionUV " +
+                                    "JOIN periodo per ON ee.idPeriodo = per.idPeriodo " +
+                                    "SET " +
+                                    "oc.descripcion =?, " +
+                                    "oc.nombre =?, " +
+                                    "ee.nombre =?, " +
+                                    "ee.descripcion =?, " +
+                                    "ee.creditos =?, " +
+                                    "d.nombre =?, " +
+                                    "d.municipio =?, " +
+                                    "d.idCampus =?, " +
+                                    "d.idProgramaEducativo =?, " +
+                                    "per.fechaInicio =?, " +
+                                    "per.fechaFin =? " +
+                                    "WHERE oc.idOfertaColaboracionUV =?;";
+                
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
+
+                prepararSentencia.setString(1, ofertaUv.getDescripcion());
+                prepararSentencia.setString(2, ofertaUv.getNombre());
+                prepararSentencia.setString(3, ofertaUv.getExperienciaEducativa());
+                prepararSentencia.setString(4, ofertaUv.getDescripcionEe());
+                prepararSentencia.setString(5, ofertaUv.getCreditos());
+                prepararSentencia.setString(6, ofertaUv.getNombreDependencia());
+                prepararSentencia.setString(7, ofertaUv.getMunicipio());
+                prepararSentencia.setInt(8, ofertaUv.getIdCampus());
+                prepararSentencia.setInt(9, ofertaUv.getIdProgramaEducativo());
+                prepararSentencia.setString(10, ofertaUv.getFechaInicio());
+                prepararSentencia.setString(11, ofertaUv.getFechaFin());
+                prepararSentencia.setInt(12, ofertaUv.getIdOfertaColaboracionUV());
+
+                prepararSentencia.executeUpdate();
                 
-                prepararSentencia.setString(1, paciente.getNombre());
-                prepararSentencia.setString(2, paciente.getApellidoPaterno());
-                prepararSentencia.setString(3, paciente.getApellidoMaterno());
-                prepararSentencia.setString(4, paciente.getCorreo());
-                prepararSentencia.setInt(5, paciente.getEstatura());
-                prepararSentencia.setString(6, paciente.getFechaNacimiento());
-                prepararSentencia.setInt(7, paciente.getIdMunicipio());
-                prepararSentencia.setBytes(8, paciente.getFoto());
-                prepararSentencia.setInt(9, paciente.getIdPaciente());
-               
-                 
-                int filasAfectadas = prepararSentencia.executeUpdate();
+                respuesta.put(Constantes.KEY_ERROR, false);
+                respuesta.put(Constantes.KEY_MENSAJE, "Informacion de la oferta "
+                        + "de colaboracion UV ha sido actualizada correctamente");
                 
-                if(filasAfectadas == 1){
-                    respuesta.put(Constantes.KEY_ERROR, false);
-                    respuesta.put(Constantes.KEY_MENSAJE, "Informacion del paciente actualizada correctamente");
-                }else{
-                    respuesta.put(Constantes.KEY_MENSAJE, "Lo sentimos, hubo un error en actualizar la informacion del paciente");
-                }
                 conexionBD.close();
                 
             }catch(SQLException ex){
                 respuesta.put(Constantes.KEY_MENSAJE, ex.getMessage());
-                
             }  
             
         }else{
-            respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
-            
- 
+            respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);  
         }
         return respuesta;
-    }*/
+    }
     
     
     public static HashMap<String, Object> aprobarColaboracion(Integer idOfertaColaboracionUV){
@@ -294,7 +331,8 @@ public class OfertaColaboracionUVDAO {
        
         if (conexionBD != null) {
             try {
-                String consulta = "insert into dependencia (nombre, municipio, idCampus, idProgramaEducativo) values (?, ?, ?, ?)";
+                String consulta = "insert into dependencia "
+                        + "(nombre, municipio, idCampus, idProgramaEducativo) values (?, ?, ?, ?)";
                 
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
                 prepararSentencia.setString(1, dependencia.getNombre());
@@ -306,7 +344,8 @@ public class OfertaColaboracionUVDAO {
                 if(filasAfectadas == 1){
                     respuesta.put(Constantes.KEY_ERROR, false);
                 }else{
-                    respuesta.put(Constantes.KEY_MENSAJE, "Lo sentimos, hubo un error en guardar la informacion de la dependencia");
+                    respuesta.put(Constantes.KEY_MENSAJE, "Lo sentimos, "
+                            + "hubo un error en guardar la informacion de la dependencia");
                 }
                 conexionBD.close();
                 
@@ -337,7 +376,8 @@ public class OfertaColaboracionUVDAO {
                 if(filasAfectadas == 1){
                     respuesta.put(Constantes.KEY_ERROR, false);
                 }else{
-                    respuesta.put(Constantes.KEY_MENSAJE, "Lo sentimos, hubo un error en guardar la informacion del periodo");
+                    respuesta.put(Constantes.KEY_MENSAJE, "Lo sentimos, "
+                            + "hubo un error en guardar la informacion del periodo");
                 }
                 conexionBD.close();
                 
@@ -351,15 +391,18 @@ public class OfertaColaboracionUVDAO {
     }
     
     
-    public static HashMap<String, Object> guardarExperienciaEducativa(ExperienciaEducativa experienciaEducativa){
+    public static HashMap<String, Object> 
+        guardarExperienciaEducativa(ExperienciaEducativa experienciaEducativa){
         Connection conexionBD = ConexionBD.obtenerConexion();
         HashMap<String, Object> respuesta = new LinkedHashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
        
         if (conexionBD != null) {
             try {
-                String consulta = "insert into experienciaeducativa (nombre, descripcion, creditos, idDependencia, idPeriodo) "
-                        + "values (?, ?, ?, (SELECT idDependencia FROM dependencia ORDER BY idDependencia DESC LIMIT 1), "
+                String consulta = "insert into experienciaeducativa "
+                        + "(nombre, descripcion, creditos, idDependencia, idPeriodo) "
+                        + "values (?, ?, ?, (SELECT idDependencia "
+                        + "FROM dependencia ORDER BY idDependencia DESC LIMIT 1), "
                         + "(SELECT idPeriodo FROM periodo ORDER BY idPeriodo DESC LIMIT 1))";
                 
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
@@ -371,7 +414,8 @@ public class OfertaColaboracionUVDAO {
                 if(filasAfectadas == 1){
                     respuesta.put(Constantes.KEY_ERROR, false);
                 }else{
-                    respuesta.put(Constantes.KEY_MENSAJE, "Lo sentimos, hubo un error en guardar la informacion de la experiencia educativa");
+                    respuesta.put(Constantes.KEY_MENSAJE, "Lo sentimos, "
+                           + "hubo un error en guardar la informacion de la experiencia educativa");
                 }
                 conexionBD.close();
                 
@@ -385,17 +429,20 @@ public class OfertaColaboracionUVDAO {
     }
     
     
-    public static HashMap<String, Object> guardarOfertaColaboracionUv(OfertaColaboracionUV ofertaUv){
+    public static HashMap<String, Object> 
+        guardarOfertaColaboracionUv(OfertaColaboracionUV ofertaUv){
         Connection conexionBD = ConexionBD.obtenerConexion();
         HashMap<String, Object> respuesta = new LinkedHashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
        
         if (conexionBD != null) {
             try {
-                String consulta = "insert into ofertacolaboracionuv (nombre, descripcion, idProfesoruv, "
+                String consulta = "insert into ofertacolaboracionuv "
+                        + "(nombre, descripcion, idProfesoruv, "
                         + "idExperienciaEducativa, idEstadoOfertaColaboracionUV) " 
                         + "values (?, ?, ?, (SELECT idExperienciaEducativa "
-                        + "FROM experienciaeducativa ORDER BY idExperienciaEducativa DESC LIMIT 1), 1)";
+                        + "FROM experienciaeducativa "
+                        + "ORDER BY idExperienciaEducativa DESC LIMIT 1), 1)";
                 
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
                 prepararSentencia.setString(1, ofertaUv.getNombre());
@@ -405,9 +452,11 @@ public class OfertaColaboracionUVDAO {
                 int filasAfectadas = prepararSentencia.executeUpdate();
                 if(filasAfectadas == 1){
                     respuesta.put(Constantes.KEY_ERROR, false);
-                    respuesta.put(Constantes.KEY_MENSAJE, "Oferta de colaboración COIL registrada con éxito");
+                    respuesta.put(Constantes.KEY_MENSAJE, 
+                            "Oferta de colaboración COIL registrada con éxito");
                 }else{
-                    respuesta.put(Constantes.KEY_MENSAJE, "Lo sentimos, hubo un error en guardar la informacion de la oferta de colaboracion UV");
+                    respuesta.put(Constantes.KEY_MENSAJE, "Lo sentimos, hubo un error en "
+                            + "guardar la informacion de la oferta de colaboracion UV");
                 }
                 conexionBD.close();
                 

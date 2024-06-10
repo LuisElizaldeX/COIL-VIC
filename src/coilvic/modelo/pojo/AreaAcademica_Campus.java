@@ -1,5 +1,10 @@
-package coilvic.modelo.pojo;
+/*
+* Autor: Erick Utrera Cornejo
+* Fecha de creación: 29/05/2024
+* Descripción: Clase del modelo de AreaAcademica_Campus
+*/
 
+package coilvic.modelo.pojo;
 
 public class AreaAcademica_Campus {
     private int idAreaAcademica;
@@ -10,7 +15,8 @@ public class AreaAcademica_Campus {
     public AreaAcademica_Campus() {
     }
 
-    public AreaAcademica_Campus(String nombreAreaAcademica, String nombreCampus, int idAreaAcademica, int idCampus) {
+    public AreaAcademica_Campus
+        (String nombreAreaAcademica, String nombreCampus, int idAreaAcademica, int idCampus) {
         this.nombreAreaAcademica = nombreAreaAcademica;
         this.nombreCampus = nombreCampus;
         this.idAreaAcademica = idAreaAcademica;

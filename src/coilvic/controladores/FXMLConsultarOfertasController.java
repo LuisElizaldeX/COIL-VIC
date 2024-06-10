@@ -1,3 +1,9 @@
+/*
+* Autor: Erick Utrera Cornejo
+* Fecha de creación: 29/05/2024
+* Descripción: Controlador para consultar tabla de ofertas de colaboración por el coordinador
+*/
+
 package coilvic.controladores;
 
 import coilvic.modelo.dao.OfertaColaboracionExternaDAO;
@@ -82,7 +88,8 @@ public class FXMLConsultarOfertasController extends FXMLPaginaPrincipalCoordinad
         
         colNombreUv.setCellValueFactory(new PropertyValueFactory("nombre"));
         colDependencia.setCellValueFactory(new PropertyValueFactory("nombreDependencia"));
-        colProgramaEducativo.setCellValueFactory(new PropertyValueFactory("nombreProgramaEducativo"));
+        colProgramaEducativo.setCellValueFactory
+        (new PropertyValueFactory("nombreProgramaEducativo"));
         colFechaInicio.setCellValueFactory(new PropertyValueFactory("fechaInicio"));
         colFechaFin.setCellValueFactory(new PropertyValueFactory("fechaFin"));
         colEstadoUv.setCellValueFactory(new PropertyValueFactory("estado"));
@@ -90,20 +97,23 @@ public class FXMLConsultarOfertasController extends FXMLPaginaPrincipalCoordinad
     
     private void cargarDatosOfertasColaboracionExternas(){
         ofertasColaboracionExternas = FXCollections.observableArrayList();
-        HashMap<String, Object> respuesta = OfertaColaboracionExternaDAO.obtenerOfertaColaboracionExterna();
+        HashMap<String, Object> respuesta = 
+                OfertaColaboracionExternaDAO.obtenerOfertaColaboracionExterna();
         
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
         
         if(!isError){
             ArrayList<OfertaColaboracionExterna> ofertasColaboracionExternasBD =  
-                    (ArrayList<OfertaColaboracionExterna>) respuesta.get("ofertasColaboracionExternas");
+                    (ArrayList<OfertaColaboracionExterna>) 
+                    respuesta.get("ofertasColaboracionExternas");
             
             ofertasColaboracionExternas.addAll(ofertasColaboracionExternasBD);
             tvOfertasExternas.setItems(ofertasColaboracionExternas);
             
             
         }else{
-            Utilidades.mostrarAlertaSimple("Error", "" + respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.WARNING);
+            Utilidades.mostrarAlertaSimple("Error", "" + 
+                    respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.WARNING);
         }
     }
     
@@ -115,7 +125,8 @@ public class FXMLConsultarOfertasController extends FXMLPaginaPrincipalCoordinad
         
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
         if(!isError){
-            ArrayList<OfertaColaboracionUV> ofertasColaboracionUVBD = (ArrayList<OfertaColaboracionUV>) respuesta.get("OfertasColaboracionUV");
+            ArrayList<OfertaColaboracionUV> ofertasColaboracionUVBD = 
+                    (ArrayList<OfertaColaboracionUV>) respuesta.get("OfertasColaboracionUV");
             ofertasColaboracionUV.addAll(ofertasColaboracionUVBD);
             tvOfertasUv.setItems(ofertasColaboracionUV);
         }else{
@@ -127,7 +138,8 @@ public class FXMLConsultarOfertasController extends FXMLPaginaPrincipalCoordinad
 
     @FXML
     private void btnClicVerOferta(ActionEvent event) {
-        OfertaColaboracionExterna ofertaExternaSeleccionada = tvOfertasExternas.getSelectionModel().getSelectedItem();
+        OfertaColaboracionExterna ofertaExternaSeleccionada = 
+                tvOfertasExternas.getSelectionModel().getSelectedItem();
         OfertaColaboracionUV ofertaUvSeleccionada = tvOfertasUv.getSelectionModel().getSelectedItem();
         
         if(ofertaExternaSeleccionada != null){
@@ -137,8 +149,9 @@ public class FXMLConsultarOfertasController extends FXMLPaginaPrincipalCoordinad
             irOfertaUv(ofertaUvSeleccionada);
             
         }else{
-            Utilidades.mostrarAlertaSimple("Selecciona una oferta de colaboracion externa", "Para consultar una oferta primero debes "
-                    +"seleccionarla de la tabla", Alert.AlertType.WARNING);
+            Utilidades.mostrarAlertaSimple("Selecciona una oferta de colaboracion externa", 
+                    "Para consultar una oferta primero debes seleccionarla de la tabla", 
+                    Alert.AlertType.WARNING);
         }
         
     }
@@ -147,10 +160,12 @@ public class FXMLConsultarOfertasController extends FXMLPaginaPrincipalCoordinad
         try{
            Stage ofertaExterna = (Stage) imgCerrarSesion.getScene().getWindow();
            
-           FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLConsultarOfertaColaboracionExterna_Coordinador.fxml");
+           FXMLLoader loader = Utilidades.obtenerLoader
+        ("vistas/FXMLConsultarOfertaColaboracionExterna_Coordinador.fxml");
            Parent root = loader.load();
             
-            FXMLConsultarOfertaColaboracionExterna_CoordinadorController controlador = loader.getController();
+            FXMLConsultarOfertaColaboracionExterna_CoordinadorController controlador = 
+                    loader.getController();
             controlador.inicializarValores(ofertaExternaSeleccionada);
             controlador.setOfertaColaboracionExterna(ofertaExternaSeleccionada);
            
@@ -169,9 +184,11 @@ public class FXMLConsultarOfertasController extends FXMLPaginaPrincipalCoordinad
         try{
            Stage ofertaUv = (Stage) imgCerrarSesion.getScene().getWindow();
            
-            FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLConsultarOfertaColaboracionUv_Coordinador.fxml");
+            FXMLLoader loader = Utilidades.obtenerLoader
+        ("vistas/FXMLConsultarOfertaColaboracionUv_Coordinador.fxml");
             Parent root = loader.load();
-            FXMLConsultarOfertaColaboracionUv_CoordinadorController controlador = loader.getController();
+            FXMLConsultarOfertaColaboracionUv_CoordinadorController controlador = 
+                    loader.getController();
             controlador.inicializarValores(ofertaUvSeleccionada);
            
            Scene escenaOfertaUv = new Scene(root);
