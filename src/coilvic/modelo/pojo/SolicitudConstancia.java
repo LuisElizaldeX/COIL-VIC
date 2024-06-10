@@ -21,6 +21,8 @@ public class SolicitudConstancia {
     private String descripcion;
     private String estudiante;
     private String matricula;
+    private String nombreArchivo;
+    private byte[] archivo;
     
     public SolicitudConstancia() {
     }
@@ -29,7 +31,7 @@ public class SolicitudConstancia {
             int idEstadoConstancia, String estado, String fechaSolcitud, String colaboracion, 
             String profesorUV, String periodo, String profesorExterno, 
             String experienciaEducativa, String programaEducativo, String descripcion,
-            String estudiante, String matricula) {
+            String estudiante, String matricula, String nombreArchivo, byte[] archivo) {
         this.idSolicitudConstancia = idSolicitudConstancia;
         this.idColaboracion = idColaboracion;
         this.idEstadoConstancia = idEstadoConstancia;
@@ -44,6 +46,8 @@ public class SolicitudConstancia {
         this.descripcion = descripcion;
         this.estudiante = estudiante;
         this.matricula = matricula;
+        this.nombreArchivo = nombreArchivo;
+        this.archivo = archivo;
     }
 
     
@@ -158,6 +162,22 @@ public class SolicitudConstancia {
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
+    }
+    
+     public String getNombreArchivo() {
+        return nombreArchivo;
+    }
+
+    public void setNombreArchivo(String nombreArchivo) {
+        this.nombreArchivo = nombreArchivo;
+    }
+
+    public byte[] getArchivo() {
+        return archivo;
+    }
+    
+    public void setArchivo(byte[] archivo) {
+        this.archivo = archivo;
     }
     
 }

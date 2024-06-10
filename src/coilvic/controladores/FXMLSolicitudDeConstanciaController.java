@@ -34,6 +34,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class FXMLSolicitudDeConstanciaController 
         extends FXMLPaginaPrincipalCoordinadorCOILController{
@@ -67,8 +69,12 @@ public class FXMLSolicitudDeConstanciaController
     private Label lbProfesorExterno;
     @FXML
     private Label lbProgramaEducativo;
+    
+    private byte[] archivo;
 
     private ObservableList<SolicitudConstancia> solicitudConstanciaInformacion;
+    @FXML
+    private Label lbNombreEvidencia;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -85,6 +91,8 @@ public class FXMLSolicitudDeConstanciaController
         lbProfesorExterno.setText(solicitud.getProfesorExterno());
         lbProgramaEducativo.setText(solicitud.getProgramaEducativo());
         lbEstado.setText(solicitud.getEstado());
+        lbNombreEvidencia.setText(solicitud.getNombreArchivo());
+        archivo = solicitud.getArchivo();
         cargarDatosEstudiantesColaboracion(solicitud.getIdColaboracion());
     }
     
@@ -161,6 +169,25 @@ public class FXMLSolicitudDeConstanciaController
 
     @FXML
     private void clicArchivoEvidencia(MouseEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Guardar evidencia");
+        FileChooser.ExtensionFilter extFilter = 
+                new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showSaveDialog(new Stage());
+        if (file != null) {
+            try (FileOutputStream fos = new FileOutputStream(file)) {
+                fos.write(archivo);
+                fos.flush();
+                Utilidades.mostrarAlertaSimple("Archivo exportado",
+                    "El archivo fue exportado correctamente",
+                    Alert.AlertType.INFORMATION);
+            } catch (IOException e) {
+                Utilidades.mostrarAlertaSimple("Error al exportar",
+                    e.getMessage(),
+                    Alert.AlertType.ERROR);
+            }
+        }
     }
     
 }

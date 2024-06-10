@@ -28,19 +28,21 @@ public class SolicitudConstanciaDAO {
         if (conexionBD != null) {
             try {
                 String consulta = 
-                "SELECT sc.idColaboracion, c.nombre AS colaboracion, c.descripcion, "
-                + "CONCAT(puv.nombre, ' ', puv.apellidos) AS profesoruv, "
-                + "CONCAT(pex.nombre, ' ', pex.apellidos) AS profesorexterno, "
-                + "ee.nombre AS experienciaEducativa, pe.nombre AS programaEducativo "        
-                + "FROM solicitudconstancia sc "
-                + "JOIN colaboracion c ON sc.idColaboracion = c.idColaboracion "
-                + "JOIN profesoruv puv ON c.idProfesoruv = puv.idProfesoruv "
-                + "JOIN profesorexterno pex ON c.idProfesorexterno = pex.idProfesorexterno "
-                + "JOIN experienciaeducativa ee "
-                + "ON c.idExperienciaEducativa = ee.idExperienciaEducativa "
-                + "JOIN dependencia d ON ee.idDependencia = d.idDependencia "
-                + "JOIN programaeducativo pe ON d.idProgramaEducativo = pe.idProgramaEducativo "       
-                + "WHERE c.idEstadoColaboracion = 2 AND idEstadoConstancia = 1";
+                "SELECT sc.idColaboracion, c.nombre AS colaboracion, c.descripcion, " +
+                "CONCAT(puv.nombre, ' ', puv.apellidos) AS profesoruv, " +
+                "CONCAT(pex.nombre, ' ', pex.apellidos) AS profesorexterno, " +
+                "ee.nombre AS experienciaEducativa, pe.nombre AS programaEducativo, " +
+                "ar.nombre AS archivoNombre , ar.archivocol AS archivo " +
+                "FROM solicitudconstancia sc " +
+                "JOIN colaboracion c ON sc.idColaboracion = c.idColaboracion " +
+                "JOIN profesoruv puv ON c.idProfesoruv = puv.idProfesoruv " +
+                "JOIN profesorexterno pex ON c.idProfesorexterno = pex.idProfesorexterno " +
+                "JOIN experienciaeducativa ee " +
+                "ON c.idExperienciaEducativa = ee.idExperienciaEducativa " +
+                "JOIN dependencia d ON ee.idDependencia = d.idDependencia " +
+                "JOIN programaeducativo pe ON d.idProgramaEducativo = pe.idProgramaEducativo " +
+                "JOIN archivo ar ON c.idArchivo = ar.idArchivo " +
+                "WHERE c.idEstadoColaboracion = 2 AND sc.idEstadoConstancia = 1";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
                 ResultSet resultado = prepararSentencia.executeQuery();
                 List<SolicitudConstancia> solicitudConstancia = new ArrayList();
@@ -60,6 +62,10 @@ public class SolicitudConstanciaDAO {
                         (resultado.getString("profesoruv"));
                     solicitud.setProfesorExterno
                         (resultado.getString("profesorexterno"));
+                    solicitud.setNombreArchivo
+                        (resultado.getString("archivoNombre"));
+                    solicitud.setArchivo
+                        (resultado.getBytes("archivo"));
                     solicitudConstancia.add(solicitud);
                 }
                 respuesta.put(Constantes.KEY_ERROR, false);

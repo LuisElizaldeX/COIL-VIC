@@ -234,7 +234,12 @@
             <Image url="@../recursos/pdf.png" />
          </image>
       </ImageView>
-      <Label layoutX="1091.0" layoutY="786.0" prefHeight="55.0" prefWidth="146.0" text="Evidencia">
+      <Label fx:id="lbNombreEvidencia" alignment="CENTER" layoutX="960.0" layoutY="784.0" prefHeight="76.0" prefWidth="392.0" text="Label" wrapText="true">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="898.0" layoutY="704.0" prefHeight="55.0" prefWidth="174.0" text="Evidencia:">
          <font>
             <Font name="Berlin Sans FB" size="35.0" />
          </font>
