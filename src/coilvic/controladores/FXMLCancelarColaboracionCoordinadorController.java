@@ -83,7 +83,11 @@ public class FXMLCancelarColaboracionCoordinadorController extends FXMLPaginaPri
         Colaboracion colaboracionSeleccionada = tvColaboraciones.getSelectionModel().getSelectedItem();
         
         if(colaboracionSeleccionada != null){
-            irJustificarCancelacion(colaboracionSeleccionada.getIdColaboracion());
+            if (colaboracionSeleccionada.getEstadoColaboracion().equals("En curso")) {
+                irJustificarCancelacion(colaboracionSeleccionada.getIdColaboracion());
+            } else {
+                Utilidades.mostrarAlertaSimple("Error al cancelar", "Esta colaboración ya se encuentra cancelada o registrada", Alert.AlertType.WARNING);
+            }
         } else {
             Utilidades.mostrarAlertaSimple("Seleccionar colaboración", 
                     "Para cancelar una colaboración primero debe seleccionar una de la tabla", Alert.AlertType.WARNING);
@@ -96,7 +100,7 @@ public class FXMLCancelarColaboracionCoordinadorController extends FXMLPaginaPri
             FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLJustificarCancelacion.fxml");
             Parent root = loader.load();
             FXMLJustificarCancelacionController controlador = loader.getController();
-            controlador.inicializarValores(idColaboracion, this);
+            controlador.inicializarValores(idColaboracion,this);
             
             Scene escenaPrincipal = new Scene(root);
             escenarioSecundario.setScene(escenaPrincipal);

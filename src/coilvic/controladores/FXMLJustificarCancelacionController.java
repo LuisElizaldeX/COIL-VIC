@@ -42,12 +42,10 @@ public class FXMLJustificarCancelacionController implements Initializable {
 
     @FXML
     private void btnClicAceptar(ActionEvent event) {
-        if(agregarJustificacion()){
+        if (agregarJustificacion()) {
             cerrarVentana();
             cancelarColaboracion();
         }
-        
-        
     }
     
     private boolean agregarJustificacion(){
