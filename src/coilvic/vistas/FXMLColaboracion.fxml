@@ -3,12 +3,13 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
+<?import java.net.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLPaginaPrincipalProfesorUVController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLColaboracionController">
    <children>
       <Pane prefHeight="1005.0" prefWidth="312.0" style="-fx-background-color: #404040;">
          <children>
@@ -102,57 +103,68 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="312.0" prefHeight="440.0" prefWidth="1136.0">
+      <Pane layoutX="312.0" prefHeight="301.0" prefWidth="1136.0">
          <children>
-            <ImageView fitHeight="440.0" fitWidth="1143.0" pickOnBounds="true">
+            <ImageView fitHeight="300.0" fitWidth="1139.0" opacity="0.83" pickOnBounds="true">
                <image>
-                  <Image url="@../recursos/linea%201.png" />
+                  <Image url="@../recursos/Research-Collaboration.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="246.0" fitWidth="275.0" layoutX="122.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../recursos/image%201.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="205.0" fitWidth="97.0" layoutX="1016.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../recursos/UV.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="601.0" layoutY="139.0" prefHeight="86.0" prefWidth="339.0" text="COIL-VIC">
+            <Label fx:id="lbNombreColaboracion" alignment="TOP_LEFT" layoutX="71.0" layoutY="39.0" prefHeight="137.0" prefWidth="979.0" textFill="WHITE" wrapText="true">
                <font>
-                  <Font name="Arial" size="75.0" />
+                  <Font name="Arial" size="48.0" />
                </font>
             </Label>
-            <Label layoutX="516.0" layoutY="266.0" prefHeight="71.0" prefWidth="479.0" text="Collaborative Online International Learnig - Virtual International Collaborations " textAlignment="CENTER" wrapText="true">
+            <Label fx:id="lbPeriodo" layoutX="71.0" layoutY="198.0" prefHeight="71.0" prefWidth="819.0" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Label fx:id="lbNombreBienvenida" layoutX="346.0" layoutY="546.0" prefHeight="71.0" prefWidth="642.0">
+      <Button layoutX="1291.0" layoutY="330.0" mnemonicParsing="false" onAction="#btnClicRegresar" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: EA5959;" text="Regresar" textFill="WHITE">
          <font>
-            <Font name="Arial" size="56.0" />
+            <Font size="18.0" />
          </font>
-      </Label>
-      <Label layoutX="338.0" layoutY="475.0" prefHeight="71.0" prefWidth="642.0" text="Bienvenido profesor">
-         <font>
-            <Font name="Arial Bold Italic" size="53.0" />
-         </font>
-      </Label>
-      <Label layoutX="375.0" layoutY="640.0" text="Colaboraciones:">
+      </Button>
+      <Label fx:id="lbDescripcion" alignment="TOP_LEFT" layoutX="347.0" layoutY="397.0" prefHeight="99.0" prefWidth="1063.0" wrapText="true" />
+      <Label layoutX="347.0" layoutY="519.0" text="Profesor de la Universidad Veracruzana:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="tvColaboraciones" layoutX="348.0" layoutY="691.0" onMouseClicked="#seleccionarColaboracion" prefHeight="269.0" prefWidth="1064.0" stylesheets="@../css/estilos.css">
-        <columns>
-          <TableColumn fx:id="colNombre" prefWidth="335.0" text="Nombre" />
-          <TableColumn fx:id="colMateria" prefWidth="308.0" text="Materia" />
-            <TableColumn fx:id="colPeriodo" prefWidth="208.0" text="Periodo" />
-            <TableColumn fx:id="colEstado" prefWidth="212.0" text="Estado" />
-        </columns>
-      </TableView>
+      <Label fx:id="lbNombreProfesorUV" layoutX="364.0" layoutY="546.0" text="Nombre: " />
+      <Label layoutX="364.0" layoutY="567.0" text="Universidad: Universidad Veracruzana" />
+      <Label fx:id="lbRegion" layoutX="364.0" layoutY="588.0" text="Ubicacion: " />
+      <Label fx:id="lbCarrera" layoutX="364.0" layoutY="609.0" text="Carrera: " />
+      <Label fx:id="lbExperienciaEducativa" layoutX="364.0" layoutY="630.0" text="Asignatura: " />
+      <Label fx:id="lbTelefono" layoutX="364.0" layoutY="651.0" text="Teléfono: " />
+      <Label fx:id="lbIdiomaProfesorUV" layoutX="364.0" layoutY="672.0" text="Idioma: " />
+      <Label fx:id="lbCorreoProfesorUV" layoutX="364.0" layoutY="693.0" text="Correo-e: " />
+      <Label fx:id="lbPresentacionProfEx" layoutX="347.0" layoutY="737.0" text="Profesor de la ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbNombreProfEx" layoutX="364.0" layoutY="764.0" text="Nombre: " />
+      <Label fx:id="lbCorreoProfEx" layoutX="364.0" layoutY="785.0" text="Correo-e: " />
+      <Label fx:id="lbMateriaProfEx" layoutX="364.0" layoutY="806.0" text="Materia/asignatura: " />
+      <Label fx:id="lbCarreraProfEx" layoutX="364.0" layoutY="827.0" text="Carrera: " />
+      <Label layoutX="364.0" layoutY="848.0" text="Idioma: " />
+      <Button layoutX="361.0" layoutY="933.0" mnemonicParsing="false" onAction="#btnClicCancelarColaboracion" prefHeight="39.0" prefWidth="220.0" style="-fx-background-color: EA5959;" text="Cancelar colaboración" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="623.0" layoutY="933.0" mnemonicParsing="false" onAction="#btnClicCerrarColaboracion" prefHeight="39.0" prefWidth="220.0" style="-fx-background-color: EA5959;" text="Cerrar colaboración" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="926.0" layoutY="933.0" mnemonicParsing="false" onAction="#btnClicSubirArchivo" prefHeight="39.0" prefWidth="153.0" style="-fx-background-color: EA5959;" text="Subir Archivo" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
