@@ -21,4 +21,5 @@ public class Constantes {
     
     public static final String KEY_ERROR = "error";
     public static final String KEY_MENSAJE = "mensaje";
+    public static final long PESO_MAXIMO = 1024 * 1024 * 20;
 }

@@ -29,6 +29,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class FXMLRevisarColaboracionesCOILController 
@@ -53,6 +54,10 @@ public class FXMLRevisarColaboracionesCOILController
     private TableColumn colPeriodo;
     @FXML
     private Button btnRevisarColaboracion;
+    @FXML
+    private TableColumn colFechaInicio;
+    @FXML
+    private TableColumn colFechaFin;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -66,6 +71,8 @@ public class FXMLRevisarColaboracionesCOILController
         colExperienciaEducativa.setCellValueFactory
             (new PropertyValueFactory("experienciaEducativa"));
         colPeriodo.setCellValueFactory(new PropertyValueFactory("periodo"));
+        colFechaInicio.setCellValueFactory(new PropertyValueFactory("fechaInicio"));
+        colFechaFin.setCellValueFactory(new PropertyValueFactory("fechaFin"));
     }
     
     private void cargarDatosColaboracion(){
