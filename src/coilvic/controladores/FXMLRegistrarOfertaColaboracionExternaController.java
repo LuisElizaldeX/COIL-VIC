@@ -1,3 +1,9 @@
+/*
+* Autor: Erick Utrera Cornejo
+* Fecha de creación: 29/05/2024
+* Descripción: Controlador para registrar oferta de colaboración externa 
+*/
+
 package coilvic.controladores;
 
 import coilvic.modelo.dao.OfertaColaboracionExternaDAO;
@@ -26,7 +32,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 
-public class FXMLRegistrarOfertaColaboracionExternaController extends FXMLPaginaPrincipalCoordinadorCOILController {
+public class FXMLRegistrarOfertaColaboracionExternaController 
+        extends FXMLPaginaPrincipalCoordinadorCOILController {
 
     @FXML
     private ImageView imgCerrarSesion;
@@ -98,17 +105,23 @@ public class FXMLRegistrarOfertaColaboracionExternaController extends FXMLPagina
     }
     
     
-    private void guardarOfertaColaboracionExterna(Universidad universidad, ProfesorExterno profesorExterno, OfertaColaboracionExterna ofertaExterna){
-        HashMap<String, Object> respuestaUniversidad = OfertaColaboracionExternaDAO.guardarUniversidad(universidad);
-        HashMap<String, Object> respuestaProfesorExterno = OfertaColaboracionExternaDAO.guardarProfesorExterno(profesorExterno);
-        HashMap<String, Object> respuestaOfertaExterna = OfertaColaboracionExternaDAO.guardarOfertaExterna(ofertaExterna);
+    private void guardarOfertaColaboracionExterna(Universidad universidad, 
+            ProfesorExterno profesorExterno, OfertaColaboracionExterna ofertaExterna){
+        HashMap<String, Object> respuestaUniversidad = 
+                OfertaColaboracionExternaDAO.guardarUniversidad(universidad);
+        HashMap<String, Object> respuestaProfesorExterno = 
+                OfertaColaboracionExternaDAO.guardarProfesorExterno(profesorExterno);                                  
+        HashMap<String, Object> respuestaOfertaExterna = 
+                OfertaColaboracionExternaDAO.guardarOfertaExterna(ofertaExterna);
         
         if(!(boolean)respuestaOfertaExterna.get(Constantes.KEY_ERROR)){
-            Utilidades.mostrarAlertaSimple("Oferta externa guardada", ""+respuestaOfertaExterna.get(Constantes.KEY_MENSAJE),                    
+            Utilidades.mostrarAlertaSimple("Oferta externa guardada", ""+
+                    respuestaOfertaExterna.get(Constantes.KEY_MENSAJE),                    
                     Alert.AlertType.INFORMATION);
             
         }else{
-            Utilidades.mostrarAlertaSimple("Error al guardar", ""+respuestaOfertaExterna.get(Constantes.KEY_MENSAJE), 
+            Utilidades.mostrarAlertaSimple("Error al guardar", ""+
+                    respuestaOfertaExterna.get(Constantes.KEY_MENSAJE), 
                     Alert.AlertType.ERROR);  
         }
     }
@@ -144,17 +157,19 @@ public class FXMLRegistrarOfertaColaboracionExternaController extends FXMLPagina
         ofertaExterna.setNombre(tfNombreOfertaExterna.getText());
         ofertaExterna.setPeriodo(tfPeriodo.getText());
         ofertaExterna.setDescripcion(tfDescripcion.getText());
-        ofertaExterna.setIdProfesorExterno(obtenerInformacionProfesorExterno().getIdProfesorExterno());
+        ofertaExterna.setIdProfesorExterno
+        (obtenerInformacionProfesorExterno().getIdProfesorExterno());
         
         return ofertaExterna;
     }
     
     private boolean validarCampos(){    
-        if(tfNombre.getText().trim().isEmpty() || tfApellidos.getText().trim().isEmpty() || tfPais.getText().trim().isEmpty() 
-                || tfUniversidad.getText().trim().isEmpty() || tfCarrera.getText().trim().isEmpty() || tfMateria.getText().trim().isEmpty() 
+        if(tfNombre.getText().trim().isEmpty() || tfApellidos.getText().trim().isEmpty() || 
+                tfPais.getText().trim().isEmpty() || tfUniversidad.getText().trim().isEmpty() || 
+                tfCarrera.getText().trim().isEmpty() || tfMateria.getText().trim().isEmpty() 
                 || tfCorreo.getText().trim().isEmpty() || tfTelefono.getText().trim().isEmpty() 
-                || tfNombreOfertaExterna.getText().trim().isEmpty() || tfPeriodo.getText().trim().isEmpty() 
-                || tfDescripcion.getText().trim().isEmpty()){
+                || tfNombreOfertaExterna.getText().trim().isEmpty() || 
+                tfPeriodo.getText().trim().isEmpty() || tfDescripcion.getText().trim().isEmpty()){
             
             return false;
             

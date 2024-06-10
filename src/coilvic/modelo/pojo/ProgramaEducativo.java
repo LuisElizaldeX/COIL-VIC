@@ -15,7 +15,8 @@ public class ProgramaEducativo {
     public ProgramaEducativo() {
     }
 
-    public ProgramaEducativo(int idProgramaEducativo, int idAreaAcademica, String nombre, String fechaInicioOperacion) {
+    public ProgramaEducativo(int idProgramaEducativo, int idAreaAcademica, 
+            String nombre, String fechaInicioOperacion) {
         this.idProgramaEducativo = idProgramaEducativo;
         this.idAreaAcademica = idAreaAcademica;
         this.nombre = nombre;
