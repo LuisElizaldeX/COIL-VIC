@@ -39,11 +39,15 @@ public class SesionDAO {
                     respuesta.setError(false);
                     respuesta.setMensaje("Usuario identificado correctamente");
                     Usuario usuarioSesion = new Usuario();
-                    usuarioSesion.setIdUsuario(resultadoSentencia.getInt("idUsuario"));
+                    usuarioSesion.setIdUsuario
+        (resultadoSentencia.getInt("idUsuario"));
                     usuarioSesion.setNombre(resultadoSentencia.getString("nombre"));
-                    usuarioSesion.setContrasena(resultadoSentencia.getString("contraseña"));
-                    usuarioSesion.setIdTipoUsuario(resultadoSentencia.getInt("idTipoUsuario"));
-                    usuarioSesion.setTipoUsuario(resultadoSentencia.getString("tipoDeUsuario"));
+                    usuarioSesion.setContrasena
+        (resultadoSentencia.getString("contraseña"));
+                    usuarioSesion.setIdTipoUsuario
+        (resultadoSentencia.getInt("idTipoUsuario"));
+                    usuarioSesion.setTipoUsuario
+        (resultadoSentencia.getString("tipoDeUsuario"));
                     respuesta.setUsuario(usuarioSesion);
                 }else{
                     respuesta.setError(true);

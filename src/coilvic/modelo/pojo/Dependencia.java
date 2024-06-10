@@ -1,3 +1,9 @@
+/*
+* Autor: Erick Utrera Cornejo
+* Fecha de creación: 29/05/2024
+* Descripción: Clase del modelo de Dependencia
+*/
+
 package coilvic.modelo.pojo;
 
 public class Dependencia {
@@ -10,7 +16,8 @@ public class Dependencia {
     public Dependencia() {
     }
 
-    public Dependencia(int idDependencia, int idCampus, int idProgramaEducativo, String nombre, String municipio) {
+    public Dependencia(int idDependencia, int idCampus, int idProgramaEducativo, 
+            String nombre, String municipio) {
         this.idDependencia = idDependencia;
         this.idCampus = idCampus;
         this.idProgramaEducativo = idProgramaEducativo;

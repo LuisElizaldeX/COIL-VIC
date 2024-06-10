@@ -1,3 +1,9 @@
+/*
+* Autor: Erick Utrera Cornejo
+* Fecha de creación: 29/05/2024
+* Descripción: Controlador para consulta de oferta de colaboración UV por el profesor
+*/
+
 package coilvic.controladores;
 
 import coilvic.modelo.pojo.OfertaColaboracionUV;
@@ -20,7 +26,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class FXMLConsultarOfertaColaboracionUv_ProfesorController extends FXMLPaginaPrincipalProfesorUVController {
+public class FXMLConsultarOfertaColaboracionUv_ProfesorController 
+        extends FXMLPaginaPrincipalProfesorUVController {
     ProfesorUV profesorUv = SingletonProfesorUV.getInstancia().getProfesorUV();
     private OfertaColaboracionUV ofertaColaboracionUV;
 
@@ -130,7 +137,8 @@ public class FXMLConsultarOfertaColaboracionUv_ProfesorController extends FXMLPa
         try{
            Stage escenarioModificarOfertaUV = (Stage) imgCerrarSesion.getScene().getWindow();
            
-           FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLModificarOfertaColaboracionUv.fxml");
+           FXMLLoader loader = Utilidades.obtenerLoader
+        ("vistas/FXMLModificarOfertaColaboracionUv.fxml");
            Parent root = loader.load();
             
             FXMLModificarOfertaColaboracionUvController controlador = loader.getController();
