@@ -169,7 +169,7 @@ public class ColaboracionDAO {
     
     if (conexionBD != null) {
         try {
-            String consulta = "INSERT INTO colaboracion (idProfesorUV, nombre, municipio, experienciaEducativa, materiaE, nombreProfesorExterno, telefonoProfesorExterno, carreraProfesorExterno, apellidosProfesorExterno, universidadProfesorExterno, paisProfesorExterno, correoProfesorExterno, idioma, numeroEstudiantes, fechaInicio, fechaFin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String consulta = "INSERT INTO colaboracion (idProfesorUV, nombre, nombreDependencia, idCampus, municipio, idAreaAcademica, idProgramaEducativo, experienciaEducativa, materiaE, nombreProfesorExterno, telefonoProfesorExterno, carreraProfesorExterno, apellidosProfesorExterno, universidadProfesorExterno, paisProfesorExterno, correoProfesorExterno, idioma, numeroEstudiantes, fechaInicio, fechaFin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
             prepararSentencia.setInt(1, idProfesorUV);
             prepararSentencia.setString(2, nombreColaboracion);
