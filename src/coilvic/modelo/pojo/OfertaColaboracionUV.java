@@ -42,11 +42,14 @@ public class OfertaColaboracionUV {
     public OfertaColaboracionUV() {
     }
 
-    public OfertaColaboracionUV(int idAreaAcademica, int idCampus, int idProgramaEducativo, int idDependencia, int idOfertaColaboracionUV, 
-            int idExperienciaEducativa, int idProfesorUV, int idEstadoOfertaColaboracionUV, String descripcion, String nombre, String estado, 
-            String fechaInicio, String fechaFin, String experienciaEducativa, String creditos, String descripcionEe, String nombreDependencia, 
-            String municipio, String nombreProgramaEducativo, String nombreAreaAcademica, String profesorUV, String campus, String nombreProfesorUv, 
-            String apellidos, int numeroPersonal, String correo, int telefono) {
+    public OfertaColaboracionUV(int idAreaAcademica, int idCampus, int idProgramaEducativo, 
+            int idDependencia, int idOfertaColaboracionUV, int idExperienciaEducativa, 
+            int idProfesorUV, int idEstadoOfertaColaboracionUV, String descripcion, String nombre, 
+            String estado, String fechaInicio, String fechaFin, String experienciaEducativa, 
+            String creditos, String descripcionEe, String nombreDependencia, String municipio, 
+            String nombreProgramaEducativo, String nombreAreaAcademica, String profesorUV, 
+            String campus, String nombreProfesorUv, String apellidos, int numeroPersonal, 
+            String correo, int telefono) {
         this.idAreaAcademica = idAreaAcademica;
         this.idCampus = idCampus;
         this.idProgramaEducativo = idProgramaEducativo;

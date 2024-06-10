@@ -19,7 +19,8 @@ public class ColaboracionDAO {
         Connection conexionBD = ConexionBD.obtenerConexion();
         if(conexionBD != null){
             try {
-                String consulta = "SELECT idColaboracion, c.nombre, concat(profex.nombre, ' ', profex.apellidos) AS profesorExterno, ee.nombre AS experienciaEducativa, "
+                String consulta = "SELECT idColaboracion, c.nombre, concat(profex.nombre, ' ', profex.apellidos) AS profesorExterno, "
+                        + "ee.nombre AS experienciaEducativa, "
                         + "ec.estado AS estadoColaboracion, concat(puv.nombre, ' ', puv.apellidos) AS profesorUV, fechaInicio, fechaFin, "
                         + "tipoColaboracion, i.lengua AS idioma "
                         + "FROM colaboracion c "

@@ -28,9 +28,12 @@ public class OfertaColaboracionExterna {
     public OfertaColaboracionExterna(){
     }
 
-    public OfertaColaboracionExterna(ProfesorExterno profesorExterno, int idOfertaColaboracionExterna, int idProfesorExterno, 
-            int idEstadoOfertaColaboracionExterna, String nombre, String periodo, String descripcion, String estado, String nombreProfesorExterno, 
-            String apellidos, String correo, String pais, String telefono, String materia, String carrera, String nombreUniversidad) {
+    public OfertaColaboracionExterna(ProfesorExterno profesorExterno, 
+            int idOfertaColaboracionExterna, int idProfesorExterno, 
+            int idEstadoOfertaColaboracionExterna, String nombre, String periodo, 
+            String descripcion, String estado, String nombreProfesorExterno, 
+            String apellidos, String correo, String pais, String telefono, 
+            String materia, String carrera, String nombreUniversidad) {
         this.profesorExterno = profesorExterno;
         this.idOfertaColaboracionExterna = idOfertaColaboracionExterna;
         this.idProfesorExterno = idProfesorExterno;
@@ -181,13 +184,5 @@ public class OfertaColaboracionExterna {
     @Override
     public String toString() {
         return  nombre;
-    }
-    
-
-    
-    
-    
-    
-    
-    
+    } 
 }

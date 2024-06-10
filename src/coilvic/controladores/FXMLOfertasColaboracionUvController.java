@@ -1,3 +1,9 @@
+/*
+* Autor: Erick Utrera Cornejo
+* Fecha de creación: 29/05/2024
+* Descripción: Controlador para consultar tabla de ofertas de colaboración UV por el profesor 
+*/
+
 package coilvic.controladores;
 
 import coilvic.modelo.dao.OfertaColaboracionUVDAO;
@@ -63,7 +69,8 @@ public class FXMLOfertasColaboracionUvController extends FXMLPaginaPrincipalProf
     private void configurarTabla(){
         colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
         colDependencia.setCellValueFactory(new PropertyValueFactory("nombreDependencia"));
-        colProgramaEducativo.setCellValueFactory(new PropertyValueFactory("nombreProgramaEducativo"));
+        colProgramaEducativo.setCellValueFactory
+        (new PropertyValueFactory("nombreProgramaEducativo"));
         colFechaInicio.setCellValueFactory(new PropertyValueFactory("fechaInicio"));
         colFechaFin.setCellValueFactory(new PropertyValueFactory("fechaFin"));
         colEstado.setCellValueFactory(new PropertyValueFactory("estado"));
@@ -77,7 +84,8 @@ public class FXMLOfertasColaboracionUvController extends FXMLPaginaPrincipalProf
         
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
         if(!isError){
-            ArrayList<OfertaColaboracionUV> ofertasColaboracionUVBD = (ArrayList<OfertaColaboracionUV>) respuesta.get("OfertasColaboracionUV");
+            ArrayList<OfertaColaboracionUV> ofertasColaboracionUVBD = 
+                    (ArrayList<OfertaColaboracionUV>) respuesta.get("OfertasColaboracionUV");
             ofertasColaboracionUV.addAll(ofertasColaboracionUVBD);
             tvOfertasColaboracionUv.setItems(ofertasColaboracionUV);
         }else{
@@ -89,12 +97,14 @@ public class FXMLOfertasColaboracionUvController extends FXMLPaginaPrincipalProf
 
     @FXML
     private void btnClicVerOferta(ActionEvent event) {
-        OfertaColaboracionUV ofertaUvSeleccionada= tvOfertasColaboracionUv.getSelectionModel().getSelectedItem();
+        OfertaColaboracionUV ofertaUvSeleccionada= 
+                tvOfertasColaboracionUv.getSelectionModel().getSelectedItem();
         if(ofertaUvSeleccionada != null){
             irOfertaUv(ofertaUvSeleccionada);
             
         }else{
-            Utilidades.mostrarAlertaSimple("Selecciona una oferta de colaboracion externa", "Para consultar una oferta primero debes "
+            Utilidades.mostrarAlertaSimple("Selecciona una oferta de colaboracion externa", 
+                    "Para consultar una oferta primero debes "
                     +"seleccionarla de la tabla", Alert.AlertType.WARNING);
         }
     }
@@ -104,10 +114,11 @@ public class FXMLOfertasColaboracionUvController extends FXMLPaginaPrincipalProf
         try{
            Stage ofertaUV = (Stage) imgCerrarSesion.getScene().getWindow();
            
-           FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLConsultarOfertaColaboracionUv_Profesor.fxml");
+           FXMLLoader loader = Utilidades.obtenerLoader
+        ("vistas/FXMLConsultarOfertaColaboracionUv_Profesor.fxml");
            Parent root = loader.load();
             
-            FXMLConsultarOfertaColaboracionUv_ProfesorController controlador = loader.getController();
+            FXMLConsultarOfertaColaboracionUv_ProfesorController controlador=loader.getController();
             controlador.inicializarValores(ofertaUvSeleccionada);
             controlador.setOfertaColaboracionUV(ofertaUvSeleccionada);
            

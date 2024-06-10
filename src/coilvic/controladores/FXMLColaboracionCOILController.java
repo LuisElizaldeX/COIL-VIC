@@ -22,7 +22,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -33,25 +32,27 @@ public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinad
     private Button btPrincipal;
     @FXML
     private Label lbNombreSesion;
-    @FXML
-    private TextArea taNombre;
-    @FXML
-    private TextArea taDescripcion;
-    @FXML
-    private TextArea taProfesorUV;
-    @FXML
-    private TextArea taExperienciaEducativa;
-    @FXML
-    private TextArea taPeriodo;
-    @FXML
-    private TextArea taEstado;
-    
+ 
     OfertaColaboracionUV ofertaColaboracion;
     
     @FXML
-    private Button btnAprobarColaboracion;
+    private Label lbNombre;
     @FXML
-    private Button btnRechazarColaboracion;
+    private Label lbDescripcion;
+    @FXML
+    private Label lbFechaInicio;
+    @FXML
+    private Label lbFechaFin;
+    @FXML
+    private Label lbProfesorUV;
+    @FXML
+    private Label lbExperienciaEducativa;
+    @FXML
+    private Label lbRegion;
+    @FXML
+    private Label lbAreaAcademica;
+    @FXML
+    private Label lbEstado;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -60,12 +61,15 @@ public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinad
     
     public void configurarDatosColaboracionCOIl(OfertaColaboracionUV ofertaColaboracion){
         this.ofertaColaboracion=ofertaColaboracion;
-        taNombre.setText(ofertaColaboracion.getNombre());
-        taDescripcion.setText(ofertaColaboracion.getDescripcion());
-        taExperienciaEducativa.setText(ofertaColaboracion.getExperienciaEducativa());
-        taProfesorUV.setText(ofertaColaboracion.getProfesorUV());
-        //taPeriodo.setText(ofertaColaboracion.getPeriodo());
-        taEstado.setText(ofertaColaboracion.getEstado());
+        lbNombre.setText(ofertaColaboracion.getNombre());
+        lbDescripcion.setText(ofertaColaboracion.getDescripcion());
+        lbExperienciaEducativa.setText(ofertaColaboracion.getExperienciaEducativa());
+        lbProfesorUV.setText(ofertaColaboracion.getProfesorUV());
+        lbAreaAcademica.setText(ofertaColaboracion.getNombreAreaAcademica());
+        lbRegion.setText(ofertaColaboracion.getCampus());
+        lbEstado.setText(ofertaColaboracion.getEstado());
+        lbFechaInicio.setText(ofertaColaboracion.getFechaInicio());
+        lbFechaFin.setText(ofertaColaboracion.getFechaFin());
     }
     
     private void cambiarVentana(){
@@ -95,7 +99,6 @@ public class FXMLColaboracionCOILController extends FXMLPaginaPrincipalCoordinad
                     respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
         }
     }
-    
     
     @FXML
     private void clicBtnRechazarColaboracion(ActionEvent event) {

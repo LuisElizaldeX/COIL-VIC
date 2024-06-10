@@ -151,9 +151,13 @@
       </Label>
       <TableView fx:id="tvColaboraciones" layoutX="366.0" layoutY="218.0" prefHeight="542.0" prefWidth="1017.0" stylesheets="@../css/estilos.css">
         <columns>
-          <TableColumn fx:id="colNombre" prefWidth="364.0" text="Nombre" />
-          <TableColumn fx:id="colExperienciaEducativa" prefWidth="428.0" text="Experiencia educativa" />
-            <TableColumn fx:id="colPeriodo" prefWidth="224.0" text="Período" />
+          <TableColumn fx:id="colNombre" prefWidth="321.0" text="Nombre" />
+          <TableColumn fx:id="colExperienciaEducativa" prefWidth="382.0" text="Experiencia educativa" />
+            <TableColumn fx:id="colPeriodo" prefWidth="313.0" text="Período">
+               <columns>
+                  <TableColumn fx:id="colFechaInicio" prefWidth="158.0" text="Fecha inicio" />
+                  <TableColumn fx:id="colFechaFin" prefWidth="155.0" text="Fecha fin" />
+               </columns></TableColumn>
         </columns>
       </TableView>
       <Button fx:id="btnRevisarColaboracion" layoutX="738.0" layoutY="834.0" mnemonicParsing="false" onAction="#clicBtnRevisarOfertaColaboracionUV" prefHeight="68.0" prefWidth="312.0" style="-fx-background-radius: 40;" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Revisar colaboracion">

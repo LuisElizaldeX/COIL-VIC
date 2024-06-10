@@ -1,3 +1,9 @@
+/*
+* Autor: Erick Utrera Cornejo
+* Fecha de creación: 29/05/2024
+* Descripción: Controlador para consulta de oferta de colaboración externa por el profesor
+*/
+
 package coilvic.controladores;
 
 import coilvic.modelo.pojo.OfertaColaboracionExterna;
@@ -20,7 +26,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-public class FXMLConsultarOfertaColaboracionExterna_ProfesorController extends FXMLPaginaPrincipalProfesorUVController {
+public class FXMLConsultarOfertaColaboracionExterna_ProfesorController 
+        extends FXMLPaginaPrincipalProfesorUVController {
     ProfesorUV profesorUv = SingletonProfesorUV.getInstancia().getProfesorUV();
 
     @FXML

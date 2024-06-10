@@ -35,7 +35,8 @@ public class ProfesorUVDAO {
                     profesor.setIdProfesorUV(resultado.getInt("idProfesoruv"));
                     profesor.setNombre(resultado.getString("nombre"));
                     profesor.setCorreo(resultado.getString("correo"));
-                    profesor.setNumeroPersonal(resultado.getInt("numeroPersonal"));
+                    profesor.setNumeroPersonal
+        (resultado.getInt("numeroPersonal"));
                     profesor.setTelefono(resultado.getString("telefono"));
                     profesor.setApellidos(resultado.getString("apellidos"));
                     profesor.setIdUsuario(resultado.getInt("idUsuario"));

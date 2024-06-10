@@ -1,6 +1,10 @@
+/*
+* Autor: Erick Utrera Cornejo
+* Fecha de creación: 29/05/2024
+* Descripción: Clase del modelo de Campus
+*/
 
 package coilvic.modelo.pojo;
-
 
 public class Campus {
     private int idCampus;
