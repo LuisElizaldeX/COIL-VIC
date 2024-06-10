@@ -3,6 +3,7 @@ package coilvic.controladores;
 import coilvic.modelo.dao.ArchivoDAO;
 import coilvic.modelo.pojo.Archivo;
 import coilvic.modelo.pojo.Colaboracion;
+import coilvic.observador.ObservadorColaboraciones;
 import coilvic.utilidades.Constantes;
 import coilvic.utilidades.Utilidades;
 import java.io.File;
@@ -25,11 +26,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVController {
+public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVController implements ObservadorColaboraciones{
     private Colaboracion colaboracion;
-    private File archivoSeleccionado;
     
     @FXML
     private ImageView imgCerrarSesion;
@@ -94,48 +95,60 @@ public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVCon
 
     @FXML
     private void btnClicCancelarColaboracion(ActionEvent event) {
+        if (colaboracion.getEstadoColaboracion().equals("En curso")) {
+            irJustificarCancelacion(colaboracion.getIdColaboracion());
+        } else {
+            Utilidades.mostrarAlertaSimple("Error al cancelar", "Esta colaboración ya se encuentra cancelada o finalizada", Alert.AlertType.WARNING);
+        } 
+    }
+    
+    private void irJustificarCancelacion(int idColaboracion){
+        try{
+            Stage escenarioSecundario = new Stage();
+            FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLJustificarCancelacion.fxml");
+            Parent root = loader.load();
+            FXMLJustificarCancelacionController controlador = loader.getController();
+            controlador.inicializarValores(idColaboracion,this);
+            
+            Scene escenaPrincipal = new Scene(root);
+            escenarioSecundario.setScene(escenaPrincipal);
+            escenarioSecundario.setTitle("Justificar cancelación");
+            escenarioSecundario.initModality(Modality.APPLICATION_MODAL);
+            escenarioSecundario.showAndWait();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 
     @FXML
     private void btnClicCerrarColaboracion(ActionEvent event) {
-    }
-
-
-    @FXML
-    private void btnClicSubirArchivo(ActionEvent event) {
-        seleccionarArchivo();
-    }
-    
-    private void seleccionarArchivo(){
-        FileChooser dialogoSeleccion = new FileChooser();
-        dialogoSeleccion.setTitle("Seleccionar syllabus");
-        String etiquetaTipoArchivo = "*.pdf";
-        FileChooser.ExtensionFilter filtroArchivo = new FileChooser.ExtensionFilter(etiquetaTipoArchivo,"*.pdf");
-        dialogoSeleccion.getExtensionFilters().add(filtroArchivo);
-        Stage escenarioActual = (Stage) lbNombreProfesorUV.getScene().getWindow();
-        archivoSeleccionado = dialogoSeleccion.showOpenDialog(escenarioActual);
-        if(archivoSeleccionado != null){   
-            try {
-                Archivo archivo = new Archivo();
-                byte[] archivoBytes = Files.readAllBytes(archivoSeleccionado.toPath());
-                archivo.setNombre(archivoSeleccionado.getName());
-                archivo.setArchivoCol(archivoBytes);
-                archivo.setIdTipoArchivo(1);
-                subirArchivo(archivo);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-    
-    private void subirArchivo(Archivo archivo){
-        HashMap<String, Object> respuesta = ArchivoDAO.subirArchivo(archivo);
-        boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
-        if(!isError){
-            Utilidades.mostrarAlertaSimple("Archivo guardado", "El syllabus se ha subido correctamente", Alert.AlertType.INFORMATION);
+        if (colaboracion.getEstadoColaboracion().equals("En curso")) {
+            irCerrarColaboracion(colaboracion);
         } else {
-            Utilidades.mostrarAlertaSimple("Error al subir archivo", "" + respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
+            Utilidades.mostrarAlertaSimple("Error al cerrar colaboracion", "Esta colaboración ya se encuentra cancelada o finalizada", Alert.AlertType.WARNING);
         }
+    }
+
+    private void irCerrarColaboracion(Colaboracion colaboracion){
+        try{
+            Stage escenarioPrincipal = (Stage) lbCarrera.getScene().getWindow();
+            FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLCerrarColaboracion.fxml");
+            Parent root = loader.load();
+            FXMLCerrarColaboracionController controlador = loader.getController();
+            controlador.inicializarValores(colaboracion);
+            
+            Scene escenaPrincipal = new Scene(root);
+            escenarioPrincipal.setScene(escenaPrincipal);
+            escenarioPrincipal.setTitle("Cerrar colaboración");
+            escenarioPrincipal.show();
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
+
+    @Override
+    public void operacionExitosa(String tipoOperacion) {
+        inicializarValores(colaboracion);
     }
 
 }

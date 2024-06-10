@@ -73,6 +73,7 @@ public class FXMLConsultarNumeraliaController extends FXMLPaginaPrincipalCoordin
         InicializarDatosOpciones();
         cbFiltroBusqueda.setValue("Región");
         configurarTablaNumeraliaRegion();
+        configurarTablaNumeraliaAreaAcademica();
         cargarDatosNumeraliaPorRegion();
         cbFiltroBusqueda.valueProperty().addListener(new ChangeListener<String>(){
             @Override
@@ -81,12 +82,10 @@ public class FXMLConsultarNumeraliaController extends FXMLPaginaPrincipalCoordin
                 if(newValue == "Área académica"){
                     tvNumeraliaAA.setVisible(true);
                     tvNumeralia.setVisible(false);
-                    configurarTablaNumeraliaAreaAcademica();
                     cargarDatosNumeraliaPorAreaAcademica();
                 }else{
                     tvNumeraliaAA.setVisible(false);
                     tvNumeralia.setVisible(true);
-                    configurarTablaNumeraliaRegion();
                     cargarDatosNumeraliaPorRegion();
                 }
             } 
@@ -153,9 +152,9 @@ public class FXMLConsultarNumeraliaController extends FXMLPaginaPrincipalCoordin
     @FXML
     private void clicBtnGenerarReporte(ActionEvent event) {
         if(tvNumeralia.isVisible()){
-            encabezado = "Región, Alumnos, Profesores";
+            encabezado = "Region, Alumnos, Profesores";
         }else{
-            encabezado = "Área académica, Alumnos, Profesores";
+            encabezado = "Area academica, Alumnos, Profesores";
         }
         DirectoryChooser directorio = new DirectoryChooser();
         directorio.setTitle("Selecciona una carpeta");

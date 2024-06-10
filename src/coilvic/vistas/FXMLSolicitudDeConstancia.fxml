@@ -8,48 +8,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLColaboracionCOILController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLSolicitudDeConstanciaController">
    <children>
-      <Label layoutX="645.0" layoutY="32.0" prefHeight="68.0" prefWidth="492.0" text="Colaboración COIL">
-         <font>
-            <Font name="Arial Bold Italic" size="53.0" />
-         </font>
-      </Label>
-      <Label layoutX="385.0" layoutY="126.0" prefHeight="56.0" prefWidth="139.0" text="Nombre:">
-         <font>
-            <Font name="Berlin Sans FB" size="35.0" />
-         </font>
-      </Label>
-      <Label layoutX="384.0" layoutY="193.0" prefHeight="56.0" prefWidth="222.0" text="Descripción: ">
-         <font>
-            <Font name="Berlin Sans FB" size="35.0" />
-         </font>
-      </Label>
-      <Label layoutX="384.0" layoutY="523.0" prefHeight="56.0" prefWidth="191.0" text="Profesor UV:">
-         <font>
-            <Font name="Berlin Sans FB" size="35.0" />
-         </font>
-      </Label>
-      <Label layoutX="384.0" layoutY="600.0" prefHeight="56.0" prefWidth="422.0" text="Experiencia educativa:">
-         <font>
-            <Font name="Berlin Sans FB" size="35.0" />
-         </font>
-      </Label>
-      <Label layoutX="384.0" layoutY="815.0" prefHeight="56.0" prefWidth="111.0" text="Estado:">
-         <font>
-            <Font name="Berlin Sans FB" size="35.0" />
-         </font>
-      </Label>
-      <Button layoutX="858.0" layoutY="897.0" mnemonicParsing="false" onAction="#clicBtnAprobarColaboracion" prefHeight="56.0" prefWidth="222.0" style="-fx-background-radius: 40;" styleClass="buttonRegistrar" stylesheets="@../css/estilos.css" text="Aprobar colaboración">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button layoutX="1123.0" layoutY="897.0" mnemonicParsing="false" onAction="#clicBtnRechazarColaboracion" prefHeight="56.0" prefWidth="239.0" style="-fx-background-radius: 40;" styleClass="buttonCancelar" stylesheets="@../css/estilos.css" text="Rechazar colaboración">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
       <Pane prefHeight="1000.0" prefWidth="312.0" style="-fx-background-color: #404040;">
          <children>
             <Label layoutX="228.0" layoutY="60.0" text="Cerrar sesión" textFill="WHITE">
@@ -183,69 +143,105 @@
             </Button>
          </children>
       </Pane>
-      <Label layoutX="384.0" layoutY="674.0" prefHeight="56.0" prefWidth="166.0" text="Región:">
+      <Label layoutX="597.0" layoutY="21.0" prefHeight="68.0" prefWidth="602.0" text="Solicitud de constancia">
+         <font>
+            <Font name="Arial Bold Italic" size="53.0" />
+         </font>
+      </Label>
+      <Label layoutX="392.0" layoutY="122.0" prefHeight="55.0" prefWidth="146.0" text="Nombre:">
          <font>
             <Font name="Berlin Sans FB" size="35.0" />
          </font>
       </Label>
-      <Label layoutX="385.0" layoutY="362.0" prefHeight="56.0" prefWidth="184.0" text="Fecha inicio:">
+      <Label layoutX="391.0" layoutY="704.0" prefHeight="55.0" prefWidth="131.0" text="Estado:">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbNombre" layoutX="562.0" layoutY="112.0" prefHeight="76.0" prefWidth="700.0" text="Label" wrapText="true">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbExperienciaEducativa" layoutX="777.0" layoutY="187.0" prefHeight="76.0" prefWidth="628.0" text="Label" wrapText="true">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbDescripicion" layoutX="574.0" layoutY="488.0" prefHeight="146.0" prefWidth="775.0" text="Label" wrapText="true">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbProfesorUV" layoutX="608.0" layoutY="332.0" prefHeight="76.0" prefWidth="547.0" text="Label" wrapText="true">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbEstado" layoutX="528.0" layoutY="694.0" prefHeight="76.0" prefWidth="328.0" text="Label" wrapText="true">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvEstudiantes" layoutX="335.0" layoutY="694.0" prefHeight="277.0" prefWidth="508.0" stylesheets="@../css/estilos.css">
+        <columns>
+          <TableColumn fx:id="colEstudiantes" prefWidth="257.0" text="Estudiantes" />
+            <TableColumn fx:id="colMatricula" prefWidth="250.0" text="Matricula" />
+        </columns>
+      </TableView>
+      <Label fx:id="lbProfesorExterno" layoutX="652.0" layoutY="405.0" prefHeight="76.0" prefWidth="547.0" text="Label" wrapText="true">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbProgramaEducativo" layoutX="759.0" layoutY="259.0" prefHeight="76.0" prefWidth="628.0" text="Label">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Button layoutX="1038.0" layoutY="877.0" mnemonicParsing="false" onAction="#clicBtnGenerarConstancia" prefHeight="76.0" prefWidth="235.0" style="-fx-background-radius: 40;" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Generar constancia">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="392.0" layoutY="197.0" prefHeight="55.0" prefWidth="363.0" text="Experiencia educativa:">
          <font>
             <Font name="Berlin Sans FB" size="35.0" />
          </font>
       </Label>
-      <Label layoutX="385.0" layoutY="438.0" prefHeight="56.0" prefWidth="191.0" text="Fecha fin:">
+      <Label layoutX="392.0" layoutY="269.0" prefHeight="55.0" prefWidth="351.0" text="Programa educativo:">
          <font>
             <Font name="Berlin Sans FB" size="35.0" />
          </font>
       </Label>
-      <Label layoutX="384.0" layoutY="748.0" prefHeight="56.0" prefWidth="258.0" text="Área académica:">
+      <Label layoutX="392.0" layoutY="342.0" prefHeight="55.0" prefWidth="186.0" text="Profesor UV:">
          <font>
             <Font name="Berlin Sans FB" size="35.0" />
          </font>
       </Label>
-      <Label fx:id="lbNombre" layoutX="576.0" layoutY="126.0" prefHeight="56.0" prefWidth="747.0">
+      <Label layoutX="392.0" layoutY="415.0" prefHeight="55.0" prefWidth="257.0" text="Profesor externo:">
          <font>
-            <Font name="Arial" size="35.0" />
+            <Font name="Berlin Sans FB" size="35.0" />
          </font>
       </Label>
-      <Label fx:id="lbDescripcion" layoutX="579.0" layoutY="193.0" prefHeight="159.0" prefWidth="836.0">
+      <Label layoutX="390.0" layoutY="488.0" prefHeight="55.0" prefWidth="174.0" text="Descripción:">
          <font>
-            <Font name="Arial" size="35.0" />
+            <Font name="Berlin Sans FB" size="35.0" />
          </font>
       </Label>
-      <Label fx:id="lbFechaInicio" layoutX="579.0" layoutY="362.0" prefHeight="56.0" prefWidth="239.0">
+      <ImageView fitHeight="110.0" fitWidth="113.0" layoutX="1101.0" layoutY="660.0" onMouseClicked="#clicArchivoEvidencia" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/pdf.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbNombreEvidencia" alignment="CENTER" layoutX="960.0" layoutY="784.0" prefHeight="76.0" prefWidth="392.0" text="Label" wrapText="true">
          <font>
-            <Font name="Arial" size="35.0" />
+            <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="lbFechaFin" layoutX="558.0" layoutY="438.0" prefHeight="56.0" prefWidth="239.0">
+      <Label layoutX="898.0" layoutY="704.0" prefHeight="55.0" prefWidth="174.0" text="Evidencia:">
          <font>
-            <Font name="Arial" size="35.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbProfesorUV" layoutX="595.0" layoutY="523.0" prefHeight="56.0" prefWidth="599.0">
-         <font>
-            <Font name="Arial" size="35.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbExperienciaEducativa" layoutX="739.0" layoutY="600.0" prefHeight="56.0" prefWidth="586.0">
-         <font>
-            <Font name="Arial" size="35.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbRegion" layoutX="504.0" layoutY="674.0" prefHeight="56.0" prefWidth="381.0">
-         <font>
-            <Font name="Arial" size="35.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbAreaAcademica" layoutX="657.0" layoutY="748.0" prefHeight="56.0" prefWidth="586.0">
-         <font>
-            <Font name="Arial" size="35.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbEstado" layoutX="504.0" layoutY="815.0" prefHeight="56.0" prefWidth="222.0">
-         <font>
-            <Font name="Arial" size="35.0" />
+            <Font name="Berlin Sans FB" size="35.0" />
          </font>
       </Label>
    </children>

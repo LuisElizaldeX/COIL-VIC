@@ -1,3 +1,9 @@
+/*
+* Autor: Erick Utrera Cornejo
+* Fecha de creación: 29/05/2024
+* Descripción: Controlador para registrar oferta de colaboración UV 
+*/
+
 package coilvic.controladores;
 
 import coilvic.modelo.dao.ObtenerOfertaColaboracionUVDAO;
@@ -42,7 +48,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 
-public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrincipalProfesorUVController {
+public class FXMLRegistrarOfertaColaboracionUvController 
+        extends FXMLPaginaPrincipalProfesorUVController {
     private ObservableList<AreaAcademica> areasAcademicas;
     private ObservableList<ProgramaEducativo> programasEducativos;
     private ObservableList<Campus> campus;
@@ -117,7 +124,8 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
             ExperienciaEducativa experienciaEducativa = obtenerInformacionExperienciaEducativa();
             OfertaColaboracionUV ofertaColaboracionUV = obtenerInformacionOfertaColaboracionUV();
             
-            guardarOfertaColaboracionUV(dependencia, periodo, experienciaEducativa, ofertaColaboracionUV);
+            guardarOfertaColaboracionUV(dependencia, periodo, experienciaEducativa, 
+                    ofertaColaboracionUV);
             clicBtnIrPaginaPrincipal(event);
             
         }else{
@@ -144,7 +152,8 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
     
     private void cargarCampus(){
         campus = FXCollections.observableArrayList();
-        campus.addAll((ArrayList<Campus>)ObtenerOfertaColaboracionUVDAO.obtenerCampus().get("campus"));
+        campus.addAll((ArrayList<Campus>)
+                ObtenerOfertaColaboracionUVDAO.obtenerCampus().get("campus"));
         cbCampus.setItems(campus); 
     }
     
@@ -153,7 +162,8 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
         cbCampus.valueProperty().addListener(new ChangeListener<Campus>(){
             
             @Override
-            public void changed(ObservableValue<? extends Campus> observable, Campus oldValue, Campus newValue){
+            public void changed(ObservableValue<? 
+                    extends Campus> observable, Campus oldValue, Campus newValue){
                 if(newValue != null ){
                     cargarAreasAcademicas(newValue.getIdCampus());
                     cbProgramaEducativo.getItems().clear();
@@ -165,7 +175,8 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
     
     private void cargarAreasAcademicas(int idCampus){
         areasAcademicas = FXCollections.observableArrayList();
-        areasAcademicas.addAll((ArrayList<AreaAcademica>)ObtenerOfertaColaboracionUVDAO.obtenerAreasAcademicas(idCampus).get("areasAcademicas"));
+        areasAcademicas.addAll((ArrayList<AreaAcademica>)ObtenerOfertaColaboracionUVDAO.
+                obtenerAreasAcademicas(idCampus).get("areasAcademicas"));
         cbAreaAcademica.setItems(areasAcademicas);
         configurarSeleccionAreasAcademicas(idCampus);
     }
@@ -174,7 +185,8 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
     private void configurarSeleccionAreasAcademicas(int idCampus){                   
         cbAreaAcademica.valueProperty().addListener(new ChangeListener<AreaAcademica>(){
             @Override
-            public void changed(ObservableValue<? extends AreaAcademica> observable, AreaAcademica oldValue, AreaAcademica newValue){
+            public void changed(ObservableValue<? extends AreaAcademica> observable, 
+                    AreaAcademica oldValue, AreaAcademica newValue){
                 if(newValue != null ){
                     cargarProgramasEducativos(newValue.getIdAreaAcademica(), idCampus);
                 }
@@ -185,26 +197,33 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
     
     private void cargarProgramasEducativos(int idAreaAcademica, int idCampus){
         programasEducativos = FXCollections.observableArrayList();
-        programasEducativos.addAll((ArrayList<ProgramaEducativo>)ObtenerOfertaColaboracionUVDAO.obtenerProgramasEducativos
+        programasEducativos.addAll((ArrayList<ProgramaEducativo>)
+                ObtenerOfertaColaboracionUVDAO.obtenerProgramasEducativos
         (idAreaAcademica, idCampus).get("programasEducativos"));
         cbProgramaEducativo.setItems(programasEducativos);
         
     }
     
     
-    private void guardarOfertaColaboracionUV(Dependencia dependencia, Periodo periodo, ExperienciaEducativa experienciaEducativa, 
+    private void guardarOfertaColaboracionUV
+        (Dependencia dependencia, Periodo periodo, ExperienciaEducativa experienciaEducativa, 
             OfertaColaboracionUV ofertaColaboracionUV){
-        HashMap<String, Object> respuestaDependencia = OfertaColaboracionUVDAO.guardarDependencia(dependencia);
+        HashMap<String, Object> respuestaDependencia = 
+                OfertaColaboracionUVDAO.guardarDependencia(dependencia);
         HashMap<String, Object> respuestaPeriodo = OfertaColaboracionUVDAO.guardarPeriodo(periodo);
-        HashMap<String, Object> respuestaExperienciaEducativa = OfertaColaboracionUVDAO.guardarExperienciaEducativa(experienciaEducativa);
-        HashMap<String, Object> respuestaOfertaColaboracionUV = OfertaColaboracionUVDAO.guardarOfertaColaboracionUv(ofertaColaboracionUV);
+        HashMap<String, Object> respuestaExperienciaEducativa = 
+                OfertaColaboracionUVDAO.guardarExperienciaEducativa(experienciaEducativa);
+        HashMap<String, Object> respuestaOfertaColaboracionUV = 
+                OfertaColaboracionUVDAO.guardarOfertaColaboracionUv(ofertaColaboracionUV);
 
         if(!(boolean)respuestaOfertaColaboracionUV.get(Constantes.KEY_ERROR)){
-            Utilidades.mostrarAlertaSimple("Oferta UV guardada", ""+respuestaOfertaColaboracionUV.get(Constantes.KEY_MENSAJE),                    
+            Utilidades.mostrarAlertaSimple("Oferta UV guardada", ""+
+                    respuestaOfertaColaboracionUV.get(Constantes.KEY_MENSAJE),                    
                     Alert.AlertType.INFORMATION);
             
         }else{
-            Utilidades.mostrarAlertaSimple("Error al guardar", ""+respuestaOfertaColaboracionUV.get(Constantes.KEY_MENSAJE), 
+            Utilidades.mostrarAlertaSimple("Error al guardar", ""+
+                    respuestaOfertaColaboracionUV.get(Constantes.KEY_MENSAJE), 
                     Alert.AlertType.ERROR);  
         }
     }
@@ -225,7 +244,8 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
         dependencia.setNombre(tfNombreDependencia.getText());
         dependencia.setMunicipio(tfMunicipio.getText());
         dependencia.setIdCampus(cbCampus.getSelectionModel().getSelectedItem().getIdCampus());
-        dependencia.setIdProgramaEducativo(cbProgramaEducativo.getSelectionModel().getSelectedItem().getIdProgramaEducativo());
+        dependencia.setIdProgramaEducativo
+        (cbProgramaEducativo.getSelectionModel().getSelectedItem().getIdProgramaEducativo());
 
         return dependencia;
     }
@@ -251,10 +271,13 @@ public class FXMLRegistrarOfertaColaboracionUvController extends FXMLPaginaPrinc
     
     
     private boolean validarCampos(){    
-        if(tfNombre.getText().trim().isEmpty() || tfNombreDependencia.getText().trim().isEmpty() || dpFechaInicio.getValue() == null 
-                || dpFechaFin.getValue() == null || tfMunicipio.getText().trim().isEmpty() || cbCampus.getValue() == null 
-                || cbAreaAcademica.getValue() == null || cbProgramaEducativo.getValue() == null || tfDescripcion.getText().trim().isEmpty() 
-                || tfExperienciaEducativa.getText().trim().isEmpty() || tfCreditos.getText().trim().isEmpty() || tfCreditos.getText().trim().isEmpty() 
+        if(tfNombre.getText().trim().isEmpty() || tfNombreDependencia.getText().trim().isEmpty() || 
+                dpFechaInicio.getValue() == null || dpFechaFin.getValue() == null || 
+                tfMunicipio.getText().trim().isEmpty() || cbCampus.getValue() == null 
+                || cbAreaAcademica.getValue() == null || 
+                cbProgramaEducativo.getValue() == null || tfDescripcion.getText().trim().isEmpty() 
+                || tfExperienciaEducativa.getText().trim().isEmpty() || 
+                tfCreditos.getText().trim().isEmpty() || tfCreditos.getText().trim().isEmpty() 
                 || validarCreditos()==false || tfDescripcionEe.getText().trim().isEmpty()){
             
             return false;

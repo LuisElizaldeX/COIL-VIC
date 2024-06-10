@@ -1,3 +1,9 @@
+/*
+* Autor: Erick Utrera Cornejo
+* Fecha de creación: 29/05/2024
+* Descripción: Controlador para consulta de oferta de colaboración externa por el coordinador
+*/
+
 package coilvic.controladores;
 
 import coilvic.modelo.pojo.OfertaColaboracionExterna;
@@ -18,7 +24,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class FXMLConsultarOfertaColaboracionExterna_CoordinadorController extends FXMLPaginaPrincipalCoordinadorCOILController {
+public class FXMLConsultarOfertaColaboracionExterna_CoordinadorController 
+        extends FXMLPaginaPrincipalCoordinadorCOILController {
     private OfertaColaboracionExterna ofertaColaboracionExterna;
 
     @FXML
@@ -104,7 +111,8 @@ public class FXMLConsultarOfertaColaboracionExterna_CoordinadorController extend
         try{
            Stage escenarioModificarOfertaExterna = (Stage) imgCerrarSesion.getScene().getWindow();
            
-           FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLModificarOfertaColaboracionExterna.fxml");
+           FXMLLoader loader = Utilidades.obtenerLoader
+        ("vistas/FXMLModificarOfertaColaboracionExterna.fxml");
            Parent root = loader.load();
             
             FXMLModificarOfertaColaboracionExternaController controlador = loader.getController();
