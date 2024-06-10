@@ -154,7 +154,6 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
             System.out.println("Error: "+e.getMessage());
         }
     }
-    
 
     @FXML
     protected void clicBtnIrRegistrarOfertaColaboracion(ActionEvent event) {
@@ -174,10 +173,47 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
 
     @FXML
     protected void clicBtnIrRegistrarColaboracion(ActionEvent event) {
+        try{
+           Stage registrarOfertaUv = (Stage) imgCerrarSesion.getScene().getWindow();
+           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                   getResource("vistas/FXMLRegistrarColaboracionDirecta.fxml"));
+           Scene escenaRegistrarOfertaUv = new Scene(root);
+           registrarOfertaUv.setScene(escenaRegistrarOfertaUv);
+           registrarOfertaUv.setTitle("Registrar colaboracion Directa");
+           registrarOfertaUv.show();
+            
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 
     @FXML
-    protected void clicBtnIrRegistrarColaboracionCOIL(ActionEvent event) {
+    private void seleccionarColaboracion(MouseEvent event) {
+        if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2){
+            Colaboracion colaboracionSeleccionada = tvColaboraciones.getSelectionModel().getSelectedItem();
+            if(colaboracionSeleccionada != null){
+                irColaboracion(colaboracionSeleccionada);
+            }
+        }
     }
+    
+    private void irColaboracion(Colaboracion colaboracion){
+        try {
+            Stage escenario = (Stage) imgCerrarSesion.getScene().getWindow();
+            FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLColaboracion.fxml");
+            Parent root = loader.load();
+            FXMLColaboracionController controlador = loader.getController();
+            controlador.inicializarValores(colaboracion);
+            Scene escena = new Scene(root);
+            escenario.setScene(escena);
+            escenario.setTitle("Colaboracion");
+            escenario.show();
+        } catch (IOException e) {
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
+
+    
+    
     
 }

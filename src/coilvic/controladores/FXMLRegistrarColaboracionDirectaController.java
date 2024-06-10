@@ -161,6 +161,13 @@ public class FXMLRegistrarColaboracionDirectaController extends FXMLPaginaPrinci
     
     
     }
+
+    @FXML
+    private void clicBtnIrRegistrarColaboracionCOIL(ActionEvent event) {
+        
+        
+        
+    }
     
      
     
