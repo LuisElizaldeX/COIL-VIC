@@ -8,8 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="coilvic.controladores.FXMLSolicitudDeConstanciaController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLSolicitudDeConstanciaController">
    <children>
       <Pane prefHeight="1000.0" prefWidth="312.0" style="-fx-background-color: #404040;">
          <children>
@@ -149,24 +148,9 @@
             <Font name="Arial Bold Italic" size="53.0" />
          </font>
       </Label>
-      <Label layoutX="392.0" layoutY="122.0" prefHeight="55.0" prefWidth="166.0" text="Nombre:">
+      <Label layoutX="392.0" layoutY="122.0" prefHeight="55.0" prefWidth="146.0" text="Nombre:">
          <font>
-            <Font size="38.0" />
-         </font>
-      </Label>
-      <Label layoutX="392.0" layoutY="214.0" prefHeight="55.0" prefWidth="385.0" text="Experiencia educativa:">
-         <font>
-            <Font size="38.0" />
-         </font>
-      </Label>
-      <Label layoutX="390.0" layoutY="535.0" prefHeight="55.0" prefWidth="216.0" text="Descripción:">
-         <font>
-            <Font size="38.0" />
-         </font>
-      </Label>
-      <Label layoutX="392.0" layoutY="390.0" prefHeight="55.0" prefWidth="229.0" text="Profesor UV:">
-         <font>
-            <Font size="38.0" />
+            <Font name="Berlin Sans FB" size="35.0" />
          </font>
       </Label>
       <Label layoutX="391.0" layoutY="704.0" prefHeight="55.0" prefWidth="131.0" text="Estado:">
@@ -176,22 +160,22 @@
       </Label>
       <Label fx:id="lbNombre" layoutX="562.0" layoutY="112.0" prefHeight="76.0" prefWidth="700.0" text="Label" wrapText="true">
          <font>
-            <Font size="38.0" />
+            <Font size="35.0" />
          </font>
       </Label>
-      <Label fx:id="lbExperienciaEducativa" layoutX="777.0" layoutY="204.0" prefHeight="76.0" prefWidth="628.0" text="Label" wrapText="true">
+      <Label fx:id="lbExperienciaEducativa" layoutX="777.0" layoutY="187.0" prefHeight="76.0" prefWidth="628.0" text="Label" wrapText="true">
          <font>
-            <Font size="38.0" />
+            <Font size="35.0" />
          </font>
       </Label>
-      <Label fx:id="lbDescripicion" layoutX="624.0" layoutY="535.0" prefHeight="146.0" prefWidth="775.0" text="Label" wrapText="true">
+      <Label fx:id="lbDescripicion" layoutX="574.0" layoutY="488.0" prefHeight="146.0" prefWidth="775.0" text="Label" wrapText="true">
          <font>
-            <Font size="38.0" />
+            <Font size="35.0" />
          </font>
       </Label>
-      <Label fx:id="lbProfesorUV" layoutX="625.0" layoutY="379.0" prefHeight="76.0" prefWidth="547.0" text="Label" wrapText="true">
+      <Label fx:id="lbProfesorUV" layoutX="608.0" layoutY="332.0" prefHeight="76.0" prefWidth="547.0" text="Label" wrapText="true">
          <font>
-            <Font size="38.0" />
+            <Font size="35.0" />
          </font>
       </Label>
       <Label fx:id="lbEstado" layoutX="528.0" layoutY="694.0" prefHeight="76.0" prefWidth="328.0" text="Label" wrapText="true">
@@ -199,36 +183,61 @@
             <Font size="38.0" />
          </font>
       </Label>
-      <TableView fx:id="tvEstudiantes" layoutX="390.0" layoutY="704.0" prefHeight="277.0" prefWidth="508.0" stylesheets="@../css/estilos.css">
+      <TableView fx:id="tvEstudiantes" layoutX="335.0" layoutY="694.0" prefHeight="277.0" prefWidth="508.0" stylesheets="@../css/estilos.css">
         <columns>
           <TableColumn fx:id="colEstudiantes" prefWidth="257.0" text="Estudiantes" />
             <TableColumn fx:id="colMatricula" prefWidth="250.0" text="Matricula" />
         </columns>
       </TableView>
-      <Label layoutX="392.0" layoutY="462.0" prefHeight="55.0" prefWidth="293.0" text="Profesor externo:">
+      <Label fx:id="lbProfesorExterno" layoutX="652.0" layoutY="405.0" prefHeight="76.0" prefWidth="547.0" text="Label" wrapText="true">
          <font>
-            <Font size="38.0" />
+            <Font size="35.0" />
          </font>
       </Label>
-      <Label fx:id="lbProfesorExterno" layoutX="715.0" layoutY="452.0" prefHeight="76.0" prefWidth="547.0" text="Label" wrapText="true">
+      <Label fx:id="lbProgramaEducativo" layoutX="759.0" layoutY="259.0" prefHeight="76.0" prefWidth="628.0" text="Label">
          <font>
-            <Font size="38.0" />
+            <Font size="35.0" />
          </font>
       </Label>
-      <Label layoutX="392.0" layoutY="296.0" prefHeight="55.0" prefWidth="385.0" text="Programa educativo:">
-         <font>
-            <Font size="38.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbProgramaEducativo" layoutX="759.0" layoutY="296.0" prefHeight="76.0" prefWidth="628.0" text="Label" wrapText="true">
-         <font>
-            <Font size="38.0" />
-         </font>
-      </Label>
-      <Button layoutX="1073.0" layoutY="857.0" mnemonicParsing="false" onAction="#clicBtnGenerarConstancia" prefHeight="76.0" prefWidth="235.0" style="-fx-background-radius: 40;" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Generar constancia">
+      <Button layoutX="1038.0" layoutY="877.0" mnemonicParsing="false" onAction="#clicBtnGenerarConstancia" prefHeight="76.0" prefWidth="235.0" style="-fx-background-radius: 40;" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Generar constancia">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
+      <Label layoutX="392.0" layoutY="197.0" prefHeight="55.0" prefWidth="363.0" text="Experiencia educativa:">
+         <font>
+            <Font name="Berlin Sans FB" size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="392.0" layoutY="269.0" prefHeight="55.0" prefWidth="351.0" text="Programa educativo:">
+         <font>
+            <Font name="Berlin Sans FB" size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="392.0" layoutY="342.0" prefHeight="55.0" prefWidth="186.0" text="Profesor UV:">
+         <font>
+            <Font name="Berlin Sans FB" size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="392.0" layoutY="415.0" prefHeight="55.0" prefWidth="257.0" text="Profesor externo:">
+         <font>
+            <Font name="Berlin Sans FB" size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="390.0" layoutY="488.0" prefHeight="55.0" prefWidth="174.0" text="Descripción:">
+         <font>
+            <Font name="Berlin Sans FB" size="35.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="110.0" fitWidth="113.0" layoutX="1101.0" layoutY="660.0" onMouseClicked="#clicArchivoEvidencia" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/pdf.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="1091.0" layoutY="786.0" prefHeight="55.0" prefWidth="146.0" text="Evidencia">
+         <font>
+            <Font name="Berlin Sans FB" size="35.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

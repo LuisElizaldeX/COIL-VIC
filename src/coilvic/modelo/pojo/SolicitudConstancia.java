@@ -14,16 +14,22 @@ public class SolicitudConstancia {
     private String fechaSolcitud;
     private String colaboracion;
     private String profesorUV;
+    private String profesorExterno;
     private String periodo;
     private String experienciaEducativa;
+    private String programaEducativo;
     private String descripcion;
+    private String estudiante;
+    private String matricula;
     
     public SolicitudConstancia() {
     }
 
     public SolicitudConstancia(int idSolicitudConstancia, int idColaboracion, 
             int idEstadoConstancia, String estado, String fechaSolcitud, String colaboracion, 
-            String profesorUV, String periodo, String experienciaEducativa, String descripcion) {
+            String profesorUV, String periodo, String profesorExterno, 
+            String experienciaEducativa, String programaEducativo, String descripcion,
+            String estudiante, String matricula) {
         this.idSolicitudConstancia = idSolicitudConstancia;
         this.idColaboracion = idColaboracion;
         this.idEstadoConstancia = idEstadoConstancia;
@@ -32,8 +38,12 @@ public class SolicitudConstancia {
         this.colaboracion = colaboracion;
         this.profesorUV = profesorUV;
         this.periodo = periodo;
+        this.profesorExterno = profesorExterno;
         this.experienciaEducativa = experienciaEducativa;
+        this.programaEducativo = programaEducativo;
         this.descripcion = descripcion;
+        this.estudiante = estudiante;
+        this.matricula = matricula;
     }
 
     
@@ -102,6 +112,14 @@ public class SolicitudConstancia {
         this.periodo = periodo;
     }
 
+    public String getProfesorExterno() {
+        return profesorExterno;
+    }
+
+    public void setProfesorExterno(String profesorExterno) {
+        this.profesorExterno = profesorExterno;
+    }
+
     public String getExperienciaEducativa() {
         return experienciaEducativa;
     }
@@ -110,12 +128,36 @@ public class SolicitudConstancia {
         this.experienciaEducativa = experienciaEducativa;
     }
 
+    public String getProgramaEducativo() {
+        return programaEducativo;
+    }
+
+    public void setProgramaEducativo(String programaEducativo) {
+        this.programaEducativo = programaEducativo;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(String estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
     
 }

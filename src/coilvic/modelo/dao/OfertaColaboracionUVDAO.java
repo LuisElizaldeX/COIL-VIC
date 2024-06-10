@@ -18,6 +18,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -31,28 +33,51 @@ public class OfertaColaboracionUVDAO {
         Connection conexionBD = ConexionBD.obtenerConexion();
         if (conexionBD != null) {
             try {
-                String consulta = "SELECT ocuv.idOfertaColaboracionUV, ocuv.descripcion, ocuv.nombre AS ofertaNombre, " 
-                + "ee.nombre AS experienciaEducativaNombre, "
-                + "CONCAT(puv.nombre, ' ', puv.apellidos) "
-                + "AS profesorNombreCompleto, eocuv.estado AS estadoOferta, ocuv.periodo " 
+                String consulta = "SELECT ocuv.idOfertaColaboracionUV, ocuv.descripcion, "
+                + "ocuv.nombre AS ofertaNombre, ee.nombre AS experienciaEducativaNombre, "
+                + "CONCAT(puv.nombre, ' ', puv.apellidos) AS profesorNombreCompleto, "
+                + "eocuv.estado AS estadoOferta, p.fechaInicio, p.fechaFin, aa.nombre "
+                + "AS areaAcademicaNombre, c.nombre AS campusNombre "
                 + "FROM ofertaColaboracionUV ocuv "
-                + "JOIN experienciaEducativa ee ON ocuv.idExperienciaEducativa = ee.idExperienciaEducativa " 
-                + "JOIN profesoruv puv ON ocuv.profesoruv_idProfesoruv = puv.idProfesoruv "
+                + "JOIN experienciaEducativa ee "
+                + "ON ocuv.idExperienciaEducativa = ee.idExperienciaEducativa "
+                + "JOIN profesoruv puv ON ocuv.idProfesoruv = puv.idProfesoruv "
+                + "JOIN periodo p ON ee.idPeriodo = p.idPeriodo "
                 + "JOIN estadoOfertaColaboracionUV eocuv "
                 + "ON ocuv.idEstadoOfertaColaboracionUV = eocuv.idEstadoOfertaColaboracionUV "
+                + "JOIN dependencia dep ON ee.idDependencia = dep.idDependencia "
+                + "JOIN programaeducativo pe ON dep.idProgramaEducativo = pe.idProgramaEducativo "
+                + "JOIN areaacademica aa ON pe.idAreaAcademica = aa.idAreaAcademica "
+                + "JOIN campus c ON dep.idCampus = c.idCampus "
                 + "WHERE ocuv.idEstadoOfertaColaboracionUV = 1";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
                 ResultSet resultado = prepararSentencia.executeQuery();
                 List<OfertaColaboracionUV> ofertaColaboracionUV = new ArrayList();
+                DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                DateTimeFormatter outputFormatter = 
+                        DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 while (resultado.next()) {
                     OfertaColaboracionUV oferta = new OfertaColaboracionUV();
-                    oferta.setIdOfertaColaboracionUV(resultado.getInt("idOfertaColaboracionUV"));
+                    oferta.setIdOfertaColaboracionUV
+                        (resultado.getInt("idOfertaColaboracionUV"));
                     oferta.setNombre(resultado.getString("ofertaNombre"));
                     oferta.setDescripcion(resultado.getString("descripcion"));
-                    oferta.setExperienciaEducativa(resultado.getString("experienciaEducativaNombre"));
-                    //oferta.setPeriodo(resultado.getString("periodo"));
+                    oferta.setExperienciaEducativa
+                    (resultado.getString("experienciaEducativaNombre"));
+                    String fechaInicioBD = resultado.getString("fechaInicio");
+                    LocalDate fechaInicio = 
+                            LocalDate.parse(fechaInicioBD, inputFormatter);
+                    oferta.setFechaInicio(fechaInicio.format(outputFormatter));
+                    String fechaFinBD = resultado.getString("fechaFin");
+                    LocalDate fechaFin = 
+                            LocalDate.parse(fechaFinBD, inputFormatter);
+                    oferta.setFechaFin(fechaFin.format(outputFormatter));
                     oferta.setEstado(resultado.getString("estadoOferta"));
-                    oferta.setProfesorUV(resultado.getString("profesorNombreCompleto"));
+                    oferta.setNombreAreaAcademica
+                        (resultado.getString("areaAcademicaNombre"));
+                    oferta.setCampus(resultado.getString("campusNombre"));
+                    oferta.setProfesorUV
+                        (resultado.getString("profesorNombreCompleto"));
                     ofertaColaboracionUV.add(oferta);
                 }
                 respuesta.put(Constantes.KEY_ERROR, false);
