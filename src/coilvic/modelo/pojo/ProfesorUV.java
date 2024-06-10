@@ -18,7 +18,8 @@ public class ProfesorUV {
     public ProfesorUV() {
     }
 
-    public ProfesorUV(int idProfesorUV, int idUsuario, String telefono, int numeroPersonal, String nombre, String apellidos, String correo) {
+    public ProfesorUV(int idProfesorUV, int idUsuario, String telefono, int numeroPersonal, 
+            String nombre, String apellidos, String correo) {
         this.idProfesorUV = idProfesorUV;
         this.idUsuario = idUsuario;
         this.telefono = telefono;

@@ -62,7 +62,8 @@ public class ObtenerOfertaColaboracionUVDAO {
             try {
                 String consulta = "SELECT a.idAreaAcademica, a.nombre "
                         + "FROM areaacademica a "
-                        + "JOIN areaacademica_campus ac ON a.idAreaAcademica = ac.idAreaAcademica WHERE ac.idCampus = ?";
+                        + "JOIN areaacademica_campus ac ON a.idAreaAcademica = ac.idAreaAcademica "
+                        + "WHERE ac.idCampus = ?";
                 
                 
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
@@ -74,7 +75,8 @@ public class ObtenerOfertaColaboracionUVDAO {
 
                 while (resultado.next()) {
                     AreaAcademica areaAcademica = new AreaAcademica();
-                    areaAcademica.setIdAreaAcademica(resultado.getInt("idAreaAcademica"));
+                    areaAcademica.setIdAreaAcademica
+        (resultado.getInt("idAreaAcademica"));
                     areaAcademica.setNombre(resultado.getString("nombre"));
 
                     areasAcademicas.add(areaAcademica);
@@ -94,7 +96,8 @@ public class ObtenerOfertaColaboracionUVDAO {
     }
     
     
-    public static HashMap<String, Object> obtenerProgramasEducativos(int idAreaAcademica, int idCampus) {
+    public static HashMap<String, Object> 
+        obtenerProgramasEducativos(int idAreaAcademica, int idCampus) {
         Connection conexionBD = ConexionBD.obtenerConexion();
         HashMap<String, Object> respuesta = new LinkedHashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
@@ -103,7 +106,8 @@ public class ObtenerOfertaColaboracionUVDAO {
             try {
                 String consulta = "SELECT pe.idProgramaEducativo, pe.nombre "
                         + "FROM programaeducativo pe "
-                        + "JOIN programaeducativo_campus pc ON pe.idProgramaEducativo = pc.idProgramaEducativo "
+                        + "JOIN programaeducativo_campus pc ON pe.idProgramaEducativo = "
+                        + "pc.idProgramaEducativo "
                         + "JOIN campus c ON pc.idCampus = c.idCampus "
                         + "JOIN areaacademica aa ON pe.idAreaAcademica = aa.idAreaAcademica "
                         + "WHERE aa.idAreaAcademica = ? "
@@ -121,7 +125,8 @@ public class ObtenerOfertaColaboracionUVDAO {
 
                 while (resultado.next()) {
                     ProgramaEducativo programaEducativo = new ProgramaEducativo();
-                    programaEducativo.setIdProgramaEducativo(resultado.getInt("idProgramaEducativo"));
+                    programaEducativo.setIdProgramaEducativo
+        (resultado.getInt("idProgramaEducativo"));
                     programaEducativo.setNombre(resultado.getString("nombre"));
 
                     programasEducativos.add(programaEducativo);

@@ -20,8 +20,9 @@ public class ProfesorExterno {
     public ProfesorExterno() {
     }
 
-    public ProfesorExterno(int idProfesorExterno, int idUniversidad, String nombre, String apellidos, String pais, 
-            String carrera, String correo, String materia, String telefono) {
+    public ProfesorExterno(int idProfesorExterno, int idUniversidad, String nombre, 
+            String apellidos, String pais, String carrera, String correo, 
+            String materia, String telefono) {
         this.idProfesorExterno = idProfesorExterno;
         this.idUniversidad = idUniversidad;
         this.nombre = nombre;
