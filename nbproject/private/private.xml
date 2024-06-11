@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/zS21022065/Desktop/GitHub/COIL-VIC/src/coilvic/controladores/FXMLRegistrarOfertaColaboracionUvController.java</file>
+            <file>file:/C:/Users/zS21022065/Desktop/GitHub/COIL-VIC/src/coilvic/controladores/FXMLConsultarOfertaColaboracionExterna_ProfesorController.java</file>
+            <file>file:/C:/Users/zS21022065/Desktop/GitHub/COIL-VIC/src/coilvic/controladores/FXMLRevisarColaboracionesCOILController.java</file>
+            <file>file:/C:/Users/zS21022065/Desktop/GitHub/COIL-VIC/src/coilvic/COILVIC.java</file>
+            <file>file:/C:/Users/zS21022065/Desktop/GitHub/COIL-VIC/src/coilvic/controladores/FXMLPaginaPrincipalProfesorUVController.java</file>
+            <file>file:/C:/Users/zS21022065/Desktop/GitHub/COIL-VIC/src/coilvic/modelo/dao/ColaboracionDAO.java</file>
+            <file>file:/C:/Users/zS21022065/Desktop/GitHub/COIL-VIC/src/coilvic/controladores/FXMLConsultarOfertaColaboracionUv_ProfesorController.java</file>
+        </group>
     </open-files>
 </project-private>

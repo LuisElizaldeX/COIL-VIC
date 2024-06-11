@@ -97,6 +97,18 @@ public class FXMLConsultarOfertaColaboracionExterna_ProfesorController
 
     @FXML
     private void btnClicRegistrar(ActionEvent event) {
+            try{
+           Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                   getResource("vistas/FXMLRegistrarColaboracionOfertaExterna.fxml"));
+           Scene escenaPrincipal = new Scene(root);
+           escenarioPrincipal.setScene(escenaPrincipal);
+           escenarioPrincipal.setTitle("Registro de colaboracion a partir de una oferta EXTERNA");
+           escenarioPrincipal.show();
+            
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 
 }
