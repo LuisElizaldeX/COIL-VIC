@@ -7,7 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -196,6 +197,113 @@ public static HashMap<String, Object> guardarColaboracion(int idProfesorExterno,
     return respuesta;
 }
 
+    public static HashMap<String, Object> obtenerColaboraciones(){
+        HashMap<String, Object> respuesta = new LinkedHashMap<>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+        Connection conexionBD = ConexionBD.obtenerConexion();
+        if(conexionBD != null){
+            try {
+                String consulta = 
+                "SELECT c.idColaboracion, c.idEstadoColaboracion, c.nombre, c.fechaInicio, "
+              + "c.fechaFin, c.justificacion, per.fechaInicio AS inicio, per.fechaFin AS final, "
+              + "ar.nombre AS nombreArchivo, ar.archivocol AS archivo, "
+              + "CONCAT(puv.nombre, ' ', puv.apellidos) AS ProfesorUV, "
+              + "CONCAT(pe.nombre, ' ', pe.apellidos) AS ProfesorExterno, "
+              + "ee.nombre AS ExperienciaEducativa, COUNT(ce.idEstudiante) AS NumeroEstudiantes "
+              + "FROM colaboracion c "
+              + "JOIN profesoruv puv ON c.idProfesoruv = puv.idProfesoruv "
+              + "JOIN experienciaeducativa ee "
+              + "ON c.idExperienciaEducativa = ee.idExperienciaEducativa "
+              + "JOIN periodo per ON ee.idPeriodo = per.idPeriodo "
+              + "JOIN profesorexterno pe ON c.idProfesorexterno = pe.idProfesorexterno "
+              + "LEFT JOIN archivo ar ON c.idArchivo = ar.idArchivo "
+              + "LEFT JOIN colaboracion_estudiante ce ON c.idColaboracion = ce.idColaboracion "
+              + "GROUP BY c.idColaboracion, c.nombre, c.fechaInicio, c.fechaFin, c.justificacion, "
+              + "ar.nombre, ar.archivocol, puv.nombre, puv.apellidos, pe.nombre, "
+              + "pe.apellidos, ee.nombre";
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
+                ResultSet resultado = prepararSentencia.executeQuery();
+                List<Colaboracion> colaboraciones = new ArrayList<>();
+                
+                DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                DateTimeFormatter outputFormatter = 
+                        DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                
+                while(resultado.next()){
+                    Colaboracion colaboracion = new Colaboracion();
+                    colaboracion.setIdColaboracion
+                        (resultado.getInt("idColaboracion"));
+                    colaboracion.setIdEstadoColaboracion
+                        (resultado.getInt("idEstadoColaboracion"));
+                    colaboracion.setNombre(resultado.getString("nombre"));
+                    colaboracion.setProfesorExterno
+                        (resultado.getString("ProfesorExterno"));
+                    colaboracion.setExperienciaEducativa
+                        (resultado.getString("ExperienciaEducativa"));
+                    colaboracion.setProfesorUV
+                        (resultado.getString("ProfesorUV"));
+                    
+                    String fechaInicioOfertaBD = resultado.getString("inicio");
+                    if (fechaInicioOfertaBD != null) {
+                        LocalDate fechaInicioOferta = 
+                            LocalDate.parse(fechaInicioOfertaBD, inputFormatter);
+                            colaboracion.setFechaInicioOferta
+                                (fechaInicioOferta.format(outputFormatter));
+                    } else {
+                        colaboracion.setFechaInicioOferta(null); 
+                    }
+                    
+                    String fechaInicioColBD = resultado.getString("fechaInicio");
+                    if (fechaInicioColBD != null) {
+                        LocalDate fechaInicio = 
+                            LocalDate.parse(fechaInicioColBD, inputFormatter);
+                        colaboracion.setFechaInicio
+                                (fechaInicio.format(outputFormatter));
+                    } else {
+                        colaboracion.setFechaInicio(null); 
+                    }
+                    
+                    String fechaFinOfertaBD = resultado.getString("final");
+                    if (fechaFinOfertaBD != null) {
+                        LocalDate fechaFinOferta = 
+                            LocalDate.parse(fechaFinOfertaBD, inputFormatter);
+                        colaboracion.setFechaFinOferta
+                                (fechaFinOferta.format(outputFormatter));
+                    } else {
+                        colaboracion.setFechaFinOferta(null); 
+                    }
+                    
+                    String fechaFinBD = resultado.getString("fechaFin");
+                    if (fechaFinBD != null) {
+                        LocalDate fechaFinOferta = 
+                            LocalDate.parse(fechaFinBD, inputFormatter);
+                        colaboracion.setFechaFin
+                                (fechaFinOferta.format(outputFormatter));
+                    } else {
+                        colaboracion.setFechaFin(null); 
+                    }
+                   
+                    colaboracion.setJustificacion
+                        (resultado.getString("justificacion"));
+                    colaboracion.setNumeroEstudiantes
+                        (resultado.getString("NumeroEstudiantes"));
+                    colaboracion.setNombreEvidencia
+                        (resultado.getString("nombreArchivo"));
+                    colaboracion.setEvidencia
+                        (resultado.getBytes("archivo"));
+                    colaboraciones.add(colaboracion);
+                }
+                respuesta.put(Constantes.KEY_ERROR, false);
+                respuesta.put("colaboraciones", colaboraciones);
+                conexionBD.close();
+            } catch (SQLException e) {
+                respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+            }
+        } else {
+            respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
+        }
+        return respuesta;
+    }
+    
 
-   
 }
