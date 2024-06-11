@@ -10,6 +10,9 @@ import coilvic.modelo.dao.ObtenerOfertaColaboracionUVDAO;
 import coilvic.modelo.pojo.AreaAcademica;
 import coilvic.modelo.pojo.Campus;
 import coilvic.modelo.pojo.Colaboracion;
+import coilvic.modelo.pojo.Dependencia;
+import coilvic.modelo.pojo.ExperienciaEducativa;
+import coilvic.modelo.pojo.ProfesorExterno;
 import coilvic.modelo.pojo.ProfesorUV;
 import coilvic.modelo.pojo.ProgramaEducativo;
 import coilvic.utilidades.Constantes;
@@ -49,6 +52,7 @@ import javafx.stage.Stage;
 public class FXMLRegistrarColaboracionDirectaController extends FXMLPaginaPrincipalProfesorUVController {
     
     private int idProfesorUV;
+    private int idProfesorExterno;
     private ObservableList<ProgramaEducativo> programasEducativos;
     private ObservableList<AreaAcademica> areasAcademicas;
     private ObservableList<Campus> campus;
@@ -200,20 +204,9 @@ private void btnAceptarRegistroColaboracion(ActionEvent event) throws SQLExcepti
         try {
             // Obtener los valores de los campos
             String nombreColaboracion = tfNombreColaboracion.getText();
-            String nombreDependencia = tfNombreDependencia.getText();
-            Campus campusSeleccionado = cbCampus.getValue();
             String municipio = tfMunicipio.getText();
-            AreaAcademica areaAcademicaSeleccionada = cbAreaAcademica.getValue();
-            ProgramaEducativo programaEducativoSeleccionado = cbProgramaEducativo.getValue();
             String experienciaEducativa = tfExperienciaEducativa.getText();
-            String materiaE = TfMateriaE.getText();
-            String nombreProfesorExterno = tfNombreProfesorExterno.getText();
-            String telefonoProfesorExterno = tfTelefono.getText();
-            String carreraProfesorExterno = tfCarrera.getText();
-            String apellidosProfesorExterno = tfApellidosProfesorExterno.getText();
-            String universidadProfesorExterno = tfUniversidad.getText();
-            String paisProfesorExterno = tfPais.getText();
-            String correoProfesorExterno = tfCorreo.getText();
+            String materiaE = TfMateriaE.getText(); 
             String idioma = tfIdioma.getText();
             int numeroEstudiantes = Integer.parseInt(tfNumeroDeEstudiantes.getText());
             String fechaInicio = dpFechaDeInicio.getValue().toString();
@@ -223,20 +216,9 @@ private void btnAceptarRegistroColaboracion(ActionEvent event) throws SQLExcepti
             HashMap<String, Object> resultado = ColaboracionDAO.guardarColaboracion(
                 profesorUv.getIdProfesorUV(),
                 nombreColaboracion,
-                nombreDependencia,
-                campusSeleccionado.getIdCampus(),
                 municipio,
-                areaAcademicaSeleccionada.getIdAreaAcademica(),
-                programaEducativoSeleccionado.getIdProgramaEducativo(),
                 experienciaEducativa,
                 materiaE,
-                nombreProfesorExterno,
-                telefonoProfesorExterno,
-                carreraProfesorExterno,
-                apellidosProfesorExterno,
-                universidadProfesorExterno,
-                paisProfesorExterno,
-                correoProfesorExterno,
                 idioma,
                 numeroEstudiantes,
                 fechaInicio,
@@ -320,5 +302,38 @@ private void limpiarFormulario() {
         cbProgramaEducativo.setItems(programasEducativos);
         
     }  
+  private Dependencia obtenerInformacionDependencia(){
+        Dependencia dependencia = new Dependencia();
+        dependencia.setNombre(tfNombreDependencia.getText());
+        dependencia.setMunicipio(tfMunicipio.getText());
+        dependencia.setIdCampus(cbCampus.getSelectionModel().getSelectedItem().getIdCampus());
+        dependencia.setIdProgramaEducativo
+        (cbProgramaEducativo.getSelectionModel().getSelectedItem().getIdProgramaEducativo());
 
+        return dependencia;
+    }
+  
+      private ExperienciaEducativa obtenerInformacionExperienciaEducativa(){
+        ExperienciaEducativa experienciaEducativa = new ExperienciaEducativa();
+        experienciaEducativa.setNombre(tfExperienciaEducativa.getText());
+        
+
+        return experienciaEducativa;
+    }
+      
+       private ProfesorExterno obtenerInformacionProfesorExterno(){
+        ProfesorExterno profesorExterno = new ProfesorExterno();
+       
+        profesorExterno.setNombre(tfNombreProfesorExterno.getText());
+        profesorExterno.setApellidos(tfApellidosProfesorExterno.getText());
+        profesorExterno.setPais(tfPais.getText());
+        profesorExterno.setCarrera(tfCarrera.getText());
+        profesorExterno.setMateria(TfMateriaE.getText());
+        profesorExterno.setCorreo(tfCorreo.getText());
+        profesorExterno.setTelefono(tfTelefono.getText());
+        
+        return profesorExterno;
+    }
+       
+    
 }
