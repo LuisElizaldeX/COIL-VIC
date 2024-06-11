@@ -8,9 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLPaginaPrincipalProfesorUVController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLRegistrarColaboracionOfertaUvController">
    <children>
-      <Pane prefHeight="1005.0" prefWidth="312.0" style="-fx-background-color: #404040;">
+      <Pane layoutY="-2.0" prefHeight="1005.0" prefWidth="312.0" style="-fx-background-color: #404040;">
          <children>
             <Label layoutX="228.0" layoutY="60.0" text="Cerrar sesión" textFill="WHITE">
                <font>
@@ -102,57 +102,96 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="312.0" prefHeight="440.0" prefWidth="1136.0">
-         <children>
-            <ImageView fitHeight="440.0" fitWidth="1143.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../recursos/linea%201.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="246.0" fitWidth="275.0" layoutX="122.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../recursos/image%201.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="205.0" fitWidth="97.0" layoutX="1016.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../recursos/UV.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="601.0" layoutY="139.0" prefHeight="86.0" prefWidth="339.0" text="COIL-VIC">
-               <font>
-                  <Font name="Arial" size="75.0" />
-               </font>
-            </Label>
-            <Label layoutX="516.0" layoutY="266.0" prefHeight="71.0" prefWidth="479.0" text="Collaborative Online International Learnig - Virtual International Collaborations " textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Label fx:id="lbNombreBienvenida" layoutX="346.0" layoutY="546.0" prefHeight="71.0" prefWidth="642.0">
-         <font>
-            <Font name="Arial" size="56.0" />
-         </font>
-      </Label>
-      <Label layoutX="346.0" layoutY="493.0" prefHeight="71.0" prefWidth="642.0" text="Bienvenido profesor">
+      <Label layoutX="576.0" layoutY="18.0" prefHeight="71.0" prefWidth="642.0" text="Registrar colaboracion">
          <font>
             <Font name="Arial Bold Italic" size="53.0" />
          </font>
       </Label>
-      <Label layoutX="375.0" layoutY="640.0" text="Colaboraciones:">
+      <Label layoutX="394.0" layoutY="123.0" text="Profesor Uv">
          <font>
-            <Font size="18.0" />
+            <Font name="Berlin Sans FB" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="tvColaboraciones" layoutX="348.0" layoutY="691.0" onMouseClicked="#seleccionarColaboracion" prefHeight="269.0" prefWidth="1064.0" stylesheets="@../css/estilos.css">
-        <columns>
-          <TableColumn fx:id="colNombre" prefWidth="335.0" text="Nombre" />
-          <TableColumn fx:id="colMateria" prefWidth="308.0" text="Materia" />
-            <TableColumn fx:id="colPeriodo" prefWidth="208.0" text="Periodo" />
-            <TableColumn fx:id="colEstado" prefWidth="212.0" text="Estado" />
-        </columns>
-      </TableView>
+      <TextField fx:id="tfPais" layoutX="465.0" layoutY="168.0" prefHeight="25.0" prefWidth="222.0" />
+      <TextField fx:id="tfApellidosProfesorExterno" layoutX="465.0" layoutY="225.0" prefHeight="25.0" prefWidth="222.0" />
+      <TextField fx:id="tfIdioma" layoutX="465.0" layoutY="286.0" prefHeight="25.0" prefWidth="222.0" />
+      <TextField fx:id="tfUniversidad" layoutX="803.0" layoutY="168.0" prefHeight="25.0" prefWidth="222.0" />
+      <TextField fx:id="tfCarrera" layoutX="803.0" layoutY="225.0" prefHeight="25.0" prefWidth="222.0" />
+      <TextField fx:id="tfCorreo" layoutX="803.0" layoutY="286.0" prefHeight="25.0" prefWidth="222.0" />
+      <TextField fx:id="tfNombreProfesorExterno" layoutX="1159.0" layoutY="168.0" prefHeight="25.0" prefWidth="222.0" />
+      <TextField fx:id="TfMateriaE" layoutX="1159.0" layoutY="225.0" prefHeight="25.0" prefWidth="222.0" />
+      <TextField fx:id="tfTelefono" layoutX="1159.0" layoutY="286.0" prefHeight="25.0" prefWidth="222.0" />
+      <Label layoutX="412.0" layoutY="173.0" text="Pais:">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="395.0" layoutY="230.0" text="Apellidos:">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="402.0" layoutY="291.0" text="Idioma:">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="695.0" layoutY="173.0" text="Universidad:">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="704.0" layoutY="230.0" text="Carrera:">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="705.0" layoutY="291.0" text="Correo:">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="1045.0" layoutY="173.0" text="Nombre:">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="1047.0" layoutY="230.0" text="Materia:">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="1043.0" layoutY="291.0" text="Telefono:">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font>
+      </Label>
+      <Separator layoutX="394.0" layoutY="347.0" prefHeight="12.0" prefWidth="990.0" />
+      <Label layoutX="402.0" layoutY="375.0" text="Estudiante">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="387.0" layoutY="429.0" text="Numero de estudiantes">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfNumeroDeEstudiantes" layoutX="576.0" layoutY="424.0" prefHeight="25.0" prefWidth="222.0" />
+      <Button layoutX="1006.0" layoutY="947.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="167.0" text="Adjuntar Syllabus">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="1189.0" layoutY="947.0" mnemonicParsing="false" onAction="#btnAceptarRegistroColaboracion" prefHeight="31.0" prefWidth="99.0" text="Aceptar">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="1305.0" layoutY="947.0" mnemonicParsing="false" onAction="#btnCancelarRegistroColaboracion" prefHeight="31.0" prefWidth="100.0" text="Cancelar">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -160,4 +161,41 @@ public class ColaboracionDAO {
         return respuesta;
     }
 
+    
+public static HashMap<String, Object> guardarColaboracion(int idProfesorExterno, String nombreColaboracion, String experienciaEducativa, String fechaInicio, String fechaFin, String idioma, int idProfesorUV, String fechaInicio1, String fechaFin1) {
+    HashMap<String, Object> respuesta = new LinkedHashMap<>();
+    respuesta.put(Constantes.KEY_ERROR, true);
+    Connection conexionBD = ConexionBD.obtenerConexion();
+    
+    if (conexionBD != null) {
+        try {
+            String consulta = "INSERT INTO colaboracion (nombre, idProfesorExterno, idExperienciaEducativa, idEstadoColaboracion, idProfesoruv, fechaInicio, fechaFin, idIdioma) VALUES (?, ?, ?, 1, ?, ?, ?, ?)";
+            PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
+            prepararSentencia.setString(1, nombreColaboracion);
+            prepararSentencia.setInt(2, idProfesorExterno);
+            prepararSentencia.setString(3, experienciaEducativa);
+            prepararSentencia.setInt(4, idProfesorUV);
+            prepararSentencia.setString(5, fechaInicio);
+            prepararSentencia.setString(6, fechaFin);
+            prepararSentencia.setString(7, idioma);
+            
+            int filasInsertadas = prepararSentencia.executeUpdate();
+            if (filasInsertadas > 0) {
+                respuesta.put(Constantes.KEY_ERROR, false);
+                respuesta.put(Constantes.KEY_MENSAJE, "La colaboración se ha guardado exitosamente");
+            } else {
+                respuesta.put(Constantes.KEY_MENSAJE, "No se pudo insertar la colaboración.");
+            }
+            conexionBD.close();
+        } catch (SQLException e) {
+            respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+        }
+    } else {
+        respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
+    }
+    return respuesta;
+}
+
+
+   
 }

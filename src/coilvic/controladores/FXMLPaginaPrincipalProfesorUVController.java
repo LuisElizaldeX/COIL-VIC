@@ -173,6 +173,18 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
 
     @FXML
     protected void clicBtnIrRegistrarColaboracion(ActionEvent event) {
+        try{
+           Stage registrarOfertaUv = (Stage) imgCerrarSesion.getScene().getWindow();
+           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                   getResource("vistas/FXMLRegistrarColaboracionDirecta.fxml"));
+           Scene escenaRegistrarOfertaUv = new Scene(root);
+           registrarOfertaUv.setScene(escenaRegistrarOfertaUv);
+           registrarOfertaUv.setTitle("Registrar colaboracion Directa");
+           registrarOfertaUv.show();
+            
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 
     @FXML

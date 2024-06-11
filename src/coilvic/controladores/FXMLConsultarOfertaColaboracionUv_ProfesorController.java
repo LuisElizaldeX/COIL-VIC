@@ -117,8 +117,8 @@ public class FXMLConsultarOfertaColaboracionUv_ProfesorController
             escenarioConsultarOfertasUV.setTitle("Ofertas colaboracion UV");
             escenarioConsultarOfertasUV.show();
         }catch(IOException e){
-            System.out.println("Error: "+e.getMessage());
-        }
+            System.out.println("Error: "+e.getMessage()); 
+       }
     }
 
     
@@ -130,6 +130,18 @@ public class FXMLConsultarOfertaColaboracionUv_ProfesorController
     
     @FXML
     private void btnClicRegistrar(ActionEvent event) {
+         try{
+           Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
+           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
+                   getResource("vistas/FXMLRegistrarColaboracionOfertaUv.fxml"));
+           Scene escenaPrincipal = new Scene(root);
+           escenarioPrincipal.setScene(escenaPrincipal);
+           escenarioPrincipal.setTitle("Registro de colaboracion a partir de una oferta UV");
+           escenarioPrincipal.show();
+            
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
     
     
