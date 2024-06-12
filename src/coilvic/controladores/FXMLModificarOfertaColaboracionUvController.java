@@ -275,8 +275,8 @@ public class FXMLModificarOfertaColaboracionUvController
                 tfDescripcion.getText().trim().isEmpty() || 
                 tfExperienciaEducativa.getText().trim().isEmpty() || 
                 tfCreditos.getText().trim().isEmpty() || tfCreditos.getText().trim().isEmpty() 
-                || validarCreditos()==false || tfDescripcionEe.getText().trim().isEmpty()){
-            
+                || validarCreditos()==false || tfDescripcionEe.getText().trim().isEmpty()
+                || validarFechas(dpFechaInicio, dpFechaFin) == false){
             return false;
             
         }else{
@@ -294,6 +294,19 @@ public class FXMLModificarOfertaColaboracionUvController
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+    
+    
+    private boolean validarFechas(DatePicker dpFechaInicio, DatePicker dpFechaFin) {
+        LocalDate fechaInicio = dpFechaInicio.getValue();
+        LocalDate fechaFin = dpFechaFin.getValue();
+
+        if (fechaInicio != null && fechaFin != null) {
+            if (fechaFin.isBefore(fechaInicio)) {
+                return false;
+            }
+        }
+        return true;
     }
     
     

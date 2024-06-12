@@ -22,6 +22,7 @@ import coilvic.utilidades.SingletonProfesorUV;
 import coilvic.utilidades.Utilidades;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -278,8 +279,8 @@ public class FXMLRegistrarOfertaColaboracionUvController
                 cbProgramaEducativo.getValue() == null || tfDescripcion.getText().trim().isEmpty() 
                 || tfExperienciaEducativa.getText().trim().isEmpty() || 
                 tfCreditos.getText().trim().isEmpty() || tfCreditos.getText().trim().isEmpty() 
-                || validarCreditos()==false || tfDescripcionEe.getText().trim().isEmpty()){
-            
+                || validarCreditos()==false || tfDescripcionEe.getText().trim().isEmpty()
+                || validarFechas(dpFechaInicio, dpFechaFin) == false){
             return false;
             
         }else{
@@ -297,6 +298,19 @@ public class FXMLRegistrarOfertaColaboracionUvController
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+    
+    
+    private boolean validarFechas(DatePicker dpFechaInicio, DatePicker dpFechaFin) {
+        LocalDate fechaInicio = dpFechaInicio.getValue();
+        LocalDate fechaFin = dpFechaFin.getValue();
+
+        if (fechaInicio != null && fechaFin != null) {
+            if (fechaFin.isBefore(fechaInicio)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
