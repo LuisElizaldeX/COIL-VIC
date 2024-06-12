@@ -30,7 +30,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class FXMLCancelarColaboracionCoordinadorController extends FXMLPaginaPrincipalCoordinadorCOILController implements ObservadorColaboraciones{
+public class FXMLCancelarColaboracionCoordinadorController extends FXMLPaginaPrincipalCoordinadorCOILController 
+        implements ObservadorColaboraciones{
     
     private ObservableList<Colaboracion> colaboraciones;
     
@@ -70,11 +71,13 @@ public class FXMLCancelarColaboracionCoordinadorController extends FXMLPaginaPri
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
         
         if(!isError){
-            ArrayList<Colaboracion> colaboracionesBD = (ArrayList<Colaboracion>) respuesta.get("colaboraciones");
+            ArrayList<Colaboracion> colaboracionesBD = (ArrayList<Colaboracion>) 
+                    respuesta.get("colaboraciones");
             colaboraciones.addAll(colaboracionesBD);
             tvColaboraciones.setItems(colaboraciones);
         } else {
-            Utilidades.mostrarAlertaSimple("Error", ""+respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.WARNING);
+            Utilidades.mostrarAlertaSimple("Error", ""+respuesta.get(Constantes.KEY_MENSAJE),
+                    Alert.AlertType.WARNING);
         }
     }
     
@@ -86,11 +89,13 @@ public class FXMLCancelarColaboracionCoordinadorController extends FXMLPaginaPri
             if (colaboracionSeleccionada.getEstadoColaboracion().equals("En curso")) {
                 irJustificarCancelacion(colaboracionSeleccionada.getIdColaboracion());
             } else {
-                Utilidades.mostrarAlertaSimple("Error al cancelar", "Esta colaboración ya se encuentra cancelada o registrada", Alert.AlertType.WARNING);
+                Utilidades.mostrarAlertaSimple("Error al cancelar", "Esta colaboración ya"
+                        + " se encuentra cancelada o registrada", Alert.AlertType.WARNING);
             }
         } else {
             Utilidades.mostrarAlertaSimple("Seleccionar colaboración", 
-                    "Para cancelar una colaboración primero debe seleccionar una de la tabla", Alert.AlertType.WARNING);
+                    "Para cancelar una colaboración primero debe seleccionar una de la tabla",
+                    Alert.AlertType.WARNING);
         }
     }
     

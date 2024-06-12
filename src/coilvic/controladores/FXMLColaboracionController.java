@@ -1,6 +1,7 @@
 package coilvic.controladores;
 
 import coilvic.modelo.dao.ArchivoDAO;
+import coilvic.modelo.dao.ColaboracionDAO;
 import coilvic.modelo.pojo.Archivo;
 import coilvic.modelo.pojo.Colaboracion;
 import coilvic.observador.ObservadorColaboraciones;
@@ -29,7 +30,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVController implements ObservadorColaboraciones{
+public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVController 
+        implements ObservadorColaboraciones{
     private Colaboracion colaboracion;
     
     @FXML
@@ -95,10 +97,11 @@ public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVCon
 
     @FXML
     private void btnClicCancelarColaboracion(ActionEvent event) {
-        if (colaboracion.getEstadoColaboracion().equals("En curso")) {
+        if (colaboracion.getIdEstadoColaboracion() == 1) {
             irJustificarCancelacion(colaboracion.getIdColaboracion());
         } else {
-            Utilidades.mostrarAlertaSimple("Error al cancelar", "Esta colaboración ya se encuentra cancelada o finalizada", Alert.AlertType.WARNING);
+            Utilidades.mostrarAlertaSimple("Error al cancelar", "Esta colaboración ya se "
+                    + "encuentra cancelada o finalizada", Alert.AlertType.WARNING);
         } 
     }
     
@@ -122,10 +125,11 @@ public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVCon
 
     @FXML
     private void btnClicCerrarColaboracion(ActionEvent event) {
-        if (colaboracion.getEstadoColaboracion().equals("En curso")) {
+        if (colaboracion.getIdEstadoColaboracion() == 1) {
             irCerrarColaboracion(colaboracion);
         } else {
-            Utilidades.mostrarAlertaSimple("Error al cerrar colaboracion", "Esta colaboración ya se encuentra cancelada o finalizada", Alert.AlertType.WARNING);
+            Utilidades.mostrarAlertaSimple("Error al cerrar colaboracion", "Esta colaboración"
+                    + " ya se encuentra cancelada o finalizada", Alert.AlertType.WARNING);
         }
     }
 
@@ -135,7 +139,7 @@ public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVCon
             FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLCerrarColaboracion.fxml");
             Parent root = loader.load();
             FXMLCerrarColaboracionController controlador = loader.getController();
-            controlador.inicializarValores(colaboracion);
+            controlador.inicializarValores(colaboracion, this);
             
             Scene escenaPrincipal = new Scene(root);
             escenarioPrincipal.setScene(escenaPrincipal);
@@ -145,10 +149,24 @@ public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVCon
             System.out.println("Error: "+e.getMessage());
         }
     }
+    
+    private Colaboracion obtenerColaboracionActualizada(){
+        HashMap<String, Object> respuesta = 
+                ColaboracionDAO.obtenerColaboracion(colaboracion.getIdColaboracion());
+        boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
+        if (!isError){
+            return (Colaboracion) respuesta.get("colaboracion");
+        }
+        return null;
+    }
 
     @Override
     public void operacionExitosa(String tipoOperacion) {
-        inicializarValores(colaboracion);
+        Colaboracion colaboracionActualizada = obtenerColaboracionActualizada();
+        if (colaboracionActualizada != null) {
+            inicializarValores(colaboracionActualizada);
+        }
     }
-
+    
+    
 }

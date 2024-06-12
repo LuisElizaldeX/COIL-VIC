@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Erick/OneDrive/Documentos/GitHub/COIL-VIC/src/coilvic/modelo/dao/OfertaColaboracionExternaDAO.java</file>
-            <file>file:/C:/Users/Erick/OneDrive/Documentos/GitHub/COIL-VIC/src/coilvic/controladores/FXMLRegistrarOfertaColaboracionExternaController.java</file>
+            <file>file:/C:/Users/king_/Documents/ProyectoAplicaciones/COIL-VIC/src/coilvic/controladores/FXMLRevisarColaboracionesCOILController.java</file>
+            <file>file:/C:/Users/king_/Documents/ProyectoAplicaciones/COIL-VIC/src/coilvic/controladores/FXMLHistorialDeColaboracionesController.java</file>
+            <file>file:/C:/Users/king_/Documents/ProyectoAplicaciones/COIL-VIC/src/coilvic/controladores/FXMLPaginaPrincipalCoordinadorCOILController.java</file>
+            <file>file:/C:/Users/king_/Documents/ProyectoAplicaciones/COIL-VIC/src/coilvic/controladores/FXMLEtapasColaboracionController.java</file>
         </group>
     </open-files>
 </project-private>

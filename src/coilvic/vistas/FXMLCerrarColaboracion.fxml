@@ -121,7 +121,7 @@
           <TableColumn fx:id="colMatricula" prefWidth="440.0" text="Matrícula" />
         </columns>
       </TableView>
-      <Button layoutX="380.0" layoutY="934.0" mnemonicParsing="false" onAction="#btnClicSubirEvidencia" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #EA5959;" text="Subir evidencia" textFill="WHITE" />
+      <Button fx:id="btnSubirEvidencia" layoutX="380.0" layoutY="934.0" mnemonicParsing="false" onAction="#btnClicSubirEvidencia" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #EA5959;" text="Subir evidencia" textFill="WHITE" />
       <Button fx:id="btnGuardar" disable="true" layoutX="561.0" layoutY="934.0" mnemonicParsing="false" onAction="#btnClicGuardar" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #EA5959;" text="Guardar" textFill="WHITE" />
       <Button layoutX="1249.0" layoutY="934.0" mnemonicParsing="false" onAction="#btnClicCancelar" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #EA5959;" text="Cancelar" textFill="WHITE" />
       <Button fx:id="btnAceptar" disable="true" layoutX="1068.0" layoutY="934.0" mnemonicParsing="false" onAction="#btnClicAceptar" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #3FBD13;" text="Aceptar" textFill="WHITE" />

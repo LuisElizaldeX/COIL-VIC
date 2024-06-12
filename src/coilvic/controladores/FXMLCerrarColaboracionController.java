@@ -1,10 +1,12 @@
 package coilvic.controladores;
 
 import coilvic.modelo.dao.ArchivoDAO;
+import coilvic.modelo.dao.ColaboracionDAO;
 import coilvic.modelo.dao.EstudianteDAO;
 import coilvic.modelo.pojo.Archivo;
 import coilvic.modelo.pojo.Colaboracion;
 import coilvic.modelo.pojo.Estudiante;
+import coilvic.observador.ObservadorColaboraciones;
 import coilvic.utilidades.Constantes;
 import coilvic.utilidades.Utilidades;
 import java.io.File;
@@ -38,9 +40,10 @@ import javafx.stage.Stage;
 
 public class FXMLCerrarColaboracionController extends FXMLPaginaPrincipalProfesorUVController {
     
+    private ObservadorColaboraciones observador;
     private ObservableList<Estudiante> estudiantes;
+    private ObservableList<Estudiante> estudiantesEliminadosTemp;
     private Colaboracion colaboracion;
-    private File archivoSeleccionado;
     private Archivo archivo = new Archivo();
     
     @FXML
@@ -63,16 +66,21 @@ public class FXMLCerrarColaboracionController extends FXMLPaginaPrincipalProfeso
     private Button btnAceptar;
     @FXML
     private Button btnEliminarEstudiantes;
+    @FXML
+    private Button btnSubirEvidencia;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurarTabla();
         configurarBtnEliminarEstudiantes();
+        estudiantesEliminadosTemp = FXCollections.observableArrayList();
     }    
     
-    public void inicializarValores(Colaboracion colaboracion){
+    public void inicializarValores(Colaboracion colaboracion, ObservadorColaboraciones observador){
         this.colaboracion = colaboracion;
+        this.observador = observador;
         cargarDatosEstudiantes();
+        configurarSubirEvidencia();
     }
     
     private void configurarTabla(){
@@ -85,129 +93,210 @@ public class FXMLCerrarColaboracionController extends FXMLPaginaPrincipalProfeso
         tvEstudiantes.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Estudiante>(){
             @Override
             public void changed(ObservableValue<? extends Estudiante> observable, Estudiante oldValue, Estudiante newValue) {
-                if (newValue != null) {
-                    btnEliminarEstudiantes.setDisable(false);
-                } 
+                btnEliminarEstudiantes.setDisable(newValue == null);
             }
-            
         });
     }
     
+    private void configurarSubirEvidencia() {
+        int idArchivo = colaboracion.getIdArchivo();
+        if (idArchivo != 0) {
+            btnSubirEvidencia.setDisable(true);
+            btnAceptar.setDisable(false);
+            Archivo archivo = obtenerArchivo(idArchivo);
+            if (archivo != null) {
+                lbMensajeEvidencia.setStyle("-fx-text-fill: green");
+                lbMensajeEvidencia.setText("Evidencia " + archivo.getNombre() + " registrada");
+            } else {
+                lbMensajeEvidencia.setStyle("-fx-text-fill: red");
+                lbMensajeEvidencia.setText("Error al obtener el archivo");
+            }
+        }
+    }
+
+    
     private void cargarDatosEstudiantes(){
         estudiantes = FXCollections.observableArrayList();
-        HashMap<String, Object> respuesta = EstudianteDAO.obtenerEstudiantes(colaboracion.getIdColaboracion());
+        HashMap<String, Object> respuesta = 
+                EstudianteDAO.obtenerEstudiantes(colaboracion.getIdColaboracion());
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
         if(!isError){
             ArrayList<Estudiante> estudiantesBD = (ArrayList<Estudiante>) respuesta.get("estudiantes");
             estudiantes.addAll(estudiantesBD);
             tvEstudiantes.setItems(estudiantes);
         } else {
-            Utilidades.mostrarAlertaSimple("Error", "" + respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.WARNING);
+            Utilidades.mostrarAlertaSimple("Error", 
+                    "" + respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.WARNING);
         }
-    }
+    } 
 
     @FXML
     private void btnClicSubirEvidencia(ActionEvent event) {
-        seleccionarArchivo();
+        File archivoSeleccionado = obtenerArchivoSeleccionado();
+        if (archivoSeleccionado != null) {
+            if (pesoSoportado(archivoSeleccionado)) {
+                guardarArchivo(archivoSeleccionado);
+            } else {
+                Utilidades.mostrarAlertaSimple("Peso excedido", 
+                        "El archivo seleccionado es mayor a los 20MB", Alert.AlertType.WARNING);
+            }
+        }
     }
     
-    private void seleccionarArchivo(){
+    private File obtenerArchivoSeleccionado(){
         FileChooser dialogoSeleccion = new FileChooser();
         dialogoSeleccion.setTitle("Seleccionar evidencia");
         String etiquetaTipoArchivo = "*.pdf";
-        FileChooser.ExtensionFilter filtroArchivo = new FileChooser.ExtensionFilter(etiquetaTipoArchivo,"*.pdf");
+        FileChooser.ExtensionFilter filtroArchivo = 
+                new FileChooser.ExtensionFilter(etiquetaTipoArchivo,"*.pdf");
         dialogoSeleccion.getExtensionFilters().add(filtroArchivo);
         Stage escenarioActual = (Stage) lbMensajeEvidencia.getScene().getWindow();
-        archivoSeleccionado = dialogoSeleccion.showOpenDialog(escenarioActual);
-        if(archivoSeleccionado != null){   
-            if (pesoSoportado()) {
-                try {
-                    byte[] archivoBytes = Files.readAllBytes(archivoSeleccionado.toPath());
-                    archivo.setNombre(archivoSeleccionado.getName());
-                    archivo.setArchivoCol(archivoBytes);
-                    archivo.setIdTipoArchivo(2);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+        return dialogoSeleccion.showOpenDialog(escenarioActual);
+    }
+        
+    private boolean pesoSoportado(File archivoSeleccionado){
+        return archivoSeleccionado.length() < Constantes.PESO_MAXIMO;
+    }
+    
+    private void guardarArchivo(File archivoSeleccionado) {
+        if (archivoSeleccionado != null) {
+            try {
+                byte[] archivoBytes = Files.readAllBytes(archivoSeleccionado.toPath());
+                archivo.setNombre(archivoSeleccionado.getName());
+                archivo.setArchivoCol(archivoBytes);
+                archivo.setIdTipoArchivo(Constantes.ID_ARCHIVO_EVIDENCIA);
                 lbMensajeEvidencia.setStyle("-fx-text-fill: green");
                 lbMensajeEvidencia.setText("Evidencia " + archivo.getNombre() + " registrada");
-            } else {
-                Utilidades.mostrarAlertaSimple("Peso excedido", "El archivo seleccionado es mayor a los 20MB", Alert.AlertType.WARNING);
+                btnAceptar.setDisable(false);
+                btnGuardar.setDisable(false);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                lbMensajeEvidencia.setStyle("-fx-text-fill: red");
+                lbMensajeEvidencia.setText("Error al leer el archivo");
             }
-        } 
+        }
     }
-    
-    private boolean pesoSoportado(){
-        long pesoArchivo = archivoSeleccionado.length();
-        return pesoArchivo < Constantes.PESO_MAXIMO;
-    }
-    
-    private void subirArchivo(Archivo archivo){
+
+    private boolean isErrorSubirArchivo(Archivo archivo) {
         HashMap<String, Object> respuesta = ArchivoDAO.subirArchivo(archivo);
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
-        if(!isError){
-            
-            Utilidades.mostrarAlertaSimple("Archivo guardado", "La evidencia se ha subido correctamente", Alert.AlertType.INFORMATION);
+        if (!isError) {
+            archivo.setIdArchivo((int) respuesta.get("idArchivo"));
         } else {
-            Utilidades.mostrarAlertaSimple("Error al subir archivo", "" + respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
+            System.err.println(respuesta.get(Constantes.KEY_MENSAJE));
         }
+        return isError;
+    }
+
+    private boolean isErrorRegistrarArchivo(int idColaboracion, int idArchivo) {
+        HashMap<String, Object> respuesta = 
+                ArchivoDAO.registrarArchivoEnColaboracion(idColaboracion, idArchivo);
+        boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
+        if (!isError) {
+            colaboracion.setIdArchivo(idArchivo);
+        } else {
+            System.out.println("Error al registrar archivo en la colaboración: " + 
+                    respuesta.get(Constantes.KEY_MENSAJE));
+        }
+        return isError;
     }
 
     @FXML
     private void btnClicGuardar(ActionEvent event) {
+        if (!isErrorGuardarCambios()) {
+            Utilidades.mostrarAlertaSimple("Cambios guardados",
+                    "Se han guardado los cambios correctamente", Alert.AlertType.INFORMATION);
+            irColaboracion();
+        } else {
+            Utilidades.mostrarAlertaSimple("Error al guardar",
+                    "Hubo un problema al guardar los cambios favor de intentarlo más tarde",
+                    Alert.AlertType.INFORMATION);
+        }
+    }
+    
+    private boolean isErrorGuardarCambios() {
+        if (estudiantesEliminadosTemp != null && !estudiantesEliminadosTemp.isEmpty()) {
+            for (Estudiante estudiante : estudiantesEliminadosTemp) {
+                if (isErrorEliminarEstudiante(estudiante.getIdEstudiante()))
+                    return true;
+            }
+        }
+        
+        if (archivo != null && archivo.getArchivoCol() != null){
+            if (!isErrorSubirArchivo(archivo)){
+                return isErrorRegistrarArchivo(colaboracion.getIdColaboracion(), 
+                        archivo.getIdArchivo());
+            }
+            return true;
+        }
+        
+        return false;
     }
 
     @FXML
     private void btnClicCancelar(ActionEvent event) {
-        irColaboracion(colaboracion);
+        irColaboracion();
     }
 
     @FXML
     private void btnClicAceptar(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnClicEliminarEstudiantes(ActionEvent event) {
-        ObservableList<Estudiante> estudiantesSeleccionados = tvEstudiantes.getSelectionModel().getSelectedItems();
-        if(estudiantesSeleccionados != null){
-            boolean respuesta = Utilidades.mostrarAlertaConfirmacion("Eliminar estudiantes", 
-                    "¿Seguro que desea eliminar a los estudiantes seleccionados?");
-            if(respuesta){
-                boolean isError = false;
-                for (Estudiante estudiante : estudiantesSeleccionados){
-                    boolean resultado = eliminarEstudiante(estudiante.getIdEstudiante());
-                    if(resultado){
-                        isError = true;
-                        break;
-                    }
-                }
-                
-                if(!isError){
-                    Utilidades.mostrarAlertaSimple("Estudiantes eliminados", 
-                            "Los estudiantes se han eliminado correctamente", Alert.AlertType.INFORMATION);
-                } 
-            }
-        }
-        cargarDatosEstudiantes();
+        if (!isErrorGuardarCambios()){
+            cerrarColaboracion();
+        } 
     }
     
-    private boolean eliminarEstudiante(int idEstudiante){
-        HashMap<String, Object> respuesta = EstudianteDAO.eliminarEstudiante(idEstudiante, colaboracion.getIdColaboracion());
+    private void cerrarColaboracion(){
+        HashMap<String, Object> respuesta = 
+                ColaboracionDAO.cerrarColaboracion(colaboracion.getIdColaboracion());
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
-        if(isError){
-            Utilidades.mostrarAlertaSimple("Error al eliminar", 
-                    ""+respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
+        if (!isError) {
+            Utilidades.mostrarAlertaSimple("Colaboración cerrada", 
+                   "" + respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.INFORMATION);
+            if (observador != null) {
+                observador.operacionExitosa("Cerrar colaboración");
+            }
+            irColaboracion();
+        } else {
+            Utilidades.mostrarAlertaSimple("Error al cerrar colaboración", 
+                    "" + respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.WARNING);
         }
+    }
+    
+    @FXML
+    private void btnClicEliminarEstudiantes(ActionEvent event) {
+        ObservableList<Estudiante> estudiantesSeleccionados
+                = tvEstudiantes.getSelectionModel().getSelectedItems();
+        if (estudiantesSeleccionados != null) {
+            boolean respuesta = Utilidades.mostrarAlertaConfirmacion("Eliminar estudiantes",
+                    "¿Seguro que desea eliminar a los estudiantes seleccionados?");
+            if (respuesta) {
+                estudiantesEliminadosTemp.addAll(estudiantesSeleccionados);
+                estudiantes.removeAll(estudiantesSeleccionados);
+                Utilidades.mostrarAlertaSimple("Estudiantes eliminados temporalmente",
+                        "Los estudiantes se eliminarán de la colaboración "
+                        + "hasta que de clic en Aceptar o Guardar",
+                        Alert.AlertType.INFORMATION);
+                btnGuardar.setDisable(false);
+            }
+        }
+    }
+    
+    private boolean isErrorEliminarEstudiante(int idEstudiante){
+        HashMap<String, Object> respuesta = EstudianteDAO.eliminarEstudiante(idEstudiante, 
+                colaboracion.getIdColaboracion());
+        boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR); 
+        System.out.println(Constantes.KEY_MENSAJE);
         return isError;
     }
     
-    private void irColaboracion(Colaboracion colaboracion){
+    private void irColaboracion(){
+        Colaboracion colaboracionActualizada = obtenerColaboracionActualizada();
         try {
-            Stage escenario = (Stage) imgCerrarSesion.getScene().getWindow();
+            Stage escenario = (Stage) btnAceptar.getScene().getWindow();
             FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLColaboracion.fxml");
             Parent root = loader.load();
             FXMLColaboracionController controlador = loader.getController();
-            controlador.inicializarValores(colaboracion);
+            controlador.inicializarValores(colaboracionActualizada);
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Colaboracion");
@@ -216,5 +305,23 @@ public class FXMLCerrarColaboracionController extends FXMLPaginaPrincipalProfeso
             System.out.println("Error: "+e.getMessage());
         }
     }
-
+    
+    private Archivo obtenerArchivo(int idArchivo){
+        HashMap<String, Object> respuesta = ArchivoDAO.obtenerArchivo(idArchivo);
+        boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
+        if (!isError) {
+            return (Archivo) respuesta.get("archivo");
+        }
+        return null;
+    }
+    
+    private Colaboracion obtenerColaboracionActualizada(){
+        HashMap<String, Object> respuesta = 
+                ColaboracionDAO.obtenerColaboracion(colaboracion.getIdColaboracion());
+        boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
+        if (!isError) {
+            return (Colaboracion) respuesta.get("colaboracion");
+        }
+        return null;
+    }
 }

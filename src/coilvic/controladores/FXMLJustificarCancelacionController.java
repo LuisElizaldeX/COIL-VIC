@@ -50,14 +50,17 @@ public class FXMLJustificarCancelacionController implements Initializable {
     
     private boolean agregarJustificacion(){
         if (taJustificacion != null && !taJustificacion.getText().isEmpty()) {
-            HashMap<String, Object> respuesta = ColaboracionDAO.agregarJustificacionColaboracion(idColaboracion, taJustificacion.getText());
+            HashMap<String, Object> respuesta = 
+                    ColaboracionDAO.agregarJustificacionColaboracion(idColaboracion, 
+                            taJustificacion.getText());
             boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
             if (!isError) {
                 Utilidades.mostrarAlertaSimple("Justificación registrada",
                         "" + respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.INFORMATION);
                 return true;
             } else {
-                Utilidades.mostrarAlertaSimple("Error al registrar justificación", "" + respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
+                Utilidades.mostrarAlertaSimple("Error al registrar justificación", "" + 
+                        respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
             }
         } else {
             lbError.setText("Por favor, introduzca su justificación antes de continuar");
@@ -73,10 +76,12 @@ public class FXMLJustificarCancelacionController implements Initializable {
         HashMap<String, Object> respuesta = ColaboracionDAO.cancelarColaboracion(idColaboracion);
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
         if(!isError){
-            Utilidades.mostrarAlertaSimple("Colaboración cancelada", ""+respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.INFORMATION);
+            Utilidades.mostrarAlertaSimple("Colaboración cancelada", 
+                    ""+respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.INFORMATION);
             observador.operacionExitosa("Cancelación");
         } else {
-            Utilidades.mostrarAlertaSimple("Error al cancelar", ""+respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
+            Utilidades.mostrarAlertaSimple("Error al cancelar", 
+                    ""+respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
         }
     }
     

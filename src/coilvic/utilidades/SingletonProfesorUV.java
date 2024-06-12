@@ -9,7 +9,7 @@ package coilvic.utilidades;
 import coilvic.modelo.pojo.ProfesorUV;
 
 public class SingletonProfesorUV {
-     private static SingletonProfesorUV instancia;
+    private static SingletonProfesorUV instancia;
     private ProfesorUV profesor;
     
     private SingletonProfesorUV() {
