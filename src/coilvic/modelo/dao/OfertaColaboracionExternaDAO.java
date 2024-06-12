@@ -186,8 +186,6 @@ public class OfertaColaboracionExternaDAO {
                 prepararSentencia.setString(6, profesorExterno.getMateria());
                 prepararSentencia.setString(7, profesorExterno.getCarrera());
      
-
-
                 int filasAfectadas = prepararSentencia.executeUpdate();
                 if(filasAfectadas == 1){
                     respuesta.put(Constantes.KEY_ERROR, false);
