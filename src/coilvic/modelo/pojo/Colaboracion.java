@@ -7,11 +7,14 @@ public class Colaboracion {
     private Integer idExperienciaEducativa;
     private Integer idPeriodo;
     private Integer idEstadoColaboracion;
-    private Integer idArchivo;
+    private Integer idSyllabus;
     private Integer idProfesorUV;
     private Integer idIdioma;
+    private String numeroEstudiantes;
     private String fechaInicio;
     private String fechaFin;
+    private String fechaInicioOferta;
+    private String fechaFinOferta;
     private String tipoColaboracion;
     private String justificacion;
     private String profesorExterno;
@@ -19,6 +22,8 @@ public class Colaboracion {
     private String periodo;
     private String estadoColaboracion;
     private byte[] syllabus;
+    private byte[] evidencia;
+    private String nombreEvidencia;
     private String profesorUV;
     private String idioma;
 
@@ -27,21 +32,25 @@ public class Colaboracion {
 
     public Colaboracion(Integer idColaboracion, String nombre, Integer idProfesorExterno, 
             Integer idExperienciaEducativa, Integer idPeriodo, Integer idEstadoColaboracion, 
-            Integer idArchivo, Integer idProfesorUV, Integer idIdioma, String fechaInicio, 
-            String fechaFin, String tipoColaboracion, String justificacion, String profesorExterno, 
+            Integer idSyllabus, Integer idProfesorUV, Integer idIdioma, String numeroEstudiantes, 
+            String fechaInicio,String fechaFin, String fechaInicioOferta, String fechaFinOferta, 
+            String tipoColaboracion, String justificacion, String profesorExterno,
             String experienciaEducativa, String periodo, String estadoColaboracion, byte[] syllabus, 
-            String profesorUV, String idioma) {
+            byte[] evidencia, String nombreEvidencia, String profesorUV, String idioma) {
         this.idColaboracion = idColaboracion;
         this.nombre = nombre;
         this.idProfesorExterno = idProfesorExterno;
         this.idExperienciaEducativa = idExperienciaEducativa;
         this.idPeriodo = idPeriodo;
         this.idEstadoColaboracion = idEstadoColaboracion;
-        this.idArchivo = idArchivo;
+        this.idSyllabus = idSyllabus;
         this.idProfesorUV = idProfesorUV;
         this.idIdioma = idIdioma;
+        this.numeroEstudiantes = numeroEstudiantes;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+        this.fechaInicioOferta = fechaInicioOferta;
+        this.fechaFinOferta = fechaFinOferta;
         this.tipoColaboracion = tipoColaboracion;
         this.justificacion = justificacion;
         this.profesorExterno = profesorExterno;
@@ -49,6 +58,8 @@ public class Colaboracion {
         this.periodo = periodo;
         this.estadoColaboracion = estadoColaboracion;
         this.syllabus = syllabus;
+        this.evidencia = evidencia;
+        this.nombreEvidencia = nombreEvidencia;
         this.profesorUV = profesorUV;
         this.idioma = idioma;
     }
@@ -103,12 +114,12 @@ public class Colaboracion {
         this.idEstadoColaboracion = idEstadoColaboracion;
     }
 
-    public Integer getIdArchivo() {
-        return idArchivo;
+    public Integer getIdSyllabus() {
+        return idSyllabus;
     }
 
-    public void setIdArchivo(Integer idArchivo) {
-        this.idArchivo = idArchivo;
+    public void setIdSyllabus(Integer idSyllabus) {
+        this.idSyllabus = idSyllabus;
     }
 
     public Integer getIdProfesorUV() {
@@ -117,6 +128,22 @@ public class Colaboracion {
 
     public void setIdProfesorUV(Integer idProfesorUV) {
         this.idProfesorUV = idProfesorUV;
+    }
+
+    public byte[] getEvidencia() {
+        return evidencia;
+    }
+
+    public void setEvidencia(byte[] evidencia) {
+        this.evidencia = evidencia;
+    }
+
+    public String getNombreEvidencia() {
+        return nombreEvidencia;
+    }
+
+    public void setNombreEvidencia(String nombreEvidencia) {
+        this.nombreEvidencia = nombreEvidencia;
     }
 
     public String getFechaInicio() {
@@ -133,6 +160,22 @@ public class Colaboracion {
 
     public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    public String getFechaInicioOferta() {
+        return fechaInicioOferta;
+    }
+
+    public void setFechaInicioOferta(String fechaInicioOferta) {
+        this.fechaInicioOferta = fechaInicioOferta;
+    }
+
+    public String getFechaFinOferta() {
+        return fechaFinOferta;
+    }
+
+    public void setFechaFinOferta(String fechaFinOferta) {
+        this.fechaFinOferta = fechaFinOferta;
     }
 
     public String getTipoColaboracion() {
@@ -157,6 +200,14 @@ public class Colaboracion {
 
     public void setIdIdioma(Integer idIdioma) {
         this.idIdioma = idIdioma;
+    }
+
+    public String getNumeroEstudiantes() {
+        return numeroEstudiantes;
+    }
+
+    public void setNumeroEstudiantes(String numeroEstudiantes) {
+        this.numeroEstudiantes = numeroEstudiantes;
     }
 
     public String getProfesorExterno() {

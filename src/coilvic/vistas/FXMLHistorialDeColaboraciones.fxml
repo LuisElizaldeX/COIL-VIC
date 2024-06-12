@@ -10,17 +10,17 @@
 
 <AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLHistorialDeColaboracionesController">
    <children>
-      <Label layoutX="560.0" layoutY="55.0" prefHeight="68.0" prefWidth="715.0" text="Historial de colaboraciones">
-         <font>
-            <Font name="Arial Bold Italic" size="53.0" />
-         </font>
-      </Label>
       <TableView fx:id="tvColaboraciones" layoutX="507.0" layoutY="252.0" prefHeight="503.0" prefWidth="822.0" stylesheets="@../css/estilos.css">
         <columns>
           <TableColumn fx:id="colNombre" prefWidth="414.0" text="Nombre" />
           <TableColumn fx:id="colExperienciaEducativa" prefWidth="407.0" text="Experiencia educativa" />
         </columns>
       </TableView>
+      <Label layoutX="560.0" layoutY="55.0" prefHeight="68.0" prefWidth="715.0" text="Historial de colaboraciones">
+         <font>
+            <Font name="Arial Bold Italic" size="53.0" />
+         </font>
+      </Label>
       <Button layoutX="798.0" layoutY="832.0" mnemonicParsing="false" onAction="#clicBtnVerHistorial" prefHeight="61.0" prefWidth="240.0" style="-fx-background-radius: 40;" styleClass="buttonGeneral" stylesheets="@../css/estilos.css" text="Ver historial">
          <font>
             <Font name="Berlin Sans FB" size="27.0" />
@@ -158,5 +158,11 @@
             </Button>
          </children>
       </Pane>
+      <TextField fx:id="tfNombreColaboracion" layoutX="783.0" layoutY="150.0" prefHeight="49.0" prefWidth="327.0" promptText="Nombre de colaboracion" />
+      <Label layoutX="561.0" layoutY="150.0" prefHeight="49.0" prefWidth="207.0" text="Búsqueda por nombre:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
