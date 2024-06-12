@@ -18,8 +18,8 @@ public class EstudianteDAO {
         Connection conexionBD = ConexionBD.obtenerConexion();
         if(conexionBD != null){
             try {
-                String consulta = "SELECT e.idEstudiante, concat(e.nombre, ' ', e.apellidoPaterno, ' ', e.apellidoMaterno) "
-                        + "AS nombreCompleto, e.matricula "
+                String consulta = "SELECT e.idEstudiante, concat(e.nombre, ' ', e.apellidoPaterno, "
+                        + "' ', e.apellidoMaterno) AS nombreCompleto, e.matricula "
                         + "FROM colaboracion_estudiante ce "
                         + "JOIN estudiante e ON ce.idEstudiante = e.idEstudiante "
                         + "JOIN colaboracion c ON ce.idColaboracion = c.idColaboracion "

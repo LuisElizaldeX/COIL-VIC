@@ -7,7 +7,7 @@ public class Colaboracion {
     private Integer idExperienciaEducativa;
     private Integer idPeriodo;
     private Integer idEstadoColaboracion;
-    private Integer idSyllabus;
+    private Integer idArchivo;
     private Integer idProfesorUV;
     private Integer idIdioma;
     private String fechaInicio;
@@ -27,7 +27,7 @@ public class Colaboracion {
 
     public Colaboracion(Integer idColaboracion, String nombre, Integer idProfesorExterno, 
             Integer idExperienciaEducativa, Integer idPeriodo, Integer idEstadoColaboracion, 
-            Integer idSyllabus, Integer idProfesorUV, Integer idIdioma, String fechaInicio, 
+            Integer idArchivo, Integer idProfesorUV, Integer idIdioma, String fechaInicio, 
             String fechaFin, String tipoColaboracion, String justificacion, String profesorExterno, 
             String experienciaEducativa, String periodo, String estadoColaboracion, byte[] syllabus, 
             String profesorUV, String idioma) {
@@ -37,7 +37,7 @@ public class Colaboracion {
         this.idExperienciaEducativa = idExperienciaEducativa;
         this.idPeriodo = idPeriodo;
         this.idEstadoColaboracion = idEstadoColaboracion;
-        this.idSyllabus = idSyllabus;
+        this.idArchivo = idArchivo;
         this.idProfesorUV = idProfesorUV;
         this.idIdioma = idIdioma;
         this.fechaInicio = fechaInicio;
@@ -103,12 +103,12 @@ public class Colaboracion {
         this.idEstadoColaboracion = idEstadoColaboracion;
     }
 
-    public Integer getIdSyllabus() {
-        return idSyllabus;
+    public Integer getIdArchivo() {
+        return idArchivo;
     }
 
-    public void setIdSyllabus(Integer idSyllabus) {
-        this.idSyllabus = idSyllabus;
+    public void setIdArchivo(Integer idArchivo) {
+        this.idArchivo = idArchivo;
     }
 
     public Integer getIdProfesorUV() {
