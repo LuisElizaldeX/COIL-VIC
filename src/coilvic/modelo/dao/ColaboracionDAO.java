@@ -21,10 +21,13 @@ public class ColaboracionDAO {
         Connection conexionBD = ConexionBD.obtenerConexion();
         if(conexionBD != null){
             try {
-                String consulta = "SELECT idColaboracion, c.nombre, concat(profex.nombre, ' ', profex.apellidos) AS profesorExterno, "
-                        + "ee.nombre AS experienciaEducativa, "
-                        + "ec.estado AS estadoColaboracion, concat(puv.nombre, ' ', puv.apellidos) AS profesorUV, fechaInicio, fechaFin, "
-                        + "tipoColaboracion, i.lengua AS idioma "
+                String consulta = "SELECT idColaboracion, c.nombre, c.idProfesorExterno, "
+                        + "concat(profex.nombre, ' ', profex.apellidos) AS profesorExterno, "
+                        + "c.idExperienciaEducativa, ee.nombre AS experienciaEducativa, "
+                        + "c.idEstadoColaboracion, ec.estado AS estadoColaboracion, "
+                        + "idArchivo, c.idProfesorUV, concat(puv.nombre, ' ', puv.apellidos) "
+                        + "AS profesorUV, fechaInicio, fechaFin, "
+                        + "tipoColaboracion, c.idIdioma, i.lengua AS idioma "
                         + "FROM colaboracion c "
                         + "JOIN profesorexterno profex ON c.idProfesorExterno = profex.idProfesorExterno "
                         + "JOIN experienciaeducativa ee ON c.idExperienciaEducativa = ee.idExperienciaEducativa "
@@ -39,13 +42,19 @@ public class ColaboracionDAO {
                     Colaboracion colaboracion = new Colaboracion();
                     colaboracion.setIdColaboracion(resultado.getInt("idColaboracion"));
                     colaboracion.setNombre(resultado.getString("nombre"));
+                    colaboracion.setIdProfesorExterno(resultado.getInt("idProfesorExterno"));
                     colaboracion.setProfesorExterno(resultado.getString("profesorExterno"));
+                    colaboracion.setIdExperienciaEducativa(resultado.getInt("idExperienciaEducativa"));
                     colaboracion.setExperienciaEducativa(resultado.getString("experienciaEducativa"));
+                    colaboracion.setIdEstadoColaboracion(resultado.getInt("idEstadoColaboracion"));
                     colaboracion.setEstadoColaboracion(resultado.getString("estadoColaboracion"));
+                    colaboracion.setIdArchivo(resultado.getInt("idArchivo"));
+                    colaboracion.setIdProfesorUV(resultado.getInt("idProfesorUV"));
                     colaboracion.setProfesorUV(resultado.getString("profesorUV"));
                     colaboracion.setFechaInicio(resultado.getString("fechaInicio"));
                     colaboracion.setFechaFin(resultado.getString("fechaFin"));
                     colaboracion.setTipoColaboracion(resultado.getString("tipoColaboracion"));
+                    colaboracion.setIdIdioma(resultado.getInt("idIdioma"));
                     colaboracion.setIdioma(resultado.getString("idioma"));
                     colaboraciones.add(colaboracion);
                 }
@@ -60,6 +69,64 @@ public class ColaboracionDAO {
         }
         return respuesta;
     }
+
+    public static HashMap<String, Object> obtenerColaboracion(int idColaboracion) {
+        HashMap<String, Object> respuesta = new LinkedHashMap<>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+        Connection conexionBD = ConexionBD.obtenerConexion();
+        if (conexionBD != null) {
+            try {
+                String consulta = "SELECT idColaboracion, c.nombre, c.idProfesorExterno, "
+                        + "concat(profex.nombre, ' ', profex.apellidos) AS profesorExterno, "
+                        + "c.idExperienciaEducativa, ee.nombre AS experienciaEducativa, "
+                        + "c.idEstadoColaboracion, ec.estado AS estadoColaboracion, "
+                        + "idArchivo, c.idProfesorUV, concat(puv.nombre, ' ', puv.apellidos) "
+                        + "AS profesorUV, fechaInicio, fechaFin, "
+                        + "tipoColaboracion, c.idIdioma, i.lengua AS idioma "
+                        + "FROM colaboracion c "
+                        + "JOIN profesorexterno profex ON c.idProfesorExterno = profex.idProfesorExterno "
+                        + "JOIN experienciaeducativa ee ON c.idExperienciaEducativa = ee.idExperienciaEducativa "
+                        + "JOIN estadocolaboracion ec ON c.idEstadoColaboracion = ec.idEstadoColaboracion "
+                        + "JOIN profesoruv puv ON c.idProfesorUV = puv.idProfesorUV "
+                        + "JOIN idioma i ON c.idIdioma = i.idIdioma "
+                        + "WHERE idColaboracion = ?";
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
+                prepararSentencia.setInt(1, idColaboracion);
+                ResultSet resultado = prepararSentencia.executeQuery();
+                if (resultado.next()) {
+                    Colaboracion colaboracion = new Colaboracion();
+                    colaboracion.setIdColaboracion(resultado.getInt("idColaboracion"));
+                    colaboracion.setNombre(resultado.getString("nombre"));
+                    colaboracion.setIdProfesorExterno(resultado.getInt("idProfesorExterno"));
+                    colaboracion.setProfesorExterno(resultado.getString("profesorExterno"));
+                    colaboracion.setIdExperienciaEducativa(resultado.getInt("idExperienciaEducativa"));
+                    colaboracion.setExperienciaEducativa(resultado.getString("experienciaEducativa"));
+                    colaboracion.setIdEstadoColaboracion(resultado.getInt("idEstadoColaboracion"));
+                    colaboracion.setEstadoColaboracion(resultado.getString("estadoColaboracion"));
+                    colaboracion.setIdArchivo(resultado.getInt("idArchivo"));
+                    colaboracion.setIdProfesorUV(resultado.getInt("idProfesorUV"));
+                    colaboracion.setProfesorUV(resultado.getString("profesorUV"));
+                    colaboracion.setFechaInicio(resultado.getString("fechaInicio"));
+                    colaboracion.setFechaFin(resultado.getString("fechaFin"));
+                    colaboracion.setTipoColaboracion(resultado.getString("tipoColaboracion"));
+                    colaboracion.setIdIdioma(resultado.getInt("idIdioma"));
+                    colaboracion.setIdioma(resultado.getString("idioma"));
+
+                    respuesta.put(Constantes.KEY_ERROR, false);
+                    respuesta.put("colaboracion", colaboracion);
+                } else {
+                    respuesta.put(Constantes.KEY_MENSAJE, "No se encontró la colaboración.");
+                }
+                conexionBD.close();
+            } catch (SQLException e) {
+                respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+            }
+        } else {
+            respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
+        }
+        return respuesta;
+    }
+
     
     public static HashMap<String, Object> cancelarColaboracion(int idColaboracion){
         HashMap<String, Object> respuesta = new HashMap<>();
@@ -87,6 +154,35 @@ public class ColaboracionDAO {
         }
         return respuesta;
     }
+    
+    public static HashMap<String, Object> cerrarColaboracion(int idColaboracion){
+        HashMap<String, Object> respuesta = new HashMap<>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+        Connection conexionBD = ConexionBD.obtenerConexion();
+        if(conexionBD != null){
+            try {
+                String consulta = "UPDATE colaboracion SET idEstadoColaboracion = 2 WHERE idColaboracion = ?";
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
+                prepararSentencia.setInt(1, idColaboracion);
+                int filasAfectadas = prepararSentencia.executeUpdate();
+                if(filasAfectadas > 0){
+                    respuesta.put(Constantes.KEY_ERROR, false);
+                    respuesta.put(Constantes.KEY_MENSAJE, 
+                            "La colaboración se ha cerrado exitosamente");
+                } else {
+                    respuesta.put(Constantes.KEY_MENSAJE,
+                            "Lo sentimos, hubo un error al cerrar la colaboración, "
+                                    + "favor de intentarlo más tarde");
+                }
+                conexionBD.close();
+            } catch (SQLException e) {
+                respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+            }
+        } else {
+            respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
+        }
+        return respuesta;
+    }    
     
     public static HashMap<String, Object> agregarJustificacionColaboracion(int idColaboracion, String justificacion){
         HashMap<String, Object> respuesta = new HashMap<>();
@@ -122,9 +218,13 @@ public class ColaboracionDAO {
         Connection conexionBD = ConexionBD.obtenerConexion();
         if(conexionBD != null){
             try {
-                String consulta = "SELECT idColaboracion, c.nombre, concat(profex.nombre, ' ', profex.apellidos) AS profesorExterno, ee.nombre AS experienciaEducativa, "
-                        + "ec.estado AS estadoColaboracion, concat(puv.nombre, ' ', puv.apellidos) AS profesorUV, fechaInicio, fechaFin, "
-                        + "tipoColaboracion, i.lengua AS idioma "
+                String consulta = "SELECT idColaboracion, c.nombre, c.idProfesorExterno, "
+                        + "concat(profex.nombre, ' ', profex.apellidos) AS profesorExterno, "
+                        + "c.idExperienciaEducativa, ee.nombre AS experienciaEducativa, "
+                        + "c.idEstadoColaboracion, ec.estado AS estadoColaboracion, "
+                        + "idArchivo, c.idProfesorUV, concat(puv.nombre, ' ', puv.apellidos) "
+                        + "AS profesorUV, fechaInicio, fechaFin, "
+                        + "tipoColaboracion, c.idIdioma, i.lengua AS idioma "
                         + "FROM colaboracion c "
                         + "JOIN profesorexterno profex ON c.idProfesorExterno = profex.idProfesorExterno "
                         + "JOIN experienciaeducativa ee ON c.idExperienciaEducativa = ee.idExperienciaEducativa "
@@ -140,13 +240,19 @@ public class ColaboracionDAO {
                     Colaboracion colaboracion = new Colaboracion();
                     colaboracion.setIdColaboracion(resultado.getInt("idColaboracion"));
                     colaboracion.setNombre(resultado.getString("nombre"));
+                    colaboracion.setIdProfesorExterno(resultado.getInt("idProfesorExterno"));
                     colaboracion.setProfesorExterno(resultado.getString("profesorExterno"));
+                    colaboracion.setIdExperienciaEducativa(resultado.getInt("idExperienciaEducativa"));
                     colaboracion.setExperienciaEducativa(resultado.getString("experienciaEducativa"));
+                    colaboracion.setIdEstadoColaboracion(resultado.getInt("idEstadoColaboracion"));
                     colaboracion.setEstadoColaboracion(resultado.getString("estadoColaboracion"));
+                    colaboracion.setIdArchivo(resultado.getInt("idArchivo"));
+                    colaboracion.setIdProfesorUV(resultado.getInt("idProfesorUV"));
                     colaboracion.setProfesorUV(resultado.getString("profesorUV"));
                     colaboracion.setFechaInicio(resultado.getString("fechaInicio"));
                     colaboracion.setFechaFin(resultado.getString("fechaFin"));
                     colaboracion.setTipoColaboracion(resultado.getString("tipoColaboracion"));
+                    colaboracion.setIdIdioma(resultado.getInt("idIdioma"));
                     colaboracion.setIdioma(resultado.getString("idioma"));
                     colaboraciones.add(colaboracion);
                 }
@@ -163,7 +269,9 @@ public class ColaboracionDAO {
     }
 
     
-public static HashMap<String, Object> guardarColaboracion(int idProfesorExterno, String nombreColaboracion, String experienciaEducativa, String fechaInicio, String fechaFin, String idioma, int idProfesorUV, String fechaInicio1, String fechaFin1) {
+public static HashMap<String, Object> guardarColaboracion(int idProfesorExterno, 
+        String nombreColaboracion, String experienciaEducativa, String fechaInicio, String fechaFin, 
+        String idioma, int idProfesorUV, String fechaInicio1, String fechaFin1) {
     HashMap<String, Object> respuesta = new LinkedHashMap<>();
     respuesta.put(Constantes.KEY_ERROR, true);
     Connection conexionBD = ConexionBD.obtenerConexion();
