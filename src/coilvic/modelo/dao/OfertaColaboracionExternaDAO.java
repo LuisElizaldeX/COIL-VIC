@@ -1,3 +1,9 @@
+/*
+* Autor: Luis Angel Elizalde Arroyo
+* Fecha de creación: 02/06/2024
+* Descripción: Clase OfertaColaboracionExternaDAO para modificar, 
+* crear y eliminar su informacion
+*/
 
 package coilvic.modelo.dao;
 
@@ -28,7 +34,7 @@ public class OfertaColaboracionExternaDAO {
             try{
                 String consulta = "SELECT o.idOfertaColaboracionExterna, "
                         + "o.nombre AS nombreOferta, o.periodo, o.descripcion, " +
-                        "e.estado, p.nombre AS nombreProfesorExterno, " +
+                        "e.estado, p.nombre AS nombreProfesorExterno, p.idProfesorexterno," +
                         "p.apellidos, p.correo, p.pais, p.telefono, p.materia, p.carrera, "
                         + "u.nombre AS nombreUniversidad " +
                         "FROM ofertacolaboracionexterna o " +
@@ -46,6 +52,8 @@ public class OfertaColaboracionExternaDAO {
                             
                     ofertaExterna.setIdOfertaColaboracionExterna
         (resultado.getInt("idOfertaColaboracionExterna"));
+                    ofertaExterna.setIdProfesorExterno
+        (resultado.getInt("idProfesorexterno"));
                     ofertaExterna.setNombre(resultado.getString("nombreOferta"));
                     ofertaExterna.setPeriodo(resultado.getString("periodo"));
                     ofertaExterna.setDescripcion
@@ -234,6 +242,37 @@ public class OfertaColaboracionExternaDAO {
             respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
         }
         return respuesta;  
+    }
+    
+     public static HashMap<String, Object> 
+        actualizarEstadoOferta(int idOfertaColaboracionExterna) {
+        Connection conexionBD = ConexionBD.obtenerConexion();
+        HashMap<String, Object> respuesta = new LinkedHashMap<>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+       
+        if (conexionBD != null) {
+            try {
+                String consulta = "UPDATE ofertacolaboracionexterna SET idEstadoOferta = 2 "
+                        + "WHERE idOfertaColaboracionExterna = ?";
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
+                prepararSentencia.setInt(1, idOfertaColaboracionExterna);
+                int filasAfectadas = prepararSentencia.executeUpdate();
+                if(filasAfectadas == 1){
+                    respuesta.put(Constantes.KEY_ERROR, false);
+                    respuesta.put(Constantes.KEY_MENSAJE, 
+                            "Oferta de colaboración COIL actualizada con éxito");
+                }else{
+                    respuesta.put(Constantes.KEY_MENSAJE, "Lo sentimos, hubo un error en "
+                            + "guardar la informacion de la oferta de colaboración COIl");
+                }
+                conexionBD.close();
+            } catch (SQLException e) {
+                respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+            }
+        } else {
+            respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
+        }
+        return respuesta;
     }
       
 }

@@ -26,6 +26,8 @@ public class Colaboracion {
     private String nombreEvidencia;
     private String profesorUV;
     private String idioma;
+    private String materia;
+    private String descripcion;
 
     public Colaboracion() {
     }
@@ -36,7 +38,8 @@ public class Colaboracion {
             String fechaInicio,String fechaFin, String fechaInicioOferta, String fechaFinOferta, 
             String tipoColaboracion, String justificacion, String profesorExterno,
             String experienciaEducativa, String periodo, String estadoColaboracion, byte[] syllabus, 
-            byte[] evidencia, String nombreEvidencia, String profesorUV, String idioma) {
+            byte[] evidencia, String nombreEvidencia, String profesorUV, String idioma, 
+            String materia, String descripcion) {
         this.idColaboracion = idColaboracion;
         this.nombre = nombre;
         this.idProfesorExterno = idProfesorExterno;
@@ -62,6 +65,8 @@ public class Colaboracion {
         this.nombreEvidencia = nombreEvidencia;
         this.profesorUV = profesorUV;
         this.idioma = idioma;
+        this.materia = materia;
+        this.descripcion = descripcion;
     }
 
     
@@ -265,6 +270,21 @@ public class Colaboracion {
     public void setIdioma(String idioma) {
         this.idioma = idioma;
     }
-    
+
+    public String getMateria() {
+        return materia;
+    }
+
+    public void setMateria(String materia) {
+        this.materia = materia;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
     
 }

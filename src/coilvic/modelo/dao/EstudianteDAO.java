@@ -1,3 +1,10 @@
+/*
+* Autor: Luis Angel Elizalde Arroyo
+* Fecha de creación: 28/05/2024
+* Descripción: Clase SesionDAO para obtener al estudiante para modificar, 
+* crear y eliminar su informacion
+*/
+
 package coilvic.modelo.dao;
 
 import coilvic.modelo.ConexionBD;
@@ -7,8 +14,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class EstudianteDAO {
@@ -76,6 +85,43 @@ public class EstudianteDAO {
         return respuesta;
     }
     
-    
+    public static HashMap<String, Object> registrarEstudiante(Estudiante estudiante) {
+        HashMap<String, Object> respuesta = new LinkedHashMap<>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+        Connection conexionBD = ConexionBD.obtenerConexion();
+        if (conexionBD != null) {
+            try {
+                String consulta = 
+                    "INSERT INTO estudiante (nombre, matricula, apellidoPaterno, apellidoMaterno) "
+                        + "VALUES (?, ?, ?, ?)";
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement
+                    (consulta, Statement.RETURN_GENERATED_KEYS);
+                prepararSentencia.setString(1, estudiante.getNombre());
+                prepararSentencia.setString(2, estudiante.getMatricula());
+                prepararSentencia.setString(3, estudiante.getApellidoPaterno());
+                prepararSentencia.setString(4, estudiante.getApellidoMaterno());
+            int filasInsertadas = prepararSentencia.executeUpdate();
+            if (filasInsertadas > 0) {
+                ResultSet generatedKeys = prepararSentencia.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    int idEstudiante = generatedKeys.getInt(1);
+                    respuesta.put("idEstudiante", idEstudiante);
+                }
+                respuesta.put(Constantes.KEY_ERROR, false);
+                respuesta.put(Constantes.KEY_MENSAJE, 
+                        "El alumno se ha registro de manera exitosa.");
+            } else {
+                respuesta.put(Constantes.KEY_MENSAJE, 
+                        "No se pudo registrar al estudiante.");
+            }
+                conexionBD.close();
+            } catch (SQLException e) {
+                respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+            }
+        } else {
+            respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
+        }
+        return respuesta;
+    }
    
 }
