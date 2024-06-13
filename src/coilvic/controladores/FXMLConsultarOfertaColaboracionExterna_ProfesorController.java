@@ -6,9 +6,11 @@
 
 package coilvic.controladores;
 
+import coilvic.modelo.pojo.Colaboracion;
 import coilvic.modelo.pojo.OfertaColaboracionExterna;
 import coilvic.modelo.pojo.ProfesorUV;
 import coilvic.utilidades.SingletonProfesorUV;
+import coilvic.utilidades.Utilidades;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -59,6 +61,7 @@ public class FXMLConsultarOfertaColaboracionExterna_ProfesorController
     @FXML
     private Label lbTelefono;
 
+    OfertaColaboracionExterna ofertaColaboracionExterna;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -66,6 +69,7 @@ public class FXMLConsultarOfertaColaboracionExterna_ProfesorController
     }
 
     public void inicializarValores(OfertaColaboracionExterna ofertaColaboracionExterna){
+        this.ofertaColaboracionExterna = ofertaColaboracionExterna;
         txtNombreOfertaExterna.setText(ofertaColaboracionExterna.getNombre());
         lbPeriodo.setText(ofertaColaboracionExterna.getPeriodo());
         lbDescripcion.setText(ofertaColaboracionExterna.getDescripcion());
@@ -97,18 +101,32 @@ public class FXMLConsultarOfertaColaboracionExterna_ProfesorController
 
     @FXML
     private void btnClicRegistrar(ActionEvent event) {
-            try{
-           Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
-           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
-                   getResource("vistas/FXMLRegistrarColaboracionOfertaExterna.fxml"));
-           Scene escenaPrincipal = new Scene(root);
-           escenarioPrincipal.setScene(escenaPrincipal);
-           escenarioPrincipal.setTitle("Registro de colaboracion a partir de una oferta EXTERNA");
-           escenarioPrincipal.show();
-            
-        }catch(IOException e){
-            System.out.println("Error: "+e.getMessage());
-        }
+        try {
+            FXMLLoader accesoControlador = new FXMLLoader(coilvic.COILVIC.class.getResource(
+                "vistas/FXMLRegistrarColaboracionOfertaExterna.fxml"));
+                Parent vista = accesoControlador.load();
+                FXMLRegistrarColaboracionOfertaExternaController controlador = 
+                        accesoControlador.getController();
+                Colaboracion colaboracion = new Colaboracion();
+                colaboracion.setNombre(ofertaColaboracionExterna.getNombre());
+                colaboracion.setMateria(ofertaColaboracionExterna.getMateria());
+                colaboracion.setDescripcion(ofertaColaboracionExterna.getDescripcion());
+                colaboracion.setIdProfesorExterno
+                    (ofertaColaboracionExterna.getIdProfesorExterno());
+                colaboracion.setIdProfesorUV
+                    (profesorUv.getIdProfesorUV());
+                colaboracion.setIdColaboracion(
+                        ofertaColaboracionExterna.getIdOfertaColaboracionExterna());
+                controlador.inicializarValoresColaboracion(colaboracion);
+                Stage escenarioPrincipal = (Stage) btnPrincipal.getScene().getWindow();
+                Scene escenaPrincipal = new Scene(vista); 
+                escenarioPrincipal.setScene(escenaPrincipal);
+                escenarioPrincipal.
+                    setTitle("Registro de colaboracion a partir de una oferta EXTERNA");
+                escenarioPrincipal.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
     }
 
 }
