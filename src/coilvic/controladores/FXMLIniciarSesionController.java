@@ -57,7 +57,7 @@ public class FXMLIniciarSesionController implements Initializable {
             RespuestaLogin respuesta = SesionDAO.IniciarSesionUsuario(usuario, 
                     contraseña);
             if(!respuesta.isError()){
-                if(respuesta.getUsuario().getIdTipoUsuario() == 1){ //El idTipoUsuario = 1 corresponde a los usuarios coordinadores
+                if(respuesta.getUsuario().getIdTipoUsuario() == 1){ 
                     RespuestaCoordinadorCOIL coordinador = CoordinadorCOILDAO.
                             obtenerInformacionCoordinadorCOIL(
                                     respuesta.getUsuario().getIdUsuario());
