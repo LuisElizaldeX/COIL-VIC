@@ -1,3 +1,8 @@
+/*
+* Autor: Josué Melgarejo García
+* Fecha de creación: 01/06/2024
+* Descripción: Clase del modelo de Colaboración
+*/
 package coilvic.modelo.pojo;
 
 public class Colaboracion {

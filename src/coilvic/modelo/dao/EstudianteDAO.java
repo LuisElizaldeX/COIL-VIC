@@ -40,7 +40,8 @@ public class EstudianteDAO {
                 while(resultado.next()){
                     Estudiante estudiante = new Estudiante();
                     estudiante.setIdEstudiante(resultado.getInt("idEstudiante"));
-                    estudiante.setNombreCompleto(resultado.getString("nombreCompleto"));
+                    estudiante.setNombreCompleto(resultado.
+                            getString("nombreCompleto"));
                     estudiante.setMatricula(resultado.getString("matricula"));
                     estudiantes.add(estudiante);
                 }
@@ -71,10 +72,12 @@ public class EstudianteDAO {
                 int filasAfectadas = prepararSentencia.executeUpdate();
                 if(filasAfectadas > 0){
                     respuesta.put(Constantes.KEY_ERROR, false);
-                    respuesta.put(Constantes.KEY_MENSAJE, "El estudiante ha sido eliminado correctamente");
+                    respuesta.put(Constantes.KEY_MENSAJE, 
+                            "El estudiante ha sido eliminado correctamente");
                 } else {
                     respuesta.put(Constantes.KEY_MENSAJE, 
-                            "Lo sentimos, hubo un error al eliminar al estudiante, favor de intentarlo más tarde");
+                            "Lo sentimos, hubo un error al eliminar al estudiante, "
+                                    + "favor de intentarlo más tarde");
                 }
                 conexionBD.close();
             } catch (SQLException e) {
