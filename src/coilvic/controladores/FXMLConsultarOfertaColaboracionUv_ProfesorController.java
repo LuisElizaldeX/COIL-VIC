@@ -6,6 +6,7 @@
 
 package coilvic.controladores;
 
+import coilvic.modelo.pojo.Colaboracion;
 import coilvic.modelo.pojo.OfertaColaboracionUV;
 import coilvic.modelo.pojo.ProfesorUV;
 import coilvic.utilidades.SingletonProfesorUV;
@@ -19,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -130,18 +132,45 @@ public class FXMLConsultarOfertaColaboracionUv_ProfesorController
     
     @FXML
     private void btnClicRegistrar(ActionEvent event) {
-         try{
-           Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
-           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
-                   getResource("vistas/FXMLRegistrarColaboracionOfertaUv.fxml"));
-           Scene escenaPrincipal = new Scene(root);
-           escenarioPrincipal.setScene(escenaPrincipal);
-           escenarioPrincipal.setTitle("Registro de colaboracion a partir de una oferta UV");
-           escenarioPrincipal.show();
+        irRegistrarColaboracionUv(ofertaColaboracionUV.getIdExperienciaEducativa());
+    }
+    
+    private void irRegistrarColaboracionUv(int idExperienciaEducativa){
+        if(ofertaColaboracionUV.getIdProfesorUV() == profesorUv.getIdProfesorUV()){
+            try {
+            FXMLLoader accesoControlador = new FXMLLoader(coilvic.COILVIC.class.getResource(
+                "vistas/FXMLRegistrarColaboracionOfertaUv.fxml"));
+                Parent vista = accesoControlador.load();
+                FXMLRegistrarColaboracionOfertaUvController controlador = 
+                        accesoControlador.getController();
+                Colaboracion colaboracion = new Colaboracion();
+                colaboracion.setNombre(ofertaColaboracionUV.getNombre());
+                colaboracion.setDescripcion(ofertaColaboracionUV.getDescripcion());
+                colaboracion.setIdExperienciaEducativa
+                    (ofertaColaboracionUV.getIdExperienciaEducativa());
+                colaboracion.setIdProfesorUV
+                    (profesorUv.getIdProfesorUV());
+                colaboracion.setIdColaboracion(
+                        ofertaColaboracionUV.getIdOfertaColaboracionUV());
+                controlador.inicializarValoresColaboracion(colaboracion);
+                Stage escenarioPrincipal = (Stage) btnPrincipal.getScene().getWindow();
+                Scene escenaPrincipal = new Scene(vista); 
+                escenarioPrincipal.setScene(escenaPrincipal);
+                escenarioPrincipal.
+                    setTitle("Registro de colaboracion a partir de una oferta EXTERNA");
+                escenarioPrincipal.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+        }else{
+            Utilidades.mostrarAlertaSimple("Credenciales incorrectas", 
+                    "Para poder registrar una colaboracion UV, necesitas ser el profesor quien"
+                            +" creo la misma oferta de la que deriva", 
+        Alert.AlertType.ERROR); 
             
-        }catch(IOException e){
-            System.out.println("Error: "+e.getMessage());
         }
+        
     }
     
     

@@ -1,7 +1,7 @@
 /*
 * Autor: Luis Angel Elizalde Arroyo
 * Fecha de creación: 08/06/2024
-* Descripción: Controlador para la página registrar colaboracion oferta externa
+* Descripción: Controlador para la página registrar colaboracion de oferta externa
 */
 
 package coilvic.controladores;
@@ -111,10 +111,12 @@ public class FXMLRegistrarColaboracionOfertaExternaController
             colaboracion.setIdIdioma
                 (cbIdioma.getSelectionModel().getSelectedItem().getIdIdioma());
             HashMap<String, Object> respuestaArchivo = ArchivoDAO.subirArchivo(archivo);
+            
             if (!(boolean) respuestaArchivo.get(Constantes.KEY_ERROR)) {
                 int idArchivo = (int) respuestaArchivo.get("idArchivo");
                 HashMap<String, Object> respuesta = 
                 ColaboracionDAO.guardarColaboracionExterna(colaboracion, idArchivo);
+                
                 if( !(boolean)respuesta.get(Constantes.KEY_ERROR)){
                     try {
                         int idColaboracion = (int) respuesta.get("idColaboracion");
@@ -146,6 +148,7 @@ public class FXMLRegistrarColaboracionOfertaExternaController
         }
     }
     
+    
     private void actualizarEstadoOferta(int idOfertaColaboracionExterna){
         HashMap<String, Object> respuestaOferta = 
                 OfertaColaboracionExternaDAO.actualizarEstadoOferta(idOfertaColaboracionExterna);
@@ -155,6 +158,7 @@ public class FXMLRegistrarColaboracionOfertaExternaController
         }
     }
 
+    
     @FXML
     private void btnCancelarRegistroColaboracion(ActionEvent event) {
         try{
@@ -170,21 +174,26 @@ public class FXMLRegistrarColaboracionOfertaExternaController
         }
     }
     
+    
     private boolean validarCamposVacios(){
         boolean esValido = true;
-        if(tfNombreProfesorUV.getText().isEmpty() || tfApellidosProfesorUV.getText().isEmpty()
-                || tfCorreo.getText().isEmpty()
-                || tfNumeroDePersonal.getText().isEmpty()
-                || tfTelefono.getText().isEmpty()
-                || tfNumeroDeEstudiantes.getText().isEmpty() || dpFechaInicio.getValue() == null
-                || dpFechaFin.getValue() == null ||  archivo.getArchivoCol().length == 0
-                || cbIdioma.getSelectionModel().isEmpty()){
+        if(tfNombreProfesorUV.getText().trim().isEmpty() 
+                || tfApellidosProfesorUV.getText().trim().isEmpty()
+                || tfCorreo.getText().trim().isEmpty()
+                || tfNumeroDePersonal.getText().trim().isEmpty()
+                || tfTelefono.getText().trim().isEmpty()
+                || tfNumeroDeEstudiantes.getText().trim().isEmpty() 
+                || dpFechaInicio.getValue() == null
+                || dpFechaFin.getValue() == null 
+                ||  archivo.getNombre() == null
+                || cbIdioma.getValue() == null){
             esValido=false;
             Utilidades.mostrarAlertaSimple("Datos incompletos", 
                     "Los datos no están completos" , Alert.AlertType.WARNING);
         }
         return esValido;
     }
+    
     
     private boolean validarDatos(){
         boolean datosValidos=true;
@@ -208,6 +217,7 @@ public class FXMLRegistrarColaboracionOfertaExternaController
         return datosValidos;
     }
 
+    
     @FXML
     private void btnAdjuntarSyllabus(ActionEvent event) {
         FileChooser dialogoArchivo = new FileChooser();
@@ -234,12 +244,14 @@ public class FXMLRegistrarColaboracionOfertaExternaController
         }
     }
     
+    
     private void cargarIdiomas(){
         idiomas = FXCollections.observableArrayList();
         idiomas.addAll((ArrayList<Idioma>)CatalogoDAO.obtenerIdiomas().get("idiomas"));
         cbIdioma.setItems(idiomas);
     }
 
+    
     @Override
     public void operacionExitosa(String tipoOperacion) {
         try {

@@ -61,12 +61,14 @@ public class FXMLRegistrarEstudiantesColaboracionController implements Initializ
         });
     }  
     
+    
     public void inicializarValores(int numeroEstudiantes, int colaboracion, 
             ObservadorColaboraciones observador){
         this.numeroEstudiantes = numeroEstudiantes;
         this.colaboracion = colaboracion;
         this.obsevador = observador;
     }
+    
     
     private boolean validarCamposVacios(){
         boolean esValido = true;
@@ -80,6 +82,7 @@ public class FXMLRegistrarEstudiantesColaboracionController implements Initializ
         }
         return esValido;
     }
+    
     
     private boolean validarDatos(){
         boolean datosValidos=true;
@@ -99,6 +102,7 @@ public class FXMLRegistrarEstudiantesColaboracionController implements Initializ
         return datosValidos;
     }
 
+    
     @FXML
     private void clicBtnRegistrar(ActionEvent event) {
         if(validarCamposVacios() && validarDatos()){
@@ -118,12 +122,14 @@ public class FXMLRegistrarEstudiantesColaboracionController implements Initializ
         }
     }
     
+    
     private void limpiarDatos(){
         tfNombreEsudiante.clear();
         tfMatricula.clear();
         tfApellidoPaterno.clear();
         tfApellidoMaterno.clear();
     }
+    
     
     private void registrarEstudiantes() {
         boolean errorEnRegistro = false;
@@ -151,23 +157,11 @@ public class FXMLRegistrarEstudiantesColaboracionController implements Initializ
         }
     }
     
+    
     private void cerrarVentana(){
         Stage stage = (Stage) tfNombreEsudiante.getScene().getWindow();
         stage.close();
     }
     
-     private void irOfertasColaboracionExterna() {
-        try {
-           Stage ofertasExternas = (Stage) tfMatricula.getScene().getWindow();
-           Parent root = FXMLLoader.load(coilvic.COILVIC.class.
-                   getResource("vistas/FXMLOfertasColaboracionExternas.fxml"));
-           Scene escenaOfertasExternas = new Scene(root);
-           ofertasExternas.setScene(escenaOfertasExternas);
-           ofertasExternas.setTitle("Ofertas colaboracion externas");
-           ofertasExternas.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     
 }

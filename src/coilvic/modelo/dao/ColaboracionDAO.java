@@ -78,6 +78,7 @@ public class ColaboracionDAO {
         return respuesta;
     }
 
+    
     public static HashMap<String, Object> obtenerColaboracion(int idColaboracion) {
         HashMap<String, Object> respuesta = new LinkedHashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
@@ -163,6 +164,7 @@ public class ColaboracionDAO {
         return respuesta;
     }
     
+    
     public static HashMap<String, Object> cerrarColaboracion(int idColaboracion){
         HashMap<String, Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
@@ -192,6 +194,7 @@ public class ColaboracionDAO {
         return respuesta;
     }    
     
+    
     public static HashMap<String, Object> agregarJustificacionColaboracion(int idColaboracion, String justificacion){
         HashMap<String, Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
@@ -219,6 +222,7 @@ public class ColaboracionDAO {
         }
         return respuesta;
     }
+    
     
     public static HashMap<String, Object> obtenerColaboracionesProfesorUV(int idProfesorUV){
         HashMap<String, Object> respuesta = new LinkedHashMap<>();
@@ -313,6 +317,7 @@ public static HashMap<String, Object> guardarColaboracion(int idProfesorExterno,
     return respuesta;
 }
 
+
     public static HashMap<String, Object> guardarColaboracionExterna(Colaboracion colaboracion, 
             int idArchivo) {
         HashMap<String, Object> respuesta = new LinkedHashMap<>();
@@ -358,6 +363,56 @@ public static HashMap<String, Object> guardarColaboracion(int idProfesorExterno,
         return respuesta;
     }
     
+    
+    public static HashMap<String, Object> guardarColaboracionUv(Colaboracion colaboracion, 
+            int idArchivo) {
+        HashMap<String, Object> respuesta = new LinkedHashMap<>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+        Connection conexionBD = ConexionBD.obtenerConexion();
+        if (conexionBD != null) {
+            try {
+                String consulta = 
+                    "INSERT INTO colaboracion (nombre, idExperienciaEducativa, idEstadoColaboracion, "
+                        + "idProfesoruv, fechaInicio, fechaFin, descripcion, idArchivo, idIdioma, "
+                        + "idProfesorexterno) " 
+                        +  "VALUES (?, ?, 1, ?, ?, ?, ?, ?, ?, "
+                        + "(SELECT idProfesorExterno FROM profesorexterno "
+                        + "ORDER BY idProfesorExterno DESC LIMIT 1));";
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement
+                    (consulta, Statement.RETURN_GENERATED_KEYS);
+                prepararSentencia.setString(1, colaboracion.getNombre());
+                prepararSentencia.setInt(2, colaboracion.getIdExperienciaEducativa());
+                prepararSentencia.setInt(3, colaboracion.getIdProfesorUV());
+                prepararSentencia.setString(4, colaboracion.getFechaInicio());
+                prepararSentencia.setString(5, colaboracion.getFechaFin());
+                prepararSentencia.setString(6, colaboracion.getDescripcion());
+                prepararSentencia.setInt(7, idArchivo);
+                prepararSentencia.setInt(8, colaboracion.getIdIdioma());
+                int filasInsertadas = prepararSentencia.executeUpdate();
+                if (filasInsertadas > 0) {
+                    ResultSet generatedKeys = prepararSentencia.getGeneratedKeys();
+                    if (generatedKeys.next()) {
+                        int idColaboracion = generatedKeys.getInt(1);
+                        respuesta.put("idColaboracion", idColaboracion);
+                    }
+                    respuesta.put(Constantes.KEY_ERROR, false);
+                    respuesta.put(Constantes.KEY_MENSAJE, 
+                            "La colaboración se ha guardado exitosamente");
+                } else {
+                    respuesta.put(Constantes.KEY_MENSAJE, 
+                            "No se pudo insertar la colaboración.");
+                }
+                conexionBD.close();
+            } catch (SQLException e) {
+                respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+            }
+        } else {
+            respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
+        }
+        return respuesta;
+    }
+    
+    
     public static HashMap<String, Object> registrarColaboracionEstudiante(int idColaboracion, 
             int idEstudiante) {
         HashMap<String, Object> respuesta = new LinkedHashMap<>();
@@ -389,6 +444,7 @@ public static HashMap<String, Object> guardarColaboracion(int idProfesorExterno,
         return respuesta;
     }
 
+    
     public static HashMap<String, Object> obtenerColaboraciones(){
         HashMap<String, Object> respuesta = new LinkedHashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
@@ -496,6 +552,4 @@ public static HashMap<String, Object> guardarColaboracion(int idProfesorExterno,
         }
         return respuesta;
     }
-    
-
 }
