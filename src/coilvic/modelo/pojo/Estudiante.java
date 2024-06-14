@@ -1,3 +1,8 @@
+/*
+* Autor: Josué Melgarejo García
+* Fecha de creación: 01/06/2024
+* Descripción: Clase del modelo de Estudiante
+*/
 package coilvic.modelo.pojo;
 
 public class Estudiante {

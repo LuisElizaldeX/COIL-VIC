@@ -1,3 +1,8 @@
+/*
+* Autor: Josué Melgarejo García
+* Fecha de creación: 01/05/2024
+* Descripción: Clase del modelo de Archivo
+*/
 package coilvic.modelo.pojo;
 
 public class Archivo {
