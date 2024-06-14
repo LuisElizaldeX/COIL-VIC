@@ -115,9 +115,14 @@
                   <Font name="Arial" size="48.0" />
                </font>
             </Label>
-            <Label fx:id="lbPeriodo" layoutX="71.0" layoutY="198.0" prefHeight="71.0" prefWidth="819.0" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="lbFechas" layoutX="71.0" layoutY="198.0" prefHeight="71.0" prefWidth="453.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
-                  <Font size="22.0" />
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbIdioma" layoutX="597.0" layoutY="198.0" prefHeight="71.0" prefWidth="453.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Label>
          </children>
@@ -127,30 +132,52 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Label fx:id="lbDescripcion" alignment="TOP_LEFT" layoutX="347.0" layoutY="397.0" prefHeight="99.0" prefWidth="1063.0" wrapText="true" />
-      <Label layoutX="347.0" layoutY="519.0" text="Profesor de la Universidad Veracruzana:">
+      <Label fx:id="lbDescripcion" alignment="TOP_LEFT" layoutX="347.0" layoutY="397.0" prefHeight="99.0" prefWidth="1063.0" wrapText="true">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lbPresentacionProfesorUV" layoutX="347.0" layoutY="511.0">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lbNombreProfesorUV" layoutX="364.0" layoutY="546.0" text="Nombre: " />
-      <Label layoutX="364.0" layoutY="567.0" text="Universidad: Universidad Veracruzana" />
-      <Label fx:id="lbRegion" layoutX="364.0" layoutY="588.0" text="Ubicacion: " />
-      <Label fx:id="lbCarrera" layoutX="364.0" layoutY="609.0" text="Carrera: " />
-      <Label fx:id="lbExperienciaEducativa" layoutX="364.0" layoutY="630.0" text="Asignatura: " />
-      <Label fx:id="lbTelefono" layoutX="364.0" layoutY="651.0" text="Teléfono: " />
-      <Label fx:id="lbIdiomaProfesorUV" layoutX="364.0" layoutY="672.0" text="Idioma: " />
-      <Label fx:id="lbCorreoProfesorUV" layoutX="364.0" layoutY="693.0" text="Correo-e: " />
-      <Label fx:id="lbPresentacionProfEx" layoutX="347.0" layoutY="737.0" text="Profesor de la ">
+      <Label fx:id="lbNombreProfesorUV" layoutX="364.0" layoutY="546.0">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lbExperienciaEducativa" layoutX="364.0" layoutY="581.0">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lbTelefono" layoutX="362.0" layoutY="616.0">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lbCorreoProfesorUV" layoutX="361.0" layoutY="651.0">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lbPresentacionProfEx" layoutX="347.0" layoutY="686.0">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lbNombreProfEx" layoutX="364.0" layoutY="764.0" text="Nombre: " />
-      <Label fx:id="lbCorreoProfEx" layoutX="364.0" layoutY="785.0" text="Correo-e: " />
-      <Label fx:id="lbMateriaProfEx" layoutX="364.0" layoutY="806.0" text="Materia/asignatura: " />
-      <Label fx:id="lbCarreraProfEx" layoutX="364.0" layoutY="827.0" text="Carrera: " />
-      <Label layoutX="364.0" layoutY="848.0" text="Idioma: " />
+      <Label fx:id="lbNombreProfEx" layoutX="361.0" layoutY="721.0">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lbCorreoProfEx" layoutX="358.0" layoutY="791.0">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lbMateriaProfEx" layoutX="361.0" layoutY="826.0">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lbCarreraProfEx" layoutX="361.0" layoutY="861.0">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
       <Button layoutX="361.0" layoutY="933.0" mnemonicParsing="false" onAction="#btnClicCancelarColaboracion" prefHeight="39.0" prefWidth="220.0" style="-fx-background-color: EA5959;" text="Cancelar colaboración" textFill="WHITE">
          <font>
             <Font size="18.0" />
@@ -161,5 +188,10 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Label fx:id="lbPaisProfEx" layoutX="360.0" layoutY="756.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

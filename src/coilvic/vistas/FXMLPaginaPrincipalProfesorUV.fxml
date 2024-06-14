@@ -149,8 +149,8 @@
       <TableView fx:id="tvColaboraciones" layoutX="348.0" layoutY="691.0" onMouseClicked="#seleccionarColaboracion" prefHeight="269.0" prefWidth="1064.0" stylesheets="@../css/estilos.css">
         <columns>
           <TableColumn fx:id="colNombre" prefWidth="335.0" text="Nombre" />
-          <TableColumn fx:id="colMateria" prefWidth="308.0" text="Materia" />
-            <TableColumn fx:id="colPeriodo" prefWidth="208.0" text="Periodo" />
+          <TableColumn fx:id="colFechaInicio" prefWidth="308.0" text="Fecha de inicio" />
+            <TableColumn fx:id="colFechaFin" prefWidth="208.0" text="Fecha de fin" />
             <TableColumn fx:id="colEstado" prefWidth="212.0" text="Estado" />
         </columns>
       </TableView>

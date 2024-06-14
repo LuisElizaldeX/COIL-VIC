@@ -26,7 +26,7 @@ import java.util.List;
 public class OfertaColaboracionExternaDAO {
     
     public static HashMap<String, Object> obtenerOfertaColaboracionExterna(){
-         HashMap<String, Object> respuesta = new LinkedHashMap<>();
+        HashMap<String, Object> respuesta = new LinkedHashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
         Connection conexionBD = ConexionBD.obtenerConexion();
         
