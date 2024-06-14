@@ -195,7 +195,8 @@ public class ColaboracionDAO {
     }    
     
     
-    public static HashMap<String, Object> agregarJustificacionColaboracion(int idColaboracion, String justificacion){
+    public static HashMap<String, Object> agregarJustificacionColaboracion
+        (int idColaboracion, String justificacion){
         HashMap<String, Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
         Connection conexionBD = ConexionBD.obtenerConexion();
@@ -281,41 +282,53 @@ public class ColaboracionDAO {
     }
 
     
-public static HashMap<String, Object> guardarColaboracion(int idProfesorExterno, 
-        String nombreColaboracion, String experienciaEducativa, String fechaInicio, String fechaFin, 
-        String idioma, int idProfesorUV, String fechaInicio1, String fechaFin1) {
+    public static HashMap<String, Object> guardarColaboracion(Colaboracion colaboracion, 
+            int idArchivo) {
     HashMap<String, Object> respuesta = new LinkedHashMap<>();
     respuesta.put(Constantes.KEY_ERROR, true);
     Connection conexionBD = ConexionBD.obtenerConexion();
     
     if (conexionBD != null) {
         try {
-            String consulta = "INSERT INTO colaboracion (nombre, idProfesorExterno, idExperienciaEducativa, idEstadoColaboracion, idProfesoruv, fechaInicio, fechaFin, idIdioma) VALUES (?, ?, ?, 1, ?, ?, ?, ?)";
-            PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
-            prepararSentencia.setString(1, nombreColaboracion);
-            prepararSentencia.setInt(2, idProfesorExterno);
-            prepararSentencia.setString(3, experienciaEducativa);
-            prepararSentencia.setInt(4, idProfesorUV);
-            prepararSentencia.setString(5, fechaInicio);
-            prepararSentencia.setString(6, fechaFin);
-            prepararSentencia.setString(7, idioma);
-            
+            String consulta = "INSERT INTO colaboracion (nombre, idProfesorexterno, "
+                    + "idExperienciaEducativa, idEstadoColaboracion, idArchivo, idProfesoruv, "
+                    + "fechaInicio, fechaFin, idIdioma) "
+                    + "VALUES (?, (SELECT idProfesorExterno FROM profesorexterno "
+                        + "ORDER BY idProfesorExterno DESC LIMIT 1), "
+                    + "(SELECT idExperienciaEducativa FROM experienciaeducativa "
+                        + "ORDER BY idExperienciaEducativa DESC LIMIT 1), 1, ?, ?, ?, ?, ?)";
+            PreparedStatement prepararSentencia = conexionBD.prepareStatement
+                    (consulta, Statement.RETURN_GENERATED_KEYS);
+            prepararSentencia.setString(1, colaboracion.getNombre());
+            prepararSentencia.setInt(2, idArchivo);
+            prepararSentencia.setInt(3, colaboracion.getIdProfesorUV());
+            prepararSentencia.setString(4, colaboracion.getFechaInicio());
+            prepararSentencia.setString(5, colaboracion.getFechaFin());
+            prepararSentencia.setInt(6, colaboracion.getIdIdioma());
             int filasInsertadas = prepararSentencia.executeUpdate();
-            if (filasInsertadas > 0) {
-                respuesta.put(Constantes.KEY_ERROR, false);
-                respuesta.put(Constantes.KEY_MENSAJE, "La colaboración se ha guardado exitosamente");
-            } else {
-                respuesta.put(Constantes.KEY_MENSAJE, "No se pudo insertar la colaboración.");
+            
+                if (filasInsertadas > 0) {
+                    ResultSet generatedKeys = prepararSentencia.getGeneratedKeys();
+                    if (generatedKeys.next()) {
+                        int idColaboracion = generatedKeys.getInt(1);
+                        respuesta.put("idColaboracion", idColaboracion);
+                    }
+                    respuesta.put(Constantes.KEY_ERROR, false);
+                    respuesta.put(Constantes.KEY_MENSAJE, 
+                            "La colaboración se ha guardado exitosamente");
+                } else {
+                    respuesta.put(Constantes.KEY_MENSAJE, 
+                            "No se pudo insertar la colaboración.");
+                }
+                conexionBD.close();
+            } catch (SQLException e) {
+                respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
             }
-            conexionBD.close();
-        } catch (SQLException e) {
-            respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+        } else {
+            respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
         }
-    } else {
-        respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
+        return respuesta;
     }
-    return respuesta;
-}
 
 
     public static HashMap<String, Object> guardarColaboracionExterna(Colaboracion colaboracion, 
@@ -327,8 +340,8 @@ public static HashMap<String, Object> guardarColaboracion(int idProfesorExterno,
             try {
                 String consulta = 
                     "INSERT INTO colaboracion (nombre, idProfesorExterno, idEstadoColaboracion, "
-                        + "idProfesoruv, fechaInicio, fechaFin, descripcion, idArchivo, idIdioma) "
-                        + "VALUES (?, ?, 1, ?, ?, ?, ?, ?, ?)";
+                        + "idProfesoruv, fechaInicio, fechaFin, idArchivo, idIdioma) "
+                        + "VALUES (?, ?, 1, ?, ?, ?, ?, ?)";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement
                     (consulta, Statement.RETURN_GENERATED_KEYS);
                 prepararSentencia.setString(1, colaboracion.getNombre());
@@ -336,9 +349,8 @@ public static HashMap<String, Object> guardarColaboracion(int idProfesorExterno,
                 prepararSentencia.setInt(3, colaboracion.getIdProfesorUV());
                 prepararSentencia.setString(4, colaboracion.getFechaInicio());
                 prepararSentencia.setString(5, colaboracion.getFechaFin());
-                prepararSentencia.setString(6, colaboracion.getDescripcion());
-                prepararSentencia.setInt(7, idArchivo);
-                prepararSentencia.setInt(8, colaboracion.getIdIdioma());
+                prepararSentencia.setInt(6, idArchivo);
+                prepararSentencia.setInt(7, colaboracion.getIdIdioma());
                 int filasInsertadas = prepararSentencia.executeUpdate();
                 if (filasInsertadas > 0) {
                     ResultSet generatedKeys = prepararSentencia.getGeneratedKeys();
@@ -373,9 +385,9 @@ public static HashMap<String, Object> guardarColaboracion(int idProfesorExterno,
             try {
                 String consulta = 
                     "INSERT INTO colaboracion (nombre, idExperienciaEducativa, idEstadoColaboracion, "
-                        + "idProfesoruv, fechaInicio, fechaFin, descripcion, idArchivo, idIdioma, "
+                        + "idProfesoruv, fechaInicio, fechaFin, idArchivo, idIdioma, "
                         + "idProfesorexterno) " 
-                        +  "VALUES (?, ?, 1, ?, ?, ?, ?, ?, ?, "
+                        +  "VALUES (?, ?, 1, ?, ?, ?, ?, ?, "
                         + "(SELECT idProfesorExterno FROM profesorexterno "
                         + "ORDER BY idProfesorExterno DESC LIMIT 1));";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement
@@ -385,9 +397,8 @@ public static HashMap<String, Object> guardarColaboracion(int idProfesorExterno,
                 prepararSentencia.setInt(3, colaboracion.getIdProfesorUV());
                 prepararSentencia.setString(4, colaboracion.getFechaInicio());
                 prepararSentencia.setString(5, colaboracion.getFechaFin());
-                prepararSentencia.setString(6, colaboracion.getDescripcion());
-                prepararSentencia.setInt(7, idArchivo);
-                prepararSentencia.setInt(8, colaboracion.getIdIdioma());
+                prepararSentencia.setInt(6, idArchivo);
+                prepararSentencia.setInt(7, colaboracion.getIdIdioma());
                 int filasInsertadas = prepararSentencia.executeUpdate();
                 if (filasInsertadas > 0) {
                     ResultSet generatedKeys = prepararSentencia.getGeneratedKeys();
