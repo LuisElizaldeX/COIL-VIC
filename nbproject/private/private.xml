@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Erick/OneDrive/Documentos/GitHub/COIL-VIC/src/coilvic/modelo/dao/SolicitudConstanciaDAO.java</file>
+            <file>file:/C:/Users/Erick/OneDrive/Documentos/GitHub/COIL-VIC/src/coilvic/modelo/dao/ColaboracionDAO.java</file>
             <file>file:/C:/Users/Erick/OneDrive/Documentos/GitHub/COIL-VIC/src/coilvic/controladores/FXMLSolicitudDeConstanciaController.java</file>
             <file>file:/C:/Users/Erick/OneDrive/Documentos/GitHub/COIL-VIC/src/coilvic/controladores/FXMLSolicitudesDeConstanciaController.java</file>
         </group>
