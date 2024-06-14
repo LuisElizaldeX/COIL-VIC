@@ -207,7 +207,7 @@
       <DatePicker fx:id="dpFechaFin" layoutX="725.0" layoutY="627.0" promptText="Fecha de fin" />
       <Label layoutX="404.0" layoutY="722.0" text="Idioma">
          <font>
-            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+            <Font name="Berlin Sans FB Bold" size="15.0" />
          </font>
       </Label>
       <ComboBox fx:id="cbIdioma" layoutX="402.0" layoutY="762.0" prefHeight="40.0" prefWidth="218.0" promptText="Idioma" />

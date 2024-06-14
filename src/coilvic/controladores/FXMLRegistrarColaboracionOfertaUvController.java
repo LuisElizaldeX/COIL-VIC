@@ -117,11 +117,9 @@ public class FXMLRegistrarColaboracionOfertaUvController
                 int idArchivo = (int) respuestaArchivo.get("idArchivo");
                 
                 Universidad universidad = obtenerInformacionUniversidad();
-                HashMap<String, Object> respuestaUniversidad = 
                 OfertaColaboracionExternaDAO.guardarUniversidad(universidad);
                 
-                ProfesorExterno profesorExterno = obtenerInformacionProfesorExterno();
-                HashMap<String, Object> respuestaProfesorExterno = 
+                ProfesorExterno profesorExterno = obtenerInformacionProfesorExterno(); 
                 OfertaColaboracionExternaDAO.guardarProfesorExterno(profesorExterno); 
                 
                 HashMap<String, Object> respuestaColaboracion = 
@@ -290,13 +288,13 @@ public class FXMLRegistrarColaboracionOfertaUvController
     public void operacionExitosa(String tipoOperacion) {
         try {
            actualizarEstadoOferta(colaboracion.getIdColaboracion());
-           Stage ofertasExternas = (Stage) imgCerrarSesion.getScene().getWindow();
+           Stage ofertasUv = (Stage) imgCerrarSesion.getScene().getWindow();
            Parent root = FXMLLoader.load(coilvic.COILVIC.class.
                    getResource("vistas/FXMLOfertasColaboracionUv.fxml"));
            Scene escenaOfertasUv = new Scene(root);
-           ofertasExternas.setScene(escenaOfertasUv);
-           ofertasExternas.setTitle("Ofertas colaboracion UV");
-           ofertasExternas.show();
+           ofertasUv.setScene(escenaOfertasUv);
+           ofertasUv.setTitle("Ofertas colaboracion UV");
+           ofertasUv.show();
         } catch (IOException e) {
             e.printStackTrace();
         }

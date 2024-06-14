@@ -107,9 +107,7 @@ public class FXMLRegistrarOfertaColaboracionExternaController
     
     private void guardarOfertaColaboracionExterna(Universidad universidad, 
             ProfesorExterno profesorExterno, OfertaColaboracionExterna ofertaExterna){
-        HashMap<String, Object> respuestaUniversidad = 
                 OfertaColaboracionExternaDAO.guardarUniversidad(universidad);
-        HashMap<String, Object> respuestaProfesorExterno = 
                 OfertaColaboracionExternaDAO.guardarProfesorExterno(profesorExterno);                                  
         HashMap<String, Object> respuestaOfertaExterna = 
                 OfertaColaboracionExternaDAO.guardarOfertaExterna(ofertaExterna);

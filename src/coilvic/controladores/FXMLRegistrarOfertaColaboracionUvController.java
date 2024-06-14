@@ -209,11 +209,10 @@ public class FXMLRegistrarOfertaColaboracionUvController
     private void guardarOfertaColaboracionUV
         (Dependencia dependencia, Periodo periodo, ExperienciaEducativa experienciaEducativa, 
             OfertaColaboracionUV ofertaColaboracionUV){
-        HashMap<String, Object> respuestaDependencia = 
                 OfertaColaboracionUVDAO.guardarDependencia(dependencia);
-        HashMap<String, Object> respuestaPeriodo = OfertaColaboracionUVDAO.guardarPeriodo(periodo);
-        HashMap<String, Object> respuestaExperienciaEducativa = 
+                OfertaColaboracionUVDAO.guardarPeriodo(periodo);
                 OfertaColaboracionUVDAO.guardarExperienciaEducativa(experienciaEducativa);
+                
         HashMap<String, Object> respuestaOfertaColaboracionUV = 
                 OfertaColaboracionUVDAO.guardarOfertaColaboracionUv(ofertaColaboracionUV);
 
