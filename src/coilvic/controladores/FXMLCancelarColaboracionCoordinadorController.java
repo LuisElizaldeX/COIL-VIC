@@ -1,4 +1,8 @@
-
+/*
+* Autor: Josué Melgarejo García
+* Fecha de creación: 24/06/2024
+* Descripción: Controlador para cancelar una colaboración por parte del coordinador
+*/
 package coilvic.controladores;
 
 import coilvic.modelo.dao.ColaboracionDAO;
@@ -30,7 +34,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class FXMLCancelarColaboracionCoordinadorController extends FXMLPaginaPrincipalCoordinadorCOILController 
+public class FXMLCancelarColaboracionCoordinadorController extends 
+        FXMLPaginaPrincipalCoordinadorCOILController 
         implements ObservadorColaboraciones{
     
     private ObservableList<Colaboracion> colaboraciones;
@@ -76,14 +81,15 @@ public class FXMLCancelarColaboracionCoordinadorController extends FXMLPaginaPri
             colaboraciones.addAll(colaboracionesBD);
             tvColaboraciones.setItems(colaboraciones);
         } else {
-            Utilidades.mostrarAlertaSimple("Error", ""+respuesta.get(Constantes.KEY_MENSAJE),
+            Utilidades.mostrarAlertaSimple("Error",""+respuesta.get(Constantes.KEY_MENSAJE),
                     Alert.AlertType.WARNING);
         }
     }
     
     @FXML
     private void btnClicCancelarColaboracion(ActionEvent event) {
-        Colaboracion colaboracionSeleccionada = tvColaboraciones.getSelectionModel().getSelectedItem();
+        Colaboracion colaboracionSeleccionada = 
+                tvColaboraciones.getSelectionModel().getSelectedItem();
         
         if(colaboracionSeleccionada != null){
             if (colaboracionSeleccionada.getEstadoColaboracion().equals("En curso")) {
@@ -102,7 +108,8 @@ public class FXMLCancelarColaboracionCoordinadorController extends FXMLPaginaPri
     private void irJustificarCancelacion(int idColaboracion){
         try{
             Stage escenarioSecundario = new Stage();
-            FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLJustificarCancelacion.fxml");
+            FXMLLoader loader = 
+                    Utilidades.obtenerLoader("vistas/FXMLJustificarCancelacion.fxml");
             Parent root = loader.load();
             FXMLJustificarCancelacionController controlador = loader.getController();
             controlador.inicializarValores(idColaboracion,this);

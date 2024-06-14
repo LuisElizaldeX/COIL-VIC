@@ -1,3 +1,8 @@
+/*
+* Autor: Josué Melgarejo García
+* Fecha de creación: 07/06/2024
+* Descripción: Controlador para justificar una cancelación de colaboración
+*/
 package coilvic.controladores;
 
 import coilvic.modelo.dao.ColaboracionDAO;
@@ -56,7 +61,8 @@ public class FXMLJustificarCancelacionController implements Initializable {
             boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
             if (!isError) {
                 Utilidades.mostrarAlertaSimple("Justificación registrada",
-                        "" + respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.INFORMATION);
+                        "" + respuesta.get(Constantes.KEY_MENSAJE), 
+                        Alert.AlertType.INFORMATION);
                 return true;
             } else {
                 Utilidades.mostrarAlertaSimple("Error al registrar justificación", "" + 

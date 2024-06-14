@@ -1,3 +1,8 @@
+/*
+* Autor: Josué Melgarejo García
+* Fecha de creación: 02/06/2024
+* Descripción: Controlador para cerrar una colaboración por parte del profesor uv
+*/
 package coilvic.controladores;
 
 import coilvic.modelo.dao.ArchivoDAO;
@@ -90,9 +95,11 @@ public class FXMLCerrarColaboracionController extends FXMLPaginaPrincipalProfeso
     }
     
     private void configurarBtnEliminarEstudiantes(){
-        tvEstudiantes.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Estudiante>(){
+        tvEstudiantes.getSelectionModel().selectedItemProperty().
+                addListener(new ChangeListener<Estudiante>(){
             @Override
-            public void changed(ObservableValue<? extends Estudiante> observable, Estudiante oldValue, Estudiante newValue) {
+            public void changed(ObservableValue<? extends Estudiante> observable, 
+                    Estudiante oldValue, Estudiante newValue) {
                 btnEliminarEstudiantes.setDisable(newValue == null);
             }
         });
@@ -121,7 +128,8 @@ public class FXMLCerrarColaboracionController extends FXMLPaginaPrincipalProfeso
                 EstudianteDAO.obtenerEstudiantes(colaboracion.getIdColaboracion());
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
         if(!isError){
-            ArrayList<Estudiante> estudiantesBD = (ArrayList<Estudiante>) respuesta.get("estudiantes");
+            ArrayList<Estudiante> estudiantesBD = 
+                    (ArrayList<Estudiante>) respuesta.get("estudiantes");
             estudiantes.addAll(estudiantesBD);
             tvEstudiantes.setItems(estudiantes);
         } else {
@@ -138,7 +146,8 @@ public class FXMLCerrarColaboracionController extends FXMLPaginaPrincipalProfeso
                 guardarArchivo(archivoSeleccionado);
             } else {
                 Utilidades.mostrarAlertaSimple("Peso excedido", 
-                        "El archivo seleccionado es mayor a los 20MB", Alert.AlertType.WARNING);
+                        "El archivo seleccionado es mayor a los 20MB", 
+                        Alert.AlertType.WARNING);
             }
         }
     }
@@ -205,7 +214,8 @@ public class FXMLCerrarColaboracionController extends FXMLPaginaPrincipalProfeso
     private void btnClicGuardar(ActionEvent event) {
         if (!isErrorGuardarCambios()) {
             Utilidades.mostrarAlertaSimple("Cambios guardados",
-                    "Se han guardado los cambios correctamente", Alert.AlertType.INFORMATION);
+                    "Se han guardado los cambios correctamente", 
+                    Alert.AlertType.INFORMATION);
             irColaboracion();
         } else {
             Utilidades.mostrarAlertaSimple("Error al guardar",
