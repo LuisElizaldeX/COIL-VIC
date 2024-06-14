@@ -104,9 +104,9 @@
                   </Button>
                </children>
             </Pane>
-            <Label layoutX="576.0" layoutY="18.0" prefHeight="71.0" prefWidth="642.0" text="Registrar colaboracion">
+            <Label layoutX="655.0" layoutY="21.0" prefHeight="71.0" prefWidth="455.0" text="Registrar colaboracion">
                <font>
-                  <Font name="Arial Bold Italic" size="53.0" />
+                  <Font name="Arial Bold" size="41.0" />
                </font>
             </Label>
             <Label layoutX="394.0" layoutY="123.0" text="Profesor UV">
@@ -114,32 +114,32 @@
                   <Font name="Berlin Sans FB" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="tfApellidosProfesorUV" layoutX="465.0" layoutY="225.0" prefHeight="25.0" prefWidth="222.0" />
-            <TextField fx:id="tfCorreo" layoutX="465.0" layoutY="286.0" prefHeight="25.0" prefWidth="222.0" />
-            <TextField fx:id="tfNumeroDePersonal" layoutX="889.0" layoutY="168.0" prefHeight="25.0" prefWidth="222.0" />
-            <TextField fx:id="tfNombreProfesorUV" layoutX="465.0" layoutY="168.0" prefHeight="25.0" prefWidth="222.0" />
-            <TextField fx:id="tfTelefono" layoutX="889.0" layoutY="225.0" prefHeight="25.0" prefWidth="222.0" />
-            <Label layoutX="395.0" layoutY="230.0" text="Apellidos:">
+            <TextField fx:id="tfApellidosProfesorUV" layoutX="465.0" layoutY="225.0" prefHeight="25.0" prefWidth="222.0" promptText="Apellidos" style="-fx-background-radius: 20;" />
+            <TextField fx:id="tfCorreo" layoutX="465.0" layoutY="286.0" prefHeight="25.0" prefWidth="222.0" promptText="Correo" style="-fx-background-radius: 20;" />
+            <TextField fx:id="tfNumeroDePersonal" layoutX="889.0" layoutY="168.0" prefHeight="25.0" prefWidth="222.0" promptText="Numero de personal" style="-fx-background-radius: 20;" />
+            <TextField fx:id="tfNombreProfesorUV" layoutX="465.0" layoutY="168.0" prefHeight="25.0" prefWidth="222.0" promptText="Nombre " style="-fx-background-radius: 20;" />
+            <TextField fx:id="tfTelefono" layoutX="889.0" layoutY="225.0" prefHeight="25.0" prefWidth="222.0" promptText="Telefono" style="-fx-background-radius: 20;" />
+            <Label layoutX="388.0" layoutY="227.0" text="Apellidos:">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="705.0" layoutY="173.0" text="Numero de personal">
+            <Label layoutX="739.0" layoutY="170.0" text="Numero de personal:">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="395.0" layoutY="291.0" text="Correo:">
+            <Label layoutX="403.0" layoutY="288.0" text="Correo:">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="398.0" layoutY="173.0" text="Nombre:">
+            <Label layoutX="391.0" layoutY="170.0" text="Nombre:">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="725.0" layoutY="230.0" text="Telefono:">
+            <Label layoutX="817.0" layoutY="227.0" text="Telefono:">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="15.0" />
                </font>
@@ -155,7 +155,7 @@
                   <Font name="Berlin Sans FB Demi Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="tfNumeroDeEstudiantes" layoutX="576.0" layoutY="424.0" prefHeight="25.0" prefWidth="222.0" />
+            <TextField fx:id="tfNumeroDeEstudiantes" layoutX="576.0" layoutY="424.0" prefHeight="25.0" prefWidth="166.0" promptText="Numero de estudiantes" style="-fx-background-radius: 20;" />
             <Button layoutX="1006.0" layoutY="947.0" mnemonicParsing="false" onAction="#btnAdjuntarSyllabus" prefHeight="31.0" prefWidth="167.0" styleClass="buttonRegistrar" stylesheets="@../css/estilos.css" text="Adjuntar Syllabus">
                <font>
                   <Font size="15.0" />
@@ -178,8 +178,8 @@
                </font>
             </Label>
             <Separator layoutX="387.0" layoutY="496.0" prefHeight="12.0" prefWidth="990.0" />
-            <DatePicker fx:id="dpFechaInicio" layoutX="398.0" layoutY="612.0" />
-            <DatePicker fx:id="dpFechaFin" layoutX="705.0" layoutY="612.0" />
+            <DatePicker fx:id="dpFechaInicio" layoutX="398.0" layoutY="612.0" promptText="Fecha de inicio" />
+            <DatePicker fx:id="dpFechaFin" layoutX="705.0" layoutY="612.0" promptText="Fecha de fin" />
             <Label layoutX="407.0" layoutY="576.0" text="Fecha inicio">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="15.0" />
@@ -190,7 +190,7 @@
                   <Font name="Berlin Sans FB Demi Bold" size="15.0" />
                </font>
             </Label>
-            <ComboBox fx:id="cbIdioma" layoutX="398.0" layoutY="739.0" prefHeight="40.0" prefWidth="218.0" />
+            <ComboBox fx:id="cbIdioma" layoutX="398.0" layoutY="739.0" prefHeight="40.0" prefWidth="218.0" promptText="Idioma" />
             <Label layoutX="420.0" layoutY="708.0" text="Idioma">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="15.0" />

@@ -57,6 +57,7 @@ public class EstudianteDAO {
         return respuesta;
     }
     
+    
     public static HashMap<String, Object> eliminarEstudiante(int idEstudiante, int idColaboracion){
         HashMap<String, Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
@@ -87,6 +88,7 @@ public class EstudianteDAO {
         }
         return respuesta;
     }
+    
     
     public static HashMap<String, Object> registrarEstudiante(Estudiante estudiante) {
         HashMap<String, Object> respuesta = new LinkedHashMap<>();

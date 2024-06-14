@@ -103,6 +103,7 @@ public class OfertaColaboracionUVDAO {
                                 "    oc.idOfertaColaboracionUV, " +
                                 "    oc.descripcion AS ofertaDescripcion, " +
                                 "    oc.nombre AS ofertaNombre, " +
+                                "    oc.idExperienciaEducativa, " +
                                 "    ee.nombre AS experienciaNombre, " +
                                 "    ee.descripcion AS experienciaDescripcion, " +
                                 "    ee.creditos, " +
@@ -114,6 +115,7 @@ public class OfertaColaboracionUVDAO {
                                 "    pe.nombre AS programaNombre, " +
                                 "    aa.idAreaAcademica, " +
                                 "    aa.nombre AS areaNombre, " +
+                                "    p.idProfesoruv, " +
                                 "    p.nombre AS profesorUvNombre, " +
                                 "    p.apellidos, " +
                                 "    p.correo, " +
@@ -157,11 +159,14 @@ public class OfertaColaboracionUVDAO {
         (resultado.getString("programaNombre"));
                     oferta.setDescripcion
         (resultado.getString("ofertaDescripcion"));
+                    oferta.setIdExperienciaEducativa
+        (resultado.getInt("idExperienciaEducativa"));
                     oferta.setExperienciaEducativa
         (resultado.getString("experienciaNombre"));
                     oferta.setCreditos(resultado.getString("creditos"));
                     oferta.setDescripcionEe
         (resultado.getString("experienciaDescripcion"));
+                    oferta.setIdProfesorUV(resultado.getInt("idProfesoruv"));
                     oferta.setNombreProfesorUv
         (resultado.getString("profesorUvNombre"));
                     oferta.setApellidos(resultado.getString("apellidos"));
@@ -467,6 +472,38 @@ public class OfertaColaboracionUVDAO {
             respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
         }
         return respuesta;  
+    }
+        
+        
+    public static HashMap<String, Object> 
+        actualizarEstadoOferta(int idOfertaColaboracionUv) {
+        Connection conexionBD = ConexionBD.obtenerConexion();
+        HashMap<String, Object> respuesta = new LinkedHashMap<>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+       
+        if (conexionBD != null) {
+            try {
+                String consulta = "UPDATE ofertacolaboracionuv SET idEstadoOfertaColaboracionUV = 4 "
+                        + "WHERE idOfertaColaboracionUV = ?";
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
+                prepararSentencia.setInt(1, idOfertaColaboracionUv);
+                int filasAfectadas = prepararSentencia.executeUpdate();
+                if(filasAfectadas == 1){
+                    respuesta.put(Constantes.KEY_ERROR, false);
+                    respuesta.put(Constantes.KEY_MENSAJE, 
+                            "Oferta de colaboración COIL actualizada con éxito");
+                }else{
+                    respuesta.put(Constantes.KEY_MENSAJE, "Lo sentimos, hubo un error en "
+                            + "guardar la informacion de la oferta de colaboración COIl");
+                }
+                conexionBD.close();
+            } catch (SQLException e) {
+                respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+            }
+        } else {
+            respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
+        }
+        return respuesta;
     }
 
 }
