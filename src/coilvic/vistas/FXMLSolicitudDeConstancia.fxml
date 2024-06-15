@@ -168,11 +168,6 @@
             <Font size="35.0" />
          </font>
       </Label>
-      <Label fx:id="lbDescripicion" layoutX="574.0" layoutY="488.0" prefHeight="146.0" prefWidth="775.0" text="Label" wrapText="true">
-         <font>
-            <Font size="35.0" />
-         </font>
-      </Label>
       <Label fx:id="lbProfesorUV" layoutX="608.0" layoutY="332.0" prefHeight="76.0" prefWidth="547.0" text="Label" wrapText="true">
          <font>
             <Font size="35.0" />
@@ -220,11 +215,6 @@
          </font>
       </Label>
       <Label layoutX="392.0" layoutY="415.0" prefHeight="55.0" prefWidth="257.0" text="Profesor externo:">
-         <font>
-            <Font name="Berlin Sans FB" size="35.0" />
-         </font>
-      </Label>
-      <Label layoutX="390.0" layoutY="488.0" prefHeight="55.0" prefWidth="174.0" text="Descripción:">
          <font>
             <Font name="Berlin Sans FB" size="35.0" />
          </font>

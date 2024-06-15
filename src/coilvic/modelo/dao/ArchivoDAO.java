@@ -1,3 +1,8 @@
+/*
+* Autor: Josué Melgarejo García
+* Fecha de creación: 01/06/2024
+* Descripción: Clase ArchivoDAO para obtener información de las clases
+*/
 package coilvic.modelo.dao;
 
 import coilvic.modelo.ConexionBD;
@@ -37,7 +42,8 @@ public class ArchivoDAO {
                     respuesta.put(Constantes.KEY_MENSAJE, "Archivo guardado correctamente");
                 } else {
                     respuesta.put(Constantes.KEY_MENSAJE, 
-                            "Lo sentimos, hubo un error al subir el archivo, favor de intentarlo más tarde");
+                            "Lo sentimos, hubo un error al subir el archivo, "
+                                    + "favor de intentarlo más tarde");
                 }
                 conexionBD.close();
             } catch (SQLException e) {
@@ -79,7 +85,8 @@ public class ArchivoDAO {
         return respuesta;
     }
     
-    public static HashMap<String, Object> registrarArchivoEnColaboracion(int idColaboracion, int idArchivo){
+    public static HashMap<String, Object> 
+        registrarArchivoEnColaboracion(int idColaboracion, int idArchivo){
         HashMap<String, Object> respuesta = new LinkedHashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
         Connection conexionBD = ConexionBD.obtenerConexion();

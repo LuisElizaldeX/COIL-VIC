@@ -26,7 +26,7 @@ import java.util.List;
 public class OfertaColaboracionExternaDAO {
     
     public static HashMap<String, Object> obtenerOfertaColaboracionExterna(){
-         HashMap<String, Object> respuesta = new LinkedHashMap<>();
+        HashMap<String, Object> respuesta = new LinkedHashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
         Connection conexionBD = ConexionBD.obtenerConexion();
         
@@ -41,7 +41,8 @@ public class OfertaColaboracionExternaDAO {
                         "JOIN estadoofertacolaboracionexterna e "
                         + "ON o.idEstadoOferta = e.idEstadoOferta " +
                         "JOIN profesorexterno p ON o.idProfesorExterno = p.idProfesorExterno " +
-                        "JOIN universidad u ON p.idUniversidad = u.idUniversidad";
+                        "JOIN universidad u ON p.idUniversidad = u.idUniversidad "
+                        + "WHERE o.idEstadoOferta = 1";
                 
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
                 ResultSet resultado = prepararSentencia.executeQuery();
@@ -244,7 +245,8 @@ public class OfertaColaboracionExternaDAO {
         return respuesta;  
     }
     
-     public static HashMap<String, Object> 
+    
+    public static HashMap<String, Object> 
         actualizarEstadoOferta(int idOfertaColaboracionExterna) {
         Connection conexionBD = ConexionBD.obtenerConexion();
         HashMap<String, Object> respuesta = new LinkedHashMap<>();

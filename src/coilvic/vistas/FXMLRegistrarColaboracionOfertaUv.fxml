@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLRegistrarColaboracionOfertaUvController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1450.0" style="-fx-background-color: ECE5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coilvic.controladores.FXMLRegistrarColaboracionOfertaUvController">
    <children>
       <Pane layoutY="-2.0" prefHeight="1005.0" prefWidth="312.0" style="-fx-background-color: #404040;">
          <children>
@@ -102,26 +102,25 @@
             </Button>
          </children>
       </Pane>
-      <Label layoutX="576.0" layoutY="18.0" prefHeight="71.0" prefWidth="642.0" text="Registrar colaboracion">
+      <Label layoutX="665.0" layoutY="22.0" prefHeight="71.0" prefWidth="449.0" text="Registrar colaboracion">
          <font>
-            <Font name="Arial Bold Italic" size="53.0" />
+            <Font name="Arial Bold" size="41.0" />
          </font>
       </Label>
-      <Label layoutX="394.0" layoutY="123.0" text="Profesor Uv">
+      <Label layoutX="394.0" layoutY="123.0" text="Profesor externo">
          <font>
             <Font name="Berlin Sans FB" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tfPais" layoutX="465.0" layoutY="168.0" prefHeight="25.0" prefWidth="222.0" />
-      <TextField fx:id="tfApellidosProfesorExterno" layoutX="465.0" layoutY="225.0" prefHeight="25.0" prefWidth="222.0" />
-      <TextField fx:id="tfIdioma" layoutX="465.0" layoutY="286.0" prefHeight="25.0" prefWidth="222.0" />
-      <TextField fx:id="tfUniversidad" layoutX="803.0" layoutY="168.0" prefHeight="25.0" prefWidth="222.0" />
-      <TextField fx:id="tfCarrera" layoutX="803.0" layoutY="225.0" prefHeight="25.0" prefWidth="222.0" />
-      <TextField fx:id="tfCorreo" layoutX="803.0" layoutY="286.0" prefHeight="25.0" prefWidth="222.0" />
-      <TextField fx:id="tfNombreProfesorExterno" layoutX="1159.0" layoutY="168.0" prefHeight="25.0" prefWidth="222.0" />
-      <TextField fx:id="TfMateriaE" layoutX="1159.0" layoutY="225.0" prefHeight="25.0" prefWidth="222.0" />
-      <TextField fx:id="tfTelefono" layoutX="1159.0" layoutY="286.0" prefHeight="25.0" prefWidth="222.0" />
-      <Label layoutX="412.0" layoutY="173.0" text="Pais:">
+      <TextField fx:id="tfPais" layoutX="465.0" layoutY="286.0" prefHeight="25.0" prefWidth="222.0" promptText="Pais" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfApellidosProfesorExterno" layoutX="465.0" layoutY="225.0" prefHeight="25.0" prefWidth="222.0" promptText="Apellidos" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfUniversidad" layoutX="803.0" layoutY="168.0" prefHeight="25.0" prefWidth="222.0" promptText="Universidad" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfCarrera" layoutX="803.0" layoutY="225.0" prefHeight="25.0" prefWidth="222.0" promptText="Carrera" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfCorreo" layoutX="1142.0" layoutY="168.0" prefHeight="25.0" prefWidth="222.0" promptText="Correo" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfNombreProfesorExterno" layoutX="465.0" layoutY="171.0" prefHeight="25.0" prefWidth="222.0" promptText="Nombre" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfMateria" layoutX="803.0" layoutY="286.0" prefHeight="25.0" prefWidth="222.0" promptText="Materia" style="-fx-background-radius: 20;" />
+      <TextField fx:id="tfTelefono" layoutX="1142.0" layoutY="228.0" prefHeight="25.0" prefWidth="222.0" promptText="Telefono" style="-fx-background-radius: 20;" />
+      <Label layoutX="427.0" layoutY="288.0" text="Pais:">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="15.0" />
          </font>
@@ -131,37 +130,32 @@
             <Font name="Berlin Sans FB Demi Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="402.0" layoutY="291.0" text="Idioma:">
+      <Label layoutX="710.0" layoutY="173.0" text="Universidad:">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="695.0" layoutY="173.0" text="Universidad:">
+      <Label layoutX="734.0" layoutY="230.0" text="Carrera:">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="704.0" layoutY="230.0" text="Carrera:">
+      <Label layoutX="1085.0" layoutY="170.0" text="Correo:">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="705.0" layoutY="291.0" text="Correo:">
+      <Label layoutX="398.0" layoutY="173.0" text="Nombre:">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="1045.0" layoutY="173.0" text="Nombre:">
+      <Label layoutX="733.0" layoutY="289.0" text="Materia:">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="1047.0" layoutY="230.0" text="Materia:">
-         <font>
-            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="1043.0" layoutY="291.0" text="Telefono:">
+      <Label layoutX="1072.0" layoutY="230.0" text="Telefono:">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="15.0" />
          </font>
@@ -172,26 +166,51 @@
             <Font name="Berlin Sans FB" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="387.0" layoutY="429.0" text="Numero de estudiantes">
+      <Label layoutX="392.0" layoutY="429.0" text="Numero de estudiantes">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="tfNumeroDeEstudiantes" layoutX="576.0" layoutY="424.0" prefHeight="25.0" prefWidth="222.0" />
-      <Button layoutX="1006.0" layoutY="947.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="167.0" text="Adjuntar Syllabus">
+      <TextField fx:id="tfNumeroDeEstudiantes" layoutX="576.0" layoutY="427.0" prefHeight="25.0" prefWidth="166.0" promptText="Numero de estudiantes" style="-fx-background-radius: 20;" />
+      <Button layoutX="1006.0" layoutY="947.0" mnemonicParsing="false" onAction="#btnAdjuntarSyllabus" prefHeight="31.0" prefWidth="167.0" style="-fx-background-color: #3FBD13;" text="Adjuntar Syllabus" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="1189.0" layoutY="947.0" mnemonicParsing="false" onAction="#btnAceptarRegistroColaboracion" prefHeight="31.0" prefWidth="99.0" text="Aceptar">
+      <Button layoutX="1189.0" layoutY="947.0" mnemonicParsing="false" onAction="#btnAceptarRegistroColaboracion" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #3FBD13;" text="Aceptar" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="1305.0" layoutY="947.0" mnemonicParsing="false" onAction="#btnCancelarRegistroColaboracion" prefHeight="31.0" prefWidth="100.0" text="Cancelar">
+      <Button layoutX="1305.0" layoutY="947.0" mnemonicParsing="false" onAction="#btnCancelarRegistroColaboracion" prefHeight="31.0" prefWidth="100.0" style="-fx-background-color: #EA5959;" text="Cancelar" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
+      <Separator layoutX="397.0" layoutY="506.0" prefHeight="12.0" prefWidth="990.0" />
+      <Label layoutX="403.0" layoutY="545.0" text="Colaboracion">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="403.0" layoutY="585.0" text="Fecha inicio">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dpFechaInicio" layoutX="406.0" layoutY="627.0" promptText="Fecha de inicio" />
+      <Label layoutX="726.0" layoutY="585.0" text="Fecha fin">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dpFechaFin" layoutX="725.0" layoutY="627.0" promptText="Fecha de fin" />
+      <Label layoutX="404.0" layoutY="722.0" text="Idioma">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="15.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbIdioma" layoutX="402.0" layoutY="762.0" prefHeight="40.0" prefWidth="218.0" promptText="Idioma" />
+      <Label fx:id="lbTextoArchivo" alignment="CENTER" layoutX="1011.0" layoutY="920.0" prefHeight="21.0" prefWidth="167.0" text="Syllabus registrado" textFill="#07e100" visible="false" />
    </children>
 </AnchorPane>

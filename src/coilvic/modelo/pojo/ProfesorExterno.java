@@ -16,13 +16,14 @@ public class ProfesorExterno {
     private String correo;
     private String materia;
     private String telefono;
+    private String nombreUniversidad;
 
     public ProfesorExterno() {
     }
 
     public ProfesorExterno(int idProfesorExterno, int idUniversidad, String nombre, 
-            String apellidos, String pais, String carrera, String correo, 
-            String materia, String telefono) {
+            String apellidos, String pais, String carrera, String correo, String materia, 
+            String telefono, String nombreUniversidad) {
         this.idProfesorExterno = idProfesorExterno;
         this.idUniversidad = idUniversidad;
         this.nombre = nombre;
@@ -32,7 +33,10 @@ public class ProfesorExterno {
         this.correo = correo;
         this.materia = materia;
         this.telefono = telefono;
+        this.nombreUniversidad = nombreUniversidad;
     }
+
+   
 
     public int getIdProfesorExterno() {
         return idProfesorExterno;
@@ -105,4 +109,13 @@ public class ProfesorExterno {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public String getNombreUniversidad() {
+        return nombreUniversidad;
+    }
+
+    public void setNombreUniversidad(String nombreUniversidad) {
+        this.nombreUniversidad = nombreUniversidad;
+    }
+    
 }
