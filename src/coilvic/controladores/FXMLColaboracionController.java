@@ -1,3 +1,8 @@
+/*
+* Autor: Josué Melgarejo García
+* Fecha de creación: 02/06/2024
+* Descripción: Controlador para cerrar una colaboración por parte del profesor uv
+*/
 package coilvic.controladores;
 
 import coilvic.modelo.dao.ColaboracionDAO;
@@ -47,10 +52,6 @@ public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVCon
     private Label lbPresentacionProfesorUV;
     @FXML
     private Label lbNombreProfesorUV;
-    @FXML
-    private Label lbCarrera;
-    @FXML
-    private Label lbExperienciaEducativa;
     @FXML
     private Label lbTelefono;
     @FXML
@@ -115,7 +116,6 @@ public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVCon
         lbDescripcion.setText(colaboracion.getDescripcion());
         lbPresentacionProfesorUV.setText("Profesor de la Universidad Veracruzana");
         lbNombreProfesorUV.setText("Nombre: "+colaboracion.getProfesorUV());       
-        lbExperienciaEducativa.setText("Asignatura: "+colaboracion.getExperienciaEducativa());
         lbTelefono.setText("Teléfono: "+profesor.getTelefono());
         lbCorreoProfesorUV.setText("Correo-e: "+profesor.getCorreo());
         lbNombreProfEx.setText("Nombre: "+profesorExterno.getNombre()
@@ -158,7 +158,7 @@ public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVCon
 
     private void irCerrarColaboracion(Colaboracion colaboracion){
         try{
-            Stage escenarioPrincipal = (Stage) lbCarrera.getScene().getWindow();
+            Stage escenarioPrincipal = (Stage) imgCerrarSesion.getScene().getWindow();
             FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLCerrarColaboracion.fxml");
             Parent root = loader.load();
             FXMLCerrarColaboracionController controlador = loader.getController();

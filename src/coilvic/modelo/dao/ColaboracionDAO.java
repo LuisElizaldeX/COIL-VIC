@@ -108,7 +108,7 @@ public class ColaboracionDAO {
                         + "FROM colaboracion c "
                         + "JOIN profesorexterno profex ON "
                         + "c.idProfesorExterno = profex.idProfesorExterno "
-                        + "JOIN experienciaeducativa ee ON "
+                        + "LEFT JOIN experienciaeducativa ee ON "
                         + "c.idExperienciaEducativa = ee.idExperienciaEducativa "
                         + "JOIN estadocolaboracion ec ON "
                         + "c.idEstadoColaboracion = ec.idEstadoColaboracion "
@@ -270,7 +270,7 @@ public class ColaboracionDAO {
                         + "c.idEstadoColaboracion, ec.estado AS estadoColaboracion, "
                         + "idArchivo, c.idProfesorUV, concat(puv.nombre, ' ', puv.apellidos) "
                         + "AS profesorUV, fechaInicio, fechaFin, "
-                        + "tipoColaboracion, c.idIdioma, i.lengua AS idioma "
+                        + "tipoColaboracion, c.idIdioma, i.lengua AS idioma, c.descripcion "
                         + "FROM colaboracion c "
                         + "LEFT JOIN profesorexterno profex ON "
                         + "c.idProfesorExterno = profex.idProfesorExterno "
@@ -313,6 +313,7 @@ public class ColaboracionDAO {
                             getString("tipoColaboracion"));
                     colaboracion.setIdIdioma(resultado.getInt("idIdioma"));
                     colaboracion.setIdioma(resultado.getString("idioma"));
+                    colaboracion.setDescripcion(resultado.getString("descripcion"));
                     colaboraciones.add(colaboracion);
                 }
                 respuesta.put(Constantes.KEY_ERROR, false);
@@ -386,8 +387,8 @@ public class ColaboracionDAO {
             try {
                 String consulta = 
                     "INSERT INTO colaboracion (nombre, idProfesorExterno, idEstadoColaboracion, "
-                        + "idProfesoruv, fechaInicio, fechaFin, idArchivo, idIdioma) "
-                        + "VALUES (?, ?, 1, ?, ?, ?, ?, ?)";
+                        + "idProfesoruv, fechaInicio, fechaFin, idArchivo, idIdioma, descripcion) "
+                        + "VALUES (?, ?, 1, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement
                     (consulta, Statement.RETURN_GENERATED_KEYS);
                 prepararSentencia.setString(1, colaboracion.getNombre());
@@ -397,6 +398,7 @@ public class ColaboracionDAO {
                 prepararSentencia.setString(5, colaboracion.getFechaFin());
                 prepararSentencia.setInt(6, idArchivo);
                 prepararSentencia.setInt(7, colaboracion.getIdIdioma());
+                prepararSentencia.setString(8, colaboracion.getDescripcion());
                 int filasInsertadas = prepararSentencia.executeUpdate();
                 if (filasInsertadas > 0) {
                     ResultSet generatedKeys = prepararSentencia.getGeneratedKeys();
@@ -432,10 +434,10 @@ public class ColaboracionDAO {
                 String consulta = 
                     "INSERT INTO colaboracion (nombre, idExperienciaEducativa, idEstadoColaboracion, "
                         + "idProfesoruv, fechaInicio, fechaFin, idArchivo, idIdioma, "
-                        + "idProfesorexterno) " 
+                        + "idProfesorexterno, descripcion) " 
                         +  "VALUES (?, ?, 1, ?, ?, ?, ?, ?, "
                         + "(SELECT idProfesorExterno FROM profesorexterno "
-                        + "ORDER BY idProfesorExterno DESC LIMIT 1));";
+                        + "ORDER BY idProfesorExterno DESC LIMIT 1), ?);";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement
                     (consulta, Statement.RETURN_GENERATED_KEYS);
                 prepararSentencia.setString(1, colaboracion.getNombre());
@@ -445,6 +447,7 @@ public class ColaboracionDAO {
                 prepararSentencia.setString(5, colaboracion.getFechaFin());
                 prepararSentencia.setInt(6, idArchivo);
                 prepararSentencia.setInt(7, colaboracion.getIdIdioma());
+                prepararSentencia.setString(8, colaboracion.getDescripcion());
                 int filasInsertadas = prepararSentencia.executeUpdate();
                 if (filasInsertadas > 0) {
                     ResultSet generatedKeys = prepararSentencia.getGeneratedKeys();

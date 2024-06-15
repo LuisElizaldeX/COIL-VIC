@@ -143,19 +143,15 @@
       </Label>
       <Label fx:id="lbNombreProfesorUV" layoutX="364.0" layoutY="546.0">
          <font>
-            <Font size="24.0" />
+            <Font size="17.0" />
          </font></Label>
-      <Label fx:id="lbExperienciaEducativa" layoutX="364.0" layoutY="581.0">
+      <Label fx:id="lbTelefono" layoutX="362.0" layoutY="572.0">
          <font>
-            <Font size="24.0" />
+            <Font size="17.0" />
          </font></Label>
-      <Label fx:id="lbTelefono" layoutX="362.0" layoutY="616.0">
+      <Label fx:id="lbCorreoProfesorUV" layoutX="361.0" layoutY="607.0">
          <font>
-            <Font size="24.0" />
-         </font></Label>
-      <Label fx:id="lbCorreoProfesorUV" layoutX="361.0" layoutY="651.0">
-         <font>
-            <Font size="24.0" />
+            <Font size="17.0" />
          </font></Label>
       <Label fx:id="lbPresentacionProfEx" layoutX="347.0" layoutY="686.0">
          <font>
@@ -164,19 +160,19 @@
       </Label>
       <Label fx:id="lbNombreProfEx" layoutX="361.0" layoutY="721.0">
          <font>
-            <Font size="24.0" />
+            <Font size="17.0" />
          </font></Label>
       <Label fx:id="lbCorreoProfEx" layoutX="358.0" layoutY="791.0">
          <font>
-            <Font size="24.0" />
+            <Font size="17.0" />
          </font></Label>
       <Label fx:id="lbMateriaProfEx" layoutX="361.0" layoutY="826.0">
          <font>
-            <Font size="24.0" />
+            <Font size="17.0" />
          </font></Label>
       <Label fx:id="lbCarreraProfEx" layoutX="361.0" layoutY="861.0">
          <font>
-            <Font size="24.0" />
+            <Font size="17.0" />
          </font></Label>
       <Button layoutX="361.0" layoutY="933.0" mnemonicParsing="false" onAction="#btnClicCancelarColaboracion" prefHeight="39.0" prefWidth="220.0" style="-fx-background-color: EA5959;" text="Cancelar colaboración" textFill="WHITE">
          <font>
@@ -190,7 +186,7 @@
       </Button>
       <Label fx:id="lbPaisProfEx" layoutX="360.0" layoutY="756.0">
          <font>
-            <Font size="24.0" />
+            <Font size="17.0" />
          </font>
       </Label>
    </children>

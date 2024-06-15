@@ -51,8 +51,6 @@ public class FXMLSolicitudDeConstanciaController
     @FXML
     private Label lbExperienciaEducativa;
     @FXML
-    private Label lbDescripicion;
-    @FXML
     private Label lbProfesorUV;
     @FXML
     private Label lbEstado;
@@ -75,6 +73,8 @@ public class FXMLSolicitudDeConstanciaController
     private ObservableList<SolicitudConstancia> solicitudConstanciaInformacion;
     @FXML
     private Label lbNombreEvidencia;
+    @FXML
+    private Label lbDescripcion;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -85,7 +85,7 @@ public class FXMLSolicitudDeConstanciaController
     public void configurarDatosColaboracionCOIL(SolicitudConstancia solicitud){
         this.solicitudConstancia=solicitud;
         lbNombre.setText(solicitud.getColaboracion());
-        lbDescripicion.setText(solicitud.getDescripcion());
+        lbDescripcion.setText(solicitud.getDescripcion());
         lbExperienciaEducativa.setText(solicitud.getExperienciaEducativa());
         lbProfesorUV.setText(solicitud.getProfesorUV());
         lbProfesorExterno.setText(solicitud.getProfesorExterno());
@@ -172,7 +172,7 @@ public class FXMLSolicitudDeConstanciaController
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Guardar evidencia");
         FileChooser.ExtensionFilter extFilter = 
-                new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
+                new FileChooser.ExtensionFilter("PDF files (.pdf)", ".pdf");
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(new Stage());
         if (file != null) {
