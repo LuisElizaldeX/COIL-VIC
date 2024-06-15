@@ -54,11 +54,11 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
     @FXML
     private TableColumn colNombre;
     @FXML
-    private TableColumn colMateria;
-    @FXML
-    private TableColumn colPeriodo;
-    @FXML
     private TableColumn colEstado;
+    @FXML
+    private TableColumn colFechaInicio;
+    @FXML
+    private TableColumn colFechaFin;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,12 +69,9 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
     }    
     
     private void configurarTabla(){
-        colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
-       
-        //colMateria.setCellValueFactory(new PropertyValueFactory("materia"));
-    
-        colMateria.setCellValueFactory(new PropertyValueFactory("experienciaEducativa"));
-        colPeriodo.setCellValueFactory(new PropertyValueFactory("fechaInicio"));
+        colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));    
+        colFechaInicio.setCellValueFactory(new PropertyValueFactory("fechaInicio"));
+        colFechaFin.setCellValueFactory(new PropertyValueFactory("fechaFin"));
         colEstado.setCellValueFactory(new PropertyValueFactory("estadoColaboracion"));
     }
     

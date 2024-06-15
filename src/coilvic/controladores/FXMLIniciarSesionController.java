@@ -118,6 +118,7 @@ public class FXMLIniciarSesionController implements Initializable {
         escenarioPrincipal.show();
         }catch(IOException e) {
             System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
     
