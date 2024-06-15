@@ -1,9 +1,19 @@
+/*
+* Autor: Josué Melgarejo García
+* Fecha de creación: 01/06/2024
+* Descripción: Controlador de consulta de colaboración COIL
+*/
+
 package coilvic.controladores;
 
 import coilvic.modelo.dao.ArchivoDAO;
 import coilvic.modelo.dao.ColaboracionDAO;
+import coilvic.modelo.dao.OfertaColaboracionExternaDAO;
+import coilvic.modelo.dao.ProfesorExternoDAO;
 import coilvic.modelo.pojo.Archivo;
 import coilvic.modelo.pojo.Colaboracion;
+import coilvic.modelo.pojo.OfertaColaboracionExterna;
+import coilvic.modelo.pojo.ProfesorExterno;
 import coilvic.observador.ObservadorColaboraciones;
 import coilvic.utilidades.Constantes;
 import coilvic.utilidades.Utilidades;
@@ -78,6 +88,7 @@ public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVCon
     
     public void inicializarValores(Colaboracion colaboracion){
         this.colaboracion = colaboracion;
+        //cargarDatosEtiquetas();
     }
 
     @FXML
@@ -167,6 +178,47 @@ public class FXMLColaboracionController extends FXMLPaginaPrincipalProfesorUVCon
             inicializarValores(colaboracionActualizada);
         }
     }
+    
+    
+    private ProfesorExterno obtenerProfesorExterno(int idColaboracion){
+        HashMap<String, Object> respuesta = 
+                ProfesorExternoDAO.obtenerProfesorExternoPorColaboracion(idColaboracion);
+        boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
+        if (!isError) {
+            return (ProfesorExterno) respuesta.get("profesorExterno");
+        } else {
+            System.out.println("No se encontró al profesor externo");
+        }
+        return null;
+    }
+    
+    
+    private void cargarDatosEtiquetas(){
+        ProfesorExterno profesorExterno = 
+                obtenerProfesorExterno(colaboracion.getIdColaboracion());
+        lbNombreColaboracion.setText(colaboracion.getNombre());
+        //lbFechas.setText("Fecha de inicio: "+colaboracion.getFechaInicio()
+              //  +"\nFecha de fin: "+colaboracion.getFechaFin());
+        //lbIdioma.setText("Idioma de la colaboración: "+colaboracion.getIdioma());
+        lbDescripcion.setText(colaboracion.getDescripcion());
+       // lbPresentacionProfesorUV.setText("Profesor de la Universidad Veracruzana");
+        lbNombreProfesorUV.setText("Nombre: "+colaboracion.getProfesorUV());       
+        lbExperienciaEducativa.setText("Asignatura: "+colaboracion.getExperienciaEducativa());
+        lbTelefono.setText("Teléfono: "+profesor.getTelefono());
+        lbCorreoProfesorUV.setText("Correo-e: "+profesor.getCorreo());
+        lbNombreProfEx.setText("Nombre: "+profesorExterno.getNombre()
+                +" "+profesorExterno.getApellidos());
+        lbPresentacionProfEx.setText("Profesor de la "+profesorExterno.getNombreUniversidad());
+        //lbPaisProfEx.setText("País: "+profesorExterno.getPais());
+        lbCorreoProfEx.setText("Correo-e: "+profesorExterno.getCorreo());
+        lbMateriaProfEx.setText("Materia: "+profesorExterno.getMateria());
+        lbCarreraProfEx.setText("Carrera: "+profesorExterno.getCarrera());
+    }
+
+
+    
+    
+
     
     
 }

@@ -146,9 +146,11 @@ public class FXMLModificarOfertaColaboracionUvController
         ofertaColaboracionUV.setIdCampus
         (cbCampus.getSelectionModel().getSelectedItem().getIdCampus());
         ofertaColaboracionUV.setIdProgramaEducativo(
-        cbProgramaEducativo.getSelectionModel().getSelectedItem().getIdProgramaEducativo());
+        cbProgramaEducativo.getSelectionModel().
+                getSelectedItem().getIdProgramaEducativo());
         ofertaColaboracionUV.setDescripcion(tfDescripcion.getText());
-        ofertaColaboracionUV.setExperienciaEducativa(tfExperienciaEducativa.getText());
+        ofertaColaboracionUV.setExperienciaEducativa
+        (tfExperienciaEducativa.getText());
         ofertaColaboracionUV.setCreditos(tfCreditos.getText());
         ofertaColaboracionUV.setDescripcionEe(tfDescripcionEe.getText());
         ofertaColaboracionUV.setFechaInicio(dpFechaInicio.getValue().toString());

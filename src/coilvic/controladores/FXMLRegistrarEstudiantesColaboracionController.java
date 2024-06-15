@@ -56,7 +56,8 @@ public class FXMLRegistrarEstudiantesColaboracionController implements Initializ
             stage.setOnCloseRequest(event -> {
                 event.consume(); // Consume el evento para evitar el cierre
                 Utilidades.mostrarAlertaSimple("Operación no permitida", 
-                        "No puede cerrar esta ventana hasta que complete la operación", Alert.AlertType.WARNING);
+                        "No puede cerrar esta ventana hasta que complete la operación", 
+                        Alert.AlertType.WARNING);
             });
         });
     }  

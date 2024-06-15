@@ -148,11 +148,13 @@ public class FXMLRegistrarColaboracionOfertaUvController
                     }
                 }else{
                     Utilidades.mostrarAlertaSimple("Error al guardar", "" + 
-                        respuestaColaboracion.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
+                        respuestaColaboracion.get(Constantes.KEY_MENSAJE), 
+                            Alert.AlertType.ERROR);
                 }
             }else{
                 Utilidades.mostrarAlertaSimple("Error al guardar", "" + 
-                        respuestaArchivo.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
+                        respuestaArchivo.get(Constantes.KEY_MENSAJE), 
+                        Alert.AlertType.ERROR);
             }
         }
     }

@@ -70,6 +70,9 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
     
     private void configurarTabla(){
         colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
+       
+        //colMateria.setCellValueFactory(new PropertyValueFactory("materia"));
+    
         colMateria.setCellValueFactory(new PropertyValueFactory("experienciaEducativa"));
         colPeriodo.setCellValueFactory(new PropertyValueFactory("fechaInicio"));
         colEstado.setCellValueFactory(new PropertyValueFactory("estadoColaboracion"));
@@ -77,14 +80,17 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
     
     private void cargarDatosColaboracion(){
         colaboraciones = FXCollections.observableArrayList();
-        HashMap<String, Object> respuesta = ColaboracionDAO.obtenerColaboracionesProfesorUV(profesor.getIdProfesorUV());
+        HashMap<String, Object> respuesta = ColaboracionDAO.obtenerColaboracionesProfesorUV
+        (profesor.getIdProfesorUV());
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
         if(!isError){
-            ArrayList<Colaboracion> colaboracionesBD = (ArrayList<Colaboracion>) respuesta.get("colaboraciones");
+            ArrayList<Colaboracion> colaboracionesBD = 
+                    (ArrayList<Colaboracion>) respuesta.get("colaboraciones");
             colaboraciones.addAll(colaboracionesBD);
             tvColaboraciones.setItems(colaboraciones);
         } else {
-            Utilidades.mostrarAlertaSimple("Error", "" + respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.WARNING);
+            Utilidades.mostrarAlertaSimple("Error", "" + 
+                    respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.WARNING);
         }
     }
     
@@ -190,7 +196,8 @@ public class FXMLPaginaPrincipalProfesorUVController implements Initializable {
     @FXML
     private void seleccionarColaboracion(MouseEvent event) {
         if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2){
-            Colaboracion colaboracionSeleccionada = tvColaboraciones.getSelectionModel().getSelectedItem();
+            Colaboracion colaboracionSeleccionada = 
+                    tvColaboraciones.getSelectionModel().getSelectedItem();
             if(colaboracionSeleccionada != null){
                 irColaboracion(colaboracionSeleccionada);
             }

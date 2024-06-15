@@ -132,7 +132,8 @@ public class FXMLConsultarOfertaColaboracionUv_ProfesorController
     
     @FXML
     private void btnClicRegistrar(ActionEvent event) {
-        irRegistrarColaboracionUv(ofertaColaboracionUV.getIdExperienciaEducativa());
+        irRegistrarColaboracionUv(ofertaColaboracionUV.
+                getIdExperienciaEducativa());
     }
     
     private void irRegistrarColaboracionUv(int idExperienciaEducativa){

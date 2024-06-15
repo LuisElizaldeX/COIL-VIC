@@ -16,7 +16,8 @@ public class Estudiante {
     public Estudiante() {
     }
 
-    public Estudiante(Integer idEstudiante, String nombre, String matricula, String apellidoPaterno, String apellidoMaterno, String nombreCompleto) {
+    public Estudiante(Integer idEstudiante, String nombre, String matricula, String apellidoPaterno,
+            String apellidoMaterno, String nombreCompleto) {
         this.idEstudiante = idEstudiante;
         this.nombre = nombre;
         this.matricula = matricula;

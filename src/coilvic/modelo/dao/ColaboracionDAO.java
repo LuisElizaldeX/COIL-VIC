@@ -37,9 +37,12 @@ public class ColaboracionDAO {
                         + "AS profesorUV, fechaInicio, fechaFin, "
                         + "tipoColaboracion, c.idIdioma, i.lengua AS idioma "
                         + "FROM colaboracion c "
-                        + "JOIN profesorexterno profex ON c.idProfesorExterno = profex.idProfesorExterno "
-                        + "JOIN experienciaeducativa ee ON c.idExperienciaEducativa = ee.idExperienciaEducativa "
-                        + "JOIN estadocolaboracion ec ON c.idEstadoColaboracion = ec.idEstadoColaboracion "
+                        + "JOIN profesorexterno profex "
+                        + "ON c.idProfesorExterno = profex.idProfesorExterno "
+                        + "JOIN experienciaeducativa ee "
+                        + "ON c.idExperienciaEducativa = ee.idExperienciaEducativa "
+                        + "JOIN estadocolaboracion ec "
+                        + "ON c.idEstadoColaboracion = ec.idEstadoColaboracion "
                         + "JOIN profesoruv puv ON c.idProfesorUV = puv.idProfesorUV "
                         + "JOIN idioma i ON c.idIdioma = i.idIdioma "
                         + "WHERE c.idEstadoColaboracion = 1";
@@ -48,20 +51,30 @@ public class ColaboracionDAO {
                 List<Colaboracion> colaboraciones = new ArrayList<>();
                 while(resultado.next()){
                     Colaboracion colaboracion = new Colaboracion();
-                    colaboracion.setIdColaboracion(resultado.getInt("idColaboracion"));
+                    colaboracion.setIdColaboracion
+        (resultado.getInt("idColaboracion"));
                     colaboracion.setNombre(resultado.getString("nombre"));
-                    colaboracion.setIdProfesorExterno(resultado.getInt("idProfesorExterno"));
-                    colaboracion.setProfesorExterno(resultado.getString("profesorExterno"));
-                    colaboracion.setIdExperienciaEducativa(resultado.getInt("idExperienciaEducativa"));
-                    colaboracion.setExperienciaEducativa(resultado.getString("experienciaEducativa"));
-                    colaboracion.setIdEstadoColaboracion(resultado.getInt("idEstadoColaboracion"));
-                    colaboracion.setEstadoColaboracion(resultado.getString("estadoColaboracion"));
+                    colaboracion.setIdProfesorExterno
+        (resultado.getInt("idProfesorExterno"));
+                    colaboracion.setProfesorExterno
+        (resultado.getString("profesorExterno"));
+                    colaboracion.setIdExperienciaEducativa
+        (resultado.getInt("idExperienciaEducativa"));
+                    colaboracion.setExperienciaEducativa
+        (resultado.getString("experienciaEducativa"));
+                    colaboracion.setIdEstadoColaboracion
+        (resultado.getInt("idEstadoColaboracion"));
+                    colaboracion.setEstadoColaboracion
+        (resultado.getString("estadoColaboracion"));
                     colaboracion.setIdArchivo(resultado.getInt("idArchivo"));
-                    colaboracion.setIdProfesorUV(resultado.getInt("idProfesorUV"));
+                    colaboracion.setIdProfesorUV
+        (resultado.getInt("idProfesorUV"));
                     colaboracion.setProfesorUV(resultado.getString("profesorUV"));
-                    colaboracion.setFechaInicio(resultado.getString("fechaInicio"));
+                    colaboracion.setFechaInicio
+        (resultado.getString("fechaInicio"));
                     colaboracion.setFechaFin(resultado.getString("fechaFin"));
-                    colaboracion.setTipoColaboracion(resultado.getString("tipoColaboracion"));
+                    colaboracion.setTipoColaboracion
+        (resultado.getString("tipoColaboracion"));
                     colaboracion.setIdIdioma(resultado.getInt("idIdioma"));
                     colaboracion.setIdioma(resultado.getString("idioma"));
                     colaboraciones.add(colaboracion);
@@ -93,10 +106,10 @@ public class ColaboracionDAO {
                         + "AS profesorUV, fechaInicio, fechaFin, "
                         + "tipoColaboracion, c.idIdioma, i.lengua AS idioma "
                         + "FROM colaboracion c "
-                        + "JOIN profesorexterno profex ON c.idProfesorExterno = profex.idProfesorExterno "
-                        + "JOIN experienciaeducativa ee ON c.idExperienciaEducativa = ee.idExperienciaEducativa "
-                        + "JOIN estadocolaboracion ec ON c.idEstadoColaboracion = ec.idEstadoColaboracion "
-                        + "JOIN profesoruv puv ON c.idProfesorUV = puv.idProfesorUV "
+           + "JOIN profesorexterno profex ON c.idProfesorExterno = profex.idProfesorExterno "
+           + "JOIN experienciaeducativa ee ON c.idExperienciaEducativa = ee.idExperienciaEducativa "
+           + "JOIN estadocolaboracion ec ON c.idEstadoColaboracion = ec.idEstadoColaboracion "
+             + "JOIN profesoruv puv ON c.idProfesorUV = puv.idProfesorUV "
                         + "JOIN idioma i ON c.idIdioma = i.idIdioma "
                         + "WHERE idColaboracion = ?";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
@@ -104,20 +117,30 @@ public class ColaboracionDAO {
                 ResultSet resultado = prepararSentencia.executeQuery();
                 if (resultado.next()) {
                     Colaboracion colaboracion = new Colaboracion();
-                    colaboracion.setIdColaboracion(resultado.getInt("idColaboracion"));
+                    colaboracion.setIdColaboracion(resultado.getInt
+        ("idColaboracion"));
                     colaboracion.setNombre(resultado.getString("nombre"));
-                    colaboracion.setIdProfesorExterno(resultado.getInt("idProfesorExterno"));
-                    colaboracion.setProfesorExterno(resultado.getString("profesorExterno"));
-                    colaboracion.setIdExperienciaEducativa(resultado.getInt("idExperienciaEducativa"));
-                    colaboracion.setExperienciaEducativa(resultado.getString("experienciaEducativa"));
-                    colaboracion.setIdEstadoColaboracion(resultado.getInt("idEstadoColaboracion"));
-                    colaboracion.setEstadoColaboracion(resultado.getString("estadoColaboracion"));
+                    colaboracion.setIdProfesorExterno(resultado.getInt
+        ("idProfesorExterno"));
+                    colaboracion.setProfesorExterno(resultado.getString
+        ("profesorExterno"));
+                    colaboracion.setIdExperienciaEducativa(resultado.getInt
+        ("idExperienciaEducativa"));
+                    colaboracion.setExperienciaEducativa(resultado.getString
+        ("experienciaEducativa"));
+                    colaboracion.setIdEstadoColaboracion(resultado.getInt
+        ("idEstadoColaboracion"));
+                    colaboracion.setEstadoColaboracion(resultado.getString
+        ("estadoColaboracion"));
                     colaboracion.setIdArchivo(resultado.getInt("idArchivo"));
-                    colaboracion.setIdProfesorUV(resultado.getInt("idProfesorUV"));
+                    colaboracion.setIdProfesorUV(resultado.getInt
+        ("idProfesorUV"));
                     colaboracion.setProfesorUV(resultado.getString("profesorUV"));
-                    colaboracion.setFechaInicio(resultado.getString("fechaInicio"));
+                    colaboracion.setFechaInicio(resultado.getString
+        ("fechaInicio"));
                     colaboracion.setFechaFin(resultado.getString("fechaFin"));
-                    colaboracion.setTipoColaboracion(resultado.getString("tipoColaboracion"));
+                    colaboracion.setTipoColaboracion(resultado.getString
+        ("tipoColaboracion"));
                     colaboracion.setIdIdioma(resultado.getInt("idIdioma"));
                     colaboracion.setIdioma(resultado.getString("idioma"));
 
@@ -143,16 +166,19 @@ public class ColaboracionDAO {
         Connection conexionBD = ConexionBD.obtenerConexion();
         if(conexionBD != null){
             try {
-                String consulta = "UPDATE colaboracion SET idEstadoColaboracion = 3 WHERE idColaboracion = ?";
+                String consulta = 
+                        "UPDATE colaboracion SET idEstadoColaboracion = 3 WHERE idColaboracion = ?";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
                 prepararSentencia.setInt(1, idColaboracion);
                 int filasAfectadas = prepararSentencia.executeUpdate();
                 if(filasAfectadas > 0){
                     respuesta.put(Constantes.KEY_ERROR, false);
-                    respuesta.put(Constantes.KEY_MENSAJE, "El proceso de cancelación se ha realizado con éxito");
+                    respuesta.put
+        (Constantes.KEY_MENSAJE, "El proceso de cancelación se ha realizado con éxito");
                 } else {
                     respuesta.put(Constantes.KEY_MENSAJE,
-                            "Lo sentimos, hubo un error al cancelar la colaboración, favor de intentarlo más tarde");
+                            "Lo sentimos, hubo un error al cancelar la colaboración, "
+                                    + "favor de intentarlo más tarde");
                 }
                 conexionBD.close();
             } catch (SQLException e) {
@@ -171,7 +197,8 @@ public class ColaboracionDAO {
         Connection conexionBD = ConexionBD.obtenerConexion();
         if(conexionBD != null){
             try {
-                String consulta = "UPDATE colaboracion SET idEstadoColaboracion = 2 WHERE idColaboracion = ?";
+                String consulta = 
+                        "UPDATE colaboracion SET idEstadoColaboracion = 2 WHERE idColaboracion = ?";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
                 prepararSentencia.setInt(1, idColaboracion);
                 int filasAfectadas = prepararSentencia.executeUpdate();
@@ -202,17 +229,20 @@ public class ColaboracionDAO {
         Connection conexionBD = ConexionBD.obtenerConexion();
         if(conexionBD != null){
             try {
-                String consulta = "UPDATE colaboracion SET justificacion = ? WHERE idColaboracion = ?";
+                String consulta = 
+                        "UPDATE colaboracion SET justificacion = ? WHERE idColaboracion = ?";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
                 prepararSentencia.setString(1, justificacion);
                 prepararSentencia.setInt(2, idColaboracion);
                 int filasAfectadas = prepararSentencia.executeUpdate();
                 if(filasAfectadas > 0){
                     respuesta.put(Constantes.KEY_ERROR, false);
-                    respuesta.put(Constantes.KEY_MENSAJE, "La justificación se ha añadido correctamente");
+                    respuesta.put
+        (Constantes.KEY_MENSAJE, "La justificación se ha añadido correctamente");
                 } else {
                     respuesta.put(Constantes.KEY_MENSAJE, 
-                            "Lo sentimos, hubo un error al añadir la justificación, favor de intentarlo más tarde");
+                            "Lo sentimos, hubo un error al añadir la justificación, "
+                                    + "favor de intentarlo más tarde");
                 }
                 conexionBD.close();
             } catch (SQLException e) {
@@ -231,17 +261,19 @@ public class ColaboracionDAO {
         Connection conexionBD = ConexionBD.obtenerConexion();
         if(conexionBD != null){
             try {
-                String consulta = "SELECT idColaboracion, c.nombre, c.idProfesorExterno, "
+                String consulta = 
+                        "SELECT idColaboracion, profex.materia, c.nombre, c.idProfesorExterno, "
                         + "concat(profex.nombre, ' ', profex.apellidos) AS profesorExterno, "
                         + "c.idExperienciaEducativa, ee.nombre AS experienciaEducativa, "
                         + "c.idEstadoColaboracion, ec.estado AS estadoColaboracion, "
                         + "idArchivo, c.idProfesorUV, concat(puv.nombre, ' ', puv.apellidos) "
                         + "AS profesorUV, fechaInicio, fechaFin, "
-                        + "tipoColaboracion, c.idIdioma, i.lengua AS idioma "
+                        + "tipoColaboracion, c.idIdioma, i.lengua AS idioma, c.descripcion "
                         + "FROM colaboracion c "
-                        + "JOIN profesorexterno profex ON c.idProfesorExterno = profex.idProfesorExterno "
-                        + "JOIN experienciaeducativa ee ON c.idExperienciaEducativa = ee.idExperienciaEducativa "
-                        + "JOIN estadocolaboracion ec ON c.idEstadoColaboracion = ec.idEstadoColaboracion "
+                        + "JOIN profesorexterno profex "
+                        + "ON c.idProfesorExterno = profex.idProfesorExterno "
+      + "LEFT JOIN experienciaeducativa ee ON c.idExperienciaEducativa = ee.idExperienciaEducativa "
+      + "JOIN estadocolaboracion ec ON c.idEstadoColaboracion = ec.idEstadoColaboracion "
                         + "JOIN profesoruv puv ON c.idProfesorUV = puv.idProfesorUV "
                         + "JOIN idioma i ON c.idIdioma = i.idIdioma "
                         + "WHERE c.idProfesorUV = ?";
@@ -251,22 +283,36 @@ public class ColaboracionDAO {
                 List<Colaboracion> colaboraciones = new ArrayList<>();
                 while(resultado.next()){
                     Colaboracion colaboracion = new Colaboracion();
-                    colaboracion.setIdColaboracion(resultado.getInt("idColaboracion"));
+                    colaboracion.setIdColaboracion
+        (resultado.getInt("idColaboracion"));
+                    colaboracion.setMateria(resultado.getString("materia"));
                     colaboracion.setNombre(resultado.getString("nombre"));
-                    colaboracion.setIdProfesorExterno(resultado.getInt("idProfesorExterno"));
-                    colaboracion.setProfesorExterno(resultado.getString("profesorExterno"));
-                    colaboracion.setIdExperienciaEducativa(resultado.getInt("idExperienciaEducativa"));
-                    colaboracion.setExperienciaEducativa(resultado.getString("experienciaEducativa"));
-                    colaboracion.setIdEstadoColaboracion(resultado.getInt("idEstadoColaboracion"));
-                    colaboracion.setEstadoColaboracion(resultado.getString("estadoColaboracion"));
+                    colaboracion.setIdProfesorExterno
+        (resultado.getInt("idProfesorExterno"));
+                    colaboracion.setProfesorExterno
+        (resultado.getString("profesorExterno"));
+                    colaboracion.setIdExperienciaEducativa
+        (resultado.getInt("idExperienciaEducativa"));
+                    colaboracion.setExperienciaEducativa
+        (resultado.getString("experienciaEducativa"));
+                    colaboracion.setIdEstadoColaboracion
+        (resultado.getInt("idEstadoColaboracion"));
+                    colaboracion.setEstadoColaboracion
+        (resultado.getString("estadoColaboracion"));
                     colaboracion.setIdArchivo(resultado.getInt("idArchivo"));
-                    colaboracion.setIdProfesorUV(resultado.getInt("idProfesorUV"));
+                    colaboracion.setIdProfesorUV
+        (resultado.getInt("idProfesorUV"));
                     colaboracion.setProfesorUV(resultado.getString("profesorUV"));
-                    colaboracion.setFechaInicio(resultado.getString("fechaInicio"));
+                    colaboracion.setFechaInicio
+        (resultado.getString("fechaInicio"));
                     colaboracion.setFechaFin(resultado.getString("fechaFin"));
-                    colaboracion.setTipoColaboracion(resultado.getString("tipoColaboracion"));
+                    colaboracion.setTipoColaboracion
+        (resultado.getString("tipoColaboracion"));
                     colaboracion.setIdIdioma(resultado.getInt("idIdioma"));
                     colaboracion.setIdioma(resultado.getString("idioma"));
+                    colaboracion.setDescripcion
+        (resultado.getString("descripcion"));
+                    
                     colaboraciones.add(colaboracion);
                 }
                 respuesta.put(Constantes.KEY_ERROR, false);
@@ -340,8 +386,8 @@ public class ColaboracionDAO {
             try {
                 String consulta = 
                     "INSERT INTO colaboracion (nombre, idProfesorExterno, idEstadoColaboracion, "
-                        + "idProfesoruv, fechaInicio, fechaFin, idArchivo, idIdioma) "
-                        + "VALUES (?, ?, 1, ?, ?, ?, ?, ?)";
+                        + "idProfesoruv, fechaInicio, fechaFin, idArchivo, idIdioma, descripcion) "
+                        + "VALUES (?, ?, 1, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement
                     (consulta, Statement.RETURN_GENERATED_KEYS);
                 prepararSentencia.setString(1, colaboracion.getNombre());
@@ -351,6 +397,7 @@ public class ColaboracionDAO {
                 prepararSentencia.setString(5, colaboracion.getFechaFin());
                 prepararSentencia.setInt(6, idArchivo);
                 prepararSentencia.setInt(7, colaboracion.getIdIdioma());
+                 prepararSentencia.setString(8, colaboracion.getDescripcion());
                 int filasInsertadas = prepararSentencia.executeUpdate();
                 if (filasInsertadas > 0) {
                     ResultSet generatedKeys = prepararSentencia.getGeneratedKeys();
@@ -384,12 +431,12 @@ public class ColaboracionDAO {
         if (conexionBD != null) {
             try {
                 String consulta = 
-                    "INSERT INTO colaboracion (nombre, idExperienciaEducativa, idEstadoColaboracion, "
+                  "INSERT INTO colaboracion (nombre, idExperienciaEducativa, idEstadoColaboracion, "
                         + "idProfesoruv, fechaInicio, fechaFin, idArchivo, idIdioma, "
-                        + "idProfesorexterno) " 
+                        + "idProfesorexterno, descripcion) " 
                         +  "VALUES (?, ?, 1, ?, ?, ?, ?, ?, "
                         + "(SELECT idProfesorExterno FROM profesorexterno "
-                        + "ORDER BY idProfesorExterno DESC LIMIT 1));";
+                        + "ORDER BY idProfesorExterno DESC LIMIT 1), ?);";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement
                     (consulta, Statement.RETURN_GENERATED_KEYS);
                 prepararSentencia.setString(1, colaboracion.getNombre());
@@ -399,6 +446,7 @@ public class ColaboracionDAO {
                 prepararSentencia.setString(5, colaboracion.getFechaFin());
                 prepararSentencia.setInt(6, idArchivo);
                 prepararSentencia.setInt(7, colaboracion.getIdIdioma());
+                prepararSentencia.setString(8, colaboracion.getDescripcion());
                 int filasInsertadas = prepararSentencia.executeUpdate();
                 if (filasInsertadas > 0) {
                     ResultSet generatedKeys = prepararSentencia.getGeneratedKeys();
