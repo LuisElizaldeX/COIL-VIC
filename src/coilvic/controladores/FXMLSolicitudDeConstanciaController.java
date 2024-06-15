@@ -172,7 +172,7 @@ public class FXMLSolicitudDeConstanciaController
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Guardar evidencia");
         FileChooser.ExtensionFilter extFilter = 
-                new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
+                new FileChooser.ExtensionFilter("PDF files (.pdf)", ".pdf");
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(new Stage());
         if (file != null) {
@@ -189,8 +189,5 @@ public class FXMLSolicitudDeConstanciaController
             }
         }
     }
-
-
-
     
 }

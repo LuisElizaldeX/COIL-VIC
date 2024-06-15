@@ -302,7 +302,7 @@ public class FXMLCerrarColaboracionController extends FXMLPaginaPrincipalProfeso
     private void irColaboracion(){
         Colaboracion colaboracionActualizada = obtenerColaboracionActualizada();
         try {
-            Stage escenario = (Stage) btnAceptar.getScene().getWindow();
+            Stage escenario = (Stage) imgCerrarSesion.getScene().getWindow();
             FXMLLoader loader = Utilidades.obtenerLoader("vistas/FXMLColaboracion.fxml");
             Parent root = loader.load();
             FXMLColaboracionController controlador = loader.getController();

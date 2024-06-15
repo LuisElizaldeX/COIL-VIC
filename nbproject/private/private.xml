@@ -33,6 +33,7 @@
             <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/modelo/dao/CoordinadorCOILDAO.java</file>
             <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/vistas/FXMLColaboracion.fxml</file>
             <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/controladores/FXMLJustificarCancelacionController.java</file>
+            <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/controladores/FXMLOfertasColaboracionUvController.java</file>
             <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/controladores/FXMLRegistrarColaboracionDirectaController.java</file>
             <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/controladores/FXMLRevisarColaboracionesCOILController.java</file>
             <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/modelo/dao/ProfesorExternoDAO.java</file>
@@ -64,6 +65,7 @@
             <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/modelo/pojo/EstadoOfertaColaboracionExterna.java</file>
             <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/controladores/FXMLRegistrarColaboracionOfertaExternaController.java</file>
             <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/vistas/FXMLPaginaPrincipalCoordinadorCOIL.fxml</file>
+            <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/vistas/FXMLSolicitudDeConstancia.fxml</file>
             <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/modelo/pojo/Archivo.java</file>
             <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/modelo/pojo/Campus.java</file>
             <file>file:/C:/Users/sosue/OneDrive/Documentos/NetBeansProjects/COIL-VIC/src/coilvic/modelo/pojo/RespuestaProfesorUV.java</file>
