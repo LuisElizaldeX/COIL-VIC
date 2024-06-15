@@ -89,7 +89,8 @@ public class FXMLSolicitudesDeConstanciaController
                 FXMLLoader accesoControlador = new FXMLLoader(coilvic.COILVIC.class.getResource(
                 "vistas/FXMLSolicitudDeConstancia.fxml"));
                 Parent vista = accesoControlador.load();
-                FXMLSolicitudDeConstanciaController solicitudConstancia = accesoControlador.getController();
+                FXMLSolicitudDeConstanciaController solicitudConstancia = 
+                        accesoControlador.getController();
                 solicitudConstancia.configurarDatosColaboracionCOIL(solicitud);
                 Stage escenarioPrincipal = (Stage) btnRevisarSolicitud.getScene().getWindow();
                 Scene escenaPrincipal = new Scene(vista); 

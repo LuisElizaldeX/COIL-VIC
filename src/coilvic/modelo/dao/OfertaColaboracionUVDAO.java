@@ -170,14 +170,16 @@ public class OfertaColaboracionUVDAO {
                     oferta.setNombreProfesorUv
         (resultado.getString("profesorUvNombre"));
                     oferta.setApellidos(resultado.getString("apellidos"));
-                    oferta.setNumeroPersonal(resultado.getInt("numeroPersonal"));
+                    oferta.setNumeroPersonal(resultado.getInt
+        ("numeroPersonal"));
                     oferta.setCorreo(resultado.getString("correo"));
                     oferta.setTelefono(resultado.getInt("telefono"));
                     oferta.setEstado(resultado.getString("estado"));
                     oferta.setFechaInicio(resultado.getString("fechaInicio"));
                     oferta.setFechaFin(resultado.getString("fechaFin"));
                     oferta.setIdCampus(resultado.getInt("idCampus"));
-                    oferta.setIdAreaAcademica(resultado.getInt("idAreaAcademica"));
+                    oferta.setIdAreaAcademica(resultado.getInt
+        ("idAreaAcademica"));
                     oferta.setIdProgramaEducativo
         (resultado.getInt("idProgramaEducativo"));
                     

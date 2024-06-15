@@ -39,7 +39,8 @@ public class ArchivoDAO {
                         respuesta.put("idArchivo", idArchivo);
                     }
                     respuesta.put(Constantes.KEY_ERROR, false);
-                    respuesta.put(Constantes.KEY_MENSAJE, "Archivo guardado correctamente");
+                    respuesta.put(Constantes.KEY_MENSAJE, 
+                            "Archivo guardado correctamente");
                 } else {
                     respuesta.put(Constantes.KEY_MENSAJE, 
                             "Lo sentimos, hubo un error al subir el archivo, "
@@ -71,7 +72,8 @@ public class ArchivoDAO {
                     archivo.setIdArchivo(idArchivo);
                     archivo.setNombre(resultado.getString("nombre"));
                     archivo.setArchivoCol(resultado.getBytes("archivoCol"));
-                    archivo.setIdTipoArchivo(resultado.getInt("idTipoArchivo"));
+                    archivo.setIdTipoArchivo
+        (resultado.getInt("idTipoArchivo"));
                 }
                 respuesta.put(Constantes.KEY_ERROR, false);
                 respuesta.put("archivo", archivo);

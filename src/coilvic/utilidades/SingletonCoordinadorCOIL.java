@@ -1,7 +1,8 @@
 /*
 * Autor: Luis Angel Elizalde Arroyo
 * Fecha de creación: 18/05/2024
-* Descripción: Clase para modelar el objeto SingletonCoordinadorCOIL,una clase estatica de la instancia
+* Descripción: Clase para modelar el objeto SingletonCoordinadorCOIL,una clase estatica de la 
+instancia
 */
 
 package coilvic.utilidades;

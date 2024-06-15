@@ -243,9 +243,11 @@ public class FXMLRegistrarOfertaColaboracionUvController
         Dependencia dependencia = new Dependencia();
         dependencia.setNombre(tfNombreDependencia.getText());
         dependencia.setMunicipio(tfMunicipio.getText());
-        dependencia.setIdCampus(cbCampus.getSelectionModel().getSelectedItem().getIdCampus());
+        dependencia.setIdCampus
+        (cbCampus.getSelectionModel().getSelectedItem().getIdCampus());
         dependencia.setIdProgramaEducativo
-        (cbProgramaEducativo.getSelectionModel().getSelectedItem().getIdProgramaEducativo());
+        (cbProgramaEducativo.getSelectionModel().
+                getSelectedItem().getIdProgramaEducativo());
 
         return dependencia;
     }

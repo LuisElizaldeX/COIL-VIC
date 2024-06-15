@@ -16,7 +16,8 @@ public class ExperienciaEducativa {
     public ExperienciaEducativa() {
     }
 
-    public ExperienciaEducativa(int idExperienciaEducativa, int idDependencia, int creditos, String nombre, String descripcion) {
+    public ExperienciaEducativa(int idExperienciaEducativa, int idDependencia, int creditos, 
+            String nombre, String descripcion) {
         this.idExperienciaEducativa = idExperienciaEducativa;
         this.idDependencia = idDependencia;
         this.creditos = creditos;
