@@ -39,7 +39,8 @@ public class EstudianteDAO {
                 List<Estudiante> estudiantes = new ArrayList<>();
                 while(resultado.next()){
                     Estudiante estudiante = new Estudiante();
-                    estudiante.setIdEstudiante(resultado.getInt("idEstudiante"));
+                    estudiante.setIdEstudiante
+        (resultado.getInt("idEstudiante"));
                     estudiante.setNombreCompleto(resultado.
                             getString("nombreCompleto"));
                     estudiante.setMatricula(resultado.getString("matricula"));

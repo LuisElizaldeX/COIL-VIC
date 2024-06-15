@@ -143,7 +143,8 @@ public class FXMLRegistrarColaboracionOfertaExternaController
                 }
             }else{
                 Utilidades.mostrarAlertaSimple("Error al guardar", "" + 
-                        respuestaArchivo.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
+                        respuestaArchivo.get(Constantes.KEY_MENSAJE), 
+                        Alert.AlertType.ERROR);
             }
         }
     }

@@ -177,7 +177,8 @@ public class FXMLRegistrarColaboracionDirectaController
                 Periodo periodo = obtenerInformacionPeriodo();
                 OfertaColaboracionUVDAO.guardarPeriodo(periodo);
                 
-                ExperienciaEducativa experienciaEducativa = obtenerInformacionExperienciaEducativa();
+                ExperienciaEducativa experienciaEducativa = 
+                        obtenerInformacionExperienciaEducativa();
                 OfertaColaboracionUVDAO.guardarExperienciaEducativa(experienciaEducativa); 
                 
                 Universidad universidad = obtenerInformacionUniversidad();
@@ -214,11 +215,13 @@ public class FXMLRegistrarColaboracionDirectaController
                     }
                 }else{
                     Utilidades.mostrarAlertaSimple("Error al guardar", "" + 
-                        respuestaColaboracion.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
+                        respuestaColaboracion.get(Constantes.KEY_MENSAJE), 
+                            Alert.AlertType.ERROR);
                 }
             }else{
                 Utilidades.mostrarAlertaSimple("Error al guardar", "" + 
-                        respuestaArchivo.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
+                        respuestaArchivo.get(Constantes.KEY_MENSAJE), 
+                        Alert.AlertType.ERROR);
             }     
         }
     }
@@ -313,9 +316,11 @@ public class FXMLRegistrarColaboracionDirectaController
         Dependencia dependencia = new Dependencia();
         dependencia.setNombre(tfNombreDependencia.getText());
         dependencia.setMunicipio(tfMunicipio.getText());
-        dependencia.setIdCampus(cbCampus.getSelectionModel().getSelectedItem().getIdCampus());
+        dependencia.setIdCampus
+        (cbCampus.getSelectionModel().getSelectedItem().getIdCampus());
         dependencia.setIdProgramaEducativo
-        (cbProgramaEducativo.getSelectionModel().getSelectedItem().getIdProgramaEducativo());
+        (cbProgramaEducativo.getSelectionModel().
+                getSelectedItem().getIdProgramaEducativo());
 
         return dependencia;
     }
@@ -372,24 +377,6 @@ public class FXMLRegistrarColaboracionDirectaController
         
         return colaboracion;
     }
-    
-   
-    
-    
-    
-    
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
   
     
     private void cargarCampus(){
